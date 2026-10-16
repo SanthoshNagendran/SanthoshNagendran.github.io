@@ -1,0 +1,676 @@
+<title>Charging Through the Blackout</title>
+
+<style>
+  /* ─────────────────────────────────────────────────────────────
+     Palette is inherited from the product itself (styles.css):
+     the operator console is a dark instrument panel, and the five
+     accents are not decoration — they are the signal legend used
+     across every architecture diagram in the project.
+       cyan   = telemetry / data going up
+       rose   = control / commands coming down
+       violet = BLE / offline fallback
+       green  = live, healthy, confirmed
+       amber  = energy, buffered, building load
+     Deliberately single-theme: this page is a night-shift console.
+     ───────────────────────────────────────────────────────────── */
+  :root {
+    --ink:      #060a12;
+    --panel:    #0d1524;
+    --panel-2:  #111c2f;
+    --line:     #1d2b45;
+    --line-hi:  #2b3d5e;
+    --text:     #e7eef9;
+    --dim:      #8698b7;
+    --dimmer:   #5d6f8d;
+
+    --data:   #38bdf8;
+    --ctrl:   #fb7185;
+    --ble:    #a855f7;
+    --live:   #34d399;
+    --power:  #f5a524;
+
+    --mono: ui-monospace, "Cascadia Mono", "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
+    --sans: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+
+    --rail: 34px;
+    --maxw: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* faint grid, like a scope screen — never competes with content */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      linear-gradient(to right, rgba(56,189,248,.045) 1px, transparent 1px) 0 0 / 72px 72px,
+      linear-gradient(to bottom, rgba(56,189,248,.045) 1px, transparent 1px) 0 0 / 72px 72px,
+      radial-gradient(ellipse 80% 55% at 50% -8%, rgba(56,189,248,.10), transparent 70%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+  }
+
+  .page { position: relative; z-index: 1; max-width: var(--maxw); margin: 0 auto; padding: 0 22px 80px; }
+
+  /* ── type scale ─────────────────────────────────────────────── */
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  h1 {
+    font-size: clamp(34px, 6.2vw, 62px);
+    line-height: 1.03;
+    letter-spacing: -.028em;
+    font-weight: 800;
+  }
+  h2 {
+    font-size: clamp(23px, 3.1vw, 31px);
+    line-height: 1.14;
+    letter-spacing: -.02em;
+    font-weight: 750;
+  }
+  h3 { font-size: 17.5px; line-height: 1.3; letter-spacing: -.008em; font-weight: 700; }
+  p { margin: 0; max-width: 68ch; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .19em;
+    text-transform: uppercase;
+    color: var(--dimmer);
+  }
+  .lede { font-size: clamp(17px, 2vw, 20.5px); line-height: 1.55; color: #c3d1e6; max-width: 62ch; }
+  .note { font-size: 14.5px; color: var(--dim); }
+  code, .mono { font-family: var(--mono); font-size: .885em; }
+  code { color: #a8d8f5; background: rgba(56,189,248,.07); border: 1px solid rgba(56,189,248,.14); border-radius: 5px; padding: 1px 5px; }
+  b, strong { font-weight: 680; color: #f2f7ff; }
+  a { color: var(--data); text-decoration-color: rgba(56,189,248,.35); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--data); outline-offset: 3px; border-radius: 4px; }
+
+  /* ── hero ───────────────────────────────────────────────────── */
+  .hero { padding: clamp(56px, 9vw, 104px) 0 clamp(34px, 5vw, 54px); display: flex; flex-direction: column; gap: 22px; }
+  .hero h1 .hl {
+    background: linear-gradient(96deg, var(--power), #ffd479 62%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .byline { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; font-family: var(--mono); font-size: 12.5px; color: var(--dim); }
+  .byline .who { color: var(--text); letter-spacing: .01em; }
+
+  /* stat strip — real figures, tabular so the columns lock up */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 6px; }
+  .stat { background: var(--panel); padding: 15px 16px 14px; }
+  .stat .n { font-family: var(--mono); font-size: 25px; font-weight: 700; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .stat .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--dimmer); margin-top: 5px; }
+  .stat:nth-child(1) .n { color: var(--data); }
+  .stat:nth-child(2) .n { color: var(--power); }
+  .stat:nth-child(3) .n { color: var(--live); }
+  .stat:nth-child(4) .n { color: var(--ble); }
+  .stat:nth-child(5) .n { color: var(--ctrl); }
+
+  /* ── the interactive thesis: pull the internet ──────────────── */
+  .blackout {
+    margin: clamp(30px, 5vw, 46px) 0;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    overflow: hidden;
+  }
+  .bo-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .bo-bar .lbl { font-family: var(--mono); font-size: 11.5px; letter-spacing: .15em; text-transform: uppercase; color: var(--dimmer); margin-right: auto; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    padding: 5px 11px; border-radius: 999px; border: 1px solid;
+  }
+  .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .pill.up   { color: var(--live);  border-color: rgba(52,211,153,.42); background: rgba(52,211,153,.10); }
+  .pill.down { color: var(--power); border-color: rgba(245,165,36,.42); background: rgba(245,165,36,.10); }
+  .switch {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    background: rgba(251,113,133,.10); color: #ffc2cb;
+    border: 1px solid rgba(251,113,133,.42); border-radius: 8px;
+    padding: 8px 14px; cursor: pointer; transition: background .16s ease, transform .16s ease;
+  }
+  .switch:hover { background: rgba(251,113,133,.19); }
+  .switch:active { transform: translateY(1px); }
+  .bo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1px; background: var(--line); }
+  .bo-cell { background: var(--panel); padding: 15px 17px 17px; }
+  .bo-cell .t { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--dimmer); }
+  .bo-cell .v { font-size: 15.5px; font-weight: 640; margin-top: 7px; transition: color .3s ease; }
+  .bo-cell .s { font-size: 13.5px; color: var(--dim); margin-top: 3px; line-height: 1.45; }
+  .ok   { color: var(--live); }
+  .warn { color: var(--power); }
+  .bad  { color: var(--ctrl); }
+  .bo-foot { padding: 13px 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--dim); background: rgba(0,0,0,.22); }
+  .bo-foot b { color: var(--text); }
+
+  /* ── the signal rail: layers of the real path ───────────────── */
+  .rail { position: relative; padding-left: calc(var(--rail) + 16px); margin-top: 8px; }
+  .rail::before {
+    content: ""; position: absolute; left: calc(var(--rail) / 2); top: 6px; bottom: 30px; width: 2px;
+    background: linear-gradient(180deg, var(--ctrl), var(--ble) 26%, var(--live) 55%, var(--data) 78%, var(--power));
+    opacity: .5; border-radius: 2px;
+  }
+  .layer { position: relative; padding: 0 0 30px; }
+  .layer::before {
+    content: ""; position: absolute; left: calc(-1 * (var(--rail) / 2 + 16px) - 5px); top: 9px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--ink); border: 2px solid var(--c, var(--data));
+    box-shadow: 0 0 0 4px var(--ink), 0 0 14px -2px var(--c, var(--data));
+  }
+  .layer .n { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; color: var(--c, var(--data)); text-transform: uppercase; }
+  .layer h3 { margin: 4px 0 6px; }
+  .layer .role { font-family: var(--mono); font-size: 12.5px; color: var(--dimmer); margin-bottom: 8px; }
+  .layer p { font-size: 15.5px; color: #c0cee3; }
+  .layer ul { margin: 8px 0 0; padding-left: 19px; display: flex; flex-direction: column; gap: 5px; }
+  .layer li { font-size: 15px; color: #b9c8de; max-width: 66ch; }
+
+  /* ── section frame ──────────────────────────────────────────── */
+  section { padding: clamp(38px, 6vw, 62px) 0 0; }
+  .sec-head { display: flex; flex-direction: column; gap: 9px; margin-bottom: clamp(22px, 3vw, 30px); }
+  .hr { height: 1px; background: linear-gradient(90deg, var(--line-hi), transparent); border: 0; margin: 0; }
+
+  /* ── work cards ─────────────────────────────────────────────── */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 19px 19px; display: flex; flex-direction: column; gap: 9px;
+    position: relative; overflow: hidden;
+  }
+  .card::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--c, var(--data)); opacity: .8; }
+  .card .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--c, var(--data)); }
+  .card p { font-size: 14.6px; color: #b7c6dc; line-height: 1.55; }
+  .card ul { margin: 0; padding-left: 17px; display: flex; flex-direction: column; gap: 4px; }
+  .card li { font-size: 14.2px; color: #b0c0d7; }
+
+  /* ── decisions: the honest engineering detail ───────────────── */
+  .dec { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .dec-row { background: var(--panel); padding: 17px 19px; display: grid; grid-template-columns: 1fr; gap: 6px; }
+  @media (min-width: 720px) { .dec-row { grid-template-columns: 210px 1fr; gap: 22px; align-items: start; } }
+  .dec-row .q { font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em; color: var(--power); line-height: 1.45; }
+  .dec-row .a { font-size: 15px; color: #bdcbe1; line-height: 1.56; max-width: 70ch; }
+
+  /* ── demo links ─────────────────────────────────────────────── */
+  .demos { display: grid; grid-template-columns: repeat(auto-fit, minmax(252px, 1fr)); gap: 14px; }
+  .demo {
+    display: flex; flex-direction: column; gap: 8px;
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line); border-radius: 12px; padding: 18px 19px 19px;
+    text-decoration: none; color: inherit; transition: border-color .18s ease, transform .18s ease;
+  }
+  .demo:hover { border-color: var(--line-hi); transform: translateY(-2px); }
+  .demo .kind { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--c, var(--data)); }
+  .demo .file { font-family: var(--mono); font-size: 12px; color: var(--dimmer); word-break: break-all; }
+  .demo p { font-size: 14.4px; color: #b7c6dc; }
+
+  /* ── scale table ────────────────────────────────────────────── */
+  .tblwrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; }
+  th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+  th { font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--dimmer); font-weight: 500; background: rgba(0,0,0,.25); }
+  td:first-child { color: var(--text); font-weight: 600; }
+  td { color: #b4c3da; }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--data); }
+  tr:last-child td { border-bottom: 0; }
+
+  /* ── footer ─────────────────────────────────────────────────── */
+  footer { margin-top: clamp(48px, 7vw, 78px); padding-top: 26px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--mono); font-size: 12px; color: var(--dim); }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .legend i { width: 9px; height: 2px; border-radius: 2px; display: inline-block; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="page">
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <header class="hero">
+    <div class="eyebrow">EV charging infrastructure · embedded → cloud → operator</div>
+    <h1>The site loses internet.<br>The chargers <span class="hl">keep charging.</span></h1>
+    <p class="lede">
+      Most connected EV chargers are only as good as their uplink. Cut the internet and charging
+      stops, sessions vanish, and nobody gets billed. I built an offline-first control plane where
+      the outage is just another state — the cars keep charging, every session is recorded, and the
+      moment the link returns it is all replayed into the billing system, backdated, with no
+      double-charging.
+    </p>
+    <div class="byline">
+      <span class="who">Santhosh Nagendran</span>
+      <span>Soneil / Spark EV</span>
+      <span>embedded · gateway · backend · console</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="k">firmware targets</div></div>
+      <div class="stat"><div class="n">8</div><div class="k">power panels balanced</div></div>
+      <div class="stat"><div class="n">3</div><div class="k">fallback transports</div></div>
+      <div class="stat"><div class="n">45</div><div class="k">charger API commands</div></div>
+      <div class="stat"><div class="n">0</div><div class="k">JS dependencies</div></div>
+    </div>
+  </header>
+
+  <!-- ══════════════════ INTERACTIVE THESIS ══════════════════ -->
+  <div class="blackout">
+    <div class="bo-bar">
+      <span class="lbl">Site uplink — try cutting it</span>
+      <span class="pill up" id="pill"><span class="dot"></span><span id="pillTxt">Online</span></span>
+      <button class="switch" id="cut" aria-pressed="false">Pull the internet ⚡</button>
+    </div>
+
+    <div class="bo-grid">
+      <div class="bo-cell">
+        <div class="t">Cars charging</div>
+        <div class="v ok" id="c1">5 of 5 bays live</div>
+        <div class="s" id="s1">Chargers are driven over the site LAN, not the internet.</div>
+      </div>
+      <div class="bo-cell">
+        <div class="t">Operator control</div>
+        <div class="v ok" id="c2">Web console + mobile</div>
+        <div class="s" id="s2">Commands ride MQTT down to the gateway.</div>
+      </div>
+      <div class="bo-cell">
+        <div class="t">Session records</div>
+        <div class="v ok" id="c3">Streaming to cloud</div>
+        <div class="s" id="s3">Telemetry lands in Postgres as it happens.</div>
+      </div>
+      <div class="bo-cell">
+        <div class="t">Billing to the CSMS</div>
+        <div class="v ok" id="c4">Live OCPP 1.6J</div>
+        <div class="s" id="s4">Transactions open and close in real time.</div>
+      </div>
+    </div>
+
+    <div class="bo-foot" id="foot">
+      <b>Online:</b> everything flows the normal way — this is the easy half. Pull the plug to see the half that took the work.
+    </div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- ══════════════════ THE PATH ══════════════════ -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Section 01 · the signal path</div>
+      <h2>One command, all the way down</h2>
+      <p class="note">
+        These are numbered because they genuinely are a sequence: an operator tap in a browser has to
+        cross every one of these layers, in order, to move a relay inside a charger. I worked on all
+        of them.
+      </p>
+    </div>
+
+    <div class="rail">
+      <div class="layer" style="--c: var(--ctrl)">
+        <div class="n">Layer 1 · silicon</div>
+        <h3>Power board &amp; the car</h3>
+        <div class="role">STM32 / AVR · J1772 Control Pilot · contactor · fault sensing</div>
+        <p>The only part touching mains and the vehicle. It sets the Control Pilot duty that tells the car
+          how many amps it may draw, closes the relay, and detects ground faults, over-current,
+          over-voltage and plug over-temperature.</p>
+        <ul>
+          <li>Ground-truth safety lives here — nothing upstream can close a relay without an intact pilot handshake.</li>
+          <li>Faults surface upward as state codes, so an operator three networks away sees <em>GFCI</em>, not a timeout.</li>
+        </ul>
+      </div>
+
+      <div class="layer" style="--c: var(--ctrl)">
+        <div class="n">Layer 2 · charger controller</div>
+        <h3>ESP32 inside the charger</h3>
+        <div class="role">UART to the power board · Wi-Fi AP + STA · HTTP API · OCPP 1.6J client</div>
+        <p>Speaks a compact ASCII line protocol down to the power board, and offers a local HTTP API
+          upward. It can talk OCPP straight to a cloud CSMS on its own — and it can charge with no
+          network at all, in offline plug-and-charge mode.</p>
+        <ul>
+          <li>Its own hotspot self-hides five minutes after first use, then un-hides automatically if Wi-Fi drops — so a technician can always get back in.</li>
+          <li>It can even reflash the power board's firmware from an image it carries itself.</li>
+        </ul>
+      </div>
+
+      <div class="layer" style="--c: var(--ble)">
+        <div class="n">Layer 3 · the gateway</div>
+        <h3>The box that makes a site a fleet</h3>
+        <div class="role">Two hardware families, one identical behaviour contract</div>
+        <p>The gateway is the piece I care most about. It finds the chargers on the local network by
+          scanning the subnet and fingerprinting each one, claims ownership, then polls them in a tight
+          loop and republishes everything as one clean stream. Crucially, it keeps doing that whether or
+          not the internet exists.</p>
+        <ul>
+          <li>Two builds — a wired <b>ESP32-S3</b> and a <b>Raspberry Pi</b> running Python asyncio under systemd — that are interchangeable from the cloud's point of view.</li>
+          <li>Offline it buffers to <b>SD card</b> (ESP32) or <b>SQLite</b> (Pi), and replays the backlog reliably on reconnect.</li>
+          <li>It is provisioned over <b>Bluetooth</b> from a phone — pick the site Wi-Fi, pick the chargers, and the gateway hops from charger to charger handing out credentials. No cables, no cloud.</li>
+        </ul>
+      </div>
+
+      <div class="layer" style="--c: var(--power)">
+        <div class="n">Layer 4 · energy</div>
+        <h3>Meter nodes &amp; dynamic power sharing</h3>
+        <div class="role">Long-range radio meters · per-phase CT measurement · live load subtraction</div>
+        <p>A building's breaker is a hard ceiling, and EV chargers will happily blow through it. Panel
+          meter nodes report the building's live draw — over long-range radio, so no new wiring — and
+          the gateway continuously re-divides whatever headroom is left between the cars actually
+          plugged in.</p>
+        <ul>
+          <li>Every charger holds a 6&nbsp;A floor; the surplus is water-filled to the cars that can use it, and re-divided the instant one finishes.</li>
+          <li>Options that matter in the field: equal vs. demand-led splitting, gentle ramping instead of jitter, reclaiming amps from a car that has tapered off, priority tiers, and a time-of-use cap for peak-rate windows.</li>
+          <li>If a meter goes quiet, the panel does not guess — it blocks new starts, and the operator can explicitly fall back to a static breaker-minus-buffer budget.</li>
+        </ul>
+      </div>
+
+      <div class="layer" style="--c: var(--live)">
+        <div class="n">Layer 5 · transport &amp; backend</div>
+        <h3>Broker, server, database</h3>
+        <div class="role">Managed MQTT over TLS · Node.js on a cloud VM · Postgres as the record</div>
+        <p>One shared topic namespace that every gateway — regardless of hardware — speaks identically.
+          A single always-on backend is the <em>only</em> thing holding broker credentials: it fans
+          commands out, mirrors all traffic into the database, rotates security keys, and issues the
+          browser's session tokens.</p>
+        <ul>
+          <li>No client ever touches the broker directly. That one rule is what makes the whole thing auditable.</li>
+          <li>Retained status plus last-will means the fleet roster is correct even for a gateway that died thirty seconds ago.</li>
+        </ul>
+      </div>
+
+      <div class="layer" style="--c: var(--data)">
+        <div class="n">Layer 6 · the operator</div>
+        <h3>The console people actually use</h3>
+        <div class="role">Browser SPA · live WebSocket state · hand-written, no framework</div>
+        <p>A fleet list that drills into one gateway, every charger as a live card, and one-tap controls
+          that are honest about what is happening — a spinner that lasts until the field device really
+          answers, a retry when a packet gets dropped, and a specific reason when it fails.</p>
+        <ul>
+          <li>A live MQTT wire log you can watch and download; a filterable browser over the whole event history with CSV export.</li>
+          <li>Fleet-wide firmware updates with per-device progress, and a raw command console covering the charger's full API surface.</li>
+          <li>Alongside it: a Windows operator kiosk that falls back MQTT → Bluetooth → direct hotspot, and a mobile app for technicians on site.</li>
+        </ul>
+      </div>
+
+      <div class="layer" style="--c: var(--power)">
+        <div class="n">Layer 7 · getting paid</div>
+        <h3>Offline sessions → real OCPP transactions</h3>
+        <div class="role">The flow that turns a survived outage into revenue</div>
+        <p>Surviving an outage is only half the job. The backend reads the replayed buffer, reconstructs
+          each charging session as genuine OCPP 1.6J transactions <b>backdated to when they actually
+          happened</b>, and streams them to the charge-point management system — with the meter samples
+          and fault events in between.</p>
+        <ul>
+          <li>Ingest is idempotent: a session already sent is never sent twice, so nobody gets billed twice.</li>
+          <li>Three targeting modes, because real sites differ: reuse each charger's own provisioned CSMS, treat the gateway as one charge point with connectors, or give each charger its own endpoint.</li>
+          <li>A dry-run test proves the link with a boot and heartbeat, so the provider sees the charger online <em>before</em> a real outage happens.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ══════════════════ WHAT THAT MEANT ══════════════════ -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Section 02 · scope of the build</div>
+      <h2>What that meant, discipline by discipline</h2>
+      <p class="note">Not a list of technologies. A list of problems that each needed a different kind of thinking.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card" style="--c: var(--ctrl)">
+        <div class="tag">Embedded C / C++</div>
+        <h3>Two processors, one charger</h3>
+        <p>A serial line protocol between the safety-critical power board and the network controller,
+          firmware flashing across that same line, and a local API surface of roughly 45 commands that
+          both a phone and a factory test rig drive.</p>
+      </div>
+      <div class="card" style="--c: var(--ble)">
+        <div class="tag">Gateway firmware &amp; services</div>
+        <h3>The same contract, twice</h3>
+        <p>Device discovery and ownership, a polling loop tuned per platform, durable offline buffering,
+          Bluetooth provisioning and Bluetooth operation, and self-updating firmware that verifies before
+          it commits and rolls back if it doesn't.</p>
+      </div>
+      <div class="card" style="--c: var(--power)">
+        <div class="tag">Energy &amp; control</div>
+        <h3>Allocation you can defend</h3>
+        <p>Per-phase current measurement across six wiring topologies, CT calibration, rolling-peak
+          headroom, and an allocator whose behaviour under scarcity is defined rather than emergent.</p>
+      </div>
+      <div class="card" style="--c: var(--live)">
+        <div class="tag">Cloud &amp; data</div>
+        <h3>One credentialed door</h3>
+        <p>A single broker client, token-based sessions, full traffic mirroring into Postgres, rotating
+          security keys pushed to the whole fleet on a schedule, and a firmware distribution path
+          pinned to a known root of trust.</p>
+      </div>
+      <div class="card" style="--c: var(--data)">
+        <div class="tag">Front end</div>
+        <h3>Live, without the flicker</h3>
+        <p>Live state applied in place instead of re-rendering, so a table you are reading does not jump.
+          Command state that reflects reality — including the unglamorous parts: dropped packets,
+          reassembled multi-part replies, superseded intent.</p>
+      </div>
+      <div class="card" style="--c: var(--ctrl)">
+        <div class="tag">Protocol integration</div>
+        <h3>Speaking the industry's language</h3>
+        <p>OCPP 1.6J both as the charger's own client and as something the backend synthesises on the
+          charger's behalf after the fact — connector state machines, transaction lifecycle, meter
+          values, firmware status.</p>
+      </div>
+      <div class="card" style="--c: var(--live)">
+        <div class="tag">Manufacturing</div>
+        <h3>From bare board to shippable</h3>
+        <p>A four-station production line: dual-processor flashing, identity and variant configuration,
+          voltage calibration, and a final load test against an electronic load over MODBUS — every
+          result logged and keyed to the board's serial.</p>
+      </div>
+      <div class="card" style="--c: var(--ble)">
+        <div class="tag">Documentation</div>
+        <h3>Explaining it to humans</h3>
+        <p>Three interactive architecture walkthroughs, seven animated field procedures, and a
+          full-screen site simulator — including a load-sharing sandbox that runs the production
+          allocation logic in the browser so anyone can prod it.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ══════════════════ DECISIONS ══════════════════ -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Section 03 · decisions</div>
+      <h2>The choices I'd defend in a review</h2>
+      <p class="note">Systems like this are judged on their failure modes, not their happy path.</p>
+    </div>
+
+    <div class="dec">
+      <div class="dec-row">
+        <div class="q">Why can no client touch the broker?</div>
+        <div class="a">Because credentials that live in a browser or a phone are credentials you have lost. One
+          always-on backend holds them, which also means one place sees every publish, one place writes
+          history, and one place to audit.</div>
+      </div>
+      <div class="dec-row">
+        <div class="q">Why buffer on the device instead of retrying?</div>
+        <div class="a">An outage lasting hours is normal at a parking structure. Retries drop data; a durable
+          local buffer plus reliable replay on reconnect does not. The gateway treats the cloud as
+          optional, never as required.</div>
+      </div>
+      <div class="dec-row">
+        <div class="q">Why rotate a key the field can't reach?</div>
+        <div class="a">The rotating key is the bridge between online and offline. The backend issues it while a
+          gateway is online; the same key is what local Bluetooth and hotspot control validate later. So a
+          gateway that drops offline is still operable — with the last key it confirmed, and nothing older.</div>
+      </div>
+      <div class="dec-row">
+        <div class="q">Why is a missing meter a hard stop?</div>
+        <div class="a">A load balancer that guesses when it loses its input is worse than one that refuses. If the
+          panel meter goes quiet, new starts are blocked and the operator is told exactly why — with a
+          deliberate, visible fallback to a static budget if they choose it.</div>
+      </div>
+      <div class="dec-row">
+        <div class="q">Why backdate the OCPP transactions?</div>
+        <div class="a">Because a session that happened at 2&nbsp;a.m. during an outage is a 2&nbsp;a.m. session.
+          Ingesting it at the current timestamp would be convenient and wrong — wrong tariff window, wrong
+          report, wrong invoice.</div>
+      </div>
+      <div class="dec-row">
+        <div class="q">Why no front-end framework?</div>
+        <div class="a">The console is a live instrument that runs for days on a wall display. Updating state in
+          place — rather than re-rendering — keeps it flicker-free and predictable, with no build step
+          between a fix and a deploy. A deliberate constraint, not an aesthetic one.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ══════════════════ TRY IT ══════════════════ -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Section 04 · see it move</div>
+      <h2>Everything here is clickable, not slideware</h2>
+      <p class="note">
+        The project ships its own explanations. Each of these is a single self-contained page — no
+        libraries, no build, animations and simulators written by hand.
+      </p>
+    </div>
+
+    <div class="demos">
+      <div class="demo" style="--c: var(--data)">
+        <div class="kind">Walkthrough · 6 chapters</div>
+        <h3>EV Gateway Platform</h3>
+        <div class="file">architecture.html</div>
+        <p>Bluetooth pairing played out step by step, the same yard shown before and after the gateway
+          existed, the full seven-layer path, and the MQTT contract every device honours.</p>
+      </div>
+      <div class="demo" style="--c: var(--power)">
+        <div class="kind">Simulators · 7 flows</div>
+        <h3>Field &amp; Control Flows</h3>
+        <div class="file">architecture_field_flows.html</div>
+        <p>Local Bluetooth charging, panel-node setup, load sharing you can drag around, gateway repair,
+          key rotation, and the offline-to-billing ingest — plus a full-screen site twin with no
+          hardware required.</p>
+      </div>
+      <div class="demo" style="--c: var(--ctrl)">
+        <div class="kind">Deep dive · 14 stages</div>
+        <h3>Spark EV Charger</h3>
+        <div class="file">spark_charger_architecture.html</div>
+        <p>The charger itself, from Control Pilot to cloud — then the production line that builds it:
+          flashing, configuration, calibration, load test, ship.</p>
+      </div>
+      <div class="demo" style="--c: var(--live)">
+        <div class="kind">The product</div>
+        <h3>Admin Console</h3>
+        <div class="file">index.html</div>
+        <p>The operator surface itself: fleet list, live charger cards, load-sharing configuration,
+          MQTT log, event-history browser, fleet firmware updates, offline ingest.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <!-- ══════════════════ NUMBERS ══════════════════ -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Section 05 · the shape of it</div>
+      <h2>By the numbers</h2>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>Piece</th><th>What it runs on</th><th>Scale</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Charger controller</td><td>ESP32 + STM32/AVR power board</td><td class="num">~45 local API commands</td></tr>
+          <tr><td>Gateway, wired</td><td>ESP32-S3, C++, SD-card buffer</td><td class="num">sub-second poll cycle</td></tr>
+          <tr><td>Gateway, Linux</td><td>Raspberry Pi, Python asyncio + systemd</td><td class="num">SQLite buffer</td></tr>
+          <tr><td>Panel meter node</td><td>Long-range radio, per-phase CT</td><td class="num">6 wiring topologies</td></tr>
+          <tr><td>Load sharing</td><td>Backend allocator, live load subtraction</td><td class="num">up to 8 panels</td></tr>
+          <tr><td>Transport</td><td>Managed MQTT broker over TLS</td><td class="num">9 shared topics</td></tr>
+          <tr><td>Backend</td><td>Node.js on a cloud VM, Postgres of record</td><td class="num">1 credentialed client</td></tr>
+          <tr><td>Operator surfaces</td><td>Web console, Windows kiosk, mobile app</td><td class="num">3 fallback transports</td></tr>
+          <tr><td>Production line</td><td>Flash, configure, calibrate, load-test</td><td class="num">4 stations</td></tr>
+          <tr><td>Documentation</td><td>Hand-written HTML, SVG, vanilla JS</td><td class="num">0 dependencies</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div class="legend">
+      <span><i style="background:var(--data)"></i> data, going up</span>
+      <span><i style="background:var(--ctrl)"></i> control, coming down</span>
+      <span><i style="background:var(--ble)"></i> Bluetooth / offline</span>
+      <span><i style="background:var(--live)"></i> live &amp; confirmed</span>
+      <span><i style="background:var(--power)"></i> energy &amp; buffered</span>
+    </div>
+    <p class="note">
+      Spark EV Gateway Platform — charger firmware, two gateway families, cloud backend, operator
+      console, energy management, and the production line behind it. Hostnames, credentials and
+      customer detail are deliberately omitted.
+    </p>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var online = true;
+    var pill = document.getElementById('pill');
+    var pillTxt = document.getElementById('pillTxt');
+    var btn = document.getElementById('cut');
+    var foot = document.getElementById('foot');
+
+    // Each cell: [headline, sub, severity class] for online / offline.
+    var CELLS = {
+      c1: [
+        ['5 of 5 bays live', 'Chargers are driven over the site LAN, not the internet.', 'ok'],
+        ['5 of 5 bays live', 'Unchanged. The gateway still polls and commands them locally.', 'ok']
+      ],
+      c2: [
+        ['Web console + mobile', 'Commands ride MQTT down to the gateway.', 'ok'],
+        ['Bluetooth, on site', 'A technician operates the gateway over BLE, authorised by the last rotating key it confirmed.', 'warn']
+      ],
+      c3: [
+        ['Streaming to cloud', 'Telemetry lands in Postgres as it happens.', 'ok'],
+        ['Buffered on the device', 'Every record written to SD card or SQLite, replayed in order on reconnect.', 'warn']
+      ],
+      c4: [
+        ['Live OCPP 1.6J', 'Transactions open and close in real time.', 'ok'],
+        ['Queued, then backdated', 'Sessions are rebuilt as real OCPP transactions timestamped to when they happened — and never sent twice.', 'warn']
+      ]
+    };
+
+    var FOOT = [
+      '<b>Online:</b> everything flows the normal way — this is the easy half. Pull the plug to see the half that took the work.',
+      '<b>Offline:</b> nothing stopped. Cars charge, a technician still has control, every session is recorded, and billing catches up the moment the link returns. That is the whole thesis of the project.'
+    ];
+
+    function render() {
+      var i = online ? 0 : 1;
+      Object.keys(CELLS).forEach(function (id) {
+        var row = CELLS[id][i];
+        var cell = document.getElementById(id);
+        var sub = document.getElementById('s' + id.slice(1));
+        cell.textContent = row[0];
+        cell.className = 'v ' + row[2];
+        sub.textContent = row[1];
+      });
+      pill.className = 'pill ' + (online ? 'up' : 'down');
+      pillTxt.textContent = online ? 'Online' : 'Internet down';
+      btn.textContent = online ? 'Pull the internet ⚡' : 'Restore the link ↺';
+      btn.setAttribute('aria-pressed', String(!online));
+      foot.innerHTML = FOOT[i];
+    }
+
+    btn.addEventListener('click', function () { online = !online; render(); });
+    render();
+  })();
+</script>

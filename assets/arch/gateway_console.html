@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head><link rel="stylesheet" href="../fonts/fonts.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spark Platform — Architecture</title>
+<link rel="icon" type="image/x-icon" href="data:image/webp;base64,UklGRvAdAABXRUJQVlA4WAoAAAAQAAAA/wAA/wAAQUxQSOUEAAAB8IZtmyHptradcUVG9T1s27Zt2/YYv227x2gN2x7Ttm1j2DZ7dldkxHX+6O7yltd0RcQE4D8vQ8X1PU1ExAmqrjgRkZ4UAqY9Y+iaoeo6OLQzpg1FjxHxDlj1jqcef/opVtz41NOPP3nMIoAXcT3DewA4/zJOm2K15bTPXHgEAATXE1wBLP+pP/yZ1DyVFVdzzppJ/vaPpywKeNd9Aqx7JUnGyAqtUUm+dcoswHeXCwUW++y7TDlnVmzNOZN/PntBFL6LHIDzSEZWdK2TH24IuK4pUPv8N8mUWd1z4nvfvAQDvjs85voxmVnxleQgULjO8wM473eMiZVfU+aXdgRcpwkwSGbaMLE8ZH74jnKzYYfHmBOtWCr/OA9CBzlg25IlLVnnb+ZF0TGCuW74hHXaMvL358J3iMc8B5FKayZ+sD7EdYJg/t9yQmnPFDmGTnRhkYMZadKcPl5lTte+2XA9J2jVSW6E0C6PHd4o1Sw5/Wp2uPZ4bFmn0q6Jv16iJu3wxer/SImWneSRqLWjwBBLmlbL8a0grStwFksaN+fx9QrfKnFz/Skm67DkdZAWOZnzV8y0b8lLnG9N4T7PSAPrJI+S0BKPb6fSQox6AlriaxdMJNpY39/SSXNOFqSZE3+P0FyBR3OyEuvjByI0490Gb6RspsTvzu5dE2FgjJF2ztzKSWOCRZhpqfQn+MY8PqWmYvnxia5o4nHaqs7zUGts1h+NpfnpZZ1rIOA8jbR15pqQRsJlNFdezzcgWLyeaS3+AQ3dSXNp+uRQ5xt4w16MvBmhgcctplc34p6yGIcbwZMmu2qmAmfWS5pb07trOz9NwLWM9mLippjpGpvpxg0M2Yx9//X91/df3399//X91/df3399//1fAoNqsrxRA7fQZNxiBu92fy+puXL+5VIi00DwOLO5Ii9GwAz+aZONuAbwuMV0EI28ng3Gmxs6nuZS/XA152ZwMv/fNRsr630QzBxwikZrcVlpyA3TWKrPrOBcAyLrP5fVVFFPRUCjHk9rthWHmxA5jWopze9sKtKYm/NVVUNl/Sw8Gg9yskZLcQmRJlyx8LM5mSnyxoGAZj3OpJm0/uam8E05CZNUIyV+EQWa92GLF1I2UdYfzF2glQHfz9FEdR6JWku8XMJsoazjO4pvCTwG66WB0vjWELR4AN9nNE/kSaih1SLbR6pxUv1XS9ekZfDY4fWoptHEueHQxlm4kxOmqfN6V6Cdzi/wB5aGiRyCd22BYP7fMJkl8zp4tLuGU5+bzDbR/MnfV/TtQ8CaNKryLQg60IU5R1+ZzAZJn7ywj/hOmLoSmcxR8hV0rJM5t/oNS1vkCY5tWEinTJ3nj1Q1RCJH0NkB8/8ysTTDJH+zG5zvKDj4HceZbKDKP88Nj053DhsPcbKulS/XWT9qAdTQhR64hGSqdprI8R0Bh670giNP+JhlqnAl+cMTtkLNoVs9sPlPyZy1kmlO/PArswBBFxcBOPo7ZI6xammMJIc3gQse3S0Btc1/TzLnrJVJcyb5/hdXAAr0wALAMRdeSZIxxqgVJ8cYI8lXz7t4PcB79ETnPIDVN/gLp03VllPfeWDNpQB4h95ZhALAQUODw0OR1fZPQ6ODQysACEHQY0UEU9fYuMputPH8mCoi6Mk+hBBQdUMIQdDTxVdbh3+7BABWUDgg5BgAAPBmAJ0BKgABAAE+MRaKQyIhIRLKXbAgAwSzN34+TKamB4CE7+y/jx4FVUer/2L9f/3a/0XzP1R+WfeX9vP730ztYeXL5T+i/5n+5fsh/df///9PvD/mfUL+l/+D7gH8U/kv+S/vn+Z/0X9I////4+k39lfcT+4P+A9gH9S/rf/M/v/u+f5D/a/4z3Nf3v/Mf6T+5f5n5Av5t/bf+p633sMfst7A387/xH/S9bv/z/6/4N/2j/8X+s/f/6Ff5p/aP+T+eHyAegB6AHq39MP8B2m/7j+xfdV25vnP2o5Qrzf3y/k8Jvx81Avx3+pbqfaD0Be9v+38MfVH8HewB+X3HlejewX/Qv7B6tH99/7vPf9Qf9L3Bv5X/Tv9t/fvya+arqJv1kL3kCleTNVVPbWKzNCcdhjK3cKf/6iNZzX0miMCUVS5ii2CyaSQHgFSX3LZSM8rroy91PdMi/k+h6oLm2ZGfj8fj4TMc1nUhHnwJ8gCPx2p0CQdnm19qhIOsSoJcgz0p3hemX3X6mQy4A7DT3WLggzG72lar9tf42lKq6FsMeT4OC2Ypaw7IocL2EumYygz1xj78ej7S9E3c0rOxx61URYXgyBdm4nlhM204qYPhpCptZHWU0Zl52BcQv25c2T8OH6eMegnAkZGp5fdYYgaJrSYRysbd0a2RbdOOJqpwwyhd7CbF7WiA8ZaQgyqi+eoEAPnDU6ByQfFKyr2m02XJCpokaP0xu2FoixDl2tWR2rho6/YWTlZfM0ycywrd3RDsHWvYgqKjXz6dbjkIMHfMBNVAq69DJKzne+/Rn2zd3Zfc8wNGwy02YOAGQt7qp1xH3b+eyROfCoRwQ97C+UvzY4qxoT5zs/COOeJWCx27PuwrMmv5n+4dftw41WnFngkLiCdgYRSnFbaUu3LTi3t7JjJeko8p+JUeDpOp1Brjf6sFi0m9HbAmoFWZavh54dZX1WeMrY8ByXVjfXV4n1iJDjlSSRpT91hkTW77ZTmwSM6OIj0EF5qCfkHFeAU+O1v3BiTMb1MwzGyXWb5mpFz44kZur8FwRKv+EA180NzLTECm7PEG8TfcOw6T6lsSBNlnD5fZ/nJDSkw8b/zOkAA/v/aBfP/1CDR1t+kuy48f67vtzOsCweq7Oo/6va358iaY3c2qnfkJKvydvbk52eYZbr48I72AaY6u1L9qnwNPWoJ6AMRrArJsbHEaAHCKf9PQn97BiLoQf9QrRCtdCviRsLn6Ay2orpi6DWZ/pC6Fy5M79wU+8GUhgXLiT2eQp/eSO/fQ6eWTQXs/vmVcSgFZSL+0UpAZf3fEgkr6F87TzVcGAOh4D6D5xdYoNMP8gaIB8DXJM1dNve5zC3rAHfMSYhvIFeslqjLtrtWr1qKKfubmqrgY9fPdI3YhE5C6ZTOLqq8wbMqGdzpFGx2E+QModFkZIFxFVZvV/3cdOrVlamq3jGt+5YBFepsUD54CV6rlBkSB64b9oAd2EWHI/AvWAT73e7C/TOZ3Ebg+O+19kPHqTX9PjXlaeeTBYPmGIzOGYJ1/aH8PXJVWXvvqEW3gPT1yFvX9uOM8g0J/j2tYTt1w/4ZjyCSt6H4SxvKDMGWYrflSC6el4vVveKq6C8vaS+9dI+bH/0tVbtC+5LshmtOUdWsUMnDm2axcwu1qCkap9hoth2Bm5/ggUx7jpZ/pziBFB7PPxf/eFHWLTYaKtQs2rRoFT6S5QLKxzT/j+vtQ4M2cYxnewGnQ9HeoIp7zkD8n08RdjgHoAvzp29QcQNQXZf/X3CuD0gditr/lYjreBeMTe2+U89/8Vk8bI9DdK5FQ9yrWP41/hoEVn43SjnMX73VM7Zwsm5Y31m8s1+o/8J4quP8ozCbxAOT//WPsm0I//ebb4EdppmF69EwP/iQ9Y+M5Xu9E5BBKj0tE+0l3OXhUvvj2QQDGE09lVzhznX/DXprITTE6hoBmUMEn+VUV6TGWTOYLz21uRF27u13+U8790MKdDKxuhAURme32fVZBTtRBITMlQKXeGxGOW6o+e0Q+wFh3IT090gL2eHZQx9NUVx6RvYeSoKJyQgG7i7zZj4EOSgBKbppT6OB6e22etSjktscUC85TX6BzOOTIdJkAQjJqLFnEe4TY6y1D7d/NYIdx4eYs5dCdZCAAAC2fuf73eCfmBGqtjdiFmJxknyJEvXOtaylA7zAzA01n/FaQIZvIhHYTseJOH2rYDGFmOVxb4GXaKFWpQuTMO4rhalHrrMLnijeiVJgcrD/IWyLERNn44Xk16ZdxEnWp/TXj4wJKoQXGeYjLq8IxFeMANeE8UmXnfmd3VMioqyQM+eWChIQ8NSlEZYxyMBs1LVI9oJZg96OFWJKyHzTZHwD5yEVIxKMfxiuOhuhz1S9iWR70+A+1quJ4ToNRHkbyg++Opljw2ZMt/262c9Hpml9VQEWKhmLQUbqZ/noWQCQ2OQDG8+RtRft6frNtfj4xz3TYaqyC33Zc/KfZttd1y6v/hr5vOfXBHLo+DLSztbP9AyT2jnRhqEleu8+tKt12fe2jh57Jt7Z8hCVDXf3tOKcxaRxdjvl16OoXto/zbgyacaaTZkYQw6XaCiMYAL+ewCqRSH8TLpYHJxqZZ+I2vkoXyL2uMwZSrXD7Ez/4tVSVdZJ5ux0OkSvJyVkiNdWTAcSziKumCqa0FY71wMkwddlKAABZUdSK43k9KuESOGfA9rSpxXLTDUz6EgB8RRb6dXf7L6Vh6oJkORQdO8FgSRxIHL76ckrFNKv+W2qsmSorWRux5bMbhGU1P0ac6z8HuqfQhtN3MrLbz4fXcypFIui8YzbmrWjQTQcF0HXHScPU9pvaJC5T17q8/gMj546SKUoRhtV677cQcFWxEE/X7rT6jSy08K9BgsvDHGESrkWphHEzEZpdMPPTaF8DUvtOw5WlewJB9rOdw1bhghLj5zvSrOFNI33mxzPxB4V6kKfARTOymj+kyT8wxxLuqdwZXysNqrWXW+ws0/Becf+CbnSEP7uiEh6vKiy5jRvx8wYR+SgPLwDJsaUheRO4CRhvNsKcWEIJC/YhxRkXQ32SGgZLRxZCwwGAM06BVyMOwYTVXFvsjBC0Dr/0lTzjlZjeB+VdrnyP+MArE6e0TW2I7qJJ0tf9KvVKPeta/1M2zHymqB9K+T0WXXV0YM3bAqm5w631vYRJtPUJvojom5PrWjBfLH7YRx3/URbNZBZ1yyuthPcIwIW9liLSMHQ58Sc+v+9v7StC0o5C0iastHTZwWW58QWyx7edIAQjsp0vBOGF8JsAOD7/5K3/SpO5SWCp8mtz2HiUekeRrObQ7G04FZLU6ohFdClVy5kdkONnsaJjzZ5w5+TnSBNKVqUHHapTmcYPDxPG6BE5gsgF/AuYN0AFhkJcQnkeSgbWvhTa5VOTQOxM0Z7gfxn0h9YqiRrdVsv9fyMprm+Op6pWGxZu6G3wnODOA/zzHrBWi0gYa+R2O+3mgNOY0V1cbdRJRm4m2VLOqF/TMAEsI+avcLubRZ3+OEAKs27LyH0wpYZuZYygonBM+LkVMLjNFshJn/5RFz/lwBmqfpmGbXZczDJFd5C14A7yTVXDI142XHS5ZnAanYAOKGZ7DupI1VLDrhcucX1DnyyJkyso/xvjwnhIsVubDlRLoCqk+J9vnLG/Psku55SzEr0xTz6pYyd6JrhcLWum1OztnqX14I/SFVO3Sw8YwulnaYUKxcyfarSG8tc2MEBS0d5r5ggmjRZ0CwLgKnUearmG8IxJgp0PDAIoyulCzNKs2wFVZoeFZ6eVeOIuUhR6NppNwTWl7L+tiJYOOKMiUWQDA79GbnY86wQgiE/iR2QZ9bV0psBZJzRLW6SHQ2O4D8lE08W1S21jIPzSh9LARcIxZyQaZDUTYRYpn0YeyUqfQ4Wtb+iq1cPrV0cgacoRFNFdS6Oh71gwn7ctKLR8EotOVYty/U9dWQ35lWjilV4P0FSWOwlyv9b2CVnO9o016ptNVXU/kS3WCZ4foAbCxDSAHuPQKZWLJe079nudbJqj8TmEsQgU3IAsKV/NfYcwapEPdEwVQFBssm5wdidG/taFIKi8bPua5hMCw8+4+GvBxjRF4THeIoerhvm4mOsK1JmXT3tmNOzdhqOKvoWAdal1v1ULaLfXtI+VGgQEB09BwRMVqW4ygHp1WJsgj6SM0cnm/k4/Wp7W24DAi9vLmFILD+QUw44EpTyFHmq7/xDw1CtnpHHXm0dIAq3zt/hN86a+/MeN+LUhz1ONJZD6pagwEfywlOhmBIEjaf2OKV93Tc8BCOGB1FeiVX9WPN1SlS18wMYilj2D5JRq14Qxv1KZYRpybgSbKmTBo0YG1apRhjc/kwo9HzP8gOlVfK2BzsVs9xwZ4X/pVa907lQjAtkH/8EiCSDOM2NXftDhkwTXefqYmtZPxwGoMdnfCzzSch7Sahef8/6xw6HFOLOnyNYOOZQqPwLfczsILdMbo4d9GTRBdyDx6mstWLbwEzyQjdJWwGoUse7Ip38I11zDzYKn+SjpeLg+7fVjNGwopLnkeaWxQbbLUeWjMKfqeRdyJGHcfwybh3SjbiWz+L35JWJLWKEHD5gGC2/HBtQ4DyBkaj8MQNZp13YoZsOKFg4HkbTLhxdKl8YM5L893m8G6hs1VdZ7tP+IieRYWjbnBOZYgaEGGxqLCwfseAFW1zYECm919n9B7ulK8c1DZrfCYdBtnq0KScMI5Uw2xSdXN8mDx6BI9Zpby0X1kmX3W7lHg4Z6uS0ee57O40cwD29p1oitGbaIAH9n4azwTeJegV+bVooYVYpxfF6XGRe8JPE+arlXBFPVPRpZy+KAfm+SHPGHX+K26K6kJImSBtHAZxZgWHKRVER1mt5nAeUthrOw91QjhKh1YLzaiRfBOqqhsYHnBu4dxEsDl4rkV58cH7t9dABJOd3+4aQB9I7Egi+msPwPJa1yB52VvPt1gJ2bZcn5yXs3U5H66Kq3FeN2ktRQGYg6mcJbbFQtiA+sksKby9/Mr6QyOSVCnbac2Ne5r1NF8e0M+10a3hAkUUOx6T1oz97f5APL/xbyXjjHjXPNci5gds1QX5pUovzYFmruKs9a3RTJie01+0WMG/jMhe7vyd/fIsogLZo5nRGDwxUPcQiBqE2BzjcZA3XZlRuiaNwW5zGcau/sDmlkz4YqsHjwOPifjrGsMe4obNWxcnJ3pOVkkYUOKVJMmtB2+9X+ODqpact0tJs/9Oa4Rj8i2CkJTxaOXx9VdweYMqKc0RmOQQAgrlukssHATy2zEJcmSW221w0yrk6yEmnD4TIjG4tAaiEegToTmeBRIY+g41mtDZczPLSjRMrAGBlPnOnSgAABQcSs9mO0+GTwkUj/S1s2DXPaVJLClcVZtK1r8XVxWDBlg6LckPYtgY208Znobwafw2AjClAto80KIQ2rnI4/Bi0p96H/g145G1Mv9decilsz4vHtqhQdo3I5jtytb1LCAGNbrd0VlkUPRr2/3rLHJcdWIQJujrELjrKeq/F5uyKIemTcniG/3J9DPfph072BVRywQD+jdtuGE0ARsQU7peItShZZjqJkL80gEAE+fJSDFB4SDRmSuxA47zV/SJlYIdoSmva3kA4WIhl7PcOl0hQLLZazUrwxbWksDQRTTqjprM05A2BxD7SVAzVY7GZ5S9MeWljjxWf7cokXNgdJILCzc1WiRWkf0X1Aaju/Vq7v5SUicFhaxtKAk2SN345jmSO98ppDDPg7iNkAsCZehGoFXQQUuURjzL3wO2BdSFM2k7nyGj8WNESQXF6DrAiJGgpf5V+p1fPRtwEqMlWdmP5k/s6Ii0RAoPmelR3EAiwAAPQC56SVq3BUHq5VnHAAEH+0v/CwZrv3xUYZuZv0iCYQebaf1G90+qLJk/O8hTFfnjrCWJE5HCPHMbGlMqLSmdiYFfG6hjSr/dvIUCCtYxIQYKAkuI3mCNbG+E6GWqto4ROxhJhXJjLUJlLqVwjWhzhorEoRZkA21e5Mfa1SN1sOpqufQWfVK0VcPNnmctFA99y11chWg/LeKS4G6Q9hNeC0PFV0ChaDNbOv1pG17gpFd9KTnmdnGkRn9chaGQDNmdB0nHtHfZU3/Y/Q16w9Pd6PK6HZrOap+rxHiIzMklny4HHwfcaTuzB/cYPj0BZDxus/NyjXxx4PSaDBT/EdZqy4rubf/nf1yf5o2lGPqphyrfa0ufvXj1bwn8WdEOjRJC2pxGrCLBwH7/q5ZO5akBBzhT2ZIS5FbRPvzojYrQUQHaQqAXjItooS7+3ISEGuVcxN1gdNOGjxQgxvPvE52Khl3+wCitiICVA2CM2FBF13KuodZcCgiL46H7bEu8aivjDpHVC8whIry5NbdZUgwXWyLZHGF/ftvAYSjtiWnk6SqMaPzq6aYGqCUZGRogUAcDD6AV7Fl3sDSc0+Sgy8ar/MoJ8qN8VE8NjIQuOk7qXRsOoR6qnKkSeluZKhlTJlZxBuku9AdTMdfdz6vugNcVcSpZSpASTzTuHnuEivvCBLSPCuFz5jCdaYCxi2L5/K2GEC5sGr0asBdZPLZW0/FqJ3klXhk3Y2Uw6yoIXChe6vnRjntCxlk680VjIpEbUAjRRit0IPy1tlAt+8f4vioIdVX/YYhht+TwJJ2PbIgDxNQf9eO8rAx7NQAuR0sRFYo3yviVL/FDYBcs1AvdWcC/OtACgRjXYKBdK4pqL3HzNI0JSZBOvXzDrC/pEEbAlCypDvPkYdQ98HTkbK95vFNw+AjQ9MNSok+k2OQ8rC6qtG54X2g9NHbkkmGrmib+f//m2j3Y9KLqGu0id6np+usUP/Qn3LLT0K4sCfiHfnuvloAVNB1CfT9vizNyycZWP9S01w5XQBmTVniF2AonxPwPUXbRdskxtFiEAsA0eYNQEnj3u76z2t603WLFDrCZ3f7xljKYtY1PLnavk7T/25C9CkyMUSvc1xRP4hp1R+2IcxGSE37Qt/VpLMzIxBw/DTGrLjOzUL/BvvG9sziQPdcB0b2YbEi/L28+2dR2xawymFnP+Mnse6CR36TELWoShbtV49zadjjtOA6XbrQevtMR4/y55BpAC0VPISq/gugSbgvwywM+S1BwxZ6GILVXamr1emQAdQqurfGL0pA3gIXRaB0az2DeWsXi9dqM/2o0Ud3jlNFrQ3xqZ89YBXOpBPTyMNZhUukducbZ0LY4BuU1+pVZwAhZ2dCx6bgw61ft8DdBO8OBtD1M6GazONXHV9CDJSjPbTYbJ7sGwKJkdsWgYn42103HGUO9PH0NNb0I1jkIIILhtictkNu9QiwTgS7TiJi5X7nMMRkx8DhI6dVPMbPcecl3YC9OTTFXapTQcjxCXF6VG1XvoNdtUDokExHEMCUWsiww4qJQyWaKmml8S2b/z8q48Z3tjp14CliNKnxQ9RZ1u6TMXZJKRVp4HA8elPeNXMnZlekBPkcCSiUdeZyqc4tFUplWfDAXjYX+ceS+Var/lNw08oJMF4uLngMo7l0IkybQ1q8NtcH/M3t+V5Z+Dmf6RBEkPYeqlcTW8LgPjG8KZNP/5s1VOU4WtFIIhvpG86Imo1BssyD7CrjK3dhTZV/OHFvJUjYNsXWv+fvFbE/aSy4tGk3ZaZzBOsoCQqepTqn8mNGvmcJ5D/Q/Ad03G7WBXqbXk1Tmf1d7d88P211TNam4pd5a7z7TjyqxOCQzsTReJpwex9ki/oyDklGyfhg13f8rDn3DdH3GG/KUfM8NXWZBE1l4CD3H8LUAZ+TFY+af5iUW/1zfCbizTq2Fr5oT3uIZlX+eL4tRgpf1ITOmY9M11m9QQ/TbaQ/MVJkHTjhv1y2ZJhkG9q4aV8qll9LDvBq+8F0U98M93rHNSbW+kyZpvYoemtfTowTCrWNYmO7hfLbbtNjUjHFV9yDw4fL/dJ5K1e3b9Ev4vrctN6YlODwqqjtOiXNWLLSXvk6JbAWHHyDXkFxIoRkeLq3ATzkoWBhv4PStah39OYglYfcudnfJmMcpdKpVqnK/5ve1WeH9isURudKT2rxgGS9JKnXOOs/lAG9TN8fTXmhGBCF3IZhNGWEKAdqEsdYFtBdWwmLPVVODahe6k1PH4rn3eMtxpU69lt1qcVR/+aH/g1E8ebsh0KIcX3YEaNBn4ZeHJP70SjlgJsz0p16cWKDs/o+UirQGFK64SVg3PSRsJrUQ01swAAU8e2XYRzdcuT1td9Wk+NNgDumqIyEs1kqn6Q/cfimzO086ezkhOyL7QfzxI+13/pYa1om8yW/SD2qay8Qecrb673XF/0V2kDD91euV4ZLyLXXnAFX4yAW6jhucxX0/rQ4JFfQM60EmXp4Mk0tM8032zWFjhNanEZvLZXr8MjeZJM8fu4ZtUMaEakEv5iR51ejjtxPeVz/Ft++n/IMr/P305RluljzoL/0G4j+K0JGSevfcZUsu7P/9dz2x4Lr34ZDtv29oumTCyzf/eoPvIAAAAAA==" />
+<style>
+  :root{
+    --bg:#080b12; --bg2:#0b1018; --panel:#111826; --panel2:#0e1626; --panel3:#0b1220;
+    --border:#1e2a40; --border2:#26344e;
+    --text:#e7edf8; --muted:#8798b6; --dim:#5a6a86;
+    --cyan:#38bdf8;      /* data / telemetry */
+    --red:#ff3b52;       /* power / control / brand spark */
+    --green:#34d399;     /* online / ok */
+    --amber:#f5a524;     /* offline / SD */
+    --violet:#a855f7;    /* BLE */
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,monospace;
+    --sans:"Segoe UI Variable","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:
+      radial-gradient(1200px 700px at 80% -8%, rgba(255,59,82,.10), transparent 60%),
+      radial-gradient(1100px 800px at 8% 108%, rgba(56,189,248,.10), transparent 55%),
+      var(--bg);
+    color:var(--text); font-family:var(--sans); line-height:1.55;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+  a{color:var(--cyan)}
+  h1,h2,h3{text-wrap:balance; margin:0}
+  .eyebrow{font:700 11px/1.4 var(--mono); letter-spacing:.32em; text-transform:uppercase; color:var(--red)}
+  .muted{color:var(--muted)}
+  .mono{font-family:var(--mono)}
+
+  /* ── Hero ── */
+  .hero{padding:64px 0 26px; text-align:center; position:relative}
+  .logo{width:84px;height:84px;border-radius:20px; margin:0 auto 22px; display:block;
+    box-shadow:0 0 0 1px var(--border), 0 14px 50px rgba(255,59,82,.28);
+    animation:logoGlow 4.5s ease-in-out infinite}
+  @keyframes logoGlow{0%,100%{box-shadow:0 0 0 1px var(--border),0 14px 44px rgba(255,59,82,.20)}
+    50%{box-shadow:0 0 0 1px var(--border),0 16px 60px rgba(255,59,82,.5)}}
+  .hero h1{font-size:clamp(30px,5vw,52px); font-weight:800; letter-spacing:-.02em; margin:10px 0 0}
+  .hero h1 b{color:var(--red)}
+  .hero .lede{max-width:70ch; margin:16px auto 0; color:var(--muted); font-size:clamp(15px,1.7vw,18px)}
+  .chips{display:flex; flex-wrap:wrap; gap:9px; justify-content:center; margin:26px auto 0; max-width:920px}
+  .chip{font:600 12px/1 var(--mono); color:var(--muted); background:var(--panel);
+    border:1px solid var(--border); border-radius:999px; padding:8px 12px; display:inline-flex; gap:7px; align-items:center}
+  .chip b{color:var(--text); font-weight:700}
+  .chip .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+  .legend{display:flex; flex-wrap:wrap; gap:18px 26px; justify-content:center; margin:30px auto 0; padding:16px 20px;
+    background:var(--panel2); border:1px solid var(--border); border-radius:14px; max-width:920px}
+  .legend .li{display:flex; align-items:center; gap:9px; font-size:12.5px; color:var(--muted)}
+  .legend .swatch{width:26px;height:4px;border-radius:2px;position:relative;overflow:hidden}
+  .legend .swatch i{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 5px,currentColor 5px 10px);
+    background-size:20px 100%; animation:legendFlow 1s linear infinite}
+  @keyframes legendFlow{to{background-position:20px 0}}
+  .legend b{color:var(--text)}
+
+  /* ── Section framing ── */
+  section{padding:34px 0}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin:0 0 22px; flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(20px,2.6vw,28px); font-weight:800; letter-spacing:-.01em}
+  .sec-head p{margin:0; color:var(--muted); font-size:14px}
+  .rule{height:1px;background:linear-gradient(90deg,var(--border),transparent);margin:0 0 30px}
+
+  /* ── Vertical flow diagram ── */
+  .stack{display:flex; flex-direction:column; align-items:stretch; gap:0; position:relative}
+  .band{position:relative}
+  .band-tag{position:absolute; left:-6px; top:0; transform:translateX(-100%);
+    writing-mode:vertical-rl; text-orientation:mixed; font:700 10px/1 var(--mono);
+    letter-spacing:.28em; text-transform:uppercase; color:var(--dim); padding-top:8px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2)); border:1px solid var(--border);
+    border-radius:16px; padding:18px 20px; position:relative; transition:border-color .18s, transform .18s, box-shadow .18s}
+  .card:hover{border-color:var(--border2); transform:translateY(-2px); box-shadow:0 14px 40px rgba(0,0,0,.4)}
+  .card .ct{display:flex; align-items:center; gap:11px; margin-bottom:8px}
+  .card .ico{width:34px;height:34px;border-radius:10px; display:grid; place-items:center; flex:0 0 auto;
+    background:var(--panel3); border:1px solid var(--border)}
+  .card .ico svg{width:19px;height:19px}
+  .card h3{font-size:16px; font-weight:800}
+  .card .role{font-size:12px; color:var(--muted)}
+  .card .meta{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px}
+  .tag{font:600 11px/1 var(--mono); color:var(--muted); background:var(--panel3); border:1px solid var(--border);
+    border-radius:7px; padding:5px 8px}
+  .tag.cy{color:var(--cyan); border-color:rgba(56,189,248,.35); background:rgba(56,189,248,.08)}
+  .tag.rd{color:#ff8592; border-color:rgba(255,59,82,.35); background:rgba(255,59,82,.08)}
+  .tag.gr{color:var(--green); border-color:rgba(52,211,153,.35); background:rgba(52,211,153,.08)}
+  .tag.am{color:var(--amber); border-color:rgba(245,165,36,.35); background:rgba(245,165,36,.08)}
+  .tag.vi{color:#c79bf5; border-color:rgba(168,85,247,.35); background:rgba(168,85,247,.08)}
+  .card p.desc{margin:10px 0 0; font-size:13px; color:var(--muted)}
+  .card .apis{margin-top:10px; font-family:var(--mono); font-size:11.5px; color:var(--dim); word-break:break-word}
+  .card .apis b{color:var(--cyan); font-weight:600}
+
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .row-note{text-align:center; font-size:12px; color:var(--dim); margin:9px 0 0; font-family:var(--mono)}
+
+  /* live status dot */
+  .live{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(52,211,153,.6);
+    animation:pulse 2s infinite; display:inline-block}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}70%{box-shadow:0 0 0 7px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+
+  /* ── Connectors (animated flow) ── */
+  .conn{display:flex; flex-direction:column; align-items:center; gap:7px; padding:9px 0}
+  .lanes{display:flex; gap:12px; align-items:stretch; height:56px}
+  .lane{width:4px; border-radius:3px; background:var(--border); position:relative; overflow:hidden}
+  .lane::after{content:""; position:absolute; inset:0; background-size:100% 26px}
+  .lane.down::after{background-image:repeating-linear-gradient(to bottom,transparent 0 7px,var(--cyan) 7px 15px);
+    animation:flow 1.05s linear infinite}
+  .lane.up::after{background-image:repeating-linear-gradient(to bottom,transparent 0 7px,var(--red) 7px 15px);
+    animation:flowUp 1.15s linear infinite}
+  .lane.ble::after{background-image:repeating-linear-gradient(to bottom,transparent 0 7px,var(--violet) 7px 15px);
+    animation:flow 1.4s linear infinite}
+  @keyframes flow{to{background-position:0 26px}}
+  @keyframes flowUp{to{background-position:0 -26px}}
+  .conn-label{font:600 11px/1.3 var(--mono); color:var(--dim); text-align:center; letter-spacing:.02em}
+  .conn-label .p{color:var(--muted)}
+  .conn-label .dn{color:var(--cyan)} .conn-label .u{color:#ff8592}
+
+  /* ── Detail cards grid ── */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px}
+  .dcard{background:var(--panel2); border:1px solid var(--border); border-radius:14px; padding:18px 20px}
+  .dcard h3{font-size:15px; font-weight:800; display:flex; align-items:center; gap:9px; margin-bottom:4px}
+  .dcard .kv{font:600 11px/1 var(--mono); color:var(--dim); letter-spacing:.14em; text-transform:uppercase; margin:14px 0 8px}
+  .dcard ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px}
+  .dcard li{font-size:13px; color:var(--muted); padding-left:16px; position:relative}
+  .dcard li::before{content:""; position:absolute; left:0; top:8px; width:6px;height:6px;border-radius:50%;
+    background:var(--red); opacity:.7}
+  .dcard li b{color:var(--text); font-weight:600}
+  .dcard code{font-family:var(--mono); font-size:11.5px; color:var(--cyan); background:rgba(56,189,248,.08);
+    border:1px solid rgba(56,189,248,.18); border-radius:5px; padding:1px 5px}
+
+  /* callouts */
+  .paths{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .call{border:1px solid var(--border); border-radius:16px; padding:20px 22px; position:relative; overflow:hidden}
+  .call.on{background:linear-gradient(180deg,rgba(56,189,248,.06),transparent)}
+  .call.off{background:linear-gradient(180deg,rgba(245,165,36,.06),transparent)}
+  .call h3{font-size:16px; font-weight:800; display:flex; gap:9px; align-items:center; margin-bottom:6px}
+  .call ol{margin:12px 0 0; padding-left:20px; color:var(--muted); font-size:13px; display:flex; flex-direction:column; gap:7px}
+  .call ol b{color:var(--text)}
+  .flow-mini{font-family:var(--mono); font-size:12px; color:var(--muted); margin-top:12px; line-height:1.9}
+  .flow-mini .a{color:var(--cyan)} .flow-mini .b{color:#ff8592}
+
+  /* topic table */
+  .twrap{overflow-x:auto; border:1px solid var(--border); border-radius:14px}
+  table{border-collapse:collapse; width:100%; min-width:720px; font-size:13px}
+  th,td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--border); vertical-align:top}
+  th{font:700 11px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--muted); background:var(--panel2)}
+  td.topic{font-family:var(--mono); font-size:12px; color:var(--cyan); white-space:nowrap}
+  td .pub{color:var(--red);font-weight:700} td .sub{color:var(--cyan);font-weight:700}
+  tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:rgba(56,189,248,.04)}
+
+  footer{padding:40px 0 60px; text-align:center; color:var(--dim); font-size:12.5px}
+  footer .mono{color:var(--muted)}
+  .disc{max-width:70ch;margin:10px auto 0; font-size:11.5px; color:var(--dim)}
+
+  /* ── Field deployment interactive scene ── */
+  .deploy h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-.01em;margin:0 0 4px}
+  .demo-groups{display:flex;gap:22px 28px;flex-wrap:wrap;align-items:flex-end;margin:20px 0}
+  .demo-col{display:flex;flex-direction:column;gap:9px}
+  .demo-col .cl{font:700 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .demo-col .cbtns{display:flex;gap:10px;flex-wrap:wrap}
+  .demo-btn{font:700 12.5px/1 var(--sans);cursor:pointer;border-radius:11px;padding:11px 15px;border:1px solid var(--border);
+    background:var(--panel);color:var(--muted);display:inline-flex;gap:8px;align-items:center;transition:all .16s}
+  .demo-btn:hover{border-color:var(--border2);color:var(--text)}
+  .demo-btn .d{width:9px;height:9px;border-radius:50%;background:var(--dim)}
+  .demo-btn.on .d{background:var(--cyan)} .demo-btn.off .d{background:var(--amber)}
+  .demo-btn.active.on{background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.55);color:var(--cyan)}
+  .demo-btn.active.off{background:rgba(245,165,36,.14);border-color:rgba(245,165,36,.55);color:var(--amber)}
+  .demo-btn.fut .d{background:#ff9f43}
+  .demo-btn.active.fut{background:rgba(255,159,67,.14);border-color:rgba(255,159,67,.55);color:#ffb877}
+  .scene-status.fut{color:#ffb877;border-color:rgba(255,159,67,.4);background:rgba(255,159,67,.1)}
+  .demo-narr.fut .nh{color:#ffb877}
+  .scene-status{font:700 12px var(--mono);letter-spacing:.08em;padding:9px 15px;border-radius:999px;
+    border:1px solid var(--border);color:var(--muted);white-space:nowrap;margin-left:auto;align-self:center}
+  .scene-status.on{color:var(--green);border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.08)}
+  .scene-status.off{color:var(--amber);border-color:rgba(245,165,36,.4);background:rgba(245,165,36,.08)}
+  .scene-status.dead{color:#ff8592;border-color:rgba(255,59,82,.45);background:rgba(255,59,82,.1)}
+  .stage{background:radial-gradient(760px 420px at 28% 16%,rgba(56,189,248,.05),transparent),var(--panel2);
+    border:1px solid var(--border);border-radius:18px;padding:10px}
+  #scene svg{width:100%;height:auto;display:block;transition:opacity .18s}
+  #scene.swapping svg{opacity:.2}
+  .demo-narr{margin-top:16px;background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:18px 22px}
+  .demo-narr .nh{font:700 12px var(--mono);letter-spacing:.13em;text-transform:uppercase;margin:0 0 12px;color:var(--cyan)}
+  .demo-narr.off .nh{color:var(--amber)} .demo-narr.dead .nh{color:#ff8592}
+  .demo-narr ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:9px;color:var(--muted);font-size:13.5px}
+  .demo-narr ol b{color:var(--text)}
+  /* svg element styles */
+  .st-lbl{font:700 13px var(--mono);fill:var(--text)}
+  .st-sub{font:600 10.5px var(--mono);fill:var(--muted)}
+  .st-cap{font:700 11px var(--mono);fill:var(--dim);letter-spacing:.16em}
+  .devbox{fill:var(--panel);stroke:var(--border);stroke-width:1.5}
+  .devbox.gw{fill:#12203a} .devbox.ocpp{fill:#1a1226}
+  .dev,.cloud-dev,.ocpp-dev{transition:opacity .4s}
+  .link{fill:none;stroke:var(--border);stroke-width:2.5;stroke-linecap:round;transition:stroke .3s,opacity .3s}
+  @keyframes dash{to{stroke-dashoffset:-28}}
+  .brk,.ocpp-brk{display:none}
+  .buf-badge,.ble-badge,.nocontrol{opacity:0;transition:opacity .4s}
+  /* era swap — only one cloud stack visible at a time (same left floor plan) */
+  .era-ocpp .gw-only{display:none} .era-gw .ocpp-only{display:none}
+  /* common local Wi-Fi (charger -> inHand) */
+  .wifi,.tpeth{stroke:var(--green);stroke-dasharray:5 7;animation:dash 1.1s linear infinite}
+  .era-ocpp.st-off .wifi,.era-ocpp.st-off .tpeth{stroke:var(--dim);opacity:.5;animation:none}
+  /* ===== GATEWAY era ===== */
+  .era-gw.st-on .eth,.era-gw.st-on .uplink,.era-gw.st-on .cloud,.era-gw.st-on .ipt{stroke:var(--cyan);stroke-dasharray:6 8;animation:dash .9s linear infinite}
+  .era-gw.st-on .ota{stroke:var(--amber);opacity:.45;stroke-dasharray:2 8}
+  .era-gw.st-on .ble{stroke:var(--border);opacity:.3}
+  .era-gw.st-off .eth{stroke:var(--green);stroke-dasharray:5 7;animation:dash 1.15s linear infinite}
+  .era-gw.st-off .uplink,.era-gw.st-off .cloud,.era-gw.st-off .ipt{stroke:var(--red);opacity:.4;stroke-dasharray:3 7;animation:none}
+  .era-gw.st-off .ble{stroke:var(--violet);stroke-dasharray:6 8;animation:dash .8s linear infinite;opacity:1}
+  .era-gw.st-off .ota{stroke:var(--border);opacity:.2}
+  .era-gw.st-off .cloud-dev{opacity:.28}
+  .era-gw.st-off .brk{display:block}
+  .era-gw.st-off .buf-badge,.era-gw.st-off .ble-badge{opacity:1}
+  .era-gw .hmi{stroke:var(--green);stroke-dasharray:5 7;animation:dash 1.1s linear infinite}
+  /* future (LoRa) — behaves like online for the cloud path + adds the LoRa link */
+  .era-gw.st-future .eth,.era-gw.st-future .uplink,.era-gw.st-future .cloud,.era-gw.st-future .ipt{stroke:var(--cyan);stroke-dasharray:6 8;animation:dash .9s linear infinite}
+  .era-gw.st-future .ota{stroke:var(--amber);opacity:.45;stroke-dasharray:2 8}
+  .era-gw.st-future .ble{stroke:var(--border);opacity:.3}
+  .era-gw.st-future .lora{stroke:#ff9f43;stroke-dasharray:7 9;animation:dash 1.05s linear infinite}
+  .future-only{display:none}
+  .st-future .future-only{display:block}
+  /* ===== OCPP era ===== */
+  .era-ocpp.st-on .ocppup,.era-ocpp.st-on .ocpplink{stroke:var(--cyan);stroke-dasharray:6 8;animation:dash .9s linear infinite}
+  .era-ocpp.st-off .ocppup,.era-ocpp.st-off .ocpplink{stroke:var(--red);opacity:.4;stroke-dasharray:3 7;animation:none}
+  .era-ocpp.st-off .ocpp-dev{opacity:.26}
+  .era-ocpp.st-off .ocpp-brk{display:block}
+  .era-ocpp.st-off .nocontrol{opacity:1}
+  @media (prefers-reduced-motion:reduce){ .link{animation:none!important} }
+
+  /* ── BLE pairing scene ── */
+  .pairing h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-.01em;margin:0 0 4px}
+  .pstage{background:radial-gradient(680px 380px at 20% 34%,rgba(168,85,247,.06),transparent),var(--panel2);
+    border:1px solid var(--border);border-radius:18px;padding:10px;margin-top:20px}
+  .pstage svg{width:100%;height:auto;display:block}
+  .plink{fill:none;stroke:var(--border);stroke-width:2.5;stroke-linecap:round;opacity:.45;transition:stroke .3s,opacity .3s}
+  .plink.on{opacity:1}
+  .plink.on.blek{stroke:var(--violet);stroke-dasharray:6 8;animation:dash .8s linear infinite}
+  .plink.on.wifik{stroke:var(--cyan);stroke-dasharray:6 8;animation:dash .9s linear infinite}
+  .plink.on.hopk{stroke:var(--amber);stroke-dasharray:6 8;animation:dash .75s linear infinite}
+  .plink.disc{opacity:0}
+  .plink.disc.on{opacity:1}
+  .pbox{fill:var(--panel);stroke:var(--border);stroke-width:1.5;transition:stroke .3s, box-shadow .3s}
+  .pdev.hot .pbox{stroke:var(--violet)}
+  .chgbox{fill:var(--panel);stroke:var(--border);stroke-width:1.5;transition:stroke .3s, fill .3s}
+  .chg.sel .chgbox{stroke:var(--cyan)}
+  .chg.done .chgbox{stroke:var(--green);fill:#0e1c18}
+  .chk{opacity:0;transition:opacity .35s}
+  .chg.done .chk{opacity:1}
+  .p-scr{font:700 12px var(--mono);fill:var(--text)}
+  .p-scr2{font:600 10px var(--mono);fill:var(--muted)}
+  .pcap{font:700 10px var(--mono);fill:var(--dim);letter-spacing:.16em}
+  .plbl{font:700 12px var(--mono);fill:var(--text)}
+  .psub{font:600 10px var(--mono);fill:var(--muted)}
+  .pair-controls{display:flex;gap:12px;align-items:center;margin:18px 0 0;flex-wrap:wrap}
+  .pair-count{font:700 12px var(--mono);color:var(--muted);margin-left:auto}
+  .pair-steps{margin-top:16px;background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:8px}
+  .ps{display:flex;gap:13px;align-items:flex-start;padding:11px 14px;border-radius:10px;transition:background .2s,opacity .25s;opacity:.45}
+  .ps .n{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--panel3);border:1px solid var(--border);display:grid;place-items:center;font:700 11px var(--mono);color:var(--muted);transition:all .25s}
+  .ps .tx{font-size:13.5px;color:var(--muted)} .ps .tx b{color:var(--text)}
+  .ps.active{opacity:1;background:rgba(168,85,247,.09)}
+  .ps.active .n{background:var(--violet);border-color:var(--violet);color:#140a20}
+  .ps.done{opacity:.9} .ps.done .n{background:rgba(52,211,153,.18);border-color:rgba(52,211,153,.5);color:var(--green)}
+  @media (prefers-reduced-motion:reduce){ .plink{animation:none!important} }
+
+  @media (max-width:760px){
+    .row2,.paths{grid-template-columns:1fr}
+    .band-tag{display:none}
+    .scene-status{margin-left:0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .lane::after,.logo,.live,.legend .swatch i{animation:none!important}
+  }
+
+  /* ===== console architecture shell ===== */
+  .brand-bg{position:fixed;top:50%;left:50%;width:min(70vmin,720px);height:min(70vmin,720px);
+    transform:translate(-50%,-50%);z-index:-1;background:url('data:image/webp;base64,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') no-repeat center/contain;
+    opacity:.05;filter:grayscale(.5);pointer-events:none;animation:brandBreathe 10s ease-in-out infinite}
+  @keyframes brandBreathe{0%,100%{opacity:.04;transform:translate(-50%,-50%) scale(1)}50%{opacity:.08;transform:translate(-50%,-50%) scale(1.05)}}
+  .tbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    padding:11px 20px;background:rgba(9,13,20,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .arch-switch{display:inline-flex;gap:3px;align-items:center;background:var(--panel3);border:1px solid var(--border);border-radius:10px;padding:3px}
+  .arch-switch a{text-decoration:none;font:700 12px var(--sans);color:var(--muted);padding:6px 11px;border-radius:7px;white-space:nowrap}
+  .arch-switch a:hover{color:var(--text)}
+  .arch-switch a.on{background:rgba(56,189,248,.16);color:var(--cyan)}
+  .tbar-l{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em}
+  .tbar-l img{width:30px;height:30px;border-radius:8px;box-shadow:0 0 0 1px var(--border)}
+  .tbar-l small{font:600 10.5px var(--mono);color:var(--dim);letter-spacing:.14em;text-transform:uppercase}
+  .back-btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font:700 13px var(--sans);
+    color:var(--text);background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:8px 14px;transition:.15s}
+  .back-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+  .ahero{max-width:var(--maxw);margin:0 auto;padding:46px 22px 6px}
+  .ahero .eye{font:700 12px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+  .ahero h1{font-size:clamp(28px,4.4vw,50px);line-height:1.05;font-weight:850;letter-spacing:-.02em;margin:12px 0 0;text-wrap:balance}
+  .ahero p.lead{color:var(--muted);font-size:clamp(15px,1.6vw,18px);max-width:76ch;margin:16px 0 0}
+  .chapnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px;margin:30px 0 4px}
+  .chapnav a{display:block;text-decoration:none;color:inherit;background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--border);border-radius:14px;padding:15px 16px;transition:.18s}
+  .chapnav a:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+  .chapnav .cn-n{font:700 11px var(--mono);color:var(--dim)}
+  .chapnav .cn-t{font-weight:750;margin-top:7px}
+  .chapnav .cn-s{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .allctl{display:flex;gap:9px;align-items:center;max-width:var(--maxw);margin:24px auto 2px;padding:0 22px}
+  .allctl .lbl{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-right:auto}
+  .mini{font:700 12px var(--sans);cursor:pointer;color:var(--muted);background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:7px 12px}
+  .mini:hover{color:var(--text);border-color:var(--cyan)}
+  .chapter{max-width:var(--maxw);margin:16px auto;background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--border);border-radius:18px;overflow:hidden;scroll-margin-top:74px}
+  .chapter.open{border-color:var(--border2)}
+  .ch-head{display:flex;align-items:center;gap:16px;padding:19px 22px;cursor:pointer;user-select:none}
+  .ch-head .num{flex:0 0 auto;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+    font:800 15px var(--mono);color:var(--cyan);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.3)}
+  .ch-head .ttl{font-size:clamp(17px,2vw,21px);font-weight:780;letter-spacing:-.01em}
+  .ch-head .sub{font-size:13px;color:var(--muted);margin-top:2px}
+  .ch-head .chev{margin-left:auto;color:var(--dim);transition:transform .35s;font-size:15px}
+  .chapter.open .ch-head .chev{transform:rotate(180deg);color:var(--cyan)}
+  .ch-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.3,.8,.3,1)}
+  .chapter.open .ch-body{grid-template-rows:1fr}
+  .ch-inner{overflow:hidden;min-height:0}
+  .ch-pad{padding:2px 24px 26px}
+  .ch-inner section{max-width:none!important;margin:0!important;padding:0!important}
+  .ch-inner h2{font-size:clamp(19px,2.3vw,26px);margin:2px 0 6px}
+  /* field Past/Present/Future tabs */
+  .ff-ctl{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:18px 0 10px}
+  .ff-tabs{display:inline-flex;gap:6px;background:var(--panel3);border:1px solid var(--border);border-radius:12px;padding:5px}
+  .ff-tab{font:700 12.5px var(--sans);cursor:pointer;color:var(--muted);background:transparent;border:0;border-radius:9px;padding:9px 14px;transition:.15s}
+  .ff-tab:hover{color:var(--text)}
+  .ff-tab.active{background:var(--panel);color:var(--text);box-shadow:0 6px 16px rgba(0,0,0,.3)}
+  .ff-states .ff-state{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .ff-states .ff-state[hidden]{display:none}
+  /* stage-by-stage detail cards */
+  .stages{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  details.dstage{border:1px solid var(--border);border-radius:13px;background:var(--panel2);overflow:hidden;transition:border-color .15s}
+  details.dstage[open]{border-color:var(--border2)}
+  details.dstage summary{list-style:none;display:flex;align-items:center;gap:14px;padding:15px 18px;cursor:pointer}
+  details.dstage summary::-webkit-details-marker{display:none}
+  .stg-n{flex:0 0 auto;font:800 12px var(--mono);color:var(--cyan);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.28);border-radius:8px;padding:5px 8px}
+  .stg-t{font-weight:730}
+  .stg-s{font:600 12px var(--mono);color:var(--muted);margin-left:2px}
+  .stg-x{margin-left:auto;color:var(--dim);font-size:20px;line-height:1;transition:transform .3s}
+  details.dstage[open] .stg-x{transform:rotate(45deg);color:var(--cyan)}
+  .stg-b{padding:0 20px 16px 60px;color:var(--muted);font-size:14px;line-height:1.62}
+  .stg-b b{color:var(--text)}
+  .stg-b code{font:600 12.5px var(--mono);color:var(--cyan)}
+  @media(max-width:640px){.stg-s{display:none}.stg-b{padding-left:18px}}
+  /* topic table */
+  .tscroll{overflow-x:auto;margin-top:8px}
+  .ttab{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+  .ttab th,.ttab td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  .ttab th{font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+  .ttab td code{font:600 12px var(--mono);color:var(--cyan)}
+  .ttab .dir{font:600 12px var(--mono);color:var(--muted);white-space:nowrap}
+  .ttab .ret{color:var(--amber);font:600 12px var(--mono)}
+  /* hover tooltip on floor-site devices */
+  #scene [data-tip]{cursor:help}
+  .tip{position:fixed;z-index:80;max-width:300px;background:var(--panel);border:1px solid var(--border2);
+    border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.5;color:var(--text);
+    box-shadow:0 16px 40px rgba(0,0,0,.55);opacity:0;transition:opacity .12s;pointer-events:none}
+  .tiphint{font:600 11px var(--mono);color:var(--dim);margin:10px 0 0}
+  footer.af{max-width:var(--maxw);margin:34px auto 54px;padding:22px 22px 0;border-top:1px solid var(--border);color:var(--dim);font-size:12.5px}
+  .pstage svg,#scene svg{width:100%;height:auto;display:block}
+  /* flow-path guided reveal (Chapter 3) */
+  .flow-ctl{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:14px 0 20px}
+  .flow-count{font:700 12px var(--mono);color:var(--dim);letter-spacing:.06em}
+  .flow-now{font:700 12px var(--mono);color:var(--cyan);letter-spacing:.03em}
+  .stack.seq>.band,.stack.seq>.conn{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+  .stack.seq>.band.in,.stack.seq>.conn.in{opacity:1;transform:none}
+  .stack.seq>.band.cur .card{border-color:var(--cyan);box-shadow:0 0 0 1px rgba(56,189,248,.45),0 16px 46px rgba(56,189,248,.16)}
+  .stack.seq>.band.cur>.band-tag{color:var(--cyan)}
+  /* Stage 1: AVR <-> ESP32 UART serial interconnect */
+  .ilink{display:flex;align-items:center;gap:9px;margin-top:11px}
+  .ilink .il-end{font:700 10px var(--mono);color:var(--muted);flex:0 0 auto}
+  .ilink .il-chip{font:700 9px var(--mono);letter-spacing:.05em;color:var(--dim);flex:0 0 auto;padding:3px 8px;border:1px solid var(--border);border-radius:20px;background:var(--panel3);white-space:nowrap}
+  .ilink .il-lanes{flex:1 1 auto;display:flex;flex-direction:column;gap:3px;min-width:26px}
+  .il{height:3px;border-radius:2px;position:relative;overflow:hidden;background:rgba(255,255,255,.05)}
+  .il::after{content:"";position:absolute;inset:0;background-size:18px 100%}
+  .il.rx::after{background-image:repeating-linear-gradient(to right,transparent 0 6px,var(--cyan) 6px 11px);animation:ilR 1s linear infinite}
+  .il.tx::after{background-image:repeating-linear-gradient(to right,transparent 0 6px,var(--red) 6px 11px);animation:ilL 1s linear infinite}
+  @keyframes ilR{to{background-position:18px 0}} @keyframes ilL{to{background-position:-18px 0}}
+  /* Stage 3: RPi <-> on-site Kiosk HMI link + kiosk card */
+  .kiosk-row{margin-top:10px}
+  .kiosk-cell{display:flex;flex-direction:column}
+  .dlink{display:flex;align-items:center;justify-content:center;gap:9px;margin:0 0 8px}
+  .dl-pair{display:flex;gap:5px}
+  .dl{width:3px;height:22px;border-radius:2px;position:relative;overflow:hidden;background:rgba(255,255,255,.05)}
+  .dl::after{content:"";position:absolute;inset:0;background-size:100% 18px}
+  .dl.rx::after{background-image:repeating-linear-gradient(to bottom,transparent 0 6px,var(--cyan) 6px 11px);animation:dlD 1s linear infinite}
+  .dl.tx::after{background-image:repeating-linear-gradient(to bottom,transparent 0 6px,var(--red) 6px 11px);animation:dlU 1s linear infinite}
+  .dl-lbl{font:700 9.5px var(--mono);color:var(--dim);letter-spacing:.03em}
+  .wrapnav{max-width:var(--maxw);margin:18px auto 0;padding:0 22px}
+  .wrapnav .chapnav{margin:0}
+  header.hero{scroll-margin-top:70px}
+  @keyframes dlD{to{background-position:0 18px}} @keyframes dlU{to{background-position:0 -18px}}
+  @media (prefers-reduced-motion:reduce){.ch-body{transition:none}.chapnav a:hover,.chapter{transform:none}.stack.seq>.band,.stack.seq>.conn{transition:none}.il::after,.dl::after{animation:none}}
+
+</style>
+</head>
+<body>
+  <div class="brand-bg" aria-hidden="true"></div>
+
+  <header class="tbar">
+    <div class="tbar-l"><img src="data:image/webp;base64,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" alt="Spark" /> Spark Platform <small>Architecture</small></div>
+    <nav class="arch-switch"><a class="on" href="architecture.html">EV Gateway Platform</a><a href="architecture_field_flows.html">Field &amp; Control Flows</a><a href="spark_charger_architecture.html">Spark EV Charger</a><a href="./" style="border-left:1px solid var(--border);border-radius:0 7px 7px 0">&larr; Console</a></nav>
+    <a class="back-btn" href="./">&larr; Back to Console</a>
+  </header>
+
+<header class="hero">
+    <img class="logo" src="data:image/webp;base64,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" alt="Spark" />
+    <div class="eyebrow">End-to-end system architecture</div>
+    <h1>Spark <b>EV&nbsp;Gateway</b> Platform</h1>
+    <p class="lede">From the AVR power stage inside a charger, up through the gateway on the wire, across the
+      MQTT broker and cloud backend, into the database and every operator console — the complete data &amp;
+      control path, built ground&#8209;up.</p>
+
+    <div class="chips">
+      <span class="chip"><span class="dot" style="background:var(--red)"></span>Charger node&nbsp;<b>grizzle 3.3.1:45</b></span>
+      <span class="chip"><span class="dot" style="background:var(--cyan)"></span>ESP32 gateway&nbsp;<b>9.1.12&#8209;tls&#8209;eth</b></span>
+      <span class="chip"><span class="dot" style="background:var(--cyan)"></span>RPi gateway&nbsp;<b>2.6.39&#8209;tls</b></span>
+      <span class="chip"><span class="dot" style="background:var(--green)"></span>HiveMQ Cloud&nbsp;<b>MQTTS 8883</b></span>
+      <span class="chip"><span class="dot" style="background:var(--violet)"></span>Node backend + Supabase</span>
+    </div>
+
+    <div class="legend">
+      <div class="li"><span class="swatch" style="color:var(--cyan)"><i></i></span> <b>Telemetry / data</b> — up to cloud</div>
+      <div class="li"><span class="swatch" style="color:var(--red)"><i></i></span> <b>Control / commands</b> — down to field</div>
+      <div class="li"><span class="swatch" style="color:var(--violet)"><i></i></span> <b>BLE / offline</b> fallback</div>
+      <div class="li"><span class="live"></span> live / bidirectional</div>
+    </div>
+  </header>
+
+
+  <div class="wrapnav">
+    <nav class="chapnav">
+      <a href="#ch1"><div class="cn-n">CHAPTER 1</div><div class="cn-t">Onboarding — BLE pairing</div><div class="cn-s">How a phone provisions a new site over Bluetooth.</div></a>
+      <a href="#ch2"><div class="cn-n">CHAPTER 2</div><div class="cn-t">A real site — past · present · future</div><div class="cn-s">Native OCPP vs. the Spark gateway vs. LoRa — online &amp; offline.</div></a>
+      <a href="#ch3"><div class="cn-n">CHAPTER 3</div><div class="cn-t">The full data path</div><div class="cn-s">The 7-layer signal path — play it stage by stage.</div></a>
+      <a href="#ch4"><div class="cn-n">CHAPTER 4</div><div class="cn-t">Layer by layer</div><div class="cn-s">The facts behind each box.</div></a>
+      <a href="#ch5"><div class="cn-n">CHAPTER 5</div><div class="cn-t">Two paths, one system</div><div class="cn-s">Online &amp; offline — auth-key bridge + LoRa roadmap.</div></a>
+      <a href="#ch6"><div class="cn-n">CHAPTER 6</div><div class="cn-t">MQTT topic contract</div><div class="cn-s">The shared namespace every device speaks.</div></a>
+    </nav>
+  </div>
+
+  <div class="allctl"><span class="lbl">Chapters</span>
+    <button class="mini" id="expandAll">Expand all</button>
+    <button class="mini" id="collapseAll">Collapse all</button>
+  </div>
+
+  <!-- Chapter 1: pairing -->
+  <section class="chapter" id="ch1">
+    <div class="ch-head"><span class="num">1</span><div><div class="ttl">Onboarding — BLE pairing</div><div class="sub">How a phone provisions a brand-new site, no cables, no cloud.</div></div><span class="chev">▾</span></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+  <section class="pairing">
+    <h2>BLE pairing — the phone provisions a gateway</h2>
+    <p class="muted" style="margin:0;max-width:82ch">Do this first. Over Bluetooth, the operator picks the site Wi-Fi
+      (scanned on the phone — they only type the password) and the target chargers; the gateway then hops charger-to-charger
+      to hand out the credentials and confirms back. No cables, no cloud. Press play.</p>
+
+    <div class="pstage">
+      <svg viewBox="0 0 1160 380" role="img" aria-label="BLE pairing sequence">
+        <text class="pcap" x="83" y="16" text-anchor="middle">PHONE</text>
+        <text class="pcap" x="515" y="16" text-anchor="middle">SITE Wi-Fi (inHand)</text>
+        <text class="pcap" x="885" y="16" text-anchor="middle">TARGET CHARGERS ×5</text>
+
+        <!-- links (under devices) -->
+        <path id="lnkScan" class="plink wifik" d="M126,86 C280,60 350,60 430,60"/>
+        <text class="psub" x="300" y="46" text-anchor="middle" style="fill:var(--cyan)">scan Wi-Fi</text>
+        <path id="lnkBle" class="plink blek" d="M142,196 C300,196 330,232 440,232"/>
+        <text class="psub" x="300" y="250" text-anchor="middle" style="fill:#c79bf5">BLE · 12345678-…</text>
+        <path id="lnkHop1" class="plink hopk" d="M610,232 C700,232 700,55 800,55"/>
+        <path id="lnkHop2" class="plink hopk" d="M610,232 C700,232 705,123 800,123"/>
+        <path id="lnkHop3" class="plink hopk" d="M610,232 C700,232 720,191 800,191"/>
+        <path id="lnkHop4" class="plink hopk" d="M610,232 C700,246 720,259 800,259"/>
+        <path id="lnkHop5" class="plink hopk" d="M610,232 C700,255 710,327 800,327"/>
+        <text class="psub" x="700" y="300" text-anchor="middle" style="fill:var(--amber)">Wi-Fi AP hop</text>
+        <!-- charger discovery (phone scans each charger AP) -->
+        <path id="lnkDisc1" class="plink disc wifik" d="M800,55 C520,55 320,222 142,208"/>
+        <path id="lnkDisc2" class="plink disc wifik" d="M800,123 C520,123 320,222 142,213"/>
+        <path id="lnkDisc3" class="plink disc wifik" d="M800,191 C520,191 330,224 142,218"/>
+        <path id="lnkDisc4" class="plink disc wifik" d="M800,259 C520,259 330,232 142,223"/>
+        <path id="lnkDisc5" class="plink disc wifik" d="M800,327 C520,300 330,244 142,228"/>
+
+        <!-- phone -->
+        <g class="pdev" id="paPhone">
+          <rect class="pbox" x="24" y="58" width="118" height="264" rx="16"/>
+          <rect x="38" y="86" width="90" height="208" rx="7" fill="var(--panel3)" stroke="var(--border)"/>
+          <circle cx="83" cy="72" r="2.4" fill="var(--muted)"/>
+          <text class="psub" x="83" y="104" text-anchor="middle" style="fill:#c79bf5">Spark Box</text>
+          <text class="p-scr"  id="pScr"  x="83" y="180" text-anchor="middle">Ready</text>
+          <text class="p-scr2" id="pScr2" x="83" y="200" text-anchor="middle">tap play</text>
+          <text class="psub" x="83" y="312" text-anchor="middle">mobile app</text>
+        </g>
+
+        <!-- inHand router (with antennas + LEDs) -->
+        <g class="pdev" id="paWifi">
+          <line x1="466" y1="30" x2="462" y2="12" stroke="var(--muted)" stroke-width="2"/>
+          <circle cx="461" cy="10" r="2.4" fill="var(--muted)"/>
+          <line x1="564" y1="30" x2="568" y2="12" stroke="var(--muted)" stroke-width="2"/>
+          <circle cx="569" cy="10" r="2.4" fill="var(--muted)"/>
+          <rect class="pbox" x="430" y="30" width="170" height="76" rx="12"/>
+          <circle cx="446" cy="46" r="2.4" fill="var(--green)"/><circle cx="456" cy="46" r="2.4" fill="var(--amber)"/>
+          <text class="plbl" x="515" y="60" text-anchor="middle">inHand Router</text>
+          <text class="psub" x="515" y="78" text-anchor="middle">SSID: inHand-Spark</text>
+          <text class="psub" x="515" y="94" text-anchor="middle" id="wifiCount" style="fill:var(--muted)">0 / 5 joined</text>
+        </g>
+
+        <!-- gateway -->
+        <g class="pdev hot" id="paGw">
+          <rect class="pbox" x="440" y="196" width="170" height="72" rx="12"/>
+          <text class="plbl" x="525" y="228" text-anchor="middle">Gateway</text>
+          <text class="psub" x="525" y="246" text-anchor="middle" id="gwStatus">provisioning mode</text>
+        </g>
+
+        <!-- 5 chargers -->
+        <g class="chg pdev" id="chg1"><rect class="chgbox" x="800" y="28" width="170" height="54" rx="10"/><path d="M820,44 l-6,11 h5 l-1,8 l8,-12 h-6 z" fill="var(--red)"/><text class="plbl" x="852" y="52" style="font-size:11px">Charger 1</text><text class="psub" x="852" y="67">Spark_0001</text><g class="chk"><circle cx="948" cy="55" r="10" fill="rgba(52,211,153,.18)" stroke="var(--green)" stroke-width="1.5"/><path d="M943,55 l3,3 l7,-8" fill="none" stroke="var(--green)" stroke-width="2"/></g></g>
+        <g class="chg pdev" id="chg2"><rect class="chgbox" x="800" y="96" width="170" height="54" rx="10"/><path d="M820,112 l-6,11 h5 l-1,8 l8,-12 h-6 z" fill="var(--red)"/><text class="plbl" x="852" y="120" style="font-size:11px">Charger 2</text><text class="psub" x="852" y="135">Spark_0002</text><g class="chk"><circle cx="948" cy="123" r="10" fill="rgba(52,211,153,.18)" stroke="var(--green)" stroke-width="1.5"/><path d="M943,123 l3,3 l7,-8" fill="none" stroke="var(--green)" stroke-width="2"/></g></g>
+        <g class="chg pdev" id="chg3"><rect class="chgbox" x="800" y="164" width="170" height="54" rx="10"/><path d="M820,180 l-6,11 h5 l-1,8 l8,-12 h-6 z" fill="var(--red)"/><text class="plbl" x="852" y="188" style="font-size:11px">Charger 3</text><text class="psub" x="852" y="203">Spark_0003</text><g class="chk"><circle cx="948" cy="191" r="10" fill="rgba(52,211,153,.18)" stroke="var(--green)" stroke-width="1.5"/><path d="M943,191 l3,3 l7,-8" fill="none" stroke="var(--green)" stroke-width="2"/></g></g>
+        <g class="chg pdev" id="chg4"><rect class="chgbox" x="800" y="232" width="170" height="54" rx="10"/><path d="M820,248 l-6,11 h5 l-1,8 l8,-12 h-6 z" fill="var(--red)"/><text class="plbl" x="852" y="256" style="font-size:11px">Charger 4</text><text class="psub" x="852" y="271">Spark_0004</text><g class="chk"><circle cx="948" cy="259" r="10" fill="rgba(52,211,153,.18)" stroke="var(--green)" stroke-width="1.5"/><path d="M943,259 l3,3 l7,-8" fill="none" stroke="var(--green)" stroke-width="2"/></g></g>
+        <g class="chg pdev" id="chg5"><rect class="chgbox" x="800" y="300" width="170" height="54" rx="10"/><path d="M820,316 l-6,11 h5 l-1,8 l8,-12 h-6 z" fill="var(--red)"/><text class="plbl" x="852" y="324" style="font-size:11px">Charger 5</text><text class="psub" x="852" y="339">Spark_0005</text><g class="chk"><circle cx="948" cy="327" r="10" fill="rgba(52,211,153,.18)" stroke="var(--green)" stroke-width="1.5"/><path d="M943,327 l3,3 l7,-8" fill="none" stroke="var(--green)" stroke-width="2"/></g></g>
+      </svg>
+    </div>
+
+    <div class="pair-controls">
+      <button class="demo-btn" id="pairPlay"><span class="d" style="background:var(--violet)"></span>▶ Play pairing</button>
+      <button class="demo-btn" id="pairReset">↺ Reset</button>
+      <span class="pair-count" id="pairCount">Step 0 / 7</span>
+    </div>
+
+    <div class="pair-steps" id="pairSteps"></div>
+  </section>
+    </div></div></div>
+  </section>
+
+  <!-- Chapter 2: field site (open by default) -->
+  <section class="chapter open" id="ch2">
+    <div class="ch-head"><span class="num">2</span><div><div class="ttl">A real site — past, present &amp; future</div><div class="sub">The same yard as a native OCPP charger, with the Spark gateway, and with LoRa energy.</div></div><span class="chev">▾</span></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+  <section class="deploy">
+    <h2>A real site — press play</h2>
+    <p class="muted" style="margin:0;max-width:82ch">Same chargers, same inHand router — but watch what the cloud path looks like
+      <b>before</b> the Spark gateway box (the charger&rsquo;s stock OCPP link) versus <b>with</b> it. The offline modes are the
+      whole point: native OCPP dies when the internet drops; the gateway keeps charging over BLE.</p>
+
+    <div class="ff-ctl">
+      <div class="ff-tabs" role="tablist">
+        <button class="ff-tab" data-era="past">◷ Past · native OCPP</button>
+        <button class="ff-tab active" data-era="present">● Present · Spark gateway</button>
+        <button class="ff-tab" data-era="future">✦ Future · LoRa energy</button>
+      </div>
+      <span class="scene-status on" id="sceneStatus">● GATEWAY ONLINE</span>
+    </div>
+    <div class="ff-states">
+      <div class="ff-state" data-era="past" hidden>
+        <button class="demo-btn on" id="btnOcppOn"><span class="d"></span>OCPP · Online</button>
+        <button class="demo-btn off" id="btnOcppOff"><span class="d"></span>OCPP · Offline</button>
+      </div>
+      <div class="ff-state" data-era="present">
+        <button class="demo-btn on active" id="btnGwOn"><span class="d"></span>Gateway · Online</button>
+        <button class="demo-btn off" id="btnGwOff"><span class="d"></span>Gateway · Offline (BLE)</button>
+      </div>
+      <div class="ff-state" data-era="future" hidden>
+        <button class="demo-btn fut" id="btnGwFuture"><span class="d"></span>LoRa · energy + power sharing</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div id="scene" class="era-gw st-on">
+      <svg viewBox="0 0 1160 560" role="img" aria-label="Field deployment data flow">
+        <!-- common spine: chargers -(Wi-Fi)-> TP-Link AP -(Ethernet)-> inHand -->
+        <text class="st-cap" x="70" y="14" text-anchor="middle">FIELD SITE</text>
+        <path class="link wifi" d="M124,37 C160,50 152,110 152,150"/>
+        <path class="link wifi" d="M124,101 C150,101 152,128 152,150"/>
+        <path class="link wifi" d="M124,165 C148,161 152,156 152,153"/>
+        <path class="link wifi" d="M124,229 C150,229 152,182 152,155"/>
+        <path class="link wifi" d="M124,293 C160,282 152,200 152,155"/>
+        <path class="link tpeth" d="M196,156 H251"/>
+        <text class="st-sub" x="223" y="141" text-anchor="middle">Ethernet</text>
+
+        <!-- ===== GATEWAY-BOX + MQTT CLOUD (gw-only) ===== -->
+        <g class="gw-only">
+          <text class="st-cap" x="480" y="14" text-anchor="middle">GATEWAY BOX</text>
+          <text class="st-cap" x="905" y="14" text-anchor="middle">MQTT CLOUD</text>
+          <path class="link eth" d="M347,156 H402"/>
+          <text class="st-sub" x="374" y="141" text-anchor="middle">Ethernet</text>
+          <path class="link uplink" d="M558,150 C602,150 612,48 648,48"/>
+          <text class="st-sub" x="600" y="92" text-anchor="middle">MQTTS 8883</text>
+          <path class="link cloud" d="M723,72 V116"/>
+          <path class="link cloud" d="M723,164 V208"/>
+          <path class="link cloud" d="M798,140 H884"/>
+          <path class="link ota" d="M884,48 C716,42 598,92 560,134"/>
+          <text class="st-sub" x="726" y="98" text-anchor="middle" style="fill:var(--amber);opacity:.8">OTA .bin</text>
+          <path class="link ipt" d="M506,366 C664,360 704,176 712,74"/>
+          <text class="st-sub" x="644" y="318" text-anchor="middle">IoT · broker-direct</text>
+          <path class="link ble" d="M478,350 C476,300 480,240 480,190"/>
+          <text class="st-sub" x="404" y="286" text-anchor="end" style="fill:#c79bf5">BLE · AUTH:key</text>
+          <g class="brk"><circle cx="602" cy="99" r="11" fill="#1a1016" stroke="var(--red)" stroke-width="2"/><path d="M597,94 l10,10 M607,94 l-10,10" stroke="var(--red)" stroke-width="2"/></g>
+          <g class="brk"><circle cx="710" cy="228" r="11" fill="#1a1016" stroke="var(--red)" stroke-width="2"/><path d="M705,223 l10,10 M715,223 l-10,10" stroke="var(--red)" stroke-width="2"/></g>
+          <g class="dev">
+            <rect class="devbox gw" x="402" y="122" width="156" height="66" rx="12"/>
+            <text class="st-lbl" x="480" y="150" text-anchor="middle">Gateway</text>
+            <text class="st-sub" x="480" y="168" text-anchor="middle">ESP32-S3 / Raspberry Pi</text>
+            <g class="buf-badge"><rect x="470" y="98" width="118" height="20" rx="10" fill="rgba(245,165,36,.16)" stroke="rgba(245,165,36,.5)"/><text x="529" y="112" text-anchor="middle" style="font:700 10px var(--mono);fill:var(--amber)">▪ buffering → SD/DB</text></g>
+          </g>
+          <g class="cloud-dev"><rect class="devbox" x="648" y="24" width="150" height="48" rx="10"/><text class="st-lbl" x="723" y="45" text-anchor="middle" style="font-size:12px">HiveMQ Broker</text><text class="st-sub" x="723" y="61" text-anchor="middle">MQTTS 8883</text></g>
+          <g class="cloud-dev"><rect class="devbox" x="648" y="116" width="150" height="48" rx="10"/><text class="st-lbl" x="723" y="137" text-anchor="middle" style="font-size:12px">Cloud VM</text><text class="st-sub" x="723" y="153" text-anchor="middle">Node backend</text></g>
+          <g class="cloud-dev"><rect class="devbox" x="648" y="208" width="150" height="48" rx="10"/><text class="st-lbl" x="723" y="229" text-anchor="middle" style="font-size:12px">Supabase</text><text class="st-sub" x="723" y="245" text-anchor="middle">Postgres + Auth</text></g>
+          <g class="cloud-dev"><rect class="devbox" x="884" y="116" width="176" height="48" rx="10"/><text class="st-lbl" x="972" y="137" text-anchor="middle" style="font-size:12px">Admin Console</text><text class="st-sub" x="972" y="153" text-anchor="middle">web · kiosk · mobile</text></g>
+          <g class="cloud-dev"><rect class="devbox" x="884" y="24" width="176" height="48" rx="10"/><text class="st-lbl" x="972" y="45" text-anchor="middle" style="font-size:12px">Firmware Store</text><text class="st-sub" x="972" y="61" text-anchor="middle">S3 buckets · FTP</text></g>
+          <g class="dev">
+            <rect class="devbox" x="430" y="350" width="92" height="170" rx="15"/>
+            <rect x="440" y="368" width="72" height="120" rx="6" fill="var(--panel3)" stroke="var(--border)"/>
+            <circle cx="476" cy="360" r="2.4" fill="var(--muted)"/>
+            <text class="st-lbl" x="476" y="414" text-anchor="middle" style="font-size:11px">Spark</text>
+            <text class="st-lbl" x="476" y="430" text-anchor="middle" style="font-size:11px">Box</text>
+            <text class="st-sub" x="476" y="506" text-anchor="middle">Mobile · IoT/BLE</text>
+            <g class="ble-badge"><rect x="428" y="326" width="96" height="20" rx="10" fill="rgba(168,85,247,.16)" stroke="rgba(168,85,247,.5)"/><text x="476" y="340" text-anchor="middle" style="font:700 10px var(--mono);fill:#c79bf5">BLE ACTIVE</text></g>
+          </g>
+          <!-- on-site Kiosk HMI (RPi local UI) + payment terminal -->
+          <path class="link hmi" d="M520,188 C560,300 618,356 690,374"/>
+          <text class="st-sub" x="556" y="340" text-anchor="middle" style="fill:var(--green)">local UI :8080</text>
+          <path class="link hmi" d="M832,430 H800"/>
+          <g class="dev">
+            <rect class="devbox" x="590" y="374" width="210" height="104" rx="12"/>
+            <rect x="604" y="390" width="182" height="56" rx="6" fill="var(--panel3)" stroke="var(--border)"/>
+            <rect x="614" y="399" width="36" height="38" rx="5" fill="rgba(56,189,248,.14)" stroke="rgba(56,189,248,.4)"/>
+            <text x="632" y="423" text-anchor="middle" style="font:700 13px var(--mono);fill:var(--cyan)">1</text>
+            <text class="st-sub" x="662" y="410" text-anchor="start">pick a bay →</text>
+            <text class="st-sub" x="662" y="426" text-anchor="start">pay &amp; start</text>
+            <text class="st-lbl" x="695" y="465" text-anchor="middle" style="font-size:12px">Kiosk HMI</text>
+            <text class="st-sub" x="695" y="479" text-anchor="middle">on-site touchscreen · RPi</text>
+          </g>
+          <g class="dev">
+            <rect class="devbox" x="832" y="384" width="120" height="92" rx="10"/>
+            <rect x="846" y="398" width="92" height="30" rx="4" fill="var(--panel3)" stroke="var(--border)"/>
+            <rect x="852" y="439" width="80" height="7" rx="3" fill="var(--border)"/>
+            <text class="st-lbl" x="892" y="463" text-anchor="middle" style="font-size:12px">Payment</text>
+            <text class="st-sub" x="892" y="478" text-anchor="middle">tap · card · app</text>
+          </g>
+          <!-- FUTURE: LoRa live-energy monitoring + dynamic power sharing -->
+          <g class="future-only">
+            <text x="480" y="112" text-anchor="middle" style="font:700 11px var(--mono);fill:#ffb877">⚡ dynamic power sharing</text>
+            <!-- LoRa RX directly below the gateway -->
+            <g><rect x="416" y="194" width="128" height="26" rx="8" fill="rgba(255,159,67,.14)" stroke="rgba(255,159,67,.6)"/><text x="480" y="211" text-anchor="middle" style="font:700 11px var(--mono);fill:#ffb877">LoRa RX</text></g>
+            <!-- LoRa (wireless · long range): TX box -> RX under gateway -->
+            <path class="link lora" d="M182,396 C300,356 384,250 416,208"/>
+            <text class="st-sub" x="298" y="322" text-anchor="middle" style="fill:#ff9f43">LoRa · long range</text>
+            <!-- box 2 (on top): energy meter + LoRa TX -->
+            <g class="dev"><rect class="devbox" x="90" y="396" width="150" height="48" rx="10"/><text class="st-lbl" x="165" y="418" text-anchor="middle" style="font-size:12px">Energy Meter</text><text class="st-sub" x="165" y="434" text-anchor="middle" style="fill:#ffb877">+ LoRa TX</text></g>
+            <!-- box 1 (bottom): site power panel -->
+            <g class="dev"><rect class="devbox" x="70" y="452" width="190" height="42" rx="10"/><text class="st-lbl" x="165" y="478" text-anchor="middle" style="font-size:12px">Site Power Panel</text></g>
+          </g>
+        </g>
+
+        <!-- ===== NATIVE OCPP CLOUD (ocpp-only, no gateway) ===== -->
+        <g class="ocpp-only">
+          <text class="st-cap" x="640" y="14" text-anchor="middle">NATIVE OCPP · NO GATEWAY BOX</text>
+          <path class="link ocppup" d="M347,156 C425,156 490,151 560,151"/>
+          <text class="st-sub" x="440" y="138" text-anchor="middle">OCPP 1.6J · wss (internet)</text>
+          <path class="link ocpplink" d="M740,138 C790,138 800,92 824,92"/>
+          <path class="link ocpplink" d="M740,164 C790,164 800,214 824,214"/>
+          <g class="ocpp-brk"><circle cx="470" cy="153" r="11" fill="#1a1016" stroke="var(--red)" stroke-width="2"/><path d="M465,148 l10,10 M475,148 l-10,10" stroke="var(--red)" stroke-width="2"/></g>
+          <g class="ocpp-dev"><rect class="devbox ocpp" x="560" y="116" width="180" height="70" rx="12"/><text class="st-lbl" x="650" y="147" text-anchor="middle">OCPP CSMS</text><text class="st-sub" x="650" y="165" text-anchor="middle">central system (cloud)</text></g>
+          <g class="ocpp-dev"><rect class="devbox ocpp" x="824" y="64" width="212" height="56" rx="10"/><text class="st-lbl" x="930" y="88" text-anchor="middle" style="font-size:12px">OCPP Dashboard</text><text class="st-sub" x="930" y="104" text-anchor="middle">operator web</text></g>
+          <g class="ocpp-dev"><rect class="devbox ocpp" x="824" y="186" width="212" height="56" rx="10"/><text class="st-lbl" x="930" y="210" text-anchor="middle" style="font-size:12px">OCPP User App</text><text class="st-sub" x="930" y="226" text-anchor="middle">driver app</text></g>
+          <g class="nocontrol"><rect x="150" y="352" width="330" height="36" rx="10" fill="rgba(255,59,82,.12)" stroke="rgba(255,59,82,.5)"/><text x="315" y="375" text-anchor="middle" style="font:700 12px var(--mono);fill:#ff8592">✕ No local control — cloud is the only path</text></g>
+        </g>
+
+        <!-- ===== common devices (on top) ===== -->
+        <g class="dev">
+          <rect class="devbox" x="14" y="22" width="110" height="30" rx="8"/><text class="st-lbl" x="69" y="42" text-anchor="middle" style="font-size:11px">Charger 1</text>
+          <rect class="devbox" x="14" y="86" width="110" height="30" rx="8"/><text class="st-lbl" x="69" y="106" text-anchor="middle" style="font-size:11px">Charger 2</text>
+          <rect class="devbox" x="14" y="150" width="110" height="30" rx="8"/><text class="st-lbl" x="69" y="170" text-anchor="middle" style="font-size:11px">Charger 3</text>
+          <rect class="devbox" x="14" y="214" width="110" height="30" rx="8"/><text class="st-lbl" x="69" y="234" text-anchor="middle" style="font-size:11px">Charger 4</text>
+          <rect class="devbox" x="14" y="278" width="110" height="30" rx="8"/><text class="st-lbl" x="69" y="298" text-anchor="middle" style="font-size:11px">Charger 5</text>
+          <text class="st-sub" x="69" y="330" text-anchor="middle">ESP32 + AVR · OCPP · :80</text>
+        </g>
+        <!-- TP-Link EAP225-Outdoor — site Wi-Fi AP (antenna icon) -->
+        <g class="dev">
+          <rect x="152" y="148" width="44" height="20" rx="4" fill="var(--panel)" stroke="var(--border2)" stroke-width="1.5"/>
+          <circle cx="174" cy="158" r="2" fill="var(--green)"/>
+          <path d="M163,147 a14,14 0 0 1 22,0" fill="none" stroke="var(--green)" stroke-width="2"/>
+          <path d="M158,141 a20,20 0 0 1 32,0" fill="none" stroke="var(--green)" stroke-width="2" opacity=".5"/>
+          <text class="st-lbl" x="174" y="188" text-anchor="middle" style="font-size:10.5px">TP-Link EAP225</text>
+          <text class="st-sub" x="174" y="201" text-anchor="middle">Outdoor AP</text>
+        </g>
+        <!-- inHand industrial router (site internet uplink) -->
+        <g class="dev">
+          <rect class="devbox" x="251" y="130" width="96" height="52" rx="11"/>
+          <text class="st-lbl" x="299" y="152" text-anchor="middle">inHand</text>
+          <text class="st-sub" x="299" y="168" text-anchor="middle">Site router</text>
+        </g>
+      </svg>
+      </div>
+    </div>
+
+    <div class="demo-narr on" id="demoNarr">
+      <div class="nh" id="narrHead">OCPP online — the charger&rsquo;s stock cloud path</div>
+      <ol id="narrList"></ol>
+    </div>
+  </section>
+      <p class="tiphint">Tip: hover any box on the map for details. Switch <b>Past / Present / Future</b> above, and toggle <b>online / offline</b> to see what survives an internet outage.</p>
+    </div></div></div>
+  </section>
+
+  <!-- Chapter 3: stage by stage -->
+  <section class="chapter" id="ch3">
+    <div class="ch-head"><span class="num">3</span><div><div class="ttl">The full data path</div><div class="sub">The seven-layer signal path — press Play to build it stage by stage.</div></div><span class="chev">▾</span></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <p class="muted" style="margin:2px 0 2px;max-width:76ch">The exact seven-layer signal path — one charge session from a charger in the ground to your browser.
+        Hit <b>Play</b> and it builds itself stage by stage. <b style="color:var(--cyan)">Cyan</b> streams carry telemetry up; <b style="color:#ff8592">red</b> streams carry commands down.</p>
+      <div class="flow-ctl">
+        <button class="demo-btn" id="flowPlay"><span class="d" style="background:var(--cyan)"></span>▶ Play the path</button>
+        <button class="demo-btn" id="flowReset">↺ Reset</button>
+        <span class="flow-count" id="flowCount">Stage 0 / 7</span>
+        <span class="flow-now" id="flowNow"></span>
+      </div>
+      <div class="stack seq" id="flowStack">
+<!-- LAYER 1 — NODE -->
+      <div class="band">
+        <div class="band-tag">Field · the charger</div>
+        <div class="card">
+          <div class="ct">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z" fill="var(--red)" stroke="none"/></svg></span>
+            <div>
+              <h3>EV Charger Node &nbsp;<span class="role">· Soneil-EV Spark (ChargeLab “grizzle” fork)</span></h3>
+              <div class="role">Dual-MCU charger: ESP32 brain + AVR/STM power board</div>
+            </div>
+          </div>
+          <div class="row2" style="margin-top:12px">
+            <div class="card" style="background:var(--panel3)">
+              <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>
+                <h3 style="font-size:14px">AVR / STM board</h3></div>
+              <p class="desc">Pilot &amp; relay control, current setting, live metering (V·A·Wh·W), safety trips
+                (GFCI, ground, over-current/voltage/temp).</p>
+              <div class="meta"><span class="tag rd">UART · L:&lt;cmd&gt;:&lt;val&gt; · 38400</span></div>
+            </div>
+            <div class="card" style="background:var(--panel3)">
+              <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M5 12.5a11 11 0 0 1 14 0M2 9a16 16 0 0 1 20 0M8.5 16a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="var(--cyan)"/></svg></span>
+                <h3 style="font-size:14px">ESP32 controller</h3></div>
+              <p class="desc">WiFi (AP+STA), local HTTP API on port 80, OCPP 1.6J client, logging, config, OTA.
+                Flashes the AVR firmware.</p>
+              <div class="meta"><span class="tag cy">HTTP :80</span><span class="tag gr">OCPP 1.6J · wss</span></div>
+            </div>
+          </div>
+          <div class="ilink" aria-hidden="true">
+            <span class="il-end">AVR</span>
+            <span class="il-lanes"><span class="il rx"></span><span class="il tx"></span></span>
+            <span class="il-chip">UART ⇄ serial · 38400</span>
+            <span class="il-lanes"><span class="il rx"></span><span class="il tx"></span></span>
+            <span class="il-end">ESP32</span>
+          </div>
+          <div class="apis"><b>LAN API (open, plaintext):</b> /chargerInfo · /avr_logs · /GetMeterValue · /wifi_status ·
+            /charger_activation_state · /logs (text stream) · /Start_charging · /Stop_charging · /set_Current=A ·
+            /max_current_limit=A · /back_end_ocpp_url= · /authorize= …</div>
+          <p class="desc">Two independent control planes: a <b style="color:var(--green)">cloud</b> OCPP link to a CSMS, and a
+            <b style="color:var(--cyan)">local</b> HTTP path the site gateway drives — so charging keeps working even with no CSMS.</p>
+        </div>
+      </div>
+
+      <div class="conn">
+        <div class="lanes"><div class="lane up"></div><div class="lane down"></div></div>
+        <div class="conn-label"><span class="dn">▲ poll (4 APIs / cycle)</span> · HTTP GET :80 over LAN · <span class="u">▼ control</span></div>
+      </div>
+
+      <!-- LAYER 2 — LAN -->
+      <div class="band">
+        <div class="band-tag">Site · LAN</div>
+        <div class="card">
+          <div class="ct">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><rect x="2" y="9" width="20" height="9" rx="2"/><path d="M6 9V6M18 9V6M12 9V5"/><circle cx="7" cy="13.5" r="1" fill="var(--muted)"/><circle cx="12" cy="13.5" r="1" fill="var(--muted)"/><circle cx="17" cy="13.5" r="1" fill="var(--muted)"/></svg></span>
+            <div><h3>Site router / LAN</h3><div class="role">Chargers &amp; gateway are DHCP hosts on the same /24</div></div>
+          </div>
+          <p class="desc">The gateway discovers chargers by scanning the subnet (TCP :80 probe → fingerprint
+            <span class="mono" style="color:var(--cyan)">/chargerInfo</span> by <span class="mono">serial_Number</span>),
+            then caches serial→IP so reboots skip the sweep.</p>
+        </div>
+      </div>
+
+      <div class="conn">
+        <div class="lanes"><div class="lane up"></div><div class="lane down"></div></div>
+        <div class="conn-label">Ethernet (ESP32-S3) / eth0 (RPi)</div>
+      </div>
+
+      <!-- LAYER 3 — GATEWAY -->
+      <div class="band">
+        <div class="band-tag">Edge · the gateway</div>
+        <div class="row2">
+          <div class="card">
+            <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+              <div><h3>ESP32-S3 Gateway</h3><div class="role">Waveshare ESP32-S3-ETH · W5500 wired</div></div></div>
+            <p class="desc">Bare-metal Arduino/FreeRTOS. Core 0 polls the LAN; Core 1 keeps MQTT alive.
+              TLS via SSLClient/BearSSL. Offline buffer on <b>SD card</b> (JSONL).</p>
+            <div class="meta"><span class="tag cy">9.1.12-tls-eth</span><span class="tag">DHCP</span><span class="tag am">SD buffer</span><span class="tag vi">BLE</span></div>
+          </div>
+          <div class="card">
+            <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8.5" y="8.5" width="7" height="7" rx="1"/><path d="M8 4V2M12 4V2M16 4V2M8 22v-2M12 22v-2M16 22v-2"/></svg></span>
+              <div><h3>Raspberry&nbsp;Pi Gateway</h3><div class="role">Python asyncio · systemd services</div></div></div>
+            <p class="desc">Same MQTT contract as the ESP32. Polls every 2&nbsp;s, buffers offline to <b>SQLite</b>
+              (auto-replay at QoS&nbsp;1), serves a local UI + LAN API, OTA with crash-loop rollback.</p>
+            <div class="meta"><span class="tag rd">2.6.39-tls</span><span class="tag">eth0</span><span class="tag am">SQLite buffer</span><span class="tag vi">BLE + AP</span></div>
+          </div>
+        </div>
+        <div class="row2 kiosk-row">
+          <div class="kiosk-spacer" aria-hidden="true"></div>
+          <div class="kiosk-cell">
+            <div class="dlink" aria-hidden="true"><span class="dl-pair"><span class="dl rx"></span><span class="dl tx"></span></span><span class="dl-lbl">RPi &harr; HMI · local UI :8080</span></div>
+            <div class="card">
+              <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+                <div><h3>Kiosk HMI + Payment</h3><div class="role">On-site touchscreen · Raspberry Pi</div></div></div>
+              <p class="desc">Pick a bay, tap to pay, start charging — a local touchscreen wired to the RPi. Works with no internet.</p>
+              <div class="meta"><span class="tag gr">local UI :8080</span><span class="tag">tap · card · app</span><span class="tag am">offline-capable</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="row-note">one gateway per site · interchangeable · identical broker contract</p>
+      </div>
+
+      <div class="conn">
+        <div class="lanes"><div class="lane down"></div><div class="lane up"></div><div class="lane down"></div></div>
+        <div class="conn-label"><span class="p">MQTTS · TLS 8883</span> &nbsp; <span class="dn">▼ telemetry · status · heartbeat · offline_data · response</span> &nbsp;/&nbsp; <span class="u">▲ cmd · ota</span></div>
+      </div>
+
+      <!-- LAYER 4 — BROKER -->
+      <div class="band">
+        <div class="band-tag">Cloud · transport</div>
+        <div class="card">
+          <div class="ct">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M6 16a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4.5 4.5 0 0 1 18 16z"/></svg></span>
+            <div><h3>HiveMQ Cloud &nbsp;<span class="live"></span></h3><div class="role">Managed MQTT broker · TLS 8883 · topic tree <span class="mono">sparkcharger/gateway/…</span></div></div>
+          </div>
+          <p class="desc">Every gateway and every client is just another authenticated MQTT client here. Retained
+            <span class="mono" style="color:var(--cyan)">status</span> + <span class="mono" style="color:var(--cyan)">heartbeat</span>
+            give any newcomer instant fleet state; last-will marks a gateway offline.</p>
+          <div class="meta">
+            <span class="tag cy">…/telemetry/&lt;serial&gt;/data · /info</span>
+            <span class="tag cy">…/status</span><span class="tag cy">…/heartbeat</span>
+            <span class="tag cy">…/response</span><span class="tag cy">…/offline_data</span>
+            <span class="tag rd">…/cmd</span><span class="tag rd">…/ota</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="conn">
+        <div class="lanes"><div class="lane down"></div><div class="lane up"></div></div>
+        <div class="conn-label"><span class="p">MQTTS 8883</span> — one always-on subscriber per client</div>
+      </div>
+
+      <!-- LAYER 5 — BROKER CLIENTS -->
+      <div class="band">
+        <div class="band-tag">Cloud · services &amp; fat clients</div>
+        <div class="row2" style="grid-template-columns:1.25fr 1fr">
+          <div class="card">
+            <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+              <div><h3>Console Backend · GCP VM</h3><div class="role">Node.js · pm2 · Caddy TLS · spark-console.example.com</div></div></div>
+            <p class="desc">The <b>only</b> MQTT client for the web console — it holds the broker credentials, keeps one
+              always-on connection (no cold-launch node-numbering race), fans commands/OTA out, and mirrors traffic to the DB.
+              Also runs the <b>auth-key rotation</b> and validates logins via Supabase.</p>
+            <div class="meta"><span class="tag cy">only broker client</span><span class="tag gr">JWT session</span><span class="tag am">key rotation</span><span class="tag">WS → browser</span></div>
+          </div>
+          <div class="card">
+            <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+              <div><h3>Operator Kiosk <span class="role">· C# WPF</span></h3><div class="role">Direct-to-infra fat client</div></div></div>
+            <p class="desc">Talks straight to the broker (holds creds itself) with three transports and automatic
+              fallback: <b>MQTT</b> → <b>BLE-Op</b> → <b>AP HTTP</b>.</p>
+            <div class="meta"><span class="tag cy">MQTT direct</span><span class="tag vi">BLE AUTH:key</span><span class="tag am">AP :8089</span></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px; border-style:dashed; border-color:var(--border2)">
+          <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+            <div><h3>Mobile App &nbsp;<span class="tag am" style="vertical-align:middle">migration planned</span></h3>
+            <div class="role">Today: talks straight to the broker · Planned: routed through the backend</div></div></div>
+          <p class="desc">The phone app currently connects to the broker directly (same pattern as the kiosk). The roadmap
+            is to point it at the console backend instead — so broker credentials live in exactly one place and the mobile
+            client becomes a thin, backend-authenticated consumer, just like the web console.</p>
+          <div class="flow-mini"><span class="b">now:</span> Mobile ⇄ Broker &nbsp;&nbsp;→&nbsp;&nbsp; <span class="a">planned:</span> Mobile ⇄ Backend ⇄ Broker</div>
+        </div>
+      </div>
+
+      <div class="conn">
+        <div class="lanes"><div class="lane down"></div><div class="lane up"></div></div>
+        <div class="conn-label"><span class="p">HTTPS · PostgREST + Auth</span> — backend writes/reads</div>
+      </div>
+
+      <!-- LAYER 6 — SUPABASE -->
+      <div class="band">
+        <div class="band-tag">Cloud · state</div>
+        <div class="card">
+          <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+            <div><h3>Supabase &nbsp;<span class="role">· project “spark-gateway-logs”</span></h3><div class="role">Postgres + Auth — the system of record</div></div></div>
+          <p class="desc">Every MQTT in/out message (except the high-rate telemetry stream) is captured for backtracking;
+            login is validated against Supabase Auth; auth-key issuance and console settings are persisted here.</p>
+          <div class="meta"><span class="tag gr">mqtt_events</span><span class="tag am">auth_key_events</span><span class="tag">app_settings</span><span class="tag vi">Auth · users</span></div>
+        </div>
+      </div>
+
+      <div class="conn">
+        <div class="lanes"><div class="lane down"></div><div class="lane up"></div></div>
+        <div class="conn-label"><span class="p">HTTPS /api · WSS /ws</span> — JWT-gated · <span class="dn">▼ live state</span> / <span class="u">▲ actions</span></div>
+      </div>
+
+      <!-- LAYER 7 — CONSOLE -->
+      <div class="band">
+        <div class="band-tag">Client · operator</div>
+        <div class="card" style="background:linear-gradient(180deg,rgba(255,59,82,.06),var(--panel2))">
+          <div class="ct"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 8h20M6 21h12"/></svg></span>
+            <div><h3>Spark Admin Web Console</h3><div class="role">Browser SPA — never touches the broker directly</div></div></div>
+          <p class="desc">Login-gated fleet view &amp; control from anywhere: live gateways/nodes, per-node start/stop/set,
+            gateway reboots &amp; factory resets, OTA rollout, live MQTT log, the Supabase database browser, and BLE
+            auth-key rotation — all through the backend over HTTPS + WebSocket.</p>
+          <div class="meta"><span class="tag rd">talks only to backend</span><span class="tag cy">live WS state</span><span class="tag gr">fleet control</span><span class="tag am">OTA · logs · DB browser</span></div>
+        </div>
+      </div>
+      </div>
+    </div></div></div>
+  </section>
+
+  <!-- Chapter 4: layer by layer -->
+  <section class="chapter" id="ch4">
+    <div class="ch-head"><span class="num">4</span><div><div class="ttl">Layer by layer</div><div class="sub">The facts behind each box — hardware, interfaces, resilience.</div></div><span class="chev">▾</span></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+<section>
+    <h2 style="font-size:clamp(20px,2.6vw,28px);font-weight:800;margin:0 0 22px">The facts behind each box</h2>
+    <div class="grid">
+
+      <div class="dcard">
+        <h3><span style="color:var(--red)">◆</span> Charger node</h3>
+        <div class="kv">Hardware</div>
+        <ul>
+          <li><b>ESP32</b> (WiFi AP+STA) + <b>AVR/STM</b> power board, linked over UART with an ASCII <code>L:&lt;cmd&gt;:&lt;val&gt;</code> line protocol at 38400.</li>
+          <li>ESP flashes the AVR from an embedded image; AVR owns relay, pilot, current &amp; safety.</li>
+        </ul>
+        <div class="kv">Interfaces</div>
+        <ul>
+          <li>Open HTTP API on <b>port 80</b> (no auth — LAN-isolated), incl. <code>/logs</code> as a continuous text stream.</li>
+          <li><b>OCPP 1.6J</b> WebSocket to a CSMS + fully-offline “dumb”/plug-and-charge modes.</li>
+          <li>Identity = <b>serial number</b> (flash partition); AP SSID <code>Spark_&lt;serial&gt;</code> @ 192.168.4.1.</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <h3><span style="color:var(--cyan)">◆</span> Gateways (ESP32 &amp; RPi)</h3>
+        <div class="kv">Discovery &amp; poll</div>
+        <ul>
+          <li>Subnet TCP :80 scan → fingerprint <code>/chargerInfo</code>; cache serial→IP; ownership/claim model.</li>
+          <li>Per-cycle sweep of <code>/wifi_status · /charger_activation_state · /avr_logs · /GetMeterValue</code> (ESP ~sub-second, RPi 2&nbsp;s).</li>
+        </ul>
+        <div class="kv">Resilience</div>
+        <ul>
+          <li>Offline buffer — ESP <b>SD/JSONL</b>, RPi <b>SQLite</b> — replayed on reconnect via <code>offline_data</code>.</li>
+          <li><b>BLE operational</b> fallback (AUTH:&lt;key&gt;) + OTA (TLS download, verify, swap, rollback).</li>
+          <li>Site Wi-Fi coverage extended with a <b>TP-Link EAP225-Outdoor</b> (Omada AC1200) outdoor AP so every charger bay stays reachable.</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <h3><span style="color:var(--green)">◆</span> Broker &amp; backend</h3>
+        <div class="kv">HiveMQ Cloud</div>
+        <ul>
+          <li>MQTTS <b>8883</b>, topic root <code>sparkcharger/gateway/…</code>; retained status/heartbeat + last-will.</li>
+        </ul>
+        <div class="kv">Node backend (GCP VM)</div>
+        <ul>
+          <li>Sole broker client for the console; holds creds; always-on so it sees every publish from both gateway types.</li>
+          <li>Fans out commands/OTA, mirrors traffic to Supabase, rotates BLE auth keys, issues JWT sessions.</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <h3><span style="color:var(--violet)">◆</span> Clients</h3>
+        <div class="kv">Web console</div>
+        <ul>
+          <li>Browser SPA over HTTPS + WebSocket; <b>never</b> touches the broker — the backend is the only path.</li>
+        </ul>
+        <div class="kv">Kiosk (C# WPF)</div>
+        <ul>
+          <li>Direct-to-infrastructure fat client, 3 transports with fallback (MQTT → BLE-Op → AP HTTP).</li>
+        </ul>
+        <div class="kv">Mobile (Flutter)</div>
+        <ul>
+          <li>Two transports — <b>IPT</b> (broker-direct) online + <b>BLE</b> offline. Broker-direct today; <b>planned</b> to route through the backend.</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <h3><span style="color:var(--amber)">◆</span> Firmware artifacts (OTA source)</h3>
+        <div class="kv">Where the .bin lives</div>
+        <ul>
+          <li><b>Amazon S3 buckets</b> host the gateway firmware images — ESP32 <code>.bin</code> and RPi <code>.tar.gz</code> release bundles.</li>
+          <li>The <b>charger-node</b> firmware file is served from an <b>FTP server</b>.</li>
+        </ul>
+        <div class="kv">How it's pulled</div>
+        <ul>
+          <li>An operator triggers OTA from the console/kiosk → backend publishes <code>{"url":"…"}</code> to <code>…/ota</code>.</li>
+          <li>The gateway <b>downloads directly</b> from S3 over TLS (Amazon Root CA pinned), verifies, flashes, and reports progress on the <code>status</code> topic; the node pulls its image over FTP via <code>/esp_OTA</code> / <code>AvrUpdate</code>.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+    </div></div></div>
+  </section>
+
+  <!-- Chapter 5: two paths, one system -->
+  <section class="chapter" id="ch5">
+    <div class="ch-head"><span class="num">5</span><div><div class="ttl">Two paths, one system</div><div class="sub">Online &amp; offline are first-class — plus the auth-key bridge &amp; LoRa roadmap.</div></div><span class="chev">▾</span></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+<section>
+    <h2 style="font-size:clamp(20px,2.6vw,28px);font-weight:800;margin:0 0 22px">Online &amp; offline are first-class</h2>
+    <div class="paths">
+      <div class="call on">
+        <h3><span style="color:var(--cyan)">▲</span> Online path (MQTT)</h3>
+        <ol>
+          <li>Gateway polls chargers over LAN HTTP and <b>publishes</b> telemetry/status.</li>
+          <li>Broker fans it to every subscriber; the backend mirrors it into <b>Supabase</b>.</li>
+          <li>Console/kiosk render live; operators send <b>commands/OTA</b> back down the same tree.</li>
+        </ol>
+        <div class="flow-mini"><span class="a">charger → gateway → broker → backend → DB → console</span></div>
+      </div>
+      <div class="call off">
+        <h3><span style="color:var(--amber)">◆</span> Offline path (BLE / SD / AP)</h3>
+        <ol>
+          <li>Broker unreachable → gateway <b>buffers</b> to SD/SQLite and keeps polling.</li>
+          <li>A phone/kiosk operates it locally over <b>BLE</b> (or WiFi-AP), authorized by the rotating <b>auth key</b>.</li>
+          <li>On reconnect the gateway <b>replays</b> the buffer (QoS 1) so no history is lost.</li>
+        </ol>
+        <div class="flow-mini"><span class="b">gateway ⇄ SD/SQLite · BLE AUTH:&lt;key&gt; · replay on reconnect</span></div>
+      </div>
+    </div>
+    <div class="call" style="margin-top:16px;background:linear-gradient(180deg,rgba(245,165,36,.05),transparent)">
+      <h3><span style="color:var(--amber)">⚿</span> Auth-key rotation — the bridge between online &amp; offline</h3>
+      <p class="desc" style="font-size:13.5px">The backend generates a fresh random key per <b>online</b> gateway on an interval, pushes
+        <code style="font-family:var(--mono);color:var(--amber)">set_auth_key=&lt;key&gt;</code> over MQTT, and records ok/fail in Supabase. That same key is
+        what BLE-Op and the AP HTTP API validate — so when a gateway drops offline, a phone can still operate it locally with the
+        <b>last key it successfully received</b>, until it’s back online and rotates again.</p>
+    </div>
+    <div class="call" style="margin-top:16px;background:linear-gradient(180deg,rgba(255,159,67,.06),transparent)">
+      <h3><span style="color:#ffb877">⚡</span> Roadmap · LoRa energy management &amp; dynamic power sharing</h3>
+      <p class="desc" style="font-size:13.5px">A <b>LoRa module</b> at the site power panel streams the building&rsquo;s
+        <b>live energy-meter</b> readings to a <b>LoRa receiver on the gateway</b>. LoRa&rsquo;s long range covers the whole
+        site — any LoRa meter or sensor is reachable with no extra wiring.</p>
+      <ol>
+        <li>The gateway uses the live readings for <b>dynamic power sharing</b> — allocating charger current against the site /
+          building capacity in real time, so the panel is never overloaded.</li>
+        <li>Energy packets are <b>appended to the existing MQTT stream</b>, so the same cloud path (broker → VM → Supabase →
+          console) gains <b>full live energy visibility</b> with no new pipeline to build.</li>
+        <li>The setup ships with a <b>live energy-monitoring</b> view for the operator out of the box.</li>
+        <li><b>Future:</b> AI models that adapt charging to <b>live electricity price, demand &amp; available capacity</b> —
+          smart, cost-aware energy management across the whole fleet.</li>
+      </ol>
+    </div>
+  </section>
+    </div></div></div>
+  </section>
+
+  <!-- Chapter 6: topic contract -->
+  <section class="chapter" id="ch6">
+    <div class="ch-head"><span class="num">6</span><div><div class="ttl">MQTT topic contract</div><div class="sub">One namespace, spoken identically by every ESP32 and Raspberry Pi gateway.</div></div><span class="chev">▾</span></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <div class="tscroll"><table class="ttab">
+        <thead><tr><th>Topic</th><th>Direction</th><th>Retained</th><th>Purpose</th></tr></thead>
+        <tbody>
+            <tr><td><code>sparkcharger/gateway/status</code></td><td class="dir">gw → cloud</td><td class="ret">retained</td><td>Global fleet roster &amp; online/offline status</td></tr>
+            <tr><td><code>sparkcharger/&lt;mac&gt;/telemetry/&lt;serial&gt;/data</code></td><td class="dir">gw → cloud</td><td class="ret"></td><td>Per-charger live telemetry</td></tr>
+            <tr><td><code>sparkcharger/&lt;mac&gt;/telemetry/&lt;serial&gt;/info</code></td><td class="dir">gw → cloud</td><td class="ret"></td><td>Per-charger static/identity info</td></tr>
+            <tr><td><code>sparkcharger/&lt;mac&gt;/heartbeat</code></td><td class="dir">gw → cloud</td><td class="ret"></td><td>Gateway liveness</td></tr>
+            <tr><td><code>sparkcharger/&lt;mac&gt;/response</code></td><td class="dir">gw → cloud</td><td class="ret"></td><td>Command replies &amp; chunked bodies</td></tr>
+            <tr><td><code>sparkcharger/&lt;mac&gt;/offline_data</code></td><td class="dir">gw → cloud</td><td class="ret"></td><td>Buffered SD replay after reconnect</td></tr>
+            <tr><td><code>sparkcharger/&lt;mac&gt;/cmd</code></td><td class="dir">cloud → gw</td><td class="ret"></td><td>Control commands (QoS 1)</td></tr>
+            <tr><td><code>sparkcharger/&lt;mac&gt;/ota</code></td><td class="dir">cloud → gw</td><td class="ret"></td><td>Targeted firmware OTA</td></tr>
+            <tr><td><code>sparkcharger/gateway/ota</code></td><td class="dir">cloud → fleet</td><td class="ret">retained</td><td>Fleet-wide firmware OTA</td></tr>
+        </tbody>
+      </table></div>
+    </div></div></div>
+  </section>
+
+  <footer>
+    <div class="mono">Spark EV Gateway Platform · end-to-end architecture</div>
+    <div style="margin-top:6px">charger node <b class="mono" style="color:var(--muted)">grizzle&nbsp;3.3.1:45</b> ·
+      ESP32 gateway <b class="mono" style="color:var(--muted)">9.1.12-tls-eth</b> ·
+      RPi gateway <b class="mono" style="color:var(--muted)">2.6.39-tls</b> ·
+      HiveMQ · Node/GCP · Supabase</div>
+    <p class="disc">Diagram reflects the current codebase; broker/database credentials intentionally omitted.
+      Colors: <span style="color:var(--cyan)">cyan = data</span>, <span style="color:#ff8592">red = control</span>,
+      <span style="color:var(--violet)">violet = BLE/offline</span>, <span style="color:var(--green)">green = live/OK</span>.</p>
+  </footer>
+
+  <script>
+    (function(){
+      var g=function(id){return document.getElementById(id);};
+      var steps=[
+        {t:'Phone bonds to the gateway over <b>BLE</b> (provisioning service <b>12345678-…</b>) while it&rsquo;s in provision mode.',
+         scr:['Connecting…','BLE · gateway'], on:['lnkBle'], hot:['paPhone','paGw'], gw:'provisioning mode'},
+        {t:'In the app the user taps <b>Scan Wi-Fi</b> — the <b>phone</b> lists the networks it can see nearby.',
+         scr:['Scanning Wi-Fi','nearby networks…'], on:['lnkScan'], hot:['paPhone','paWifi'], gw:'provisioning mode'},
+        {t:'User <b>picks the site network</b> (inHand-Spark) and types <b>only the password</b> — the SSID comes from the scan, never typed.',
+         scr:['inHand-Spark','password ••••••••'], on:['lnkScan'], hot:['paWifi'], gw:'provisioning mode'},
+        {t:'User taps <b>Scan chargers</b> — the phone discovers each charger&rsquo;s Wi-Fi AP (<b>Spark_0001…0005</b>), lighting up one after another.',
+         scr:['Scanning chargers','0 / 5 found'], disc:true, hot:['paPhone'], gw:'provisioning mode'},
+        {t:'User hits <b>Confirm</b> — the phone sends the chosen <b>SSID + password + charger list</b> to the gateway over BLE (<b>GO</b>).',
+         scr:['Confirm ✓ Sending','creds + list → GW'], on:['lnkBle'], sel:true, hot:['paPhone','paGw'], gw:'received · starting'},
+        {t:'Gateway <b>hops charger-to-charger</b> over Wi-Fi (each SoftAP <b>Spark_XXXX @ 192.168.4.1</b>), pushes the creds, and each charger <b>joins the site Wi-Fi</b>.',
+         scr:['Provisioning','0 / 5 joined'], hop:true, hot:['paGw'], gw:'hopping 1 → 5…'},
+        {t:'Every charger <b>confirms back</b> to the gateway, which reports success to the phone. <b>FINISH</b> → gateway goes to <b>LAN mode</b> and the fleet is online.',
+         scr:['Paired ✓','5 / 5 · online'], on:['lnkBle'], done:true, hot:['paGw','paPhone'], gw:'LAN mode ✓'}
+      ];
+      var LINKS=['lnkScan','lnkBle','lnkHop1','lnkHop2','lnkHop3','lnkHop4','lnkHop5','lnkDisc1','lnkDisc2','lnkDisc3','lnkDisc4','lnkDisc5'];
+      var DEVS=['paPhone','paWifi','paGw'];
+      var CHGS=['chg1','chg2','chg3','chg4','chg5'];
+      var stepsEl=g('pairSteps'), countEl=g('pairCount'), btnPlay=g('pairPlay'), btnReset=g('pairReset');
+      stepsEl.innerHTML=steps.map(function(s,i){return '<div class="ps"><span class="n">'+(i+1)+'</span><span class="tx">'+s.t+'</span></div>';}).join('');
+      var rows=[].slice.call(stepsEl.querySelectorAll('.ps'));
+      var timer=null, hopTimers=[], idx=-1;
+      function clearHop(){hopTimers.forEach(clearTimeout);hopTimers=[];}
+      function resetVisual(){
+        LINKS.forEach(function(id){g(id).classList.remove('on');});
+        DEVS.forEach(function(id){g(id).classList.remove('hot');});
+        CHGS.forEach(function(id){g(id).classList.remove('sel','done');});
+        g('wifiCount').textContent='0 / 5 joined'; g('gwStatus').textContent='provisioning mode';
+      }
+      function show(i){
+        clearHop(); resetVisual();
+        var s=steps[i];
+        rows.forEach(function(r,k){r.classList.toggle('active',k===i); r.classList.toggle('done',k<i);});
+        (s.on||[]).forEach(function(id){g(id).classList.add('on');});
+        (s.hot||[]).forEach(function(id){g(id).classList.add('hot');});
+        if(s.sel) CHGS.forEach(function(id){g(id).classList.add('sel');});
+        if(s.done){ CHGS.forEach(function(id){g(id).classList.add('done');}); g('wifiCount').textContent='5 / 5 joined'; }
+        g('pScr').textContent=s.scr[0]; g('pScr2').textContent=s.scr[1]; g('gwStatus').textContent=s.gw;
+        countEl.textContent='Step '+(i+1)+' / '+steps.length;
+        if(s.disc){                                  // phone discovers each charger AP, 1→5
+          CHGS.forEach(function(id,k){
+            hopTimers.push(setTimeout(function(){
+              g('lnkDisc'+(k+1)).classList.add('on'); g(id).classList.add('sel');
+              g('pScr2').textContent=(k+1)+' / 5 found';
+            }, 300*(k+1)));
+          });
+        }
+        if(s.hop){                                   // sequential charger-to-charger hop
+          CHGS.forEach(function(id,k){
+            hopTimers.push(setTimeout(function(){
+              g('lnkHop'+(k+1)).classList.add('on'); g(id).classList.add('done');
+              g('wifiCount').textContent=(k+1)+' / 5 joined'; g('pScr2').textContent=(k+1)+' / 5 joined';
+            }, 300*(k+1)));
+          });
+        }
+      }
+      function stop(){ if(timer){clearInterval(timer);timer=null;} btnPlay.innerHTML='<span class="d" style="background:var(--violet)"></span>▶ Play pairing'; }
+      function reset(){ stop(); clearHop(); idx=-1; resetVisual();
+        rows.forEach(function(r){r.classList.remove('active','done');});
+        g('pScr').textContent='Ready'; g('pScr2').textContent='tap play'; countEl.textContent='Step 0 / '+steps.length; }
+      btnPlay.onclick=function(){
+        if(timer){stop();return;}
+        if(idx>=steps.length-1) reset();
+        btnPlay.innerHTML='<span class="d" style="background:var(--violet)"></span>⏸ Pause';
+        timer=setInterval(function(){ idx++; if(idx>=steps.length){stop();idx=steps.length-1;return;} show(idx); }, 2100);
+        idx++; show(idx);
+      };
+      btnReset.onclick=reset;
+    })();
+  </script>
+  <script>
+    (function(){
+      var scene=document.getElementById('scene'), status=document.getElementById('sceneStatus'),
+          narr=document.getElementById('demoNarr'), head=document.getElementById('narrHead'), list=document.getElementById('narrList');
+      var BTNS=['btnOcppOn','btnOcppOff','btnGwOn','btnGwOff','btnGwFuture'];
+      var M={
+        ocppOn:{cls:'era-ocpp st-on', btn:'btnOcppOn', sc:['on','● OCPP ONLINE — charger → CSMS'], nk:['on','OCPP online — the charger&rsquo;s stock cloud path'], steps:[
+          'Each charger runs a full <b>OCPP 1.6J</b> client and opens its <b>own WebSocket</b> to the CSMS — via the site Wi-Fi + inHand router, straight over the internet.',
+          'The <b>OCPP CSMS</b> handles authorization, meter values &amp; remote start/stop.',
+          'Operators drive it from the <b>OCPP dashboard</b>; drivers use an <b>OCPP user app</b>.',
+          'There is <b>no Spark gateway box</b> in this path — it&rsquo;s the charger&rsquo;s out-of-the-box cloud connection.'
+        ]},
+        ocppOff:{cls:'era-ocpp st-off', btn:'btnOcppOff', sc:['dead','● OCPP OFFLINE — no way to drive it'], nk:['dead','OCPP offline — the gap the gateway box fills'], steps:[
+          'The internet drops — every charger&rsquo;s <b>OCPP WebSocket to the CSMS breaks</b>.',
+          'The stock charger has <b>no local control channel</b>: nobody can start, stop or set current.',
+          'Charging is frozen wherever it was — <b>there is no way to drive it</b>.',
+          'This is exactly the gap the <b>Spark gateway box</b> closes → try the Gateway modes.'
+        ]},
+        gwOn:{cls:'era-gw st-on', btn:'btnGwOn', sc:['on','● GATEWAY ONLINE — cloud connected'], nk:['on','Gateway online — the everyday path'], steps:[
+          'Chargers report to the <b>inHand router</b> over Wi-Fi; the gateway polls each one over the wired LAN (HTTP :80).',
+          'The gateway publishes telemetry, status &amp; heartbeats to <b>HiveMQ</b> over <b>MQTTS 8883</b>.',
+          'The <b>Cloud VM backend</b> ingests it, mirrors to <b>Supabase</b>, and streams live state to the <b>Admin Console</b>.',
+          'The <b>mobile app (IoT mode)</b> reads the same broker; OTA pulls a <b>.bin from S3</b>.',
+          'On-site, a <b>Kiosk HMI</b> touchscreen wired to the RPi gateway lets anyone <b>pick a bay, pay, and start charging</b> — no phone needed.'
+        ]},
+        gwOff:{cls:'era-gw st-off', btn:'btnGwOff', sc:['off','● GATEWAY OFFLINE — BLE keeps it running'], nk:['off','Gateway offline — internet down, charging continues'], steps:[
+          'The site loses internet — the gateway can&rsquo;t reach the broker, so the <b>cloud path goes dark</b>.',
+          'The <b>local site network stays up</b>: chargers &harr; inHand &harr; gateway keep talking.',
+          'The <b>mobile app switches to BLE</b>, bonds to the gateway (<b>AUTH:&lt;key&gt;</b>) and keeps chargers charging — no internet needed.',
+          'The gateway <b>buffers</b> to SD/SQLite and <b>replays at QoS 1</b> when the link returns. This is the whole point of the box.',
+          'The <b>on-site Kiosk HMI + payment terminal</b> keep working too (local to the RPi) — pick a bay, pay, start — even with the internet down.'
+        ]},
+        gwFuture:{cls:'era-gw st-future', btn:'btnGwFuture', sc:['fut','● GATEWAY + LoRa · live energy + power sharing'], nk:['fut','Gateway · future — LoRa energy monitoring and dynamic power sharing'], steps:[
+          'A <b>LoRa module</b> at the <b>site power panel</b> reads the building&rsquo;s <b>live energy meter</b> and transmits it to a <b>LoRa receiver on the gateway</b>.',
+          'LoRa&rsquo;s long range blankets the whole site — <b>any LoRa meter/sensor</b> is in reach, no extra wiring.',
+          'The gateway runs <b>dynamic power sharing</b> — balancing charger current against live building / site capacity in real time.',
+          'Those readings are <b>appended to the existing MQTT stream</b> → full cloud visibility in Supabase &amp; the console, no new pipeline.',
+          'Roadmap: <b>AI energy management</b> — shift &amp; cap charging by live electricity price, demand &amp; available capacity.'
+        ]}
+      };
+      function set(m){
+        scene.classList.add('swapping');
+        setTimeout(function(){
+          var c=M[m];
+          scene.className=c.cls+' swapping';
+          BTNS.forEach(function(id){document.getElementById(id).classList.remove('active');});
+          document.getElementById(c.btn).classList.add('active');
+          status.className='scene-status '+c.sc[0]; status.textContent=c.sc[1];
+          narr.className='demo-narr '+c.nk[0]; head.innerHTML=c.nk[1];
+          list.innerHTML=c.steps.map(function(s){return '<li>'+s+'</li>';}).join('');
+          requestAnimationFrame(function(){scene.classList.remove('swapping');});
+        },160);
+      }
+      document.getElementById('btnOcppOn').onclick=function(){set('ocppOn')};
+      document.getElementById('btnOcppOff').onclick=function(){set('ocppOff')};
+      document.getElementById('btnGwOn').onclick=function(){set('gwOn')};
+      document.getElementById('btnGwOff').onclick=function(){set('gwOff')};
+      document.getElementById('btnGwFuture').onclick=function(){set('gwFuture')};
+      set('gwOn');
+    })();
+  </script>
+  <script>
+    // ---- chapter accordion ----
+    document.querySelectorAll('.ch-head').forEach(function(h){
+      h.addEventListener('click',function(){ h.closest('.chapter').classList.toggle('open'); });
+    });
+    document.getElementById('expandAll').onclick=function(){document.querySelectorAll('.chapter').forEach(function(c){c.classList.add('open');});};
+    document.getElementById('collapseAll').onclick=function(){document.querySelectorAll('.chapter').forEach(function(c){c.classList.remove('open');});};
+    document.querySelectorAll('.chapnav a').forEach(function(a){
+      a.addEventListener('click',function(e){e.preventDefault();
+        var ch=document.getElementById(a.getAttribute('href').slice(1));
+        ch.classList.add('open'); ch.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+    // ---- Past/Present/Future tabs (reuse the field-scene button handlers) ----
+    document.querySelectorAll('.ff-tab').forEach(function(t){
+      t.addEventListener('click',function(){
+        var era=t.dataset.era;
+        document.querySelectorAll('.ff-tab').forEach(function(x){x.classList.toggle('active',x===t);});
+        document.querySelectorAll('.ff-state').forEach(function(s){s.hidden = s.dataset.era!==era;});
+        ({past:'btnOcppOn',present:'btnGwOn',future:'btnGwFuture'})[era] &&
+          document.getElementById(({past:'btnOcppOn',present:'btnGwOn',future:'btnGwFuture'})[era]).click();
+      });
+    });
+    // ---- hover tooltips on the site map ----
+    var TIPS={
+      'Charger 1':'EV charger node — ESP32 + AVR/STM over UART. Runs OCPP 1.6J and an open HTTP API on :80. Provisioning AP: Spark_XXXX @ 192.168.4.1.',
+      'TP-Link EAP225':'TP-Link EAP225-Outdoor (Omada AC1200) — the site Wi-Fi access point. Chargers join it; it uplinks to the inHand router by Ethernet.',
+      'inHand':'inHand industrial router — the site\'s internet uplink, bridging the local network to the cloud.',
+      'Gateway':'Spark gateway box — ESP32-S3-ETH (9.1.x) or Raspberry Pi (2.6.x). Polls chargers over LAN, buffers to SD/SQLite, speaks MQTTS + BLE.',
+      'HiveMQ Broker':'HiveMQ — the MQTTS broker (port 8883, TLS). Every gateway and client meets here on the topic contract.',
+      'Cloud VM':'Cloud VM — Node backend. The console\'s only broker client; ingests telemetry and serves the web app + API + WebSocket.',
+      'Supabase':'Supabase — Postgres + Auth. Stores MQTT events, auth-key history and settings; handles console login.',
+      'Admin Console':'Admin console — live fleet view & control (web, kiosk, mobile). You are inside its architecture page now.',
+      'Firmware Store':'Firmware store — gateway .bin/.tar.gz on S3 buckets; charger-node firmware on FTP. OTA pulls from here.',
+      'Spark':'Mobile app (Flutter) — IoT/MQTT mode online, and BLE local control when the site is offline.',
+      'Kiosk HMI':'On-site kiosk HMI — the RPi\'s local touchscreen UI (:8080). Pick a bay, pay, start charging — works with no internet.',
+      'Payment':'Payment terminal — tap / card / app at the kiosk to start a session.',
+      'OCPP CSMS':'OCPP CSMS — the charger\'s native central system in the cloud (no Spark gateway in this path).',
+      'OCPP Dashboard':'OCPP operator dashboard — web UI for the native CSMS.',
+      'OCPP User App':'OCPP driver app — starts/stops sessions via the native CSMS.',
+      'Energy Meter':'Energy meter + LoRa TX — reads the building\'s live power at the panel and transmits it over LoRa.',
+      'Site Power Panel':'Site power panel — the building\'s main electrical capacity the chargers share.',
+      'LoRa RX':'LoRa receiver on the gateway — takes live energy readings for dynamic power sharing; appended to MQTT.'
+    };
+    var scene=document.getElementById('scene');
+    if(scene){
+      scene.querySelectorAll('text').forEach(function(t){
+        var k=(t.textContent||'').trim();
+        if(TIPS[k]){var g=t.closest('g'); if(g) g.setAttribute('data-tip',TIPS[k]);}
+      });
+      var tip=document.createElement('div'); tip.className='tip'; document.body.appendChild(tip);
+      document.addEventListener('mousemove',function(e){
+        var el=e.target.closest ? e.target.closest('[data-tip]') : null;
+        if(el && scene.contains(el)){
+          tip.textContent=el.getAttribute('data-tip'); tip.style.opacity='1';
+          var x=e.clientX+16, y=e.clientY+18;
+          if(x+312>window.innerWidth) x=e.clientX-316;
+          if(y+120>window.innerHeight) y=e.clientY-130;
+          tip.style.left=x+'px'; tip.style.top=y+'px';
+        } else { tip.style.opacity='0'; }
+      });
+    }
+
+    // ---- Chapter 3: guided flow-path sequencer (play / pause / reset) ----
+    (function(){
+      var stack=document.getElementById('flowStack'); if(!stack) return;
+      var steps=[].slice.call(stack.children);
+      var totalStages=steps.filter(function(s){return s.classList.contains('band');}).length;
+      var countEl=document.getElementById('flowCount'), nowEl=document.getElementById('flowNow');
+      var playBtn=document.getElementById('flowPlay'), resetBtn=document.getElementById('flowReset');
+      var idx=-1, timer=null;
+      var PLAY='<span class="d" style="background:var(--cyan)"></span>▶ Play the path';
+      var PAUSE='<span class="d" style="background:var(--cyan)"></span>⏸ Pause';
+      function stagesTo(i){var n=0;for(var k=0;k<=i;k++)if(steps[k].classList.contains('band'))n++;return n;}
+      function reveal(i,scroll){
+        var el=steps[i]; el.classList.add('in');
+        if(el.classList.contains('band')){
+          steps.forEach(function(s){s.classList.remove('cur');});
+          el.classList.add('cur');
+          var tag=el.querySelector('.band-tag'); nowEl.textContent=tag?tag.textContent:'';
+          countEl.textContent='Stage '+stagesTo(i)+' / '+totalStages;
+          if(scroll) el.scrollIntoView({behavior:'smooth',block:'center'});
+        }
+      }
+      function stop(){ if(timer){clearInterval(timer);timer=null;} playBtn.innerHTML=PLAY; }
+      function reset(){ stop(); steps.forEach(function(s){s.classList.remove('in','cur');}); idx=0; reveal(0,false); }
+      function step(){ idx++; if(idx>=steps.length){ stop(); idx=steps.length-1; steps.forEach(function(s){s.classList.remove('cur');}); nowEl.textContent='Complete ✓'; return; } reveal(idx,true); }
+      playBtn.onclick=function(){
+        if(timer){stop();return;}
+        if(idx>=steps.length-1) reset();
+        playBtn.innerHTML=PAUSE;
+        step();
+        timer=setInterval(step,900);
+      };
+      resetBtn.onclick=reset;
+      stack.classList.add('seq'); reset();
+    })();
+  </script>
+</body>
+</html>

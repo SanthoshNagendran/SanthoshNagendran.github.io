@@ -1,0 +1,298 @@
+<title>OEM Smart Charger — Architecture</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #070C16; color: #C7D2E4;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 1420px; margin: 0 auto; padding: 28px 20px 48px; }
+  .bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px; margin-bottom: 18px; }
+  .bar h1 { font-size: 18px; font-weight: 700; color: #F1F5F9; margin: 0; }
+  .bar p { margin: 0; font-size: 12.5px; color: #7C89A0; }
+  .frame { border: 1px solid #1B2740; border-radius: 16px; overflow: hidden;
+    background: #0B1220; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+  .frame svg { display: block; width: 100%; height: auto; }
+  .note { margin-top: 14px; font-size: 12px; color: #61708C; }
+  .note code { font-family: ui-monospace, Consolas, monospace; color: #93A2BC; }
+  @media print {
+    @page { size: landscape; margin: 6mm; }
+    html, body { background: #0B1220; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .wrap { padding: 0; max-width: none; }
+    .frame { border: 0; border-radius: 0; box-shadow: none; }
+    .bar, .note { display: none; }
+  }
+</style>
+
+<div class="wrap">
+  <div class="bar">
+    <h1>OEM Smart Charger — System Architecture</h1>
+    <p>Interactive schematic · animated data flows · protocol-coded interfaces</p>
+  </div>
+
+  <div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1340 900" width="100%" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title{font-size:26px;font-weight:700;fill:#F1F5F9}
+      .subtitle{font-size:13.5px;fill:#8496B4;letter-spacing:2px}
+      .eyebrow{font-size:12px;font-weight:700;letter-spacing:2px}
+      .ntitle{font-size:14px;font-weight:600;fill:#F1F5F9}
+      .nsub{font-size:11px;fill:#93A2BC}
+      .mono{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:10.5px;fill:#7FA6C9}
+      .link{font-size:10px;font-weight:700;letter-spacing:.3px}
+      .legend{font-size:11px;fill:#C7D2E4}
+      .flow{stroke-dasharray:10 6;animation:dash 5.5s linear infinite}
+      @keyframes dash{to{stroke-dashoffset:-320}}
+      @media (prefers-reduced-motion: reduce){.flow{animation:none}}
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <marker id="a-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#F5A524"/></marker>
+    <marker id="a-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#22D3EE"/></marker>
+    <marker id="a-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#34D399"/></marker>
+    <marker id="a-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#A855F7"/></marker>
+    <marker id="a-rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#FB7185"/></marker>
+    <marker id="a-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#64748B"/></marker>
+  </defs>
+
+  <!-- ground -->
+  <rect width="1340" height="900" fill="#0B1220"/>
+  <g stroke="#16203A" stroke-width="1" opacity="0.5">
+    <path d="M0 96 H1030 M0 288 H1030 M0 458 H1030 M0 636 H1030"/>
+    <path d="M1030 0 V900"/>
+  </g>
+
+  <!-- header -->
+  <text x="40" y="46" class="title">OEM Smart Charger — End-to-End IoT Architecture</text>
+  <text x="42" y="70" class="subtitle">LOCKED AVR CHARGER → ESP32-C6 BRIDGE → CLOUD → FLEET APPS</text>
+
+  <!-- =============== BAND: APPLICATIONS =============== -->
+  <rect x="34" y="104" width="978" height="158" rx="16" fill="#A855F7" opacity="0.04"/>
+  <text x="52" y="128" class="eyebrow" fill="#A855F7">PLANE 6 · 7 — CONTROL APPLICATIONS &amp; BACKEND</text>
+
+  <!-- Admin console -->
+  <g transform="translate(52,144)" filter="url(#shadow)">
+    <rect width="258" height="104" rx="12" fill="#131C30" stroke="#24314D" stroke-width="1.5"/>
+    <rect width="258" height="28" rx="12" fill="#A855F7" opacity="0.16"/>
+    <text x="16" y="20" class="ntitle">Admin Desktop Console</text>
+    <text x="16" y="48" class="nsub">React · Vite · TypeScript · Tailwind</text>
+    <text x="16" y="66" class="nsub">Fleet · controls · OTA · charge DB→Excel</text>
+    <text x="16" y="86" class="mono">source: BrokerSource → (swappable)</text>
+  </g>
+
+  <!-- Mobile app -->
+  <g transform="translate(340,144)" filter="url(#shadow)">
+    <rect width="248" height="104" rx="12" fill="#131C30" stroke="#24314D" stroke-width="1.5"/>
+    <rect width="248" height="28" rx="12" fill="#60A5FA" opacity="0.16"/>
+    <text x="16" y="20" class="ntitle">Technician Mobile App</text>
+    <text x="16" y="48" class="nsub">Flutter · Android</text>
+    <text x="16" y="66" class="nsub">Dual mode: Local AP / Cloud IoT</text>
+    <text x="16" y="86" class="mono">monitor · control · local CSV · no OTA</text>
+  </g>
+
+  <!-- Future backend -->
+  <g transform="translate(636,138)">
+    <rect width="356" height="116" rx="12" fill="#0E1626" stroke="#64748B" stroke-width="1.6" stroke-dasharray="7 6"/>
+    <text x="18" y="28" class="ntitle" fill="#AEB9CC">Backend  ·  planned</text>
+    <text x="18" y="54" class="nsub">User accounts · device ownership</text>
+    <text x="18" y="72" class="nsub">Per-device credentials + topic ACLs</text>
+    <text x="18" y="90" class="nsub">History database · push alerts</text>
+    <text x="18" y="108" class="mono" fill="#7C89A0">apps re-point here via BackendSource</text>
+  </g>
+
+  <!-- =============== BAND: CLOUD =============== -->
+  <rect x="34" y="296" width="978" height="150" rx="16" fill="#34D399" opacity="0.04"/>
+  <text x="52" y="320" class="eyebrow" fill="#34D399">PLANE 5 — CLOUD BROKER CORE</text>
+
+  <!-- HiveMQ broker -->
+  <g transform="translate(300,336)" filter="url(#shadow)">
+    <rect width="292" height="100" rx="12" fill="#131C30" stroke="#34D399" stroke-width="2"/>
+    <rect width="292" height="28" rx="12" fill="#34D399" opacity="0.16"/>
+    <text x="16" y="20" class="ntitle">HiveMQ Cloud — MQTT Broker</text>
+    <text x="16" y="48" class="mono">MQTTS 8883 (devices) · WSS 8884 (apps)</text>
+    <text x="16" y="67" class="nsub">root oemcharger/ · TLS · retained status</text>
+    <text x="16" y="85" class="nsub">LWT online/offline · ack correlated by req</text>
+  </g>
+
+  <!-- Firmware host -->
+  <g transform="translate(646,340)" filter="url(#shadow)">
+    <rect width="236" height="92" rx="12" fill="#131C30" stroke="#FB7185" stroke-width="1.6"/>
+    <rect width="236" height="28" rx="12" fill="#FB7185" opacity="0.14"/>
+    <text x="16" y="20" class="ntitle">Firmware Host (S3)</text>
+    <text x="16" y="48" class="nsub">Signed <tspan class="mono">.bin</tspan> over HTTPS</text>
+    <text x="16" y="68" class="nsub">CA-bundle verified pull</text>
+  </g>
+
+  <!-- =============== BAND: LOCAL ACCESS =============== -->
+  <rect x="34" y="466" width="978" height="152" rx="16" fill="#22D3EE" opacity="0.04"/>
+  <text x="52" y="490" class="eyebrow" fill="#22D3EE">PLANE 3 · 4 — LOCAL ACCESS &amp; PROVISIONING</text>
+
+  <!-- Router -->
+  <g transform="translate(300,506)" filter="url(#shadow)">
+    <rect width="232" height="94" rx="12" fill="#131C30" stroke="#24314D" stroke-width="1.5"/>
+    <rect width="232" height="28" rx="12" fill="#64748B" opacity="0.18"/>
+    <text x="16" y="20" class="ntitle">Home / Office Router</text>
+    <text x="16" y="48" class="nsub">Wi-Fi WLAN + Internet uplink</text>
+    <text x="16" y="68" class="nsub">gateway to the cloud broker</text>
+  </g>
+
+  <!-- SoftAP -->
+  <g transform="translate(600,500)" filter="url(#shadow)">
+    <rect width="286" height="100" rx="12" fill="#131C30" stroke="#22D3EE" stroke-width="2"/>
+    <rect width="286" height="28" rx="12" fill="#22D3EE" opacity="0.16"/>
+    <text x="16" y="20" class="ntitle">ESP SoftAP  ·  on-site</text>
+    <text x="16" y="48" class="mono">SSID  OEM-Charger &lt;last4&gt;  · WPA2</text>
+    <text x="16" y="67" class="mono">http://192.168.4.1</text>
+    <text x="16" y="85" class="nsub">dashboard · REST · CSV logs · provisioning</text>
+  </g>
+
+  <!-- =============== BAND: EDGE HARDWARE =============== -->
+  <rect x="34" y="644" width="978" height="216" rx="16" fill="#F5A524" opacity="0.04"/>
+  <text x="52" y="668" class="eyebrow" fill="#F5A524">PLANE 1 · 2 — EDGE HARDWARE &amp; LOCAL DEVICE</text>
+
+  <!-- Battery -->
+  <g transform="translate(52,706)" filter="url(#shadow)">
+    <rect width="150" height="96" rx="12" fill="#131C30" stroke="#F43F5E" stroke-width="1.6"/>
+    <text x="16" y="34" class="ntitle">Battery</text>
+    <text x="16" y="58" class="nsub">Lead-acid /</text>
+    <text x="16" y="74" class="nsub">Lithium pack</text>
+    <rect x="112" y="24" width="22" height="13" rx="2" fill="none" stroke="#F43F5E" stroke-width="2"/>
+    <rect x="134" y="28" width="3" height="5" fill="#F43F5E"/>
+    <rect x="115" y="27" width="9" height="7" fill="#34D399"/>
+  </g>
+
+  <!-- AVR board -->
+  <g transform="translate(252,690)" filter="url(#shadow)">
+    <rect width="232" height="128" rx="12" fill="#131C30" stroke="#F5A524" stroke-width="2"/>
+    <rect width="232" height="28" rx="12" fill="#F5A524" opacity="0.16"/>
+    <text x="16" y="20" class="ntitle">AVR Charger Board</text>
+    <text x="16" y="50" class="nsub">MCU ATtiny1616 / 3216 · 3.3V</text>
+    <text x="16" y="69" class="nsub">Locked proprietary firmware</text>
+    <text x="16" y="88" class="mono">UART 38400 8N1 · L:/I:/$$ · C:</text>
+    <text x="16" y="110" class="nsub">5-pin: VCC·RX·TX·UPID·GND</text>
+  </g>
+
+  <!-- ESP bridge -->
+  <g transform="translate(534,674)" filter="url(#shadow)">
+    <rect width="300" height="150" rx="12" fill="#131C30" stroke="#38BDF8" stroke-width="2.4"/>
+    <rect width="300" height="28" rx="12" fill="#38BDF8" opacity="0.18"/>
+    <text x="16" y="20" class="ntitle">ESP32-C6 Gateway Bridge</text>
+    <text x="16" y="50" class="nsub">ESP32-C6-MINI-1U · 4MB · IPEX ant.</text>
+    <text x="16" y="69" class="mono">fw OEM-AVR_1.8.0 · Wi-Fi AP + STA</text>
+    <text x="16" y="90" class="nsub">SerialRx · ChargerControl · MqttClient</text>
+    <text x="16" y="108" class="nsub">ApiServer · GraphLog · DataLog · Auth · LED</text>
+    <text x="16" y="132" class="mono" fill="#38BDF8">serial = factory MAC (eFuse)</text>
+  </g>
+
+  <!-- I2C peripherals: RTC + (new-PCB) LED bar on the shared bus -->
+  <g transform="translate(882,684)" filter="url(#shadow)">
+    <rect width="148" height="58" rx="10" fill="#131C30" stroke="#22D3EE" stroke-width="1.2"/>
+    <text x="14" y="24" class="ntitle" font-size="12.5">PCF8563 RTC</text>
+    <text x="14" y="44" class="nsub">battery-backed clock</text>
+  </g>
+  <g transform="translate(882,760)" filter="url(#shadow)">
+    <rect width="148" height="72" rx="10" fill="#131C30" stroke="#34D399" stroke-width="1.4"/>
+    <text x="14" y="22" class="ntitle" font-size="12.5">TM1650 LED</text>
+    <text x="14" y="41" class="nsub">SOC bar 20·40·60·80%</text>
+    <text x="14" y="58" class="nsub">new PCB · auto-detect</text>
+    <circle cx="104" cy="16" r="4" fill="#34D399"/>
+    <circle cx="117" cy="16" r="4" fill="#34D399"/>
+    <circle cx="130" cy="16" r="4" fill="#34D399" opacity="0.35"/>
+    <circle cx="142" cy="16" r="3.6" fill="#34D399" opacity="0.22"/>
+  </g>
+
+  <!-- =================== CONNECTORS =================== -->
+  <!-- power battery->AVR -->
+  <path d="M202 754 H252" stroke="#F43F5E" stroke-width="3.5"/>
+  <!-- UART TX AVR->ESP -->
+  <path d="M484 722 H534" stroke="#F5A524" stroke-width="2.2" marker-end="url(#a-amber)"/>
+  <text x="486" y="714" class="link" fill="#F5A524">UART TX · L:/$$</text>
+  <!-- UART RX ESP->AVR -->
+  <path d="M534 784 H484" stroke="#F5A524" stroke-width="2.2" marker-end="url(#a-amber)"/>
+  <text x="486" y="800" class="link" fill="#F5A524">UART RX · C: config</text>
+  <!-- I2C shared bus: ESP <-> RTC + LED bar (G14/15) -->
+  <path d="M834 754 H862 M862 713 V796 M862 713 H882 M862 796 H882" fill="none" stroke="#22D3EE" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="836" y="746" class="link" fill="#22D3EE">I²C G14/15</text>
+
+  <!-- ESP hosts SoftAP / REST (up) -->
+  <path d="M690 674 V600" stroke="#22D3EE" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a-cyan)"/>
+  <text x="700" y="642" class="link" fill="#22D3EE">hosts SoftAP + REST</text>
+
+  <!-- ESP <-> Router Wi-Fi STA (up-left, bi-directional) -->
+  <path d="M560 674 L470 600" stroke="#34D399" stroke-width="2" class="flow" marker-start="url(#a-green)" marker-end="url(#a-green)"/>
+  <text x="360" y="645" class="link" fill="#34D399">Wi-Fi STA (home)</text>
+  <text x="360" y="659" class="nsub" font-size="9.5">telemetry ↕ command</text>
+
+  <!-- Router <-> Broker uplink (up, bi-directional) -->
+  <path d="M405 506 V436" stroke="#34D399" stroke-width="2" class="flow" marker-start="url(#a-green)" marker-end="url(#a-green)"/>
+  <rect x="356" y="462" width="70" height="18" rx="9" fill="#0B1220" stroke="#24314D"/>
+  <text x="363" y="475" class="nsub" font-size="9.5">Internet</text>
+
+  <!-- OTA pull FW -> ESP (down, one-way) -->
+  <path d="M772 432 C 800 540, 812 600, 806 674" fill="none" stroke="#FB7185" stroke-width="2" stroke-dasharray="7 5" class="flow" marker-end="url(#a-rose)"/>
+  <text x="812" y="520" class="link" fill="#FB7185">HTTPS OTA</text>
+  <text x="812" y="534" class="nsub" font-size="9.5">.bin pull + flash</text>
+
+  <!-- Admin <-> Broker WSS (bi-directional) -->
+  <path d="M181 248 L345 336" stroke="#A855F7" stroke-width="2" class="flow" marker-start="url(#a-violet)" marker-end="url(#a-violet)"/>
+  <text x="150" y="300" class="link" fill="#A855F7">WSS 8884</text>
+  <text x="150" y="314" class="nsub" font-size="9.5">telemetry ↕ command · OTA</text>
+
+  <!-- Mobile IoT <-> Broker MQTTS (bi-directional) -->
+  <path d="M455 248 L470 336" stroke="#34D399" stroke-width="2" class="flow" marker-start="url(#a-green)" marker-end="url(#a-green)"/>
+  <text x="476" y="300" class="link" fill="#34D399">MQTTS 8883</text>
+  <text x="476" y="314" class="nsub" font-size="9.5">telemetry ↕ command</text>
+
+  <!-- Mobile Local <-> SoftAP HTTP (long right curve, bi-directional) -->
+  <path d="M588 190 C 940 250, 960 430, 886 512" fill="none" stroke="#22D3EE" stroke-width="2" stroke-dasharray="5 4" class="flow" marker-start="url(#a-cyan)" marker-end="url(#a-cyan)"/>
+  <text x="905" y="360" class="link" fill="#22D3EE">Local HTTP</text>
+  <text x="905" y="374" class="nsub" font-size="9.5">192.168.4.1 · req ↕ resp</text>
+
+  <!-- Future backend <-> Broker (planned, bi-directional) -->
+  <path d="M636 200 L580 336" stroke="#64748B" stroke-width="1.6" stroke-dasharray="6 5" marker-start="url(#a-slate)" marker-end="url(#a-slate)"/>
+  <text x="600" y="270" class="link" fill="#8493AB">planned</text>
+
+  <!-- =================== RIGHT RAIL: LEGEND + TOPICS =================== -->
+  <text x="1058" y="128" class="eyebrow" fill="#8496B4">PROTOCOL LEGEND</text>
+  <g transform="translate(1058,146)">
+    <line x1="0" y1="8" x2="34" y2="8" stroke="#F43F5E" stroke-width="3.5"/><text x="46" y="12" class="legend">Power / charge (physical)</text>
+    <line x1="0" y1="34" x2="34" y2="34" stroke="#F5A524" stroke-width="2.4"/><text x="46" y="38" class="legend">UART serial · 38400 8N1</text>
+    <line x1="0" y1="60" x2="34" y2="60" stroke="#22D3EE" stroke-width="2.2" stroke-dasharray="5 4"/><text x="46" y="64" class="legend">Local HTTP / REST</text>
+    <line x1="0" y1="86" x2="34" y2="86" stroke="#34D399" stroke-width="2.2"/><text x="46" y="90" class="legend">MQTTS 8883 (TLS · devices)</text>
+    <line x1="0" y1="112" x2="34" y2="112" stroke="#A855F7" stroke-width="2.2"/><text x="46" y="116" class="legend">WSS 8884 (apps)</text>
+    <line x1="0" y1="138" x2="34" y2="138" stroke="#FB7185" stroke-width="2.2" stroke-dasharray="7 5"/><text x="46" y="142" class="legend">HTTPS OTA (.bin pull)</text>
+    <line x1="0" y1="164" x2="34" y2="164" stroke="#22D3EE" stroke-width="1.6" stroke-dasharray="4 3"/><text x="46" y="168" class="legend">I²C peripherals (RTC · LED)</text>
+    <line x1="0" y1="190" x2="34" y2="190" stroke="#64748B" stroke-width="2" stroke-dasharray="6 5"/><text x="46" y="194" class="legend">Planned backend link</text>
+    <path d="M4 214 H30" stroke="#C7D2E4" stroke-width="2" marker-start="url(#a-slate)" marker-end="url(#a-slate)"/><text x="46" y="218" class="legend">↕ arrows = bi-directional</text>
+  </g>
+
+  <text x="1058" y="386" class="eyebrow" fill="#8496B4">MQTT TOPIC MAP</text>
+  <g transform="translate(1058,404)">
+    <rect x="-14" y="-16" width="272" height="214" rx="12" fill="#0E1626" stroke="#24314D"/>
+    <text x="4" y="6" class="mono" fill="#34D399">oemcharger/&lt;mac&gt;/</text>
+    <text x="18" y="28" class="mono">telemetry</text><text x="150" y="28" class="nsub" font-size="9.5">V·A·SOC·cfg</text>
+    <text x="18" y="48" class="mono">status</text><text x="150" y="48" class="nsub" font-size="9.5">LWT retained</text>
+    <text x="18" y="68" class="mono">info · ack</text><text x="150" y="68" class="nsub" font-size="9.5">req-correlated</text>
+    <text x="18" y="88" class="mono">rawstream · logstream</text>
+    <text x="4" y="116" class="mono" fill="#A855F7">…/cmd/&lt;command&gt;</text>
+    <text x="18" y="136" class="mono">setconfig · setname</text>
+    <text x="18" y="156" class="mono">sendraw · reboot · ota</text>
+    <text x="4" y="184" class="mono" fill="#FB7185">oemcharger/ota</text><text x="150" y="184" class="nsub" font-size="9.5">fleet broadcast</text>
+  </g>
+
+  <!-- data-flow footnote -->
+  <text x="1058" y="640" class="eyebrow" fill="#8496B4">KEY DATA FLOWS</text>
+  <g transform="translate(1058,660)" fill="#93A2BC" font-size="10.5">
+    <text y="6">1 · Telemetry: AVR→ESP→broker→apps</text>
+    <text y="26">2 · Command: app→broker→ESP→AVR (ack)</text>
+    <text y="46">3 · Local: phone/PC→SoftAP→ESP→AVR</text>
+    <text y="66">4 · Provisioning: SoftAP→ESP joins Wi-Fi</text>
+    <text y="86">5 · OTA: app→broker→ESP→HTTPS pull</text>
+    <text y="106">6 · SOC bar: soc→TM1650 LEDs (new PCB · I²C)</text>
+  </g>
+
+  <text x="40" y="886" fill="#5A6B87" font-size="10.5">Locked AVR reverse-engineered over serial · ESP32-C6 bridge adds Wi-Fi + cloud · universal image auto-detects the new-PCB LED bar · admin web console + Flutter app · per-device creds deferred to backend.</text>
+</svg>
+  </div>
+
+  <p class="note">Colour-coded by interface (see legend). Dashed lines animate the live data flow; double-headed (↕) arrows are bi-directional links. Source vector saved alongside as <code>architecture.svg</code> — open it in a browser or drop it into Figma / draw.io / a slide deck, or hand it to an AI image tool as a 3-D reference.</p>
+</div>

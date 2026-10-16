@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link rel="stylesheet" href="../fonts/fonts.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>BESS Hardware & Data-Flow Explorer</title>
+<style data-tw="compiled">*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.fixed{position:fixed}.isolate{isolation:isolate}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.flex-wrap{flex-wrap:wrap}.border{border-width:1px}.underline{text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.outline{outline-style:solid}.ring{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}</style>
+<style>
+  :root {
+    --bg: #0f172a; --panel: #111b30; --panel2: #0b1326; --line: #22304a; --line2: #334155;
+    --text: #e2e8f0; --muted: #8fa0ba; --dim: #5b6b86;
+    --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --blue: #60a5fa;
+    --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: dark; box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0f172a; } }
+  :root[data-theme="dark"] { --bg: #0f172a; }
+  html { background: var(--bg); scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 13px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  button { font-family: inherit; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .wrap { max-width: 1680px; margin: 0 auto; padding: 14px 16px 28px; }
+  .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+  .topbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .brand { display: flex; gap: 12px; align-items: center; }
+  .brand h1 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+  .brand p { margin: 0; color: var(--muted); font-size: 12.5px; max-width: 72ch; }
+  .tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .grp { display: flex; align-items: center; gap: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 4px; }
+  .grp > span { color: var(--muted); font-size: 11.5px; padding: 0 6px; }
+  .tbtn { background: transparent; border: 1px solid transparent; color: var(--muted); border-radius: 7px; padding: 5px 10px; cursor: pointer; font-size: 12.5px; }
+  .tbtn:hover { color: var(--text); }
+  .tbtn.on { background: var(--panel2); border-color: var(--line2); color: var(--text); }
+  .tbtn .sw { display: inline-block; width: 10px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: 3px; }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; min-width: 0; }
+  .card h2 { font-size: 13.5px; font-weight: 600; margin: 0; }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .hint { color: var(--dim); font-size: 11.5px; }
+
+  .main { display: grid; grid-template-columns: minmax(0, 1fr) 370px; gap: 12px; margin-bottom: 12px; }
+  .dscroll { overflow-x: auto; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; }
+  #svg { display: block; width: 100%; min-width: 920px; height: auto; }
+
+  /* Inspector */
+  #insp { display: flex; flex-direction: column; gap: 10px; max-height: 860px; overflow-y: auto; }
+  .insp-empty p { color: var(--muted); margin: 6px 0; }
+  .insp-empty ol { list-style: decimal; margin: 6px 0 0; padding-left: 18px; color: #cbd5e1; }
+  .insp-empty li { margin-bottom: 4px; }
+  .i-layer { color: var(--muted); font-size: 12px; }
+  .i-title { font-size: 18px; font-weight: 600; margin: 0; line-height: 1.25; }
+  .i-aka { color: var(--dim); font-size: 12px; }
+  .i-sec h3 { margin: 0 0 5px; font-size: 12px; font-weight: 600; color: var(--muted); }
+  .i-sec p { margin: 0; color: #cbd5e1; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip { font-size: 11.5px; padding: 2px 8px; border-radius: 6px; background: var(--panel2); border: 1px solid var(--line); color: #cbd5e1; }
+  .kv { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; border-bottom: 1px dashed rgba(148,163,184,.08); }
+  .kv:last-child { border-bottom: 0; }
+  .kv span { color: var(--muted); }
+  .kv b { font-family: var(--mono); font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+  .conn { display: grid; grid-template-columns: 16px 1fr; gap: 2px 6px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 5px; cursor: pointer; background: var(--panel2); }
+  .conn:hover { border-color: #3b4d6e; }
+  .conn .arr { color: var(--muted); font-family: var(--mono); }
+  .conn .who { font-weight: 600; }
+  .conn .what { grid-column: 2; color: var(--muted); font-size: 12px; }
+  .ptag { display: inline-block; font-size: 11px; font-weight: 600; padding: 0 7px; border-radius: 999px; border: 1px solid; margin-left: 6px; }
+  .stat { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .stat.ok { color: var(--green); border-color: rgba(34,197,94,.4); background: rgba(34,197,94,.08); }
+  .stat.warn { color: var(--amber); border-color: rgba(245,158,11,.4); background: rgba(245,158,11,.08); }
+  .stat.fault { color: var(--red); border-color: rgba(239,68,68,.5); background: rgba(239,68,68,.1); }
+  .stat.off { color: #94a3b8; border-color: #475569; }
+  .linkbtn { background: none; border: 0; color: var(--blue); cursor: pointer; padding: 0; font-size: 12.5px; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Bottom row */
+  .bottom { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 12px; margin-bottom: 12px; }
+  .scn-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+  .scn { text-align: left; background: var(--panel2); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 7px 10px; cursor: pointer; }
+  .scn b { display: block; font-size: 12.5px; font-weight: 600; }
+  .scn small { display: block; color: var(--muted); font-size: 11px; line-height: 1.35; }
+  .scn:hover { border-color: #3b4d6e; }
+  .scn.on { border-color: var(--green); background: rgba(34,197,94,.07); }
+  .scn.on b { color: var(--green); }
+  .step-box { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--panel2); min-height: 132px; }
+  .step-n { color: var(--muted); font-size: 12px; }
+  .step-t { font-size: 16px; font-weight: 600; margin: 2px 0 6px; }
+  .step-x { color: #cbd5e1; margin: 0; max-width: 78ch; }
+  .step-route { margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .player { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .pbtn { background: var(--panel2); border: 1px solid var(--line2); color: var(--text); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 12.5px; }
+  .pbtn:hover { border-color: #64748b; }
+  .pbtn:disabled { opacity: .4; cursor: default; }
+  .pbtn.primary { border-color: var(--green); color: var(--green); }
+  .dots { display: flex; gap: 5px; margin-left: auto; }
+  .dots i { width: 8px; height: 8px; border-radius: 50%; background: #334155; cursor: pointer; }
+  .dots i.done { background: #166534; }
+  .dots i.cur { background: var(--green); box-shadow: 0 0 6px var(--green); }
+
+  .raw { font-family: var(--mono); font-size: 12.5px; background: #060c1a; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; color: #a7f3d0; white-space: pre-wrap; word-break: break-word; margin: 8px 0; }
+  .ptitle { display: flex; align-items: center; gap: 8px; }
+  .pdot { width: 10px; height: 10px; border-radius: 50%; }
+  .pmeta { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lg { display: flex; align-items: center; gap: 7px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; cursor: pointer; color: #cbd5e1; font-size: 12.5px; }
+  .lg:hover { border-color: #3b4d6e; }
+  .lg.on { border-color: #94a3b8; color: var(--text); }
+  .lg svg { flex: none; }
+
+  #tip { position: fixed; z-index: 60; pointer-events: none; max-width: 290px; background: #0b1326; border: 1px solid #3b4d6e; color: var(--text); font-size: 12.5px; line-height: 1.4; padding: 8px 10px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.45); opacity: 0; transition: opacity .12s; }
+  #tip.show { opacity: 1; }
+  #tip b { display: block; color: var(--blue); font-size: 12px; margin-bottom: 2px; }
+
+  /* SVG */
+  #svg text { font-family: var(--sans); }
+  .band { fill: rgba(148,163,184,.025); stroke: rgba(148,163,184,.07); }
+  .band-t { font-size: 12px; font-weight: 600; fill: #cbd5e1; }
+  .band-s { font-size: 10px; fill: #6b7c99; }
+  .dv { cursor: pointer; transition: opacity .25s; }
+  .dv .box { fill: rgba(11,19,38,.96); stroke: #334155; stroke-width: 1.3; transition: stroke .25s; }
+  .dv:hover .box, .dv:focus .box { stroke: #8fa0ba; }
+  .dv:focus { outline: none; }
+  .dv.sel .box { stroke: #e2e8f0; stroke-width: 2; }
+  .dv.st-warn .box { stroke: var(--amber); }
+  .dv.st-fault .box { stroke: var(--red); stroke-width: 2; animation: pulse 1s infinite; }
+  .dv.st-off .box { stroke-dasharray: 4 3; }
+  @keyframes pulse { 50% { stroke-opacity: .3; } }
+  .d-t { font-size: 11.5px; font-weight: 600; fill: #e2e8f0; }
+  .d-s { font-size: 9.5px; fill: #7c8ca8; }
+  .d-v { font-size: 11px; fill: #cbd5e1; font-family: var(--mono) !important; }
+  .lk { fill: none; stroke-linecap: round; stroke-linejoin: round; transition: opacity .25s; }
+  .lk.pw { stroke-width: 5; opacity: .45; }
+  .lk.dt { stroke-width: 2; opacity: .55; }
+  .hit { fill: none; stroke: transparent; stroke-width: 12; cursor: pointer; pointer-events: stroke; }
+  .pk { transition: opacity .25s; }
+  #svg.dim .dv:not(.hl) { opacity: .22; }
+  #svg.dim .lk:not(.hl) { opacity: .07; }
+  #svg.dim .pk:not(.hl) { opacity: 0; }
+  #svg.dim .lk.hl { opacity: 1; }
+  #svg.dim .lk.dt.hl { stroke-width: 3; }
+  .scale-t { font-size: 12px; font-weight: 600; fill: #cbd5e1; }
+  .scale-r { font-size: 11px; fill: #9fb0c9; font-family: var(--mono) !important; }
+
+  @media (max-width: 1200px) { .main { grid-template-columns: minmax(0,1fr); } #insp { max-height: none; } .bottom { grid-template-columns: minmax(0,1fr); } }
+  @media (max-width: 720px) { .scn-list { grid-template-columns: 1fr 1fr; } .brand h1 { font-size: 17px; } }
+  @media (max-width: 460px) { .scn-list { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand">
+      <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <rect x="1" y="1" width="36" height="36" rx="9" fill="#0b1326" stroke="#60a5fa" stroke-opacity=".5"/>
+        <rect x="8" y="22" width="22" height="9" rx="2" fill="none" stroke="#22c55e" stroke-width="2"/>
+        <rect x="13" y="12" width="12" height="6" rx="1.5" fill="none" stroke="#60a5fa" stroke-width="2"/>
+        <path d="M19 18 V22" stroke="#fb923c" stroke-width="2"/>
+        <circle cx="19" cy="7" r="2.5" fill="#e2e8f0"/><path d="M19 9.5 V12" stroke="#e2e8f0" stroke-width="2"/>
+      </svg>
+      <div>
+        <h1>BESS Hardware &amp; Data-Flow Explorer</h1>
+        <p>Every device from a single LFP cell up to the utility and cloud, how power moves through them, and how each piece of data travels between them.</p>
+      </div>
+    </div>
+    <div class="tools">
+      <div class="grp" id="layers" role="group" aria-label="Show layers">
+        <span>Show</span>
+        <button class="tbtn on" data-layer="pw"><i class="sw" style="background:#22c55e"></i>Power</button>
+        <button class="tbtn on" data-layer="dt"><i class="sw" style="background:#60a5fa"></i>Data</button>
+        <button class="tbtn on" data-layer="hw"><i class="sw" style="background:#ef4444"></i>Safety interlocks</button>
+      </div>
+      <div class="grp" id="ops" role="group" aria-label="Battery operating state">
+        <span>Battery</span>
+        <button class="tbtn" data-op="charge">Charge</button>
+        <button class="tbtn on" data-op="idle">Idle</button>
+        <button class="tbtn" data-op="discharge">Discharge</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="main">
+    <div class="card">
+      <div class="card-head"><h2>Hardware hierarchy, cell to cloud</h2><span class="hint">Hover for a one-line explanation · click a device or a wire to inspect it</span></div>
+      <div class="dscroll"><svg id="svg" viewBox="0 0 1200 790" role="img" aria-label="Layered diagram of BESS hardware with power and communication links"></svg></div>
+    </div>
+    <aside class="card" id="insp" aria-live="polite"></aside>
+  </section>
+
+  <section class="bottom">
+    <div class="card">
+      <div class="card-head"><h2>Guided data journeys</h2><button class="linkbtn" id="exitScn" hidden>Exit journey</button></div>
+      <div class="scn-list" id="scnList"></div>
+      <div class="step-box" id="stepBox">
+        <div class="step-n">Pick a journey above</div>
+        <div class="step-t">Watch one message at a time move through the hardware</div>
+        <p class="step-x">Each step lights up the devices involved, animates the packet along its wire, and shows the actual message in the decoder on the right.</p>
+      </div>
+      <div class="player">
+        <button class="pbtn" id="prevBtn" disabled>Previous</button>
+        <button class="pbtn primary" id="playBtn" disabled>Play</button>
+        <button class="pbtn" id="nextBtn" disabled>Next</button>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+    <div class="card" id="decoder">
+      <div class="card-head"><h2>Message decoder</h2><span class="hint">What is actually on the wire</span></div>
+      <div id="decBody"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><h2>Link types</h2><span class="hint">Click one to highlight every wire that uses it</span></div>
+    <div class="legend" id="legend"></div>
+  </section>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+(function () {
+  'use strict';
+  const NS = 'http://www.w3.org/2000/svg';
+  const $ = (id) => document.getElementById(id);
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const rnd = () => Math.random() - 0.5;
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+  // ---------------- Protocols / link types ----------------
+  const PROTO = {
+    dc:   { name: 'DC power', color: '#22c55e', kind: 'pw', phy: 'Copper busbars and DC cables, up to ~1,500 V', speed: 'Energy, not data', use: 'Cells → modules → racks → PCS', why: 'The battery only stores and delivers DC; everything above the PCS is AC.' },
+    ac:   { name: 'AC power', color: '#f59e0b', kind: 'pw', phy: 'LV cables (690 V) and MV cables (34.5 kV)', speed: 'Energy, not data', use: 'PCS → transformer → switchgear → grid', why: 'Stepping up to medium voltage cuts current and cable losses by the voltage ratio.' },
+    sense:{ name: 'Analog sensing', color: '#94a3b8', kind: 'dt', dash: '2 3', phy: 'Voltage taps, thermistor pairs, shunt leads, CT/VT secondaries, 4–20 mA loops', speed: 'Continuous analog signal', use: 'Measuring a physical quantity at its source', why: 'Nothing is digital yet: a chip or meter must convert the voltage or resistance into a number.' },
+    isospi:{ name: 'isoSPI daisy chain', color: '#2dd4bf', kind: 'dt', phy: 'Twisted pair with pulse transformers at every hop', speed: '≈ 1 Mbps', use: 'Module AFEs ↔ rack BMS', why: 'Modules sit hundreds of volts apart, so every hop must be galvanically isolated.' },
+    can:  { name: 'CAN bus', color: '#fb923c', kind: 'dt', phy: 'Differential pair, 120 Ω terminated at both ends', speed: '250 kbps – 1 Mbps', use: 'Rack BMS ↔ system BMS ↔ PCS', why: 'Deterministic and noise-immune; lower IDs win arbitration, so alarms always get through first.' },
+    rtu:  { name: 'Modbus RTU (RS-485)', color: '#22d3ee', kind: 'dt', phy: 'RS-485 twisted pair, multi-drop', speed: '9.6 – 115.2 kbps', use: 'Slower field devices such as the IMD', why: 'Simple, cheap and supported by almost every industrial device.' },
+    mtcp: { name: 'Modbus TCP / Ethernet', color: '#60a5fa', kind: 'dt', phy: 'Ethernet copper or fibre through managed switches', speed: '100 Mbps – 1 Gbps', use: 'Container devices ↔ EMS ↔ PPC', why: 'Same register model as Modbus RTU, carried over standard IP networks.' },
+    iec:  { name: 'IEC 61850 (GOOSE / MMS)', color: '#a78bfa', kind: 'dt', phy: 'Substation Ethernet, often a redundant ring', speed: 'GOOSE < 4 ms', use: 'Protection relay ↔ PPC', why: 'Built for substations: fast peer-to-peer trip and measurement messages with self-describing data models.' },
+    dnp3: { name: 'DNP3', color: '#f472b6', kind: 'dt', phy: 'IP or serial link to the utility', speed: 'Seconds, event-driven', use: 'Plant ↔ utility SCADA and market', why: 'Designed for utilities: time-stamped events, report-by-exception and secure authentication.' },
+    mqtt: { name: 'MQTT over TLS', color: '#e2e8f0', kind: 'dt', phy: 'Internet over LTE or fibre, outbound only', speed: '1 – 60 s telemetry', use: 'Site ↔ cloud portal', why: 'Lightweight publish/subscribe that copes with patchy links and scales to whole fleets.' },
+    hw:   { name: 'Hardwired interlock', color: '#ef4444', kind: 'hw', dash: '6 4', phy: 'Relay contacts or a 24 VDC loop', speed: '< 10 ms, no software involved', use: 'E-stop, contactor coils, pyrofuse trigger, fire trip', why: 'Fail-safe by design: if a wire breaks or control power is lost, the system drops to a safe state.' }
+  };
+
+  const EX = {
+    dc:   { raw: 'DC bus 1,331 V · 2,254 A → PCS', f: [['Voltage', '1,331 V (416 cells × 3.2 V)'], ['Current', '2,254 A across 12 racks'], ['Power', '≈ 3.0 MW']] },
+    ac:   { raw: 'LV 690 V · 2,510 A → MV 34.5 kV · 50 A', f: [['Ratio', '0.69 / 34.5 kV = 1 : 50'], ['Current drop', '50× lower on MV'], ['Why', 'Less copper, lower losses']] },
+    sense:{ raw: 'Cell 17 tap = 3.3136 V   ·   NTC 3 = 8.94 kΩ', f: [['Signal', 'Raw voltage / resistance'], ['Converted by', 'AFE chip ADC'], ['Resolution', '100 µV, 0.1 °C']] },
+    isospi:{ raw: 'RDCVA 0x0004 | 70 81 6C 81 90 81 | PEC 3A 7B', f: [['Command', 'Read cell voltage group A'], ['Cell 1', '0x8170 → 3.3136 V'], ['Cell 2', '0x816C → 3.3132 V'], ['Cell 3', '0x8190 → 3.3168 V'], ['PEC', '15-bit CRC, detects bit errors'], ['Scale', '100 µV per bit, little-endian']] },
+    can:  { raw: 'ID 0x18FF1201  DLC 8\n34 00 FE 33 02 70 00 00', f: [['Bytes 0–1', '0x3400 × 0.1 = 1,331.2 V'], ['Bytes 2–3', '0xFE33 signed × 0.1 = −46.1 A'], ['Bytes 4–5', '0x0270 × 0.1 = 62.4 % SoC'], ['Bytes 6–7', 'Alarm flags: none'], ['Priority', '0x18… = normal telemetry']] },
+    rtu:  { raw: 'Req  01 04 00 00 00 02 71 CB\nResp 01 04 04 08 34 00 01 …CRC', f: [['Slave', '1 (IMD)'], ['Function', '04 · read input registers'], ['Reg 0', '0x0834 = 2,100 kΩ'], ['Reg 1', '1 = healthy'], ['CRC', 'CRC-16 over the frame']] },
+    mtcp: { raw: 'MBAP 00 2A 00 00 00 06 01 | 04 75 30 00 0A', f: [['Transaction', '0x002A (42)'], ['Unit', '1 (system BMS)'], ['Function', '04 · read input registers'], ['Start', '0x7530 = 30000'], ['Count', '10 registers (SoC, SoH, limits…)']] },
+    iec:  { raw: 'GOOSE PCC_RELAY/LLN0$GO$gcb01\nstNum 12 · sqNum 4380 · TAL 2 s', f: [['P at POI', '+2.98 MW'], ['Q at POI', '+0.41 MVAr'], ['52a (breaker)', 'Closed'], ['Delivery', 'Multicast, repeated on change']] },
+    dnp3: { raw: 'DNP3 Resp · Obj 30 Var 5 · Obj 2 Var 2', f: [['AI idx 0', '2.98 MW (float)'], ['AI idx 1', '62.4 % SoC'], ['BI event idx 7', 'Available = ON'], ['Timestamp', '17:02:11.428 UTC']] },
+    mqtt: { raw: 'PUB site/bess-01/telemetry  QoS 1\n{"soc":62.4,"p_kw":2980,"t_max":27.4,"alarms":[]}', f: [['Topic', 'site/bess-01/telemetry'], ['QoS', '1 · at least once'], ['Transport', 'TLS 1.3 over LTE'], ['Direction', 'Outbound only from site']] },
+    hw:   { raw: '24 VDC interlock loop:  CLOSED = healthy   OPEN = trip', f: [['Normal state', 'Loop energized'], ['Trip', 'Any contact opens the loop'], ['Response', '< 10 ms'], ['Software needed', 'None']] }
+  };
+
+  // ---------------- Layers & devices ----------------
+  const ROWS = {
+    L6: { y: 26, h: 70, t: 'Remote & cloud', s: 'utility, market, portal' },
+    L5: { y: 128, h: 70, t: 'Site control', s: 'PPC, EMS, network edge' },
+    L4: { y: 230, h: 70, t: 'Site electrical', s: '690 V → 34.5 kV' },
+    L3: { y: 332, h: 84, t: 'Container system', s: 'PCS, system BMS, auxiliaries' },
+    L2: { y: 448, h: 84, t: 'Rack', s: '×12 per container' },
+    L1: { y: 564, h: 70, t: 'Module', s: '×8 per rack' },
+    L0: { y: 666, h: 100, t: 'Cells', s: '×52 per module' }
+  };
+
+  const S = { op: 'idle', soc: 62.4, flags: {}, sel: null, selLink: null, scn: null, step: 0, playing: false, protoHl: null, layers: { pw: true, dt: true, hw: true } };
+
+  function P() { // battery power, MW (+ discharge)
+    const f = S.flags;
+    const op = f.op || S.op;
+    if (f.contOpen || f.pcsStop || f.precharge) return 0;
+    let p = op === 'discharge' ? 3 : op === 'charge' ? -3 : 0;
+    if (f.derate) p *= 0.5;
+    return p;
+  }
+  const cellV = () => 3.18 + 0.16 * S.soc / 100 - P() * 0.006;
+  const rackI = () => P() * 1e6 / 4 / (cellV() * 416) / 12;
+  const tMax = () => S.flags.hot ? 56.4 : 25.5 + Math.abs(P()) * 0.8;
+  const r1 = (v) => (Math.abs(v) < 0.05 ? 0 : v).toFixed(1);
+  const sP = (v) => (v > 0.005 ? '+' : '') + (Math.abs(v) < 0.005 ? '0.00' : v.toFixed(2));
+
+  const DEV = {
+    grid:  { row: 'L6', x: 360, w: 160, name: 'Utility grid', aka: '34.5 kV distribution feeder',
+      tip: 'The utility network the battery charges from and discharges into.',
+      more: 'Everything upstream of the switchgear belongs to the utility. The BESS must follow its interconnection rules for voltage, frequency and protection.',
+      does: ['Supplies charging energy', 'Absorbs discharged energy', 'Sets voltage and frequency'], hw: 'Utility feeder, recloser, substation',
+      lines: () => ['60.00 Hz · 34.5 kV'], live: () => [['Frequency', (60 + rnd() * 0.01).toFixed(3) + ' Hz'], ['Voltage', '34.5 kV'], ['Flow', P() > 0 ? 'Receiving ' + P().toFixed(2) + ' MW' : P() < 0 ? 'Supplying ' + (-P()).toFixed(2) + ' MW' : 'No exchange']] },
+    scada: { row: 'L6', x: 560, w: 160, name: 'Utility SCADA', aka: 'Control centre / DMS',
+      tip: 'The utility control room that watches the plant and can send limits or setpoints.',
+      more: 'Operators see plant output, state of charge and breaker status, and can curtail or dispatch the plant during grid events.',
+      does: ['Monitors plant status', 'Sends curtailment and setpoints', 'Receives time-stamped events'], hw: 'SCADA master station',
+      lines: () => ['Polling every 2 s'], live: () => [['Last poll', 'OK · 2 s ago'], ['Link', 'DNP3 SAv5 secure auth']] },
+    iso:   { row: 'L6', x: 740, w: 170, name: 'Market / ISO dispatch', aka: 'System operator',
+      tip: 'The wholesale market operator that awards energy and regulation schedules to the plant.',
+      more: 'Bids are submitted a day or hours ahead; the operator then sends dispatch instructions or automatic generation control (AGC) signals in real time.',
+      does: ['Awards energy schedules', 'Sends AGC / regulation signals', 'Settles revenue'], hw: 'ISO/RTO dispatch system',
+      lines: () => ['Award: ' + (P() > 0 ? 'discharge' : P() < 0 ? 'charge' : 'none')], live: () => [['Current award', P() > 0 ? '3.0 MW discharge' : P() < 0 ? '3.0 MW charge' : 'None'], ['Interval', '5 min']] },
+    cloud: { row: 'L6', x: 950, w: 200, name: 'Cloud O&M portal', aka: 'Remote monitoring platform',
+      tip: 'Dashboards, analytics and alerts for the owner and service team, reached over the internet.',
+      more: 'Stores the full data history for state-of-health trends, warranty claims, performance reports and remote troubleshooting.',
+      does: ['Dashboards & alerts', 'SoH and warranty analytics', 'Fleet benchmarking'], hw: 'Cloud time-series database and web app',
+      lines: () => ['Fleet dashboards · alerts'], live: () => [['Ingest delay', '≈ 1.2 s'], ['Open alerts', S.flags.alarm ? '1' : '0']] },
+    ppc:   { row: 'L5', x: 560, w: 160, name: 'Power plant controller', aka: 'PPC',
+      tip: 'Closes the control loop at the point of interconnection so the whole site hits its target.',
+      more: 'Every ~100 ms it compares measured power at the grid connection with the target and trims the setpoint, handling ramp rates, voltage support and frequency response.',
+      does: ['Closed-loop P/Q control', 'Ramp-rate limiting', 'Frequency & voltage response'], hw: 'Industrial controller / PLC with IEC 61850',
+      lines: () => ['P at POI ' + sP(P() * 0.985) + ' MW'], live: () => [['Target', sP(P()) + ' MW'], ['Measured at POI', sP(P() * 0.985) + ' MW'], ['Loop time', '100 ms']] },
+    ems:   { row: 'L5', x: 740, w: 170, name: 'Energy management system', aka: 'EMS / site controller',
+      tip: 'The site brain: schedules charging and discharging, enforces limits and logs everything.',
+      more: 'It polls every container device once a second, keeps SoC inside its window, splits site setpoints across containers and runs the operator HMI.',
+      does: ['Scheduling & optimization', 'Polls all devices', 'Alarm management & HMI', 'Local historian'], hw: 'Industrial edge server',
+      lines: () => ['Mode: ' + ((S.flags.op || S.op) === 'idle' ? 'standby' : (S.flags.op || S.op))], live: () => [['Tags polled', '4,812 @ 1 s'], ['Active alarms', S.flags.alarm ? '1' : '0'], ['CPU', (20 + Math.random() * 8).toFixed(0) + ' %']] },
+    fw:    { row: 'L5', x: 950, w: 200, name: 'Firewall & LTE router', aka: 'OT network edge',
+      tip: 'The only door between the plant network and the internet; it allows outbound encrypted traffic only.',
+      more: 'Separates the control network into zones (IEC 62443), terminates VPNs for remote service, and blocks any unsolicited inbound connection.',
+      does: ['Network segmentation', 'Outbound TLS / VPN', 'Intrusion logging'], hw: 'Industrial firewall with cellular modem',
+      lines: () => ['TLS tunnel up · LTE −71 dBm'], live: () => [['Uplink', 'LTE, −71 dBm'], ['Blocked inbound (24 h)', '312']] },
+    xfmr:  { row: 'L4', x: 180, w: 150, name: 'Step-up transformer', aka: '0.69 / 34.5 kV · Dyn11',
+      tip: 'Raises the inverter\'s 690 V output to 34.5 kV for connection to the grid.',
+      more: 'Its own monitor reports oil and winding temperatures; a pressure relief device and Buchholz relay protect against internal faults.',
+      does: ['Voltage step-up 1:50', 'Galvanic isolation', 'Oil / winding temperature'], hw: '4.5 MVA oil-filled pad-mount',
+      lines: () => ['Load ' + (Math.abs(P()) / 4.5 * 100).toFixed(0) + ' %'], live: () => [['Loading', (Math.abs(P()) / 4.5 * 100).toFixed(0) + ' %'], ['Top oil', (34 + Math.abs(P()) * 2).toFixed(1) + ' °C']] },
+    mvsw:  { row: 'L4', x: 360, w: 160, name: 'MV switchgear & relay', aka: 'Breaker + protection relay',
+      tip: 'The medium-voltage breaker and the relay that decides when to trip it.',
+      more: 'The relay watches current, voltage and frequency (functions 50/51, 27/59, 81) and publishes fast measurements to the PPC over IEC 61850.',
+      does: ['Connects / isolates site', 'Overcurrent & voltage protection', 'Fast POI measurements'], hw: '38 kV vacuum breaker + numerical relay',
+      lines: () => ['Breaker 52 closed'], live: () => [['Breaker', 'Closed'], ['Relay', 'Healthy, no pickups']] },
+    meter: { row: 'L4', x: 540, w: 130, name: 'Revenue meter', aka: 'Class 0.2S',
+      tip: 'Precisely measures energy in and out for billing and market settlement.',
+      more: 'Fed from dedicated CTs and VTs, sealed by the utility, and far more accurate than the inverter\'s own readings.',
+      does: ['Bidirectional kWh', 'P, Q, PF, power quality'], hw: 'ANSI C12.20 revenue meter',
+      lines: () => [sP(P() * 0.985) + ' MW'], live: () => [['Active power', sP(P() * 0.985) + ' MW'], ['Accuracy', '±0.2 %']] },
+    ups:   { row: 'L4', x: 1010, w: 160, name: 'Aux power & UPS', aka: 'Control power',
+      tip: 'Keeps the BMS, controllers and fire panel running for hours if AC power is lost.',
+      more: 'Without control power the contactor coils drop out and the battery disconnects, so the UPS is what lets the site ride through and restart.',
+      does: ['Aux transformer 400/230 V', 'Battery-backed 24 VDC', 'Runtime reporting'], hw: 'Aux transformer + online UPS',
+      lines: () => ['100 % · 4 h runtime'], live: () => [['UPS charge', '100 %'], ['Runtime', '4 h 05 m']] },
+    pcs:   { row: 'L3', x: 180, w: 150, name: 'PCS inverter', aka: 'Power conversion system',
+      tip: 'Converts battery DC to grid AC when discharging and AC back to DC when charging.',
+      more: 'IGBT switches chop DC thousands of times per second to build a 60 Hz sine wave. It obeys EMS setpoints but never exceeds the current limits streamed by the BMS.',
+      does: ['DC ⇄ AC conversion', 'P and Q control', 'Grid-following / grid-forming'], hw: '4.4 MVA 3-level IGBT inverter',
+      lines: () => [S.flags.pcsStop ? 'Stopped · E-stop' : 'P ' + sP(P()) + ' MW', S.flags.derate ? 'Derated 50 %' : S.flags.contOpen ? 'No DC' : 'Running'], live: () => [['Active power', sP(P()) + ' MW'], ['Switching freq.', P() !== 0 ? '3.2 kHz' : 'Blocked'], ['DC link', S.flags.contOpen ? '0 V' : (cellV() * 416).toFixed(0) + ' V'], ['Efficiency', P() !== 0 ? '98.6 %' : '—']] },
+    sbms:  { row: 'L3', x: 360, w: 160, name: 'System BMS', aka: 'BAU / SBMS / battery controller',
+      tip: 'Combines all 12 racks into one container view and is the single source of battery limits.',
+      more: 'It aggregates SoC, SoH and alarms, sends real-time current limits to the PCS over CAN, and serves everything to the EMS as Modbus registers.',
+      does: ['Aggregates 12 racks', 'Streams limits to PCS', 'Coordinates start / stop', 'Gateway to EMS'], hw: 'Embedded controller, CAN + Ethernet',
+      lines: () => ['SoC ' + S.soc.toFixed(1) + ' %', S.flags.contOpen ? '0/12 racks closed' : '12/12 racks closed'], live: () => [['SoC', S.soc.toFixed(1) + ' %'], ['SoH', '98.3 %'], ['Max discharge', S.flags.derate ? '2.2 MW' : '4.2 MW'], ['Racks connected', S.flags.contOpen ? '0 / 12' : '12 / 12']] },
+    sw:    { row: 'L3', x: 560, w: 130, name: 'Ethernet switch', aka: 'Managed industrial switch',
+      tip: 'The container\'s network hub that joins every Ethernet device and uplinks to the EMS.',
+      more: 'Uses VLANs to separate control, safety and service traffic, and a fibre ring so one broken cable doesn\'t cut communications.',
+      does: ['VLAN segmentation', 'Fibre ring redundancy', 'Port mirroring for diagnostics'], hw: 'DIN-rail managed switch',
+      lines: () => ['VLANs 10/20/30', 'Ring healthy'], live: () => [['Ports up', '9 / 16'], ['Ring', 'Closed, healthy'], ['Traffic', (1.4 + Math.random() * 0.3).toFixed(1) + ' Mbps']] },
+    hvac:  { row: 'L3', x: 720, w: 130, name: 'HVAC / chiller', aka: 'Thermal management',
+      tip: 'Pumps chilled glycol through cold plates to keep cells between 20 and 30 °C.',
+      more: 'Heat grows with the square of current, so high-power operation makes the chiller work harder. It also runs dehumidification and exhaust fans.',
+      does: ['Liquid cooling loop', 'Heating in winter', 'Exhaust ventilation'], hw: '60 kW liquid chiller',
+      lines: () => [S.flags.boost ? 'Boost · 14.0 °C' : 'Supply 18.0 °C', S.flags.exhaust ? 'Exhaust fans ON' : 'Flow 180 L/min'], live: () => [['Supply temp', S.flags.boost ? '14.0 °C' : '18.0 °C'], ['Flow', S.flags.boost ? '265 L/min' : '180 L/min'], ['Exhaust fans', S.flags.exhaust ? 'Running' : 'Off']] },
+    fap:   { row: 'L3', x: 880, w: 130, name: 'Fire alarm panel', aka: 'Detection & suppression',
+      tip: 'Watches gas, smoke and heat detectors and can trip the system and release suppressant.',
+      more: 'Its outputs are hardwired: a trip opens the interlock loop to the BMS and PCS directly, without waiting for any software.',
+      does: ['Detector supervision', 'Hardwired trips', 'Agent release', 'Alarm reporting'], hw: 'Fire alarm control panel (NFPA 72)',
+      lines: () => [S.flags.fire ? 'AGENT RELEASED' : S.flags.gas ? 'GAS ALARM' : 'Normal', S.flags.gas ? 'Trip loop open' : 'Loop healthy'], live: () => [['State', S.flags.fire ? 'Released' : S.flags.gas ? 'Gas alarm' : 'Normal'], ['Agent', S.flags.fire ? 'Discharged' : '100 % armed']] },
+    gas:   { row: 'L3', x: 1040, w: 130, name: 'Gas & smoke detectors', aka: 'Off-gas sensing',
+      tip: 'Detect electrolyte vapour and hydrogen minutes before a cell goes into thermal runaway.',
+      more: 'Off-gas detection is the earliest warning available; smoke and heat detectors confirm a fire before suppression is released.',
+      does: ['H₂ / CO / VOC sensing', 'Smoke & heat detection'], hw: '4–20 mA gas sensors + addressable detectors',
+      lines: () => ['H₂ ' + (S.flags.gas ? '30.0' : '0.4') + ' ppm', S.flags.fire ? 'Smoke detected' : 'Smoke clear'], live: () => [['H₂', S.flags.gas ? '30.0 ppm' : '0.4 ppm'], ['Signal', S.flags.gas ? '8.8 mA' : '4.1 mA'], ['Alarm at', '25 ppm']] },
+    cont:  { row: 'L2', x: 180, w: 150, name: 'Contactors & pre-charge', aka: 'DC+ / DC− mains',
+      tip: 'Heavy-duty DC switches that connect or isolate each rack from the PCS.',
+      more: 'A pre-charge relay and resistor first fill the PCS capacitors so the main contactors never close into a huge inrush current and weld shut.',
+      does: ['Connect / isolate rack', 'Pre-charge DC link', 'Weld detection'], hw: '1,500 VDC · 800 A sealed contactors',
+      lines: () => [S.flags.precharge ? 'Pre-charging…' : S.flags.contOpen ? 'OPEN' : 'Closed', 'I ' + r1(rackI()) + ' A'], live: () => [['DC+ main', S.flags.contOpen || S.flags.precharge ? 'Open' : 'Closed'], ['DC− main', S.flags.contOpen ? 'Open' : 'Closed'], ['Pre-charge relay', S.flags.precharge ? 'Closed' : 'Open']] },
+    rbms:  { row: 'L2', x: 360, w: 160, name: 'Rack BMS', aka: 'BCU / master BMU',
+      tip: 'Supervises one rack of 416 cells, estimates SoC and decides when its contactors may close.',
+      more: 'It gathers every cell reading over isoSPI, measures rack current, runs the SoC/SoH algorithms and drives the contactor coils and pyrofuse directly.',
+      does: ['SoC / SoH estimation', 'Contactor control', 'Rack protection', 'Balancing decisions'], hw: 'Rack controller board',
+      lines: () => [(S.flags.contOpen ? 0 : cellV() * 416).toFixed(0) + ' V · ' + r1(rackI()) + ' A', S.flags.gf ? 'TRIP · insulation' : 'SoC ' + S.soc.toFixed(1) + ' %'], live: () => [['Rack voltage', (cellV() * 416).toFixed(1) + ' V'], ['Rack current', r1(rackI()) + ' A'], ['SoC', S.soc.toFixed(2) + ' %'], ['Max cell', (cellV() + 0.004).toFixed(3) + ' V'], ['Min cell', (cellV() - 0.003).toFixed(3) + ' V']] },
+    imd:   { row: 'L2', x: 560, w: 130, name: 'Insulation monitor', aka: 'IMD',
+      tip: 'Constantly measures resistance between the floating DC bus and earth to catch ground faults.',
+      more: 'The DC system is ungrounded, so one fault to earth is not dangerous by itself, but a second one would be. The IMD catches the first.',
+      does: ['Insulation resistance', 'Alarm relay', 'Self-test'], hw: 'IEC 61557-8 monitor',
+      lines: () => [(S.flags.gf ? 38 : 2100) + ' kΩ', S.flags.gf ? 'TRIP < 100 kΩ' : 'Healthy'], live: () => [['Insulation', (S.flags.gf ? 38 : 2100) + ' kΩ'], ['Trip threshold', '100 kΩ']] },
+    shunt: { row: 'L2', x: 720, w: 130, name: 'Current sensor', aka: 'Precision shunt',
+      tip: 'Measures how many amps flow in or out of the rack, the key input for state of charge.',
+      more: 'A 100 µΩ resistor drops a few millivolts that the rack BMS reads thousands of times per second and integrates over time (coulomb counting).',
+      does: ['Rack current', 'Coulomb counting input'], hw: '100 µΩ shunt, ±0.5 %',
+      lines: () => [r1(rackI()) + ' A'], live: () => [['Current', r1(rackI()) + ' A'], ['Shunt voltage', (rackI() * 0.1).toFixed(2) + ' mV']] },
+    fuse:  { row: 'L2', x: 880, w: 150, name: 'Fuses & pyrofuse', aka: 'In series with the rack',
+      tip: 'Fuses clear short circuits, and the pyrofuse cuts the rack permanently in milliseconds on command.',
+      more: 'A manual service disconnect (MSD) lets technicians split the rack into safe voltage sections before maintenance.',
+      does: ['Short-circuit protection', 'Irreversible emergency cut', 'Service disconnect'], hw: '1,500 VDC fuses + pyro disconnect + MSD',
+      lines: () => ['Intact · pyro armed'], live: () => [['Fuses', 'Intact'], ['Pyrofuse', 'Armed']] },
+    busbar:{ row: 'L1', x: 180, w: 150, name: 'Module busbars', aka: 'Series connections',
+      tip: 'Copper links that chain 52 cells into a module and 8 modules into a rack.',
+      more: 'Loose or corroded busbar joints are a classic cause of local hot spots, which is why torque checks and thermal scans are part of maintenance.',
+      does: ['Series connection', 'Carries full rack current'], hw: 'Laser-welded aluminium / copper',
+      lines: () => [(cellV() * 52).toFixed(1) + ' V per module'], live: () => [['Module voltage', (cellV() * 52).toFixed(1) + ' V'], ['Current', r1(rackI()) + ' A']] },
+    cmu:   { row: 'L1', x: 360, w: 160, name: 'Module CMU / AFE', aka: 'Cell monitoring unit',
+      tip: 'A chip on each module that measures every cell\'s voltage and temperature and balances them.',
+      more: 'The analog front-end (AFE) samples all cells at once, and small resistors bleed charge from the highest cells so the pack stays matched.',
+      does: ['Cell voltage measurement', 'Temperature measurement', 'Passive balancing'], hw: 'Battery-monitor AFE IC with isoSPI',
+      lines: () => ['ΔV ' + (S.flags.hot ? 19 : 7) + ' mV', S.flags.hot ? 'OT flag set' : 'Balanced'], live: () => [['Cell spread', (S.flags.hot ? 19 : 7) + ' mV'], ['Balancing', S.flags.hot ? 'Suspended' : 'Idle'], ['Sample rate', '10 ms']] },
+    ntc:   { row: 'L1', x: 560, w: 130, name: 'NTC thermistors', aka: 'Temperature sensors',
+      tip: 'Temperature sensors whose resistance falls as they heat up.',
+      more: 'Several per module, placed on cell surfaces and busbars; the CMU converts their resistance to °C.',
+      does: ['Cell / busbar temperature'], hw: '10 kΩ NTC, B = 3435',
+      lines: () => ['Max ' + tMax().toFixed(1) + ' °C'], live: () => [['Max', tMax().toFixed(1) + ' °C'], ['Limit', '55.0 °C']] },
+    cells: { row: 'L0', x: 180, w: 510, h: 100, name: 'LFP cells', aka: '3.2 V · 280 Ah prismatic',
+      tip: 'Lithium iron phosphate cells where the energy is actually stored.',
+      more: 'LFP is favoured for stationary storage because it is thermally stable and lasts thousands of cycles, though its flat voltage curve makes SoC harder to estimate.',
+      does: ['Store energy chemically'], hw: '280 Ah prismatic LFP cells',
+      lines: () => [], live: () => [['Avg cell voltage', cellV().toFixed(3) + ' V'], ['Energy per cell', '0.9 kWh'], ['C-rate', (Math.abs(P()) / 16).toFixed(3) + ' C']] }
+  };
+
+  const LINKS = [
+    { id: 'p1', a: 'cells', b: 'busbar', p: 'dc', d: 'M255,666 V634', c: 'Cell current into the series chain' },
+    { id: 'p2', a: 'busbar', b: 'cont', p: 'dc', d: 'M255,564 V532', c: 'Rack DC, ~1,330 V' },
+    { id: 'p3', a: 'cont', b: 'pcs', p: 'dc', d: 'M255,448 V416', c: 'Combined DC from 12 racks' },
+    { id: 'p4', a: 'pcs', b: 'xfmr', p: 'ac', d: 'M255,332 V300', c: '690 V three-phase AC' },
+    { id: 'p5', a: 'xfmr', b: 'mvsw', p: 'ac', d: 'M330,265 H360', c: '34.5 kV AC' },
+    { id: 'p6', a: 'mvsw', b: 'grid', p: 'ac', d: 'M440,230 V96', c: '34.5 kV to the utility' },
+    { id: 'd1', a: 'cells', b: 'cmu', p: 'sense', d: 'M440,666 V634', c: 'Voltage-tap wire on every cell', r: 'continuous' },
+    { id: 'd2', a: 'cells', b: 'ntc', p: 'sense', d: 'M625,666 V634', c: 'Thermal contact on cell surface', r: 'continuous' },
+    { id: 'd3', a: 'ntc', b: 'cmu', p: 'sense', d: 'M560,599 H520', c: 'Thermistor resistance', r: '100 ms' },
+    { id: 'd4', a: 'cmu', b: 'rbms', p: 'isospi', d: 'M440,564 V532', c: 'Cell voltages & temps ↑, balancing ↓', r: '10–100 ms' },
+    { id: 'd5', a: 'shunt', b: 'rbms', p: 'sense', d: 'M785,532 V546 H470 V532', c: 'Shunt millivolts = rack current', r: '1 ms' },
+    { id: 'd6', a: 'rbms', b: 'fuse', p: 'hw', d: 'M495,532 V556 H955 V532', c: 'Pyrofuse fire signal', r: 'on fault' },
+    { id: 'd7', a: 'imd', b: 'rbms', p: 'rtu', d: 'M560,482 H520', c: 'Insulation resistance value', r: '1 s' },
+    { id: 'd8', a: 'imd', b: 'rbms', p: 'hw', d: 'M560,502 H520', c: 'Insulation alarm relay', r: 'on fault' },
+    { id: 'd9', a: 'rbms', b: 'cont', p: 'hw', d: 'M360,490 H330', c: 'Contactor coil drive', r: 'on command' },
+    { id: 'd10', a: 'rbms', b: 'sbms', p: 'can', d: 'M440,448 V416', c: 'Rack V, I, SoC, limits, alarms', r: '100 ms' },
+    { id: 'd11', a: 'sbms', b: 'pcs', p: 'can', d: 'M360,374 H330', c: 'Current limits, DC-ready flag', r: '100 ms' },
+    { id: 'd12', a: 'sbms', b: 'sw', p: 'mtcp', d: 'M520,374 H560', c: 'Container SoC, SoH, limits, alarms', r: '1 s' },
+    { id: 'd13', a: 'pcs', b: 'sw', p: 'mtcp', d: 'M295,332 V322 H600 V332', c: 'Status ↑, P/Q setpoints ↓', r: '100 ms – 1 s' },
+    { id: 'd14', a: 'hvac', b: 'sw', p: 'mtcp', d: 'M720,374 H690', c: 'Chiller status ↑, setpoints ↓', r: '1 s' },
+    { id: 'd15', a: 'fap', b: 'sw', p: 'mtcp', d: 'M945,332 V316 H640 V332', c: 'Fire & gas alarm status', r: '1 s' },
+    { id: 'd16', a: 'gas', b: 'fap', p: 'sense', d: 'M1040,374 H1010', c: '4–20 mA gas level, detector loops', r: 'continuous' },
+    { id: 'd17', a: 'fap', b: 'hvac', p: 'hw', d: 'M880,396 H850', c: 'Start exhaust ventilation', r: 'on alarm' },
+    { id: 'd18', a: 'fap', b: 'pcs', p: 'hw', d: 'M945,416 V442 H300 V416', c: 'Emergency stop to PCS', r: 'on alarm' },
+    { id: 'd19', a: 'fap', b: 'sbms', p: 'hw', d: 'M915,416 V430 H485 V416', c: 'Trip: open all rack contactors', r: 'on alarm' },
+    { id: 'd20', a: 'ups', b: 'sw', p: 'mtcp', d: 'M1010,265 H705 V349 H690', c: 'UPS charge, runtime, alarms', r: '5 s' },
+    { id: 'd21', a: 'sw', b: 'ems', p: 'mtcp', d: 'M680,332 V214 H825 V198', c: 'All container data over fibre', r: '1 s' },
+    { id: 'd22', a: 'mvsw', b: 'meter', p: 'sense', d: 'M520,265 H540', c: 'CT / VT secondaries', r: 'continuous' },
+    { id: 'd23', a: 'mvsw', b: 'ppc', p: 'iec', d: 'M490,230 V212 H610 V198', c: 'Breaker status, fast P/Q/V/f', r: '< 4 ms on change' },
+    { id: 'd24', a: 'meter', b: 'ppc', p: 'mtcp', d: 'M605,230 V222 H655 V198', c: 'Revenue P, Q and energy', r: '1 s' },
+    { id: 'd25', a: 'ppc', b: 'ems', p: 'mtcp', d: 'M720,163 H740', c: 'Setpoints ↓, availability ↑', r: '100 ms' },
+    { id: 'd26', a: 'scada', b: 'ppc', p: 'dnp3', d: 'M640,96 V128', c: 'Curtailment ↓, status & events ↑', r: '2 s / on event' },
+    { id: 'd27', a: 'iso', b: 'ppc', p: 'dnp3', d: 'M825,96 V112 H690 V128', c: 'Dispatch awards, AGC signal', r: '4 s – 5 min' },
+    { id: 'd28', a: 'ems', b: 'fw', p: 'mqtt', d: 'M910,163 H950', c: 'Aggregated telemetry & alarms', r: '1–10 s' },
+    { id: 'd29', a: 'fw', b: 'cloud', p: 'mqtt', d: 'M1050,128 V96', c: 'Encrypted telemetry, remote commands', r: '1–10 s' }
+  ];
+  const LK = {}; LINKS.forEach((l) => (LK[l.id] = l));
+
+  // ---------------- Journeys ----------------
+  const M = (p, raw, f) => ({ p, raw, f });
+  const SCN = [
+    { id: 'tele', name: 'Cell voltage → cloud', sub: 'Follow one reading from chip to dashboard', init: { op: 'charge' }, steps: [
+      { l: 'd1', t: 'Sense the cell', x: 'Every cell has its own voltage-tap wire. The module\'s analog front-end chip measures all 52 cells at the same instant, to about ±1–2 mV.', m: M('sense', 'Cell 17 tap: 3.3136 V', [['Quantity', 'Cell voltage'], ['Resolution', '100 µV'], ['Rate', 'every ~10 ms']]) },
+      { l: 'd3', t: 'Add temperature', x: 'NTC thermistors bonded to the cells change resistance with heat. The CMU converts that resistance into degrees.', m: M('sense', 'NTC 3: 8.94 kΩ → 27.4 °C', [['Sensor', '10 kΩ NTC, B = 3435'], ['Reading', '8.94 kΩ'], ['Temperature', '27.4 °C']]) },
+      { l: 'd4', t: 'Hop up the isoSPI chain', x: 'The CMU packs readings into frames and passes them up the daisy chain. Each hop is transformer-isolated because modules sit hundreds of volts apart.', m: M('isospi', EX.isospi.raw, EX.isospi.f) },
+      { l: 'd5', t: 'Rack BMS adds current', x: 'A precision shunt measures rack current. The rack BMS combines voltage, current and temperature to estimate SoC, SoH and safe power limits.', m: M('sense', 'Shunt: −4.61 mV across 100 µΩ → −46.1 A', [['Shunt', '100 µΩ, ±0.5 %'], ['Current', '−46.1 A (charging)'], ['SoC method', 'Coulomb counting + OCV / Kalman correction']]) },
+      { l: 'd10', t: 'Rack summary over CAN', x: 'Every 100 ms the rack BMS sends a compact summary to the system BMS. CAN frames carry a priority, so alarms always win the bus.', m: M('can', EX.can.raw, EX.can.f) },
+      { l: 'd12', t: 'Container view as Modbus registers', x: 'The system BMS merges 12 racks into one container picture and publishes it as Modbus registers on the Ethernet switch.', m: M('mtcp', EX.mtcp.raw, EX.mtcp.f) },
+      { l: 'd21', t: 'Fibre uplink to the EMS', x: 'The switch forwards container traffic over fibre to the EMS, which polls every device each second and stores the history.', m: M('mtcp', 'EMS poll cycle: 4,812 tags in 380 ms', [['Devices polled', 'PCS, system BMS, HVAC, fire panel, UPS'], ['Cycle', '1 s'], ['Storage', 'Local historian, 30 days']]) },
+      { l: 'd28', t: 'Publish to the cloud', x: 'The EMS publishes a compact snapshot over MQTT. The firewall only allows this outbound encrypted tunnel; nothing can connect in.', m: M('mqtt', EX.mqtt.raw, EX.mqtt.f) },
+      { l: 'd29', t: 'Dashboards & analytics', x: 'In the cloud portal the reading lands on dashboards, SoH trend models and warranty reports, roughly one to two seconds after the chip measured it.', m: M('mqtt', 'Ingested → time-series DB → dashboard', [['End-to-end latency', '≈ 1–2 s'], ['Retention', 'Life of the asset'], ['Used for', 'SoH analytics, warranty, alerts']]) }
+    ] },
+    { id: 'disp', name: 'Grid dispatch command', sub: 'A 3 MW discharge travels down to the cells', init: {}, steps: [
+      { l: 'd27', t: 'Market award arrives', x: 'The market operator awards the plant 3 MW of discharge for the evening peak and sends the instruction to the plant controller.', m: M('dnp3', 'DNP3 · Obj 41 Var 3 (analog output, float) · idx 0 = 3.000', [['Object', 'Analog output block'], ['Setpoint', '3.000 MW discharge'], ['Start', '17:00:00']]) },
+      { l: 'd23', t: 'PPC reads the grid connection', x: 'The PPC gets fast measurements and breaker status from the protection relay over IEC 61850, so it knows exactly what is flowing right now.', m: M('iec', EX.iec.raw, [['P at POI', '0.00 MW'], ['Breaker', 'Closed'], ['Delivery', 'GOOSE multicast']]) },
+      { l: 'd25', t: 'PPC hands the target to the EMS', x: 'The PPC writes the site setpoint to the EMS, which decides how to share it between containers based on their state of charge.', m: M('mtcp', 'FC16 write multiple · reg 40101 = 3000', [['Function', '16 · write multiple registers'], ['Register', '40101 · site P setpoint (kW)'], ['Value', '3,000 kW']]) },
+      { l: 'd21', rev: true, t: 'EMS checks battery limits', x: 'Before commanding power, the EMS reads the system BMS: state of charge, maximum discharge power and any active warnings.', m: M('mtcp', 'FC04 read · 30010–30013 → 4200, 624, 0', [['Max discharge', '4,200 kW'], ['SoC', '624 × 0.1 = 62.4 %'], ['Warnings', 'None']]) },
+      { l: 'd13', rev: true, t: 'Setpoint written to the PCS', x: 'The EMS writes the active-power setpoint to the inverter. In this register map, positive means discharge.', m: M('mtcp', 'FC16 · reg 40201 = 3000 (P) · reg 40202 = 0 (Q)', [['P setpoint', '+3,000 kW'], ['Q setpoint', '0 kVAr'], ['Ramp', '10 % per second']]) },
+      { l: 'd11', t: 'BMS limits the PCS in real time', x: 'Independently of the EMS, the system BMS streams current limits to the PCS over CAN. The PCS always obeys the lower of setpoint and limit.', m: M('can', 'ID 0x18FF2001  DLC 8\n08 98 08 98 00 01 00 00', [['Max discharge current', '0x0898 = 2,200 A'], ['Max charge current', '0x0898 = 2,200 A'], ['DC ready', '1']]) },
+      { l: 'p3', fx: { op: 'discharge' }, t: 'Power flows', x: 'The PCS starts switching its IGBTs and draws current from all racks through the closed contactors, turning 1,331 V DC into 690 V AC.', m: M('dc', EX.dc.raw, EX.dc.f) },
+      { l: 'd24', t: 'Meter confirms delivery', x: 'The revenue meter reports about 3 MW leaving the site. The PPC compares that to the target every 100 ms and trims the setpoint to cover losses.', m: M('mtcp', 'FC04 read · reg 30001 = 2956 (kW)', [['Measured', '2,956 kW'], ['Target', '3,000 kW'], ['PPC trim', '+44 kW']]) },
+      { l: 'd26', rev: true, t: 'Utility sees the result', x: 'The PPC reports actual output, state of charge and availability to utility SCADA as time-stamped DNP3 events.', m: M('dnp3', EX.dnp3.raw, EX.dnp3.f) }
+    ] },
+    { id: 'ot', name: 'Over-temperature alarm', sub: 'Detection, derating, cooling, escalation', init: { op: 'discharge' }, steps: [
+      { l: 'd3', fx: { hot: true }, t: 'A module heats up', x: 'A thermistor in rack 3, module 5 reads 56 °C, above the 55 °C limit. Typical causes are a loose busbar bolt or a blocked coolant channel.', m: M('sense', 'NTC 3: 3.43 kΩ → 56.4 °C', [['Reading', '3.43 kΩ'], ['Temperature', '56.4 °C'], ['Limit', '55.0 °C']]) },
+      { l: 'd4', t: 'CMU flags it', x: 'The CMU sets an over-temperature bit in its next isoSPI status frame and suspends cell balancing, which adds heat.', m: M('isospi', 'RDSTATB | … OT flag = 1 · PEC OK', [['Frame', 'Status register group B'], ['OT flag', 'Set'], ['Balancing', 'Suspended']]) },
+      { l: 'd10', t: 'High-priority CAN alarm', x: 'The rack BMS sends an alarm frame with a low CAN ID. Lower IDs win arbitration, so this frame gets through ahead of routine telemetry.', m: M('can', 'ID 0x0CFF0103  DLC 8\n03 05 02 38 00 00 00 01', [['Priority', '0x0C… (high)'], ['Rack / module', '3 / 5'], ['Temp', '0x0238 × 0.1 = 56.8 °C'], ['Level', '1 · warning']]) },
+      { l: 'd11', fx: { derate: true }, t: 'PCS derated to 50 %', x: 'The system BMS halves the current limit it streams to the PCS. Heat in the cells grows with current squared, so halving current cuts heat by about 75 %.', m: M('can', 'ID 0x18FF2001  DLC 8\n04 4C 04 4C 00 01 00 00', [['Max discharge current', '0x044C = 1,100 A'], ['Change', '−50 %'], ['Effect', '≈ −75 % I²R heating']]) },
+      { l: 'd14', rev: true, fx: { boost: true }, t: 'Chiller boost', x: 'Through the switch, the system BMS commands the chiller to lower its supply setpoint and run at full flow.', m: M('mtcp', 'FC06 write single · reg 40301 = 140', [['Register', '40301 · supply setpoint'], ['Value', '140 × 0.1 = 14.0 °C'], ['Pump', '100 %']]) },
+      { l: 'd21', fx: { alarm: true }, t: 'EMS logs the alarm', x: 'The EMS time-stamps the alarm, raises it on the operator screen and removes the container from aggressive dispatch.', m: M('mtcp', 'Alarm 2107 · Rack 3 over-temperature · 17:21:04.512', [['Severity', 'Warning'], ['Action', 'Derate + cooling boost'], ['Acknowledged', 'No']]) },
+      { l: 'd28', t: 'O&M is notified', x: 'An MQTT alarm message reaches the cloud, which texts and emails the on-call technician.', m: M('mqtt', 'PUB site/bess-01/alarms  QoS 1\n{"code":2107,"rack":3,"t":56.8,"sev":"warn"}', [['Topic', 'site/bess-01/alarms'], ['QoS', '1 · at least once'], ['Notification', 'SMS + email']]) },
+      { l: 'd9', fx: { contOpen: true }, t: 'Escalation: contactors open', x: 'If the cell reaches 60 °C despite cooling, the rack BMS de-energizes its contactor coils. That path is hardwired, so it works even if software hangs.', m: M('hw', 'Coil 24 VDC → 0 V · DC+ OPEN · DC− OPEN', [['Trigger', 'T > 60 °C'], ['Path', 'Hardwired coil drive'], ['Result', 'Rack isolated']]) }
+    ] },
+    { id: 'gf', name: 'DC ground fault trip', sub: 'IMD finds a leak to earth', init: { op: 'charge' }, steps: [
+      { l: 'd7', fx: { gf: true }, t: 'Insulation drops', x: 'The IMD applies a small test signal between the DC bus and earth. Resistance falls from 2,100 kΩ to 38 kΩ: a cable is chafing somewhere.', m: M('rtu', 'Resp 01 04 04 00 26 00 02 …CRC', [['Reg 0', '0x0026 = 38 kΩ'], ['Reg 1', '2 = alarm'], ['Threshold', '100 kΩ']]) },
+      { l: 'd8', t: 'Hardwired alarm relay', x: 'Besides the Modbus value, the IMD opens its alarm relay so the trip never depends on communications working.', m: M('hw', 'IMD alarm contact: OPEN', [['Relay', 'K1 alarm'], ['State', 'Open = alarm'], ['Response', '< 10 ms']]) },
+      { l: 'd10', t: 'Rack BMS requests a stop', x: 'The rack BMS tells the system BMS it must disconnect.', m: M('can', 'ID 0x0CFF0104  DLC 8\n03 00 00 26 00 00 00 02', [['Rack', '3'], ['Fault', 'Insulation < 100 kΩ'], ['Request', 'Stop & isolate']]) },
+      { l: 'd11', fx: { pcsStop: true, alarm: true }, t: 'PCS ramps to zero', x: 'A 0 A current limit is sent to the PCS. Opening contactors at full current would arc and burn them, so the current is brought down first.', m: M('can', 'ID 0x18FF2001  DLC 8\n00 00 00 00 00 00 00 00', [['Max discharge current', '0 A'], ['Max charge current', '0 A'], ['DC ready', '0']]) },
+      { l: 'd9', fx: { contOpen: true }, t: 'Contactors open', x: 'With the current near zero, the rack BMS opens DC+ and DC−. The faulty rack is now isolated from the rest of the system.', m: M('hw', 'Coil 24 VDC → 0 V · DC+ OPEN · DC− OPEN', [['Breaking current', '< 5 A'], ['Contact wear', 'Minimal'], ['State', 'Latched out']]) },
+      { l: 'd21', t: 'Latched fault in the EMS', x: 'The EMS logs a latched fault. The rack cannot restart until a technician finds the damaged cable and resets it under lockout/tagout.', m: M('mtcp', 'Alarm 3101 · Rack 3 insulation fault · latched', [['Severity', 'Fault'], ['Reset', 'Manual, on site'], ['Capacity lost', '1 of 12 racks']]) },
+      { l: 'd26', rev: true, t: 'Utility is told', x: 'Available capacity has dropped, so the PPC reports the reduced rating to utility SCADA.', m: M('dnp3', 'DNP3 · AI idx 4 (available MW) = 3.67', [['Available', '3.67 MW (was 4.00)'], ['Reason', 'Rack out of service'], ['Event', 'Time-stamped']]) }
+    ] },
+    { id: 'gas', name: 'Off-gas / fire event', sub: 'Hardwired safety chain in action', init: { op: 'discharge' }, steps: [
+      { l: 'd16', fx: { gas: true }, t: 'Gas detected', x: 'A cell vents electrolyte vapour. The detector reads 30 ppm hydrogen, minutes before any smoke or flame.', m: M('sense', '4–20 mA loop: 8.8 mA → 30 ppm H₂', [['Range', '0–100 ppm = 4–20 mA'], ['Reading', '8.8 mA = 30 ppm'], ['Alarm', '25 ppm']]) },
+      { l: 'd19', fx: { contOpen: true }, t: 'Hardwired trip to the BMS', x: 'The fire panel opens the interlock loop to the system BMS, which drops every rack contactor at once. No software is in this path.', m: M('hw', 'Trip loop 24 VDC → 0 V', [['Loop', 'FAP → system BMS'], ['Action', 'All 12 racks open'], ['Time', '< 50 ms']]) },
+      { l: 'd18', fx: { pcsStop: true }, t: 'PCS emergency stop', x: 'The same panel trips the PCS E-stop input, blocking IGBT gate signals within milliseconds.', m: M('hw', 'E-stop input: OPEN → gate pulses blocked', [['Input', 'Safe-torque-off style E-stop'], ['PCS state', 'Stopped'], ['AC breaker', 'Opens']]) },
+      { l: 'd17', fx: { exhaust: true }, t: 'Exhaust ventilation', x: 'Exhaust fans start to keep flammable gas below 25 % of its lower explosive limit, as NFPA 855 requires.', m: M('hw', 'Exhaust relay: CLOSED → fans ON', [['Target', '< 25 % LEL'], ['Air changes', '≈ 12 per hour'], ['Standard', 'NFPA 855 / NFPA 69']]) },
+      { l: 'd15', fx: { alarm: true }, t: 'Alarm to the EMS', x: 'The panel reports the event over Modbus TCP. The EMS alerts O&M and the utility, and responders are called.', m: M('mtcp', 'FC04 · reg 30101 = 0x0005 (gas alarm + trip)', [['Bit 0', 'Gas alarm'], ['Bit 2', 'Trip output active'], ['Action', 'Call 911 / site contact']]) },
+      { l: 'd16', fx: { fire: true }, t: 'Suppression if confirmed', x: 'If smoke and heat detectors confirm a fire, the panel releases aerosol agent after a 30-second evacuation warning.', m: M('hw', 'Release solenoid energized · T+30 s', [['Confirmation', 'Smoke + heat (2 detectors)'], ['Pre-discharge warning', '30 s'], ['Agent', 'Condensed aerosol']]) }
+    ] },
+    { id: 'start', name: 'Start-up & pre-charge', sub: 'Safely connecting the racks', init: { contOpen: true }, steps: [
+      { l: 'd20', t: 'Control power is up', x: 'The UPS keeps controllers alive. The system BMS, fire panel and switch must all be healthy before anything closes.', m: M('mtcp', 'FC04 · UPS regs → 100 %, 245 min, no alarms', [['Charge', '100 %'], ['Runtime', '245 min'], ['Alarms', 'None']]) },
+      { l: 'd21', rev: true, t: 'EMS sends Start', x: 'The operator or schedule issues a Start command, which travels down to the system BMS.', m: M('mtcp', 'FC06 write single · reg 40001 = 1 (START)', [['Register', '40001 · run command'], ['Value', '1 = start'], ['Source', 'EMS schedule']]) },
+      { l: 'd10', rev: true, t: 'Close request to each rack', x: 'The system BMS asks each rack BMS in turn to connect.', m: M('can', 'ID 0x18FF0A00  DLC 8\n01 00 00 00 00 00 00 00', [['Command', 'Close request'], ['Racks', 'Sequenced 1 → 12'], ['Timeout', '10 s']]) },
+      { l: 'd7', t: 'Pre-close checks', x: 'Each rack BMS confirms insulation, cell voltages, temperatures and that the fire-panel loop is healthy.', m: M('rtu', EX.rtu.raw, EX.rtu.f) },
+      { l: 'd9', fx: { contOpen: false, precharge: true }, t: 'Pre-charge', x: 'The negative contactor closes, then the pre-charge relay feeds the PCS DC capacitors through a resistor until they reach about 95 % of rack voltage.', m: M('hw', 'DC− CLOSED · PRE CLOSED · DC link 0 → 1,265 V', [['Resistor', '47 Ω'], ['Target', '95 % of 1,331 V'], ['Time', '≈ 2 s']]) },
+      { l: 'd9', fx: { precharge: false }, t: 'Main contactor closes', x: 'The main positive contactor closes and the pre-charge relay opens. No inrush, no welded contacts.', m: M('hw', 'DC+ CLOSED · PRE OPEN', [['Voltage difference', '< 70 V at closing'], ['Inrush', 'Negligible'], ['State', 'Rack connected']]) },
+      { l: 'd11', t: 'DC ready, PCS synchronizes', x: 'The system BMS reports DC ready plus current limits. The PCS matches grid voltage and phase, then closes its AC breaker.', m: M('can', 'ID 0x18FF2001  DLC 8\n08 98 08 98 00 01 00 00', [['DC ready', '1'], ['Limits', '2,200 A both ways'], ['PCS', 'Synchronized']]) },
+      { l: 'd25', rev: true, t: 'Available for dispatch', x: 'The EMS reports the container available to the PPC, which advertises the capacity to the utility.', m: M('mtcp', 'reg 30201 = 4000 (available kW) · status = RUN', [['Available', '4.0 MW'], ['State', 'Running, idle'], ['Next', 'Awaiting dispatch']]) }
+    ] }
+  ];
+
+  // ---------------- SVG helpers ----------------
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  const svg = $('svg');
+  const G = {};
+
+  function build() {
+    const defs = el('defs', {}, svg);
+    const f = el('filter', { id: 'glow', x: '-60%', y: '-60%', width: '220%', height: '220%' }, defs);
+    el('feGaussianBlur', { stdDeviation: 2.4, result: 'b' }, f);
+    const mg = el('feMerge', {}, f); el('feMergeNode', { in: 'b' }, mg); el('feMergeNode', { in: 'SourceGraphic' }, mg);
+
+    for (const k in ROWS) {
+      const r = ROWS[k];
+      el('rect', { x: 10, y: r.y - 8, width: 1180, height: r.h + 16, rx: 10, class: 'band' }, svg);
+      el('text', { x: 22, y: r.y + r.h / 2 - 2, class: 'band-t' }, svg, r.t);
+      el('text', { x: 22, y: r.y + r.h / 2 + 13, class: 'band-s' }, svg, r.s);
+    }
+
+    // Scale panel
+    const sg = el('g', {}, svg);
+    el('text', { x: 740, y: 590, class: 'scale-t' }, sg, 'How one container adds up');
+    [['1 cell', '3.2 V · 280 Ah · 0.9 kWh'], ['1 module = 52 cells', '166 V · 46.6 kWh'], ['1 rack = 8 modules', '1,331 V · 373 kWh'], ['1 container = 12 racks', '≈ 4.5 MWh'], ['This site = 4 containers', '16 MWh usable · 4 MW']]
+      .forEach(([a, b], i) => { el('text', { x: 740, y: 618 + i * 30, class: 'scale-r' }, sg, a); el('text', { x: 740, y: 632 + i * 30, class: 'scale-r', fill: '#6b7c99' }, sg, '  ' + b); });
+
+    G.links = el('g', {}, svg);
+    G.pk = el('g', { filter: 'url(#glow)' }, svg);
+    G.devs = el('g', {}, svg);
+    G.hits = el('g', {}, svg);
+    G.focus = el('g', { filter: 'url(#glow)' }, svg);
+
+    LINKS.forEach((l) => {
+      const pr = PROTO[l.p];
+      l.kind = pr.kind;
+      const attrs = { d: l.d, class: 'lk ' + (pr.kind === 'pw' ? 'pw' : 'dt'), stroke: pr.color, 'data-kind': pr.kind };
+      if (pr.dash) attrs['stroke-dasharray'] = pr.dash;
+      l.el = el('path', attrs, G.links);
+      l.hit = el('path', { d: l.d, class: 'hit', 'data-link': l.id, 'data-kind': pr.kind }, G.hits);
+      l.L = l.el.getTotalLength();
+      l.g = el('g', { class: 'pk', 'data-kind': pr.kind }, G.pk);
+      l.dots = [];
+      const n = pr.kind === 'pw' ? Math.max(2, Math.ceil(l.L / 22)) : (pr.kind === 'hw' ? 0 : Math.max(1, Math.min(3, Math.round(l.L / 90))));
+      for (let i = 0; i < n; i++) {
+        l.dots.push(pr.kind === 'pw' ? el('circle', { r: 2.8, fill: pr.color }, l.g) : el('rect', { width: 5, height: 5, rx: 1, fill: pr.color }, l.g));
+      }
+      l.phase = Math.random() * l.L;
+      l.spd = { dc: 1, ac: 1, sense: 0.35, isospi: 1.5, can: 1.1, rtu: 0.45, mtcp: 1.2, iec: 1.8, dnp3: 0.55, mqtt: 0.7, hw: 0 }[l.p];
+    });
+
+    for (const id in DEV) {
+      const d = DEV[id], r = ROWS[d.row], h = d.h || r.h, y = r.y;
+      d.y = y; d.hh = h;
+      const g = el('g', { class: 'dv', id: 'dv-' + id, tabindex: 0, role: 'button', 'aria-label': 'Inspect ' + d.name, 'data-dev': id }, G.devs);
+      el('rect', { x: d.x, y, width: d.w, height: h, rx: 8, class: 'box' }, g);
+      d.led = el('circle', { cx: d.x + d.w - 10, cy: y + 11, r: 4, fill: '#22c55e' }, g);
+      el('text', { x: d.x + 10, y: y + 18, class: 'd-t' }, g, d.name);
+      el('text', { x: d.x + 10, y: y + 31, class: 'd-s' }, g, d.aka);
+      d.vt = [];
+      const nl = r.h >= 84 ? 2 : 1;
+      if (id !== 'cells') for (let i = 0; i < nl; i++) d.vt.push(el('text', { x: d.x + 10, y: y + 50 + i * 16, class: 'd-v' }, g, ''));
+      d.g = g;
+      if (id === 'cells') {
+        d.cellEls = [];
+        for (let i = 0; i < 16; i++) {
+          const cx = d.x + 12 + i * 31;
+          el('rect', { x: cx, y: y + 40, width: 25, height: 48, rx: 3, fill: '#0f172a', stroke: '#334155' }, g);
+          el('rect', { x: cx + 9, y: y + 36, width: 7, height: 4, rx: 1, fill: '#475569' }, g);
+          d.cellEls.push(el('rect', { x: cx + 2, y: y + 42, width: 21, height: 44, rx: 2, fill: '#22c55e' }, g));
+        }
+      }
+    }
+  }
+
+  // ---------------- Status ----------------
+  function statusOf(id) {
+    const f = S.flags;
+    switch (id) {
+      case 'cells': return f.hot || f.gas ? 'fault' : 'ok';
+      case 'ntc': return f.hot ? 'warn' : 'ok';
+      case 'cmu': return f.hot ? 'warn' : 'ok';
+      case 'rbms': return f.gf ? 'fault' : f.hot ? 'warn' : 'ok';
+      case 'cont': return f.contOpen ? 'fault' : f.precharge ? 'warn' : 'ok';
+      case 'imd': return f.gf ? 'fault' : 'ok';
+      case 'pcs': return f.pcsStop ? 'off' : f.derate ? 'warn' : f.contOpen ? 'off' : 'ok';
+      case 'sbms': return f.gf || f.gas ? 'fault' : f.hot ? 'warn' : 'ok';
+      case 'hvac': return f.boost || f.exhaust ? 'warn' : 'ok';
+      case 'fap': return f.gas || f.fire ? 'fault' : 'ok';
+      case 'gas': return f.gas ? 'fault' : 'ok';
+      case 'ems': case 'cloud': return f.alarm ? 'warn' : 'ok';
+      default: return 'ok';
+    }
+  }
+  const LED = { ok: '#22c55e', warn: '#f59e0b', fault: '#ef4444', off: '#64748b' };
+  const STL = { ok: 'Normal', warn: 'Warning', fault: 'Fault / tripped', off: 'Stopped' };
+
+  // ---------------- Render loop ----------------
+  function tick() {
+    const p = P();
+    if (p !== 0) S.soc = clamp(S.soc - p * 0.004, 5, 98);
+    for (const id in DEV) {
+      const d = DEV[id], st = statusOf(id);
+      const cls = 'dv st-' + st + (S.sel === id ? ' sel' : '') + (d.g.classList.contains('hl') ? ' hl' : '');
+      if (d.g.getAttribute('class') !== cls) d.g.setAttribute('class', cls);
+      d.led.setAttribute('fill', LED[st]);
+      const lines = d.lines();
+      d.vt.forEach((t, i) => { const v = lines[i] || ''; if (t.textContent !== v) t.textContent = v; });
+    }
+    const c = DEV.cells, col = S.soc > 40 ? '#22c55e' : S.soc > 20 ? '#facc15' : '#ef4444';
+    c.cellEls.forEach((r, i) => {
+      const hot = S.flags.hot && i === 9;
+      const fill = clamp(S.soc / 100 + (i % 3 - 1) * 0.004, 0, 1);
+      r.setAttribute('height', (44 * fill).toFixed(1)); r.setAttribute('y', (c.y + 42 + 44 * (1 - fill)).toFixed(1));
+      r.setAttribute('fill', hot || (S.flags.gas && i === 9) ? '#ef4444' : col);
+    });
+    if (S.sel) renderLive();
+  }
+
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let last = performance.now(), focusT = 0;
+  const focusDot = el('circle', { r: 0, fill: '#fff' }, null);
+  function animate(now) {
+    const k = Math.min(3, (now - last) / 16.7); last = now;
+    const p = P();
+    LINKS.forEach((l) => {
+      if (!l.dots.length) return;
+      let v;
+      if (l.kind === 'pw') {
+        if (Math.abs(p) < 0.01) { l.g.style.display = 'none'; return; }
+        l.g.style.display = ''; v = Math.sign(p) * (0.8 + Math.abs(p) * 0.4);
+      } else v = l.spd;
+      if (reduce) v = 0;
+      l.phase = (l.phase + v * k) % l.L; if (l.phase < 0) l.phase += l.L;
+      const gap = l.L / l.dots.length;
+      l.dots.forEach((dot, i) => {
+        const pt = l.el.getPointAtLength((l.phase + i * gap) % l.L);
+        if (dot.tagName === 'circle') { dot.setAttribute('cx', pt.x.toFixed(1)); dot.setAttribute('cy', pt.y.toFixed(1)); }
+        else { dot.setAttribute('x', (pt.x - 2.5).toFixed(1)); dot.setAttribute('y', (pt.y - 2.5).toFixed(1)); }
+      });
+    });
+    // journey focus packet
+    if (S.scn !== null) {
+      const st = SCN[S.scn].steps[S.step], l = LK[st.l];
+      focusT = (focusT + 0.012 * k) % 1;
+      const u = st.rev ? 1 - focusT : focusT;
+      const pt = l.el.getPointAtLength(u * l.L);
+      focusDot.setAttribute('cx', pt.x); focusDot.setAttribute('cy', pt.y); focusDot.setAttribute('r', 6);
+      focusDot.setAttribute('fill', PROTO[l.p].color);
+      if (!focusDot.parentNode) G.focus.appendChild(focusDot);
+    } else if (focusDot.parentNode) focusDot.remove();
+    requestAnimationFrame(animate);
+  }
+
+  // ---------------- Highlighting ----------------
+  function clearHl() {
+    svg.classList.remove('dim');
+    svg.querySelectorAll('.hl').forEach((e) => e.classList.remove('hl'));
+  }
+  function hlLinks(ids) {
+    clearHl(); svg.classList.add('dim');
+    ids.forEach((id) => {
+      const l = LK[id]; l.el.classList.add('hl'); l.g.classList.add('hl');
+      DEV[l.a].g.classList.add('hl'); DEV[l.b].g.classList.add('hl');
+    });
+  }
+
+  // ---------------- Inspector ----------------
+  const insp = $('insp');
+  function renderEmpty() {
+    insp.innerHTML = `<div class="insp-empty">
+      <div class="card-head" style="margin:0"><h2>Inspector</h2></div>
+      <p>Pick any box or wire in the diagram to see what it does, what it measures, who it talks to and how.</p>
+      <ol>
+        <li><b>Start at the bottom.</b> Cells are measured by the CMU, summarized by the rack BMS, then the system BMS.</li>
+        <li><b>Follow the colours.</b> Green and amber carry energy; thin coloured lines carry data; red dashes are hardwired safety.</li>
+        <li><b>Run a journey</b> below to watch one real message move through the hardware step by step.</li>
+      </ol>
+      <p style="margin-top:10px;color:var(--dim)">Vendors use different names for the same tier (CSC, BMU, BCU, BAU, SBMS…). The "also called" line under each device gives common alternatives.</p>
+    </div>`;
+  }
+  function ptag(p) { const c = PROTO[p].color; return `<span class="ptag" style="color:${c};border-color:${c}66">${PROTO[p].name}</span>`; }
+  function selectDev(id) {
+    S.sel = id; S.selLink = null;
+    const d = DEV[id], st = statusOf(id);
+    const conns = LINKS.filter((l) => l.a === id || l.b === id).map((l) => {
+      const out = l.a === id, other = DEV[out ? l.b : l.a];
+      return `<div class="conn" data-goto-link="${l.id}"><span class="arr">${out ? '→' : '←'}</span><span class="who">${other.name}${ptag(l.p)}</span><span class="what">${esc(l.c)}${l.r ? ' · ' + l.r : ''}</span></div>`;
+    }).join('');
+    insp.innerHTML = `
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+        <div><div class="i-layer">${ROWS[d.row].t} layer</div><h2 class="i-title">${d.name}</h2><div class="i-aka">Also called: ${d.aka}</div></div>
+        <span class="stat ${st}" id="iStat">${STL[st]}</span>
+      </div>
+      <div class="i-sec"><p><b>${esc(d.tip)}</b> ${esc(d.more)}</p></div>
+      <div class="i-sec"><h3>What it does</h3><div class="chips">${d.does.map((x) => `<span class="chip">${x}</span>`).join('')}</div></div>
+      <div class="i-sec"><h3>Live values</h3><div id="iLive"></div></div>
+      <div class="i-sec"><h3>Connections (${LINKS.filter((l) => l.a === id || l.b === id).length})</h3>${conns}</div>
+      <div class="i-sec"><h3>Typical hardware</h3><p>${d.hw}</p></div>`;
+    renderLive();
+    if (S.scn === null && !S.protoHl) { clearHl(); }
+    tick();
+  }
+  function renderLive() {
+    const d = DEV[S.sel]; if (!d) return;
+    const box = $('iLive'); if (!box) return;
+    box.innerHTML = d.live().map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join('');
+    const st = statusOf(S.sel), s = $('iStat'); if (s) { s.className = 'stat ' + st; s.textContent = STL[st]; }
+  }
+  function selectLink(id) {
+    const l = LK[id], pr = PROTO[l.p];
+    S.sel = null; S.selLink = id;
+    insp.innerHTML = `
+      <div><div class="i-layer">Connection</div><h2 class="i-title">${DEV[l.a].name} → ${DEV[l.b].name}</h2></div>
+      <div class="i-sec"><div class="ptitle"><span class="pdot" style="background:${pr.color}"></span><b>${pr.name}</b></div><p style="margin-top:6px">${esc(l.c)}${l.r ? ' · updates ' + l.r : ''}</p></div>
+      <div class="i-sec"><h3>About this link type</h3>
+        <div class="kv"><span>Physical layer</span><b style="font-family:var(--sans)">${pr.phy}</b></div>
+        <div class="kv"><span>Speed</span><b style="font-family:var(--sans)">${pr.speed}</b></div>
+        <div class="kv"><span>Used for</span><b style="font-family:var(--sans)">${pr.use}</b></div>
+      </div>
+      <div class="i-sec"><h3>Why this one</h3><p>${pr.why}</p></div>
+      <div class="i-sec"><button class="linkbtn" data-goto-dev="${l.a}">Open ${DEV[l.a].name}</button> &nbsp;·&nbsp; <button class="linkbtn" data-goto-dev="${l.b}">Open ${DEV[l.b].name}</button></div>`;
+    if (S.scn === null) hlLinks([id]);
+    showDecoder(l.p, EX[l.p], 'Example ' + pr.name + ' message on this kind of link');
+    tick();
+  }
+
+  // ---------------- Decoder ----------------
+  function showDecoder(p, m, caption) {
+    const pr = PROTO[p];
+    $('decBody').innerHTML = `
+      <div class="ptitle"><span class="pdot" style="background:${pr.color};box-shadow:0 0 8px ${pr.color}"></span><b>${pr.name}</b></div>
+      <div class="pmeta">${caption || ''}</div>
+      <div class="raw">${esc(m.raw)}</div>
+      ${m.f.map(([k, v]) => `<div class="kv"><span>${k}</span><b>${esc(v)}</b></div>`).join('')}
+      <div class="pmeta" style="margin-top:8px">${pr.phy} · ${pr.speed}</div>`;
+  }
+  function decoderIdle() {
+    $('decBody').innerHTML = `<p style="color:var(--muted);margin:0">Click a wire in the diagram or start a journey to see the real bytes and what each field means.</p>`;
+  }
+
+  // ---------------- Journeys ----------------
+  function buildScn() {
+    $('scnList').innerHTML = SCN.map((s, i) => `<button class="scn" data-scn="${i}"><b>${s.name}</b><small>${s.sub}</small></button>`).join('');
+  }
+  function applyFx() {
+    const s = SCN[S.scn]; const f = Object.assign({}, s.init);
+    for (let i = 0; i <= S.step; i++) Object.assign(f, s.steps[i].fx || {});
+    S.flags = f;
+  }
+  function startScn(i) {
+    S.protoHl = null; renderLegend();
+    S.scn = i; S.step = 0; stopPlay();
+    document.querySelectorAll('.scn').forEach((b) => b.classList.toggle('on', +b.dataset.scn === i));
+    $('exitScn').hidden = false;
+    showStep();
+  }
+  function showStep() {
+    const s = SCN[S.scn], st = s.steps[S.step], l = LK[st.l];
+    applyFx(); focusT = 0;
+    hlLinks([st.l]);
+    const from = st.rev ? DEV[l.b].name : DEV[l.a].name, to = st.rev ? DEV[l.a].name : DEV[l.b].name;
+    $('stepBox').innerHTML = `<div class="step-n">${s.name} · step ${S.step + 1} of ${s.steps.length}</div>
+      <div class="step-t">${st.t}</div><p class="step-x">${st.x}</p>
+      <div class="step-route">${from} → ${to} ${ptag(l.p)}</div>`;
+    $('dots').innerHTML = s.steps.map((_, i) => `<i data-step="${i}" class="${i < S.step ? 'done' : i === S.step ? 'cur' : ''}" title="Step ${i + 1}"></i>`).join('');
+    $('prevBtn').disabled = S.step === 0; $('nextBtn').disabled = S.step === s.steps.length - 1; $('playBtn').disabled = false;
+    showDecoder(st.m.p, st.m, 'Message at this step');
+    const focusId = st.rev ? l.a : l.b;
+    selectDev(focusId);
+  }
+  function exitScn() {
+    stopPlay(); S.scn = null; S.flags = {};
+    document.querySelectorAll('.scn').forEach((b) => b.classList.remove('on'));
+    $('exitScn').hidden = true; clearHl();
+    $('stepBox').innerHTML = `<div class="step-n">Pick a journey above</div><div class="step-t">Watch one message at a time move through the hardware</div><p class="step-x">Each step lights up the devices involved, animates the packet along its wire, and shows the actual message in the decoder on the right.</p>`;
+    $('dots').innerHTML = ''; ['prevBtn', 'nextBtn', 'playBtn'].forEach((b) => ($(b).disabled = true));
+    decoderIdle(); if (S.sel) selectDev(S.sel); else renderEmpty();
+  }
+  let playTimer = null;
+  function stopPlay() { S.playing = false; clearInterval(playTimer); $('playBtn').textContent = 'Play'; }
+  function togglePlay() {
+    if (S.playing) { stopPlay(); return; }
+    const s = SCN[S.scn]; if (S.step >= s.steps.length - 1) { S.step = 0; showStep(); }
+    S.playing = true; $('playBtn').textContent = 'Pause';
+    playTimer = setInterval(() => {
+      if (S.step >= SCN[S.scn].steps.length - 1) { stopPlay(); return; }
+      S.step++; showStep();
+    }, 4200);
+  }
+
+  // ---------------- Legend ----------------
+  function renderLegend() {
+    $('legend').innerHTML = Object.keys(PROTO).map((k) => {
+      const p = PROTO[k];
+      const line = `<svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="${p.color}" stroke-width="${p.kind === 'pw' ? 5 : 2.5}" ${p.dash ? `stroke-dasharray="${p.dash}"` : ''} stroke-linecap="round"/></svg>`;
+      return `<button class="lg ${S.protoHl === k ? 'on' : ''}" data-proto="${k}">${line}${p.name}</button>`;
+    }).join('');
+  }
+  function toggleProto(k) {
+    if (S.scn !== null) exitScn();
+    if (S.protoHl === k) { S.protoHl = null; clearHl(); renderLegend(); decoderIdle(); return; }
+    S.protoHl = k; renderLegend();
+    hlLinks(LINKS.filter((l) => l.p === k).map((l) => l.id));
+    const pr = PROTO[k];
+    S.sel = null; S.selLink = null;
+    insp.innerHTML = `<div><div class="i-layer">Link type</div><h2 class="i-title">${pr.name}</h2></div>
+      <div class="i-sec"><p>${pr.why}</p></div>
+      <div class="i-sec"><div class="kv"><span>Physical layer</span><b style="font-family:var(--sans)">${pr.phy}</b></div><div class="kv"><span>Speed</span><b style="font-family:var(--sans)">${pr.speed}</b></div><div class="kv"><span>Used for</span><b style="font-family:var(--sans)">${pr.use}</b></div></div>
+      <div class="i-sec"><h3>Wires using it (${LINKS.filter((l) => l.p === k).length})</h3>${LINKS.filter((l) => l.p === k).map((l) => `<div class="conn" data-goto-link="${l.id}"><span class="arr">→</span><span class="who">${DEV[l.a].name} → ${DEV[l.b].name}</span><span class="what">${esc(l.c)}</span></div>`).join('')}</div>`;
+    showDecoder(k, EX[k], 'Example message');
+  }
+
+  // ---------------- Layers & ops ----------------
+  function applyLayers() {
+    svg.querySelectorAll('[data-kind]').forEach((e) => { e.style.display = S.layers[e.getAttribute('data-kind')] ? '' : 'none'; });
+  }
+
+  // ---------------- Tooltip ----------------
+  const tip = $('tip');
+  function moveTip(x, y) {
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let L = x + 14, T = y + 16;
+    if (L + w > innerWidth - 8) L = x - w - 14;
+    if (T + h > innerHeight - 8) T = y - h - 12;
+    tip.style.left = Math.max(8, L) + 'px'; tip.style.top = Math.max(8, T) + 'px';
+  }
+  let tipKey = null;
+  document.addEventListener('pointerover', (e) => {
+    if (e.pointerType === 'touch') return;
+    const dv = e.target.closest('[data-dev]'), lk = e.target.closest('[data-link]');
+    let key = null, html = '';
+    if (dv) { const d = DEV[dv.dataset.dev]; key = 'd' + dv.dataset.dev; html = `<b>${d.name}</b>${esc(d.tip)}`; }
+    else if (lk) { const l = LK[lk.dataset.link]; key = 'l' + l.id; html = `<b>${PROTO[l.p].name}</b>${DEV[l.a].name} → ${DEV[l.b].name}: ${esc(l.c)}`; }
+    if (key && key !== tipKey) { tipKey = key; tip.innerHTML = html; tip.classList.add('show'); moveTip(e.clientX, e.clientY); }
+    else if (!key) { tipKey = null; tip.classList.remove('show'); }
+  });
+  document.addEventListener('pointermove', (e) => { if (tipKey) moveTip(e.clientX, e.clientY); });
+
+  // ---------------- Events ----------------
+  document.addEventListener('click', (e) => {
+    const t = e.target;
+    const dv = t.closest('[data-dev]'); if (dv) { if (S.scn === null && S.protoHl) { S.protoHl = null; renderLegend(); clearHl(); } selectDev(dv.dataset.dev); return; }
+    const lk = t.closest('[data-link]'); if (lk) { if (S.protoHl) { S.protoHl = null; renderLegend(); } selectLink(lk.dataset.link); return; }
+    const gl = t.closest('[data-goto-link]'); if (gl) { selectLink(gl.dataset.gotoLink); return; }
+    const gd = t.closest('[data-goto-dev]'); if (gd) { selectDev(gd.dataset.gotoDev); return; }
+    const sc = t.closest('[data-scn]'); if (sc) { startScn(+sc.dataset.scn); return; }
+    const sp = t.closest('[data-step]'); if (sp && S.scn !== null) { stopPlay(); S.step = +sp.dataset.step; showStep(); return; }
+    const pr = t.closest('[data-proto]'); if (pr) { toggleProto(pr.dataset.proto); return; }
+    const ly = t.closest('[data-layer]'); if (ly) { const k = ly.dataset.layer; S.layers[k] = !S.layers[k]; ly.classList.toggle('on', S.layers[k]); applyLayers(); return; }
+    const op = t.closest('[data-op]'); if (op) { S.op = op.dataset.op; document.querySelectorAll('[data-op]').forEach((b) => b.classList.toggle('on', b === op)); tick(); return; }
+  });
+  document.addEventListener('keydown', (e) => {
+    const a = document.activeElement;
+    if ((e.key === 'Enter' || e.key === ' ') && a && a.dataset && a.dataset.dev) { e.preventDefault(); selectDev(a.dataset.dev); }
+    if (S.scn !== null && !['INPUT', 'TEXTAREA'].includes(a && a.tagName)) {
+      if (e.key === 'ArrowRight' && S.step < SCN[S.scn].steps.length - 1) { stopPlay(); S.step++; showStep(); }
+      if (e.key === 'ArrowLeft' && S.step > 0) { stopPlay(); S.step--; showStep(); }
+    }
+    if (e.key === 'Escape') { if (S.scn !== null) exitScn(); else { S.sel = null; S.protoHl = null; renderLegend(); clearHl(); renderEmpty(); decoderIdle(); tick(); } }
+  });
+  $('prevBtn').addEventListener('click', () => { if (S.step > 0) { stopPlay(); S.step--; showStep(); } });
+  $('nextBtn').addEventListener('click', () => { if (S.step < SCN[S.scn].steps.length - 1) { stopPlay(); S.step++; showStep(); } });
+  $('playBtn').addEventListener('click', togglePlay);
+  $('exitScn').addEventListener('click', exitScn);
+
+  // ---------------- Boot ----------------
+  S.scn = null;
+  build(); buildScn(); renderLegend(); renderEmpty(); decoderIdle(); applyLayers();
+  tick(); setInterval(tick, 400);
+  requestAnimationFrame(animate);
+})();
+</script>
+</body>
+</html>

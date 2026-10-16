@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link rel="stylesheet" href="../fonts/fonts.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>BESS & Microgrid System Simulator</title>
+<style data-tw="compiled">*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-4{height:1rem}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-wrap{flex-wrap:wrap}.border{border-width:1px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.outline{outline-style:solid}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}</style>
+<style>
+  :root {
+    --bg: #0f172a;
+    --panel: #111b30;
+    --panel2: #0b1326;
+    --line: #22304a;
+    --line2: #334155;
+    --text: #e2e8f0;
+    --muted: #8fa0ba;
+    --dim: #5b6b86;
+    --green: #22c55e;
+    --yellow: #facc15;
+    --blue: #38bdf8;
+    --purple: #a855f7;
+    --red: #ef4444;
+    --amber: #f59e0b;
+    --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: dark;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0f172a; } }
+  :root[data-theme="dark"] { --bg: #0f172a; }
+  html { background: var(--bg); scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 13px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+  .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 1680px; margin: 0 auto; padding: 14px 16px 28px; }
+  button { font-family: inherit; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  /* Header */
+  .topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+  .brand p { margin: 0; color: var(--muted); font-size: 12.5px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { display: flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+  .pill .lbl { color: var(--muted); font-size: 11.5px; }
+  .pill b { font-weight: 600; font-size: 13px; }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .pill.warn .dot { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+  .pill.bad .dot { background: var(--red); box-shadow: 0 0 8px var(--red); animation: blink 0.8s infinite; }
+  .pill.bad { border-color: rgba(239,68,68,.5); }
+  @keyframes blink { 50% { opacity: .3; } }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; min-width: 0; }
+  .card h2 { font-size: 13.5px; font-weight: 600; margin: 0; }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .hint { color: var(--dim); font-size: 11.5px; }
+  .tier-tag { color: var(--muted); font-size: 11.5px; font-weight: 500; }
+
+  /* EMS row */
+  .ems { display: grid; grid-template-columns: 1fr 1.1fr 1.5fr 1.7fr; gap: 12px; margin-bottom: 12px; }
+  .clickable { cursor: pointer; transition: border-color .2s; }
+  .clickable:hover { border-color: #3b4d6e; }
+  .kv { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; border-bottom: 1px dashed rgba(148,163,184,.08); }
+  .kv:last-child { border-bottom: 0; }
+  .kv span { color: var(--muted); }
+  .kv b { font-family: var(--mono); font-weight: 500; font-variant-numeric: tabular-nums; text-align: right; }
+  .led { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); margin-right: 6px; vertical-align: 1px; }
+  .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .mode-btn { text-align: left; background: var(--panel2); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 7px 9px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .mode-btn b { display: block; font-size: 12.5px; font-weight: 600; }
+  .mode-btn small { display: block; color: var(--muted); font-size: 11px; line-height: 1.3; margin-top: 2px; }
+  .mode-btn:hover { border-color: #3b4d6e; }
+  .mode-btn.active { border-color: var(--green); background: rgba(34,197,94,.08); }
+  .mode-btn.active b { color: var(--green); }
+  .mode-btn[data-mode="island"].active { border-color: var(--amber); background: rgba(245,158,11,.08); }
+  .mode-btn[data-mode="island"].active b { color: var(--amber); }
+  .alarm-list { list-style: none; margin: 0; padding: 0; max-height: 178px; overflow-y: auto; font-size: 12px; }
+  .alarm-list li { display: grid; grid-template-columns: 44px 78px 1fr; gap: 6px; padding: 4px 6px; border-left: 3px solid var(--dim); margin-bottom: 3px; background: rgba(15,23,42,.6); border-radius: 0 6px 6px 0; }
+  .alarm-list .at { font-family: var(--mono); color: var(--dim); }
+  .alarm-list .as { color: var(--muted); font-weight: 600; }
+  .alarm-list li.crit { border-left-color: var(--red); } .alarm-list li.crit .am { color: #fecaca; }
+  .alarm-list li.warn { border-left-color: var(--amber); } .alarm-list li.warn .am { color: #fde68a; }
+  .alarm-list li.ok { border-left-color: var(--green); }
+  .alarm-list li.info { border-left-color: var(--blue); }
+  .badge { font-family: var(--mono); font-size: 11.5px; padding: 1px 8px; border-radius: 999px; background: rgba(34,197,94,.12); color: var(--green); }
+  .badge.bad { background: rgba(239,68,68,.15); color: var(--red); }
+
+  /* Main row */
+  .mainrow { display: grid; grid-template-columns: minmax(0,1fr) 330px; gap: 12px; margin-bottom: 12px; }
+  .diagram-scroll { overflow-x: auto; border-radius: 8px; background: var(--panel2); border: 1px solid var(--line); }
+  #diagram { display: block; width: 100%; min-width: 880px; height: auto; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; color: var(--muted); font-size: 12px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+
+  .controls { display: flex; flex-direction: column; gap: 12px; }
+  .ctl-title { font-size: 13.5px; font-weight: 600; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+  .bigclock { font-family: var(--mono); font-size: 30px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
+  .sunrow { display: flex; justify-content: space-between; color: var(--dim); font-size: 11px; font-family: var(--mono); margin-top: 2px; }
+  input[type=range] { width: 100%; accent-color: var(--green); cursor: pointer; }
+  .seg { display: flex; gap: 4px; margin-top: 8px; }
+  .seg button, .btn { flex: 1; background: var(--panel2); border: 1px solid var(--line); color: var(--text); border-radius: 7px; padding: 6px 8px; cursor: pointer; font-size: 12.5px; transition: border-color .15s, background .15s; }
+  .seg button:hover, .btn:hover { border-color: #3b4d6e; }
+  .seg button.active { border-color: var(--blue); color: var(--blue); background: rgba(56,189,248,.08); }
+  .row3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-top: 8px; }
+  .btn.chg { color: var(--green); } .btn.dis { color: var(--yellow); }
+  .note { color: var(--dim); font-size: 11.5px; margin: 6px 0 0; }
+  .faults { display: grid; gap: 6px; }
+  .fbtn { display: flex; justify-content: space-between; align-items: center; text-align: left; background: var(--panel2); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 8px 10px; cursor: pointer; font-size: 12.5px; transition: border-color .15s, background .15s; }
+  .fbtn small { color: var(--dim); font-size: 11px; display: block; }
+  .fbtn:hover { border-color: rgba(239,68,68,.55); }
+  .fbtn.active { border-color: var(--red); background: rgba(239,68,68,.1); }
+  .fbtn .ind { width: 9px; height: 9px; border-radius: 50%; background: #334155; flex: none; }
+  .fbtn.active .ind { background: var(--red); box-shadow: 0 0 8px var(--red); animation: blink .8s infinite; }
+  .fbtn.restore:hover { border-color: rgba(34,197,94,.55); }
+  .labelrow { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; margin-top: 8px; }
+  .labelrow b { font-family: var(--mono); color: var(--text); font-weight: 500; }
+
+  /* Telemetry */
+  .telemetry { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; }
+  .tcard h2 { margin-bottom: 8px; }
+  .bigv { font-family: var(--mono); font-size: 26px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .subv { color: var(--muted); font-size: 12px; }
+  .soc-wrap { display: flex; gap: 14px; align-items: center; }
+  .tank { position: relative; width: 54px; height: 104px; border: 2px solid #475569; border-radius: 8px; overflow: hidden; background: var(--panel2); flex: none; }
+  .tank::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 20px; height: 6px; background: #475569; border-radius: 3px 3px 0 0; }
+  .tank-fill { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, #4ade80, #16a34a); transition: height .5s, background .5s; }
+  .tank-fill.mid { background: linear-gradient(180deg, #fde047, #ca8a04); }
+  .tank-fill.low { background: linear-gradient(180deg, #f87171, #b91c1c); }
+  .tank-fill::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, transparent 0 11px, rgba(15,23,42,.45) 11px 13px); }
+  .tank.charging .tank-fill { animation: shimmer 1.4s linear infinite; }
+  @keyframes shimmer { 50% { filter: brightness(1.25); } }
+  .hbar { height: 8px; background: var(--panel2); border-radius: 4px; overflow: hidden; margin: 8px 0 6px; border: 1px solid var(--line); }
+  .hbar > div { height: 100%; background: var(--green); transition: width .5s; }
+  .pbar { position: relative; height: 10px; background: var(--panel2); border: 1px solid var(--line); border-radius: 5px; margin: 8px 0 4px; }
+  .pbar::after { content: ''; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: #64748b; }
+  .pbar > div { position: absolute; top: 0; bottom: 0; transition: all .3s; border-radius: 4px; }
+  .pdir { font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--panel2); border: 1px solid var(--line); }
+  .gauge text { font-family: var(--mono); }
+
+  /* Tooltip */
+  #tip { position: fixed; z-index: 60; pointer-events: none; max-width: 280px; background: #0b1326; border: 1px solid #3b4d6e; color: var(--text); font-size: 12.5px; line-height: 1.4; padding: 8px 10px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.45); opacity: 0; transition: opacity .12s; }
+  #tip.show { opacity: 1; }
+  #tip b { display: block; color: var(--blue); font-size: 12px; margin-bottom: 2px; }
+
+  /* Modal */
+  .modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: calc(16px + env(safe-area-inset-top, 0px)) 16px calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .modal.open { display: flex; }
+  .modal-back { position: absolute; inset: 0; background: rgba(2,6,23,.72); backdrop-filter: blur(3px); }
+  .modal-card { position: relative; width: min(780px, 100%); max-height: 100%; overflow-y: auto; background: var(--panel); border: 1px solid #3b4d6e; border-radius: 14px; padding: 18px 20px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: pop .18s ease-out; }
+  @keyframes pop { from { transform: translateY(8px) scale(.98); opacity: 0; } }
+  .m-head { display: flex; align-items: flex-start; gap: 12px; }
+  .m-head > div:first-child { flex: 1; }
+  .m-tier { color: var(--muted); font-size: 12px; }
+  .m-head h3 { margin: 2px 0 0; font-size: 19px; font-weight: 600; }
+  .m-x { background: none; border: 1px solid var(--line); color: var(--muted); width: 32px; height: 32px; border-radius: 8px; font-size: 18px; cursor: pointer; }
+  .m-x:hover { color: var(--text); border-color: #3b4d6e; }
+  .m-desc { color: #cbd5e1; margin: 10px 0 14px; max-width: 70ch; }
+  .m-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+  .m-grid h4 { margin: 0 0 6px; font-size: 12.5px; font-weight: 600; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 11.5px; padding: 3px 8px; border-radius: 6px; background: var(--panel2); border: 1px solid var(--line); color: #cbd5e1; }
+  .stat { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .stat.ok { color: var(--green); border-color: rgba(34,197,94,.4); background: rgba(34,197,94,.08); }
+  .stat.warn { color: var(--amber); border-color: rgba(245,158,11,.4); background: rgba(245,158,11,.08); }
+  .stat.fault { color: var(--red); border-color: rgba(239,68,68,.5); background: rgba(239,68,68,.1); }
+  .stat.offline { color: #94a3b8; border-color: #475569; background: rgba(71,85,105,.15); }
+  .livedot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-left: 6px; animation: blink 1.2s infinite; }
+
+  /* SVG diagram */
+  #diagram text { font-family: var(--sans); }
+  .container-box { fill: rgba(34,197,94,.025); stroke: rgba(34,197,94,.35); stroke-width: 1.4; stroke-dasharray: 6 4; }
+  .ctitle { font-size: 12px; font-weight: 600; fill: var(--green); }
+  .band { fill: rgba(148,163,184,.03); stroke: rgba(148,163,184,.09); }
+  .tierlabel { font-size: 10px; font-weight: 600; fill: #7c8ca8; }
+  .bus { stroke: #475569; stroke-width: 6; stroke-linecap: round; }
+  .buslabel { font-size: 11px; font-weight: 600; fill: #94a3b8; cursor: help; }
+  .junction { fill: #0b1326; stroke: #94a3b8; stroke-width: 2; }
+  .flowline { fill: none; stroke-width: 3; stroke-linecap: round; opacity: .2; transition: opacity .3s; }
+  .flowline.on { opacity: .5; }
+  .node { cursor: pointer; }
+  .node .nbox { fill: rgba(11,19,38,.95); stroke: #334155; stroke-width: 1.3; transition: stroke .3s; }
+  .node:hover .nbox, .node:focus .nbox { stroke: #7c8ca8; fill: rgba(22,33,58,.97); }
+  .node:focus { outline: none; }
+  .node.st-warn .nbox { stroke: var(--amber); }
+  .node.st-fault .nbox { stroke: var(--red); stroke-width: 2; animation: pulse 1s infinite; }
+  .node.st-offline .nbox { stroke: #475569; stroke-dasharray: 4 3; }
+  .node.st-offline text { opacity: .55; }
+  .node.static { cursor: help; }
+  @keyframes pulse { 50% { stroke-opacity: .3; } }
+  .nled { transition: fill .3s; }
+  .nt { font-size: 10.5px; font-weight: 600; fill: #cbd5e1; }
+  .ns { font-size: 9.5px; fill: #7c8ca8; }
+  .nv { font-size: 12px; fill: #f1f5f9; font-family: var(--mono) !important; }
+  .nv.big { font-size: 19px; font-weight: 500; }
+  .nv.sm { font-size: 11px; fill: #cbd5e1; }
+  .fl { font-size: 11.5px; font-weight: 600; font-family: var(--mono) !important; }
+
+  @media (max-width: 1250px) {
+    .ems { grid-template-columns: 1fr 1fr; }
+    .telemetry { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  }
+  @media (max-width: 1050px) {
+    .mainrow { grid-template-columns: minmax(0,1fr); }
+    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  }
+  @media (max-width: 720px) {
+    .ems { grid-template-columns: minmax(0,1fr); }
+    .telemetry { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .m-grid { grid-template-columns: 1fr; }
+    .brand h1 { font-size: 17px; }
+  }
+  @media (max-width: 460px) {
+    .telemetry { grid-template-columns: minmax(0,1fr); }
+    .modes { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <rect x="1" y="1" width="36" height="36" rx="9" fill="#0b1326" stroke="#22c55e" stroke-opacity=".5"/>
+        <rect x="10" y="11" width="18" height="20" rx="3" fill="none" stroke="#22c55e" stroke-width="2"/>
+        <rect x="15" y="7.5" width="8" height="3.5" rx="1" fill="#22c55e"/>
+        <path d="M20 14 l-4 7 h4 l-2 6 l6 -8 h-4 l2 -5z" fill="#facc15"/>
+      </svg>
+      <div>
+        <h1>BESS &amp; Microgrid System Simulator</h1>
+        <p>4 MW / 16 MWh LFP storage, 5 MWp solar and C&amp;I loads on a 34.5 kV point of common coupling</p>
+      </div>
+    </div>
+    <div class="pills">
+      <div class="pill"><span class="lbl">Sim time</span><b id="clock" class="mono">09:00</b></div>
+      <div class="pill"><span class="lbl">Dispatch</span><b id="modePill">Auto</b></div>
+      <div class="pill" id="sitePill"><span class="dot"></span><b id="siteTxt">Grid-connected</b></div>
+    </div>
+  </header>
+
+  <!-- Tier 5: EMS / supervisory -->
+  <section class="ems" aria-label="Tier 5 supervisory control">
+    <div class="card clickable" data-open="ems" data-tip-key="ems" tabindex="0">
+      <div class="card-head"><h2><span class="led"></span>EMS edge gateway</h2><span class="tier-tag">Tier 5</span></div>
+      <div class="kv"><span>Cloud uplink</span><b id="g-up">Online · MQTT/TLS</b></div>
+      <div class="kv"><span>Round-trip latency</span><b id="g-lat">14 ms</b></div>
+      <div class="kv"><span>Tags polled</span><b>4,812 @ 1 s</b></div>
+      <div class="kv"><span>Gateway CPU</span><b id="g-cpu">22 %</b></div>
+      <div class="kv"><span>Time sync</span><b>PTP locked</b></div>
+    </div>
+    <div class="card clickable" data-open="ppc" data-tip-key="ppc" tabindex="0">
+      <div class="card-head"><h2><span class="led" id="ppc-led"></span>Power plant controller</h2><span class="tier-tag">Tier 5</span></div>
+      <div class="kv"><span>Control mode</span><b id="p-mode">P/Q grid-following</b></div>
+      <div class="kv"><span>BESS setpoint</span><b id="p-setp">0.00 MW</b></div>
+      <div class="kv"><span>PCC active power</span><b id="p-pcc">0.00 MW</b></div>
+      <div class="kv"><span>Grid frequency</span><b id="p-freq">60.000 Hz</b></div>
+      <div class="kv"><span>PCC voltage</span><b id="p-volt">1.000 pu</b></div>
+    </div>
+    <div class="card" data-tip-key="dispatch">
+      <div class="card-head"><h2>Real-time dispatch mode</h2><span class="tier-tag">Tier 5 · EMS</span></div>
+      <div class="modes" id="modes">
+        <button class="mode-btn" data-mode="auto"><b>Solar smoothing / auto</b><small>Soak up midday surplus, cover the evening peak</small></button>
+        <button class="mode-btn" data-mode="peak"><b>Peak shaving</b><small>Cap grid import at the demand threshold</small></button>
+        <button class="mode-btn" data-mode="ffr"><b>Grid support / FFR</b><small>Fast droop response to frequency swings</small></button>
+        <button class="mode-btn" data-mode="island"><b>Emergency islanding</b><small>Open PCC, BESS forms the grid</small></button>
+        <button class="mode-btn" data-mode="manual" style="grid-column: 1 / -1"><b>Manual dispatch</b><small>Operator setpoint from the command panel</small></button>
+      </div>
+      <div class="labelrow"><span>Peak-shaving import cap</span><b id="peakLabel">3.5 MW</b></div>
+      <input type="range" id="peakSlider" min="1.5" max="5" step="0.1" value="3.5" aria-label="Peak shaving threshold" />
+    </div>
+    <div class="card" data-tip-key="alarms">
+      <div class="card-head"><h2>Alarms &amp; fault log</h2><span class="badge" id="alarmBadge">0 active</span></div>
+      <ul class="alarm-list" id="alarmList" aria-live="polite"></ul>
+    </div>
+  </section>
+
+  <main class="mainrow">
+    <div class="card">
+      <div class="card-head"><h2>Single-line power flow, tiers 1–4</h2><span class="hint">Hover any element for a plain-English explanation, click to inspect it</span></div>
+      <div class="diagram-scroll"><svg id="diagram" viewBox="0 0 1200 690" role="img" aria-label="Animated single-line diagram of solar, grid, battery storage and site loads"></svg></div>
+      <div class="legend">
+        <span><i style="background:#facc15"></i>Solar power</span>
+        <span><i style="background:#22c55e"></i>Battery power</span>
+        <span><i style="background:#38bdf8"></i>Grid power</span>
+        <span><i style="background:#a855f7"></i>Load power</span>
+        <span><i style="background:#ef4444"></i>Trip or fault</span>
+        <span style="margin-left:auto">Dot speed scales with MW; direction shows flow</span>
+      </div>
+    </div>
+
+    <aside class="controls">
+      <div class="card">
+        <div class="ctl-title">Time of day <span class="hint">drives sun &amp; load</span></div>
+        <div class="bigclock" id="bigClock">09:00</div>
+        <input type="range" id="timeSlider" min="0" max="1439" step="1" value="540" aria-label="Time of day" style="margin-top:8px" />
+        <div class="sunrow"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:59</span></div>
+        <div class="seg" id="speedSeg">
+          <button data-s="0">Pause</button>
+          <button data-s="1" class="active">1×</button>
+          <button data-s="5">5×</button>
+          <button data-s="20">20×</button>
+        </div>
+        <p class="note">1× runs 10 simulated minutes per second.</p>
+      </div>
+
+      <div class="card">
+        <div class="ctl-title">Manual BESS command <span class="hint" id="manState">inactive</span></div>
+        <div class="labelrow" style="margin-top:0"><span>Setpoint (+ charge / − discharge)</span><b id="manLabel">0.00 MW</b></div>
+        <input type="range" id="manSlider" min="-4" max="4" step="0.1" value="0" aria-label="Manual BESS power command" />
+        <div class="row3">
+          <button class="btn chg" id="manChg">Charge 3 MW</button>
+          <button class="btn" id="manStby">Standby</button>
+          <button class="btn dis" id="manDis">Discharge 3 MW</button>
+        </div>
+        <p class="note">Any command here switches the EMS to manual dispatch.</p>
+      </div>
+
+      <div class="card">
+        <div class="ctl-title">Fault injection</div>
+        <div class="faults">
+          <button class="fbtn" id="fOT"><span>Cell over-temperature<small>Hot spot above 55 °C</small></span><span class="ind"></span></button>
+          <button class="fbtn" id="fBO"><span>Grid blackout<small>Utility voltage lost at PCC</small></span><span class="ind"></span></button>
+          <button class="fbtn" id="fGF"><span>DC ground fault<small>Insulation breakdown on rack</small></span><span class="ind"></span></button>
+          <button class="fbtn" id="fUF"><span>Under-frequency event<small>Large generator trips offline</small></span><span class="ind"></span></button>
+          <button class="fbtn restore" id="fClr"><span>Clear faults &amp; restore<small>Reset protection, reclose breakers</small></span><span class="ind" style="background:#22c55e"></span></button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <section class="telemetry" aria-label="Live telemetry">
+    <div class="card tcard" data-tip-key="soc">
+      <h2>State of charge</h2>
+      <div class="soc-wrap">
+        <div class="tank" id="tank"><div class="tank-fill" id="socFill" style="height:58%"></div></div>
+        <div>
+          <div class="bigv" id="socVal">58.0%</div>
+          <div class="subv mono" id="socMWh">9.28 / 16.00 MWh</div>
+          <div class="subv" id="socEta" style="margin-top:6px">Idle</div>
+        </div>
+      </div>
+    </div>
+    <div class="card tcard" data-tip-key="soh">
+      <h2>State of health</h2>
+      <div class="bigv" id="sohVal">98.27%</div>
+      <div class="hbar"><div id="sohBar" style="width:91%"></div></div>
+      <div class="kv"><span>Equivalent full cycles</span><b id="sohCyc">412.6</b></div>
+      <div class="kv"><span>Warranty end of life</span><b>70% · ~7,000 EFC</b></div>
+    </div>
+    <div class="card tcard" data-tip-key="power">
+      <div class="card-head" style="margin-bottom:4px"><h2>System power</h2><span class="pdir" id="pwDir">Standby</span></div>
+      <div class="kv"><span>Active P</span><b id="pwP" style="font-size:16px">+0.00 MW</b></div>
+      <div class="pbar"><div id="pwBar"></div></div>
+      <div class="kv"><span>Reactive Q</span><b id="pwQ">+0.00 MVAr</b></div>
+      <div class="kv"><span>Apparent S · PF</span><b id="pwS">0.00 MVA · 1.000</b></div>
+      <p class="note" style="margin-top:4px">P sign: + discharge to bus, − charge</p>
+    </div>
+    <div class="card tcard" data-tip-key="temp">
+      <h2>Cell temperature</h2>
+      <svg class="gauge" viewBox="0 0 180 114" width="100%" style="max-width:220px;display:block;margin:0 auto">
+        <path d="M20 92 A70 70 0 0 1 160 92" fill="none" stroke="#1e293b" stroke-width="12" stroke-linecap="round"/>
+        <path id="tgArc" d="M20 92 A70 70 0 0 1 160 92" fill="none" stroke="#22c55e" stroke-width="12" stroke-linecap="round" stroke-dasharray="219.9" stroke-dashoffset="140"/>
+        <line id="tgMark" x1="0" y1="0" x2="0" y2="0" stroke="#ef4444" stroke-width="2"/>
+        <text id="tgVal" x="90" y="80" text-anchor="middle" font-size="22" fill="#f1f5f9">25.0°C</text>
+        <text x="90" y="110" text-anchor="middle" font-size="9.5" fill="#7c8ca8">hottest cell · trip 55 °C</text>
+      </svg>
+      <div class="kv"><span>Min / avg</span><b id="tgMinAvg">24.6 / 25.5 °C</b></div>
+    </div>
+    <div class="card tcard" data-tip-key="eff">
+      <h2>Efficiency &amp; carbon</h2>
+      <div class="kv"><span>Round-trip efficiency</span><b id="effRte">89.1%</b></div>
+      <div class="kv"><span>CO₂ avoided</span><b id="effCo2">0.00 t</b></div>
+      <div class="kv"><span>Solar delivered</span><b id="effPv">0.00 MWh</b></div>
+      <div class="kv"><span>Grid import / export</span><b id="effGrid">0.00 / 0.00 MWh</b></div>
+      <p class="note">CO₂ at 0.42 t/MWh displaced grid energy, counted since page load.</p>
+    </div>
+  </section>
+</div>
+
+<div id="tip" role="tooltip"></div>
+
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-back" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="m-head">
+      <div><div class="m-tier" id="mTier"></div><h3 id="mTitle"></h3></div>
+      <div class="stat ok" id="mStatus">Normal</div>
+      <button class="m-x" data-close aria-label="Close inspection panel">×</button>
+    </div>
+    <p class="m-desc" id="mDesc"></p>
+    <div class="m-grid">
+      <div><h4>Technical specifications</h4><div id="mSpecs"></div></div>
+      <div><h4>Live data points<span class="livedot"></span></h4><div id="mLive"></div></div>
+    </div>
+    <div class="m-grid">
+      <div><h4>Protocols &amp; interfaces</h4><div class="chips" id="mProto"></div></div>
+      <div><h4>Safety &amp; compliance</h4><div class="chips" id="mSafety"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---------- Constants ----------
+  const PMAX = 4, EMAX = 16, PVPEAK = 5, SMAX = 4.4, XFMR = 4.5, CRIT = 0.65, EF = 0.42;
+  const NS = 'http://www.w3.org/2000/svg';
+  const $ = (id) => document.getElementById(id);
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const rnd = () => Math.random() - 0.5;
+  const fmtT = (m) => { m = ((Math.floor(m) % 1440) + 1440) % 1440; return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+  const z = (v) => (Math.abs(v) < 0.005 ? 0 : v);
+  const n2 = (v) => z(v).toFixed(2);
+  const s2 = (v) => { v = z(v); return (v > 0 ? '+' : '') + v.toFixed(2); };
+  const fmtDur = (h) => { if (!isFinite(h) || h > 99) return '—'; const m = Math.round(h * 60); return Math.floor(m / 60) + 'h ' + String(m % 60).padStart(2, '0') + 'm'; };
+
+  const MODES = {
+    auto:   { name: 'Solar smoothing / auto', short: 'Auto · solar smoothing' },
+    peak:   { name: 'Peak shaving',           short: 'Peak shaving' },
+    ffr:    { name: 'Grid support / FFR',     short: 'Fast frequency response' },
+    island: { name: 'Emergency islanding',    short: 'Islanded · grid-forming' },
+    manual: { name: 'Manual dispatch',        short: 'Manual dispatch' }
+  };
+
+  // ---------- Central system state ----------
+  const S = {
+    t: 9 * 60, speed: 1, playing: true, dragging: false,
+    mode: 'auto', manualP: 0, peakThr: 3.5,
+    soc: 58, soh: 98.3, cycles: 412.6,
+    cellT: 25.5, cellTmax: 26.5, cellTmin: 24.6, tempOffset: 0, hvacBoost: false, overTemp: false, derate: 1,
+    irr: 0, cloud: 0.93, loadN: 0, pvAvail: 0, pv: 0, curtail: 0, load: 0, loadServed: 0, shed: 0,
+    bessP: 0, bessQ: 0, target: 0, gridP: 0,
+    freq: 60, freqEvent: 0, volt: 1.0,
+    gridUp: true, islanded: false, siteBlackout: false,
+    dcClosed: true, groundFault: false, imdR: 2100, precharge: 0,
+    dischLim: PMAX, chgLim: PMAX, reserve: 15,
+    E: { pv: 0, imp: 0, exp: 0, chg: 1480, dis: 1318, co2: 0 },
+    d: {}, alarms: [], alarmDirty: true, st: {}, F: {}, modalId: null
+  };
+
+  // ---------- Plain-English tooltips ----------
+  const TIPS = {
+    solar: ['Solar PV array', 'Panels turn sunlight into DC power, and PV inverters convert it to AC for the site bus.'],
+    grid: ['Utility grid', 'The utility network the microgrid buys power from or sells surplus power back to.'],
+    pcc: ['PCC meter + VCB', 'The point of common coupling is where the site meets the utility; its meter measures the exchange and its vacuum breaker can disconnect the site.'],
+    cells: ['LFP cell modules', 'Lithium iron phosphate cells store the energy chemically and are grouped into modules and racks.'],
+    bmu: ['Module BMS (BMU/CMU)', 'Measures every cell voltage and temperature and bleeds off charge from high cells to keep them balanced.'],
+    ntc: ['NTC thermistors', 'Temperature sensors whose resistance falls as they warm, giving the BMS a reading for each module.'],
+    offgas: ['Off-gas sensors', 'Detect electrolyte vapour released before thermal runaway, giving minutes of early warning.'],
+    pyro: ['Pyrofuses', 'Explosive-actuated disconnects that permanently cut the DC circuit within milliseconds during a severe fault.'],
+    rackbms: ['High-voltage master BMS', 'Supervises a whole rack, calculates SoC and SoH, and decides when the contactors may close.'],
+    contactors: ['Isolation contactors', 'Heavy-duty DC switches that connect or disconnect the battery rack from the inverter.'],
+    precharge: ['Pre-charge circuit', 'Charges the inverter\'s DC capacitors gently through a resistor so the contactors don\'t weld from inrush current.'],
+    imd: ['Insulation monitoring device', 'Continuously measures resistance between the floating DC bus and earth to catch ground faults early.'],
+    pcs: ['PCS / bidirectional inverter', 'Converts battery DC to grid AC when discharging and AC back to DC when charging.'],
+    hvac: ['Glycol chiller / HVAC', 'Pumps chilled coolant through cold plates to hold the cells in their ideal 20–30 °C window.'],
+    fire: ['Fire suppression panel', 'Watches smoke, heat and gas detectors and can release a clean agent or aerosol to put out a fire.'],
+    xfmr: ['Step-up transformer', 'Raises the inverter\'s 690 V output to 34.5 kV so power can travel efficiently on the site bus.'],
+    meter: ['Revenue-grade meter', 'Precisely measures energy into and out of the battery for billing and market settlement.'],
+    load: ['Site loads', 'The factory and EV-charging demand, split into critical feeders and ones that can be shed.'],
+    levels: ['Voltage levels', 'The battery is DC at about 1,300 V, the inverter makes 690 V AC, and the transformer lifts it to 34.5 kV.'],
+    bus: ['34.5 kV collector bus', 'The medium-voltage bus that ties the solar, grid, battery and loads together.'],
+    ems: ['EMS edge gateway', 'Collects data from every device on site and relays it securely to cloud monitoring.'],
+    ppc: ['Power plant controller', 'Computes setpoints every 100 ms so the whole site meets its target at the point of common coupling.'],
+    dispatch: ['Dispatch mode', 'Sets the objective the EMS uses when deciding how hard to charge or discharge the battery.'],
+    alarms: ['Alarm log', 'Time-stamped events from protection devices, the BMS and the EMS, newest first.'],
+    soc: ['State of charge', 'How full the battery is, as a percentage of its usable 16 MWh.'],
+    soh: ['State of health', 'Remaining capacity compared to new; it drifts down slowly with every full cycle.'],
+    power: ['System power', 'Active power P does real work; reactive power Q supports voltage on the grid.'],
+    temp: ['Cell temperature', 'Heat rises with the square of current, so high C-rates warm the cells and the chiller works harder.'],
+    eff: ['Efficiency & carbon', 'Round-trip efficiency is energy out divided by energy in; losses come from the cells, inverter and transformer.']
+  };
+
+  // ---------- Profiles ----------
+  const gauss = (x, m, s) => Math.exp(-((x - m) ** 2) / (2 * s * s));
+  const loadProfile = (h) => 1.5 + 1.1 * gauss(h, 8.5, 1.6) + 0.9 * gauss(h, 13, 2.8) + 2.7 * gauss(h, 19, 1.7);
+  const irradiance = (h) => (h > 6 && h < 18) ? Math.pow(Math.sin(Math.PI * (h - 6) / 12), 1.3) : 0;
+  function cellV() {
+    const s = S.soc / 100;
+    let v = 3.18 + 0.16 * s;
+    if (s < 0.1) v -= (0.1 - s) * 3.5;
+    if (s > 0.95) v += (s - 0.95) * 4;
+    return v - S.bessP * 0.006;
+  }
+
+  function alarm(sev, src, msg) {
+    S.alarms.unshift({ t: fmtT(S.t), sev, src, msg });
+    if (S.alarms.length > 80) S.alarms.length = 80;
+    S.alarmDirty = true;
+  }
+
+  // ---------- Simulation tick (100 ms) ----------
+  function tick() {
+    const dtMin = S.playing ? S.speed : 0;
+    S.t = (S.t + dtMin) % 1440;
+    const h = S.t / 60, dtH = dtMin / 60;
+
+    // Environment
+    S.irr = irradiance(h);
+    if (S.playing) S.cloud = clamp(S.cloud + (0.93 - S.cloud) * 0.03 + rnd() * 0.06, 0.5, 1);
+    S.loadN = S.loadN * 0.95 + rnd() * 0.04;
+    S.pvAvail = PVPEAK * S.irr * S.cloud;
+    S.load = Math.max(0.5, loadProfile(h) + S.loadN);
+
+    // Protection: IMD / ground fault / pre-charge
+    if (S.groundFault) {
+      S.imdR = 38 + Math.random() * 6;
+      if (S.dcClosed) { S.dcClosed = false; alarm('crit', 'Rack BMS', 'IMD trip → main DC contactors opened, PCS gate pulses blocked'); }
+    } else S.imdR = 2100 + rnd() * 80;
+    if (S.precharge > 0) {
+      S.precharge--;
+      if (S.precharge === 0) { S.dcClosed = true; alarm('ok', 'Rack BMS', 'Pre-charge complete (DC link 98%) — main contactors closed'); }
+    }
+
+    // Islanding state and PCC breaker
+    const islanded = !S.gridUp || S.mode === 'island';
+    if (islanded !== S.islanded) {
+      S.islanded = islanded;
+      if (islanded) {
+        alarm('warn', 'PCC', S.gridUp ? 'Intentional island — VCB opened, BESS switched to grid-forming' : 'VCB open — site islanded, BESS grid-forming (V/f control)');
+        alarm('info', 'Loads', 'Non-critical feeders shed (35%) to extend backup runtime');
+      } else {
+        alarm('ok', 'PCC', 'Sync-check (25) passed — VCB closed, BESS back to grid-following');
+      }
+    }
+
+    const bessAvail = S.dcClosed && !S.groundFault;
+    const pmax = PMAX * S.derate;
+    S.reserve = (islanded || S.mode === 'manual') ? 5 : (S.mode === 'ffr' ? 10 : 15);
+    S.dischLim = bessAvail ? pmax * clamp((S.soc - S.reserve) / 5, 0, 1) : 0;
+    S.chgLim = bessAvail ? pmax * clamp((98 - S.soc) / 3, 0, 1) : 0;
+
+    // Frequency & voltage
+    if (islanded) {
+      S.freq += (60 - S.freq) * 0.35 + rnd() * 0.006;
+    } else {
+      let ft = 60;
+      if (S.freqEvent > 0) {
+        S.freqEvent--;
+        const k = S.freqEvent / 80;
+        const depth = (S.mode === 'ffr' && bessAvail) ? 0.2 : 0.55;
+        ft = 60 - depth * Math.min(1, k * 1.8);
+        if (S.freqEvent === 0) alarm('ok', 'Grid', 'Frequency recovered to nominal 60.00 Hz');
+      }
+      S.freq += (ft - S.freq) * 0.22 + rnd() * 0.005;
+    }
+    S.volt = clamp(S.volt + ((1 - S.gridP * 0.004) - S.volt) * 0.04 + rnd() * 0.003, 0.95, 1.05);
+
+    // Dispatch
+    const wasBlackout = S.siteBlackout;
+    if (islanded) {
+      S.gridP = 0;
+      const crit = S.load * CRIT;
+      if (!bessAvail) {
+        S.siteBlackout = true; S.pv = 0; S.bessP = 0; S.loadServed = 0; S.shed = S.load; S.curtail = S.pvAvail; S.target = 0;
+      } else {
+        S.siteBlackout = false;
+        const need = crit - S.pvAvail;
+        if (need >= 0) { S.bessP = Math.min(need, S.dischLim); S.pv = S.pvAvail; S.loadServed = S.pvAvail + S.bessP; }
+        else { S.bessP = Math.max(need, -S.chgLim); S.pv = crit - S.bessP; S.loadServed = crit; }
+        S.shed = S.load - S.loadServed; S.curtail = Math.max(0, S.pvAvail - S.pv); S.target = S.bessP;
+      }
+    } else {
+      S.siteBlackout = false;
+      const net = S.load - S.pvAvail;
+      let tgt = 0;
+      switch (S.mode) {
+        case 'auto':
+          if (net < -0.02) tgt = net;
+          else if (h >= 16.5 && h < 23) tgt = net;
+          else if (h < 5.5 && S.soc < 55) tgt = -1.2;
+          break;
+        case 'peak':
+          if (net > S.peakThr) tgt = net - S.peakThr;
+          else if (S.soc < 90) tgt = -Math.min(PMAX, Math.max(0, S.peakThr - 0.3 - net));
+          break;
+        case 'ffr': {
+          const dev = S.freq - 60, db = 0.017;
+          if (Math.abs(dev) > db) tgt = -clamp((dev - Math.sign(dev) * db) / 0.3, -1, 1) * PMAX;
+          else tgt = clamp((S.soc - 50) * 0.04, -0.4, 0.4);
+          break;
+        }
+        case 'manual': tgt = S.manualP; break;
+      }
+      tgt = clamp(tgt, -S.chgLim, S.dischLim);
+      S.target = tgt;
+      const rate = S.mode === 'ffr' ? 4 : 0.5;
+      S.bessP = clamp(S.bessP + clamp(tgt - S.bessP, -rate, rate), -S.chgLim, S.dischLim);
+      S.pv = S.pvAvail; S.curtail = 0; S.loadServed = S.load; S.shed = 0;
+      S.gridP = S.load - S.pv - S.bessP;
+    }
+    if (S.siteBlackout && !wasBlackout) alarm('crit', 'Site', 'Islanded with BESS tripped — no grid-forming source, site de-energized');
+    if (!S.siteBlackout && wasBlackout) alarm('ok', 'Site', 'Site re-energized');
+
+    // Reactive power (volt-VAR or island supply), limited by PCS apparent rating
+    let q = 0;
+    if (bessAvail && !S.siteBlackout) {
+      if (islanded) q = S.loadServed * 0.33;
+      else if (S.mode !== 'manual') q = clamp(-(S.volt - 1) * 60, -1.5, 1.5);
+      const qMax = Math.sqrt(Math.max(0, SMAX * SMAX - S.bessP * S.bessP));
+      q = clamp(q, -qMax, qMax);
+    }
+    S.bessQ = q;
+
+    // Energy integration
+    if (dtH > 0) {
+      if (S.bessP > 0) { const e = S.bessP * dtH; S.soc -= e / (EMAX * 0.955) * 100; S.E.dis += e; S.cycles += e / EMAX; }
+      else if (S.bessP < 0) { const e = -S.bessP * dtH; S.soc += e * 0.955 / EMAX * 100; S.E.chg += e; }
+      S.soc = clamp(S.soc, 0, 100);
+      S.E.pv += S.pv * dtH; S.E.co2 += S.pv * dtH * EF;
+      if (S.gridP > 0) S.E.imp += S.gridP * dtH; else S.E.exp += -S.gridP * dtH;
+    }
+    S.soh = 100 - S.cycles * 0.0042;
+
+    // Thermal model
+    S.tempOffset *= S.hvacBoost ? 0.975 : 0.996;
+    const tgtT = 23 + 11 * Math.pow(Math.abs(S.bessP) / PMAX, 2) + 3 * S.irr - (S.hvacBoost ? 4 : 0) + S.tempOffset;
+    S.cellT += (tgtT - S.cellT) * 0.05;
+    S.cellTmax = S.cellT + 1.2 + Math.abs(S.bessP) * 0.3 + S.tempOffset * 0.06;
+    S.cellTmin = S.cellT - 1.0 - Math.abs(S.bessP) * 0.2;
+    if (!S.overTemp && S.cellTmax > 55) {
+      S.overTemp = true; S.hvacBoost = true; S.derate = 0.5;
+      alarm('crit', 'NTC/CMU', `Rack 3 · module 5 hot spot ${S.cellTmax.toFixed(1)} °C exceeds 55 °C limit`);
+      alarm('warn', 'HVAC', 'Chiller boost: compressor 100%, glycol flow +45%');
+      alarm('warn', 'Rack BMS', 'Power limit derated to 50% until cells cool');
+      alarm('warn', 'Fire panel', 'Heat pre-alarm — suppression armed, not discharged');
+    }
+    if (S.overTemp && S.cellTmax < 44) {
+      S.overTemp = false; S.hvacBoost = false; S.derate = 1;
+      alarm('ok', 'Rack BMS', 'Cell temperatures normal — derate removed, chiller back to auto');
+    }
+
+    // One-shot operational events
+    const F = S.F;
+    if (S.soc < 20 && !F.s20) { F.s20 = true; alarm('warn', 'Rack BMS', 'SoC below 20% — low reserve'); }
+    if (S.soc > 25) F.s20 = false;
+    if (S.soc < 10 && !F.s10) { F.s10 = true; alarm('crit', 'Rack BMS', 'SoC below 10% — discharge tapering'); }
+    if (S.soc > 12) F.s10 = false;
+    if (S.soc > 97.5 && !F.full) { F.full = true; alarm('info', 'Rack BMS', 'Battery full — charge current tapered (CV phase)'); }
+    if (S.soc < 94) F.full = false;
+    if (S.mode === 'peak' && !islanded && S.bessP > 0.05 && !F.shave) { F.shave = true; alarm('info', 'PPC', `Demand above ${S.peakThr.toFixed(1)} MW cap — BESS shaving peak`); }
+    if (S.bessP <= 0.02) F.shave = false;
+    if (S.curtail > 0.1 && !S.siteBlackout && !F.curt) { F.curt = true; alarm('info', 'PPC', 'Island surplus — PV inverters curtailed (frequency-watt)'); }
+    if (S.curtail < 0.02) F.curt = false;
+
+    derive(bessAvail);
+    computeStatus(bessAvail);
+    render();
+  }
+
+  // ---------- Derived internal data points ----------
+  function derive(bessAvail) {
+    const d = S.d;
+    d.bessAvail = bessAvail;
+    d.cellV = cellV();
+    d.rackV = d.cellV * 416;
+    d.spread = 5 + Math.abs(S.bessP) * 1.6 + (S.overTemp ? 14 : 0) + Math.random() * 1.5;
+    d.Idc = S.bessP * 1e6 / 4 / d.rackV;
+    d.h2 = S.overTemp ? 6 + Math.random() * 2 : 0.3 + Math.random() * 0.3;
+    d.flow = (S.hvacBoost ? 265 : 180) + rnd() * 6;
+    d.sup = (S.hvacBoost ? 14.5 : 18) + rnd() * 0.2;
+    d.ret = d.sup + 2 + Math.abs(S.bessP) * 0.7 + (S.overTemp ? 4 : 0);
+    d.comp = S.hvacBoost ? 100 : clamp(25 + Math.abs(S.bessP) * 12 + S.irr * 10, 0, 100);
+    d.s = Math.hypot(S.bessP, S.bessQ);
+    d.pf = d.s > 0.01 ? Math.abs(S.bessP) / d.s : 1;
+    d.xl = d.s / XFMR * 100;
+    d.oil = 30 + S.irr * 6 + d.xl * 0.25;
+    d.iac = d.s * 1e6 / (Math.sqrt(3) * 690);
+    d.imv = d.s * 1e6 / (Math.sqrt(3) * 34500);
+    d.fsw = S.derate < 1 ? 2.5 : 3.2;
+    d.eff = d.s > 0.1 ? 98.6 - 0.8 * (1 - Math.min(1, d.s / 2)) : 0;
+    d.lat = 11 + Math.random() * 8;
+    d.cpu = 18 + Math.random() * 9 + (S.alarmDirty ? 6 : 0);
+    d.pvw = Math.round(S.irr * S.cloud * 1000);
+  }
+
+  function computeStatus(bessAvail) {
+    const hot = S.overTemp, warm = S.cellTmax > 45;
+    S.st = {
+      solar: S.siteBlackout ? 'offline' : (S.curtail > 0.05 ? 'warn' : 'ok'),
+      grid: S.gridUp ? 'ok' : 'fault',
+      pcc: S.islanded ? (S.gridUp ? 'warn' : 'fault') : 'ok',
+      cells: hot ? 'fault' : (warm || S.soc < 10) ? 'warn' : 'ok',
+      bmu: hot ? 'warn' : 'ok',
+      ntc: hot ? 'fault' : warm ? 'warn' : 'ok',
+      offgas: hot ? 'warn' : 'ok',
+      pyro: 'ok',
+      rackbms: S.groundFault ? 'fault' : (hot || S.precharge > 0) ? 'warn' : 'ok',
+      contactors: S.dcClosed ? 'ok' : (S.precharge > 0 ? 'warn' : 'fault'),
+      precharge: S.precharge > 0 ? 'warn' : 'ok',
+      imd: S.groundFault ? 'fault' : 'ok',
+      pcs: !bessAvail ? 'offline' : (S.derate < 1 ? 'warn' : 'ok'),
+      hvac: S.hvacBoost ? 'warn' : 'ok',
+      fire: hot ? 'warn' : 'ok',
+      xfmr: !bessAvail ? 'offline' : 'ok',
+      meter: 'ok',
+      levels: 'ok',
+      load: S.siteBlackout ? 'fault' : (S.shed > 0.05 ? 'warn' : 'ok'),
+      ems: 'ok',
+      ppc: S.islanded ? 'warn' : 'ok'
+    };
+  }
+
+  // ---------- Component database for drill-down ----------
+  const COMP = {
+    solar: { tier: 'Generation', specs: [['Capacity', '5.0 MWp DC / 4.2 MWac'], ['Modules', '9,260 × 540 W bifacial'], ['Inverters', '14 × 300 kVA string'], ['Coupling', 'AC-coupled, 34.5 kV'], ['Tracking', 'Single-axis ±55°']],
+      proto: ['SunSpec Modbus TCP', 'IEEE 1547-2018', 'Volt-VAR', 'Freq-Watt'], safety: ['UL 1741 SB anti-islanding', 'NEC 690.12 rapid shutdown', 'Arc-fault detection'],
+      live: () => [['Irradiance', S.d.pvw + ' W/m²'], ['Cloud factor', (S.cloud * 100).toFixed(0) + ' %'], ['Available', n2(S.pvAvail) + ' MW'], ['Delivered', n2(S.pv) + ' MW'], ['Curtailed', n2(S.curtail) + ' MW'], ['Module temp', (22 + 28 * S.irr).toFixed(1) + ' °C'], ['Energy this session', S.E.pv.toFixed(2) + ' MWh']] },
+    grid: { tier: 'Utility interconnection', specs: [['Nominal', '34.5 kV · 60 Hz · 3φ'], ['Fault level', '250 MVA'], ['Interconnection', 'IEEE 1547 / CSA C22.3 No. 9'], ['Service', 'Bidirectional, net-metered']],
+      proto: ['DNP3 to utility SCADA', 'ICCP'], safety: ['Utility protection coordination', 'Recloser blocking on island'],
+      live: () => [['Status', S.gridUp ? 'Energized' : 'De-energized'], ['Frequency', S.gridUp ? S.freq.toFixed(3) + ' Hz' : '—'], ['Voltage', S.gridUp ? (S.volt * 34.5).toFixed(2) + ' kV' : '0 kV'], ['Exchange', S.islanded ? 'Open' : (S.gridP >= 0 ? 'Import ' : 'Export ') + n2(Math.abs(S.gridP)) + ' MW'], ['Imported', S.E.imp.toFixed(2) + ' MWh'], ['Exported', S.E.exp.toFixed(2) + ' MWh']] },
+    pcc: { tier: 'Utility interconnection', specs: [['Breaker', 'VCB 38 kV · 1,250 A · 25 kA'], ['Relay functions', '25, 27, 59, 81O/U, 50/51'], ['Meter class', '0.2S bidirectional'], ['Trip time', '< 3 cycles']],
+      proto: ['DNP3', 'IEC 61850 GOOSE'], safety: ['IEEE 1547 anti-islanding', 'Sync-check before close'],
+      live: () => [['Breaker', S.islanded ? 'OPEN' : 'CLOSED'], ['Reason', !S.gridUp ? 'Undervoltage trip (27)' : S.islanded ? 'Intentional island' : 'Normal'], ['P at PCC', s2(S.gridP) + ' MW'], ['Voltage', S.gridUp ? S.volt.toFixed(3) + ' pu' : '0.000 pu'], ['Frequency', S.freq.toFixed(3) + ' Hz']] },
+    cells: { tier: 'Tier 1 · cells & modules', specs: [['Chemistry', 'LiFePO₄ (LFP)'], ['Cell', '3.2 V · 280 Ah prismatic'], ['Module', '1P52S · 166 V · 46.6 kWh'], ['Rack', '8 modules · 416S · 1,331 V'], ['Container', '12 racks · 4.5 MWh'], ['Site', '4 containers · 16 MWh usable']],
+      proto: ['isoSPI daisy chain', 'CAN 2.0B'], safety: ['UL 1973', 'UL 9540A tested', 'IEC 62619'],
+      live: () => [['State of charge', S.soc.toFixed(2) + ' %'], ['Avg cell voltage', S.d.cellV.toFixed(3) + ' V'], ['Rack voltage', S.d.rackV.toFixed(0) + ' V'], ['DC current / container', S.d.Idc.toFixed(0) + ' A'], ['C-rate', (Math.abs(S.bessP) / EMAX).toFixed(3) + ' C'], ['Cell spread', S.d.spread.toFixed(1) + ' mV'], ['Hottest cell', S.cellTmax.toFixed(1) + ' °C']] },
+    bmu: { tier: 'Tier 1 · cells & modules', specs: [['CMUs', '96 per container'], ['Voltage accuracy', '±2 mV'], ['Balancing', 'Passive, 150 mA'], ['Sample rate', '10 Hz']],
+      proto: ['isoSPI', 'CAN to master BMS'], safety: ['Redundant OV/UV comparators', 'UL 1973'],
+      live: () => [['Cell spread ΔV', S.d.spread.toFixed(1) + ' mV'], ['Balancing', S.d.spread > 10 ? 'Active (bleeding)' : 'Idle'], ['Highest cell', (S.d.cellV + S.d.spread / 2000).toFixed(3) + ' V'], ['Lowest cell', (S.d.cellV - S.d.spread / 2000).toFixed(3) + ' V'], ['Comms errors', '0 / 24 h']] },
+    ntc: { tier: 'Tier 1 · cells & modules', specs: [['Type', 'NTC 10 kΩ @ 25 °C, B 3435'], ['Accuracy', '±0.5 °C'], ['Count', '192 per container'], ['Range', '−40 to 125 °C']],
+      proto: ['Analog to CMU ADC'], safety: ['Open/short wire detection', 'Plausibility cross-check'],
+      live: () => [['Minimum', S.cellTmin.toFixed(1) + ' °C'], ['Average', S.cellT.toFixed(1) + ' °C'], ['Maximum', S.cellTmax.toFixed(1) + ' °C'], ['Hottest location', 'Rack 3 · M5 · T2'], ['Trip limit', '55.0 °C']] },
+    offgas: { tier: 'Tier 1 · cells & modules', specs: [['Detects', 'Electrolyte vapour, H₂, CO'], ['Response', '< 1 s'], ['H₂ alarm', '25 ppm'], ['Placement', '1 per rack aisle']],
+      proto: ['Modbus RTU', 'Dry contact to BMS'], safety: ['NFPA 855 gas detection', 'Starts exhaust ventilation'],
+      live: () => [['H₂', S.d.h2.toFixed(1) + ' ppm'], ['CO', (S.overTemp ? 3.2 : 0.4).toFixed(1) + ' ppm'], ['VOC index', S.overTemp ? '140' : '12'], ['Exhaust fan', S.overTemp ? 'Standby (armed)' : 'Off']] },
+    pyro: { tier: 'Tier 1 · cells & modules', specs: [['Rating', '1,500 VDC · 630 A'], ['Actuation', '< 2 ms'], ['Trigger', 'Master BMS or crash input'], ['Type', 'Irreversible']],
+      proto: ['Hard-wired squib loop'], safety: ['Loop continuity monitored', 'Breaks full short-circuit'],
+      live: () => [['State', 'Armed · intact'], ['Squib resistance', '2.1 Ω'], ['Loop check', 'Pass']] },
+    rackbms: { tier: 'Tier 2 · rack BMS & DC protection', specs: [['Rack voltage', '1,000–1,500 VDC'], ['SoC method', 'Coulomb count + EKF'], ['Current sensing', 'Shunt ±0.5 %'], ['Controls', 'Contactors, pre-charge, pyrofuse']],
+      proto: ['CAN to CMUs', 'Modbus TCP to EMS', 'IEC 61850 (opt.)'], safety: ['UL 1973', 'IEC 61508 SIL 2 functions'],
+      live: () => [['Racks online', S.dcClosed ? '12 / 12' : '0 / 12'], ['State of charge', S.soc.toFixed(2) + ' %'], ['State of health', S.soh.toFixed(2) + ' %'], ['Full cycles', S.cycles.toFixed(1)], ['Discharge limit', n2(S.dischLim) + ' MW'], ['Charge limit', n2(S.chgLim) + ' MW'], ['Insulation', Math.round(S.imdR) + ' kΩ']] },
+    contactors: { tier: 'Tier 2 · rack BMS & DC protection', specs: [['Rating', '1,500 VDC · 800 A'], ['Arc chamber', 'Sealed, gas-filled'], ['Coil', '24 VDC, economized'], ['Feedback', 'Auxiliary + weld detect']],
+      proto: ['Hard-wired from master BMS'], safety: ['Breaks 800 A under load', 'IEC 60947-4-1'],
+      live: () => [['DC+ main', S.dcClosed ? 'Closed' : 'Open'], ['DC− main', S.dcClosed ? 'Closed' : 'Open'], ['Pre-charge relay', S.precharge > 0 ? 'Closed' : 'Open'], ['DC current', S.d.Idc.toFixed(0) + ' A'], ['Operations', '1,284']] },
+    precharge: { tier: 'Tier 2 · rack BMS & DC protection', specs: [['Resistor', '47 Ω · 500 W'], ['Target', '95 % of rack voltage'], ['Duration', '~2.5 s full sequence'], ['DC link', '8.2 mF']],
+      proto: ['Controlled by master BMS'], safety: ['Timeout supervision', 'Resistor over-temp cutout'],
+      live: () => [['State', S.precharge > 0 ? 'Charging DC link' : 'Idle / bypassed'], ['DC link', S.precharge > 0 ? ((1 - S.precharge / 25) * 98).toFixed(0) + ' %' : (S.dcClosed ? '100 %' : '0 %')], ['Inrush peak', '28 A']] },
+    imd: { tier: 'Tier 2 · rack BMS & DC protection', specs: [['Standard', 'IEC 61557-8'], ['Method', 'Adaptive pulse'], ['Thresholds', 'Warn 300 kΩ · trip 100 kΩ'], ['System', 'Ungrounded (IT) DC']],
+      proto: ['Modbus RTU', 'Trip relay to BMS'], safety: ['NEC 706', 'Self-test every 24 h'],
+      live: () => [['Insulation resistance', Math.round(S.imdR) + ' kΩ'], ['Status', S.groundFault ? 'TRIP — below 100 kΩ' : 'Healthy'], ['Leakage capacitance', '12 µF'], ['Last self-test', 'Pass, 03:00']] },
+    pcs: { tier: 'Tier 3 · power electronics & cooling', specs: [['Rating', '4.4 MVA @ 40 °C'], ['DC input', '1,000–1,500 V'], ['AC output', '690 V · 3φ · 60 Hz'], ['Topology', '3-level NPC IGBT'], ['Peak efficiency', '98.8 %'], ['FFR response', '< 100 ms']],
+      proto: ['Modbus TCP', 'SunSpec', 'CAN to BMS'], safety: ['UL 1741 SB', 'IEEE 1547-2018', 'IEEE 2800'],
+      live: () => [['Active P', s2(S.bessP) + ' MW'], ['Reactive Q', s2(S.bessQ) + ' MVAr'], ['Apparent S', S.d.s.toFixed(2) + ' MVA'], ['Power factor', S.d.pf.toFixed(3)], ['AC current', S.d.iac.toFixed(0) + ' A'], ['Switching frequency', S.d.bessAvail ? S.d.fsw.toFixed(1) + ' kHz' : 'Blocked'], ['Control mode', S.islanded ? 'Grid-forming V/f' : 'Grid-following P/Q'], ['Efficiency', S.d.eff ? S.d.eff.toFixed(1) + ' %' : '—']] },
+    hvac: { tier: 'Tier 3 · power electronics & cooling', specs: [['Capacity', '60 kW liquid cooling'], ['Coolant', '50/50 ethylene glycol'], ['Supply setpoint', '18 °C'], ['Refrigerant', 'R-513A']],
+      proto: ['Modbus RTU', 'BACnet'], safety: ['Coolant leak detection', 'Condensation control'],
+      live: () => [['Coolant flow', S.d.flow.toFixed(0) + ' L/min'], ['Supply temp', S.d.sup.toFixed(1) + ' °C'], ['Return temp', S.d.ret.toFixed(1) + ' °C'], ['Compressor', S.d.comp.toFixed(0) + ' %'], ['Mode', S.hvacBoost ? 'Boost (alarm)' : 'Auto'], ['Cabin humidity', '42 % RH']] },
+    fire: { tier: 'Tier 3 · power electronics & cooling', specs: [['Agent', 'Condensed aerosol + Novec 1230'], ['Detection', 'Smoke, heat, H₂, CO'], ['Zones', '2 per container'], ['Venting', 'Deflagration panels (NFPA 68)']],
+      proto: ['Dry contacts', 'Modbus RTU'], safety: ['NFPA 855', 'UL 9540A', 'NFPA 72'],
+      live: () => [['Panel', S.overTemp ? 'Heat pre-alarm' : 'Normal'], ['Detectors', S.overTemp ? '1 in pre-alarm' : '40 / 40 normal'], ['Agent pressure', '100 %'], ['Discharges', '0']] },
+    xfmr: { tier: 'Tier 4 · transformer skid', specs: [['Rating', '4.5 MVA ONAN'], ['Voltage', '0.69 / 34.5 kV'], ['Vector group', 'Dyn11'], ['Impedance', '6.0 %'], ['Taps', '±2 × 2.5 %']],
+      proto: ['DNP3', 'IEC 61850 GOOSE'], safety: ['IEEE C57.12', 'Pressure relief + Buchholz'],
+      live: () => [['Loading', S.d.xl.toFixed(0) + ' %'], ['LV current', S.d.iac.toFixed(0) + ' A'], ['MV current', S.d.imv.toFixed(1) + ' A'], ['Top oil', S.d.oil.toFixed(1) + ' °C'], ['Winding hot spot', (S.d.oil + 8 + S.d.xl * 0.1).toFixed(1) + ' °C']] },
+    meter: { tier: 'Tier 4 · transformer skid', specs: [['Accuracy', 'Class 0.2S (ANSI C12.20)'], ['Quadrants', '4, bidirectional'], ['Sampling', '128 samples/cycle'], ['Approval', 'Measurement Canada / ANSI']],
+      proto: ['DNP3', 'Modbus TCP'], safety: ['Utility-sealed', 'Tamper logging'],
+      live: () => [['Active P', s2(S.bessP) + ' MW'], ['Reactive Q', s2(S.bessQ) + ' MVAr'], ['Delivered (lifetime)', S.E.dis.toFixed(1) + ' MWh'], ['Received (lifetime)', S.E.chg.toFixed(1) + ' MWh']] },
+    load: { tier: 'Site loads & demand', specs: [['Peak demand', '~4.5 MW'], ['Critical feeders', '65 % (process, IT, HVAC)'], ['EV hub', '12 × 150 kW DC fast chargers'], ['Power factor', '0.95 lagging']],
+      proto: ['OCPP 2.0.1 (EV chargers)', 'Modbus TCP feeder meters'], safety: ['Under-frequency load shedding', 'Critical-load priority'],
+      live: () => [['Demand', n2(S.load) + ' MW'], ['Served', n2(S.loadServed) + ' MW'], ['Critical', n2(S.load * CRIT) + ' MW'], ['Shed', n2(S.shed) + ' MW'], ['EV sessions', S.shed > 0.05 ? '0 (paused)' : String(Math.round(4 + 7 * gauss(S.t / 60, 19, 2.2)))]] },
+    ems: { tier: 'Tier 5 · EMS / cloud', specs: [['Hardware', 'Fanless industrial edge PC'], ['Polling', '100 ms control · 1 s telemetry'], ['Tags', '4,812'], ['Buffer', '30-day store-and-forward']],
+      proto: ['Modbus TCP/RTU', 'DNP3', 'IEC 61850', 'OPC UA', 'MQTT/TLS 1.3'], safety: ['IEC 62443 cybersecurity', 'Role-based access'],
+      live: () => [['Cloud uplink', 'Online'], ['Latency', S.d.lat.toFixed(0) + ' ms'], ['CPU', S.d.cpu.toFixed(0) + ' %'], ['Alarms logged', String(S.alarms.length)], ['Time sync', 'PTP (IEEE 1588) locked']] },
+    ppc: { tier: 'Tier 5 · EMS / cloud', specs: [['Control point', 'Closed loop at PCC'], ['Cycle', '100 ms'], ['Ramp limit', '10 % / min (non-FFR)'], ['Droop', '5 %, deadband ±17 mHz']],
+      proto: ['DNP3 to utility', 'Modbus TCP to PCS'], safety: ['IEEE 2800 compliance', 'Export limiting'],
+      live: () => [['Dispatch mode', MODES[S.mode].name], ['BESS setpoint', s2(S.target) + ' MW'], ['BESS actual', s2(S.bessP) + ' MW'], ['PCC active power', s2(S.gridP) + ' MW'], ['Frequency', S.freq.toFixed(3) + ' Hz'], ['Voltage', S.volt.toFixed(3) + ' pu']] }
+  };
+
+  // ---------- SVG diagram ----------
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  const NODES = [
+    { id: 'solar', x: 20, y: 40, w: 200, h: 160, title: 'Solar PV array', sub: '5.0 MWp · AC-coupled', lines: ['v-solar', 'v-solar2'], big: true, icon: 'sun', color: '#facc15' },
+    { id: 'grid', x: 20, y: 380, w: 200, h: 120, title: 'Utility grid', sub: '34.5 kV distribution feeder', lines: ['v-grid', 'v-grid2'], big: true, icon: 'tower', color: '#38bdf8' },
+    { id: 'pcc', x: 40, y: 522, w: 160, h: 76, title: 'PCC meter + VCB', sub: 'Point of common coupling', lines: ['v-pcc', 'v-pcc2'], color: '#38bdf8' },
+    { id: 'load', x: 950, y: 360, w: 230, h: 200, title: 'Site loads', sub: 'C&I process + EV charging hub', lines: ['v-load', 'v-load2', 'v-load3'], big: true, icon: 'factory', color: '#a855f7' },
+    { id: 'cells', x: 525, y: 60, w: 150, h: 102, title: 'LFP cell modules', sub: '280 Ah · 416S per rack', lines: ['v-cells', 'v-cells2'], color: '#22c55e' },
+    { id: 'bmu', x: 345, y: 60, w: 160, h: 46, title: 'Module BMS (BMU/CMU)', lines: ['v-bmu'] },
+    { id: 'ntc', x: 345, y: 116, w: 160, h: 46, title: 'NTC thermistors', lines: ['v-ntc'] },
+    { id: 'offgas', x: 695, y: 60, w: 160, h: 46, title: 'Off-gas sensors', lines: ['v-offgas'] },
+    { id: 'pyro', x: 695, y: 116, w: 160, h: 46, title: 'Pyrofuses', lines: ['v-pyro'] },
+    { id: 'rackbms', x: 345, y: 202, w: 160, h: 90, title: 'HV master BMS', sub: 'Rack BMS · SoC / SoH', lines: ['v-rackbms', 'v-rackbms2'] },
+    { id: 'contactors', x: 525, y: 202, w: 150, h: 90, title: 'Isolation contactors', sub: 'DC+ / DC− mains', lines: ['v-contactors', 'v-contactors2'], color: '#22c55e' },
+    { id: 'precharge', x: 695, y: 202, w: 160, h: 40, title: 'Pre-charge circuit', lines: ['v-precharge'] },
+    { id: 'imd', x: 695, y: 252, w: 160, h: 40, title: 'Insulation monitor (IMD)', lines: ['v-imd'] },
+    { id: 'hvac', x: 345, y: 332, w: 160, h: 90, title: 'Glycol chiller / HVAC', sub: 'Liquid cold-plate loop', lines: ['v-hvac', 'v-hvac2'] },
+    { id: 'pcs', x: 525, y: 332, w: 150, h: 90, title: 'PCS inverter', sub: 'Bidirectional DC ⇄ AC', lines: ['v-pcs', 'v-pcs2'], color: '#22c55e' },
+    { id: 'fire', x: 695, y: 332, w: 160, h: 90, title: 'Fire suppression', sub: 'Aerosol / Novec 1230', lines: ['v-fire', 'v-fire2'] },
+    { id: 'meter', x: 345, y: 470, w: 160, h: 80, title: 'Revenue meter', sub: 'Class 0.2S bidirectional', lines: ['v-meter', 'v-meter2'] },
+    { id: 'xfmr', x: 525, y: 462, w: 150, h: 110, title: 'Step-up transformer', sub: '0.69 / 34.5 kV · Dyn11', lines: ['v-xfmr', 'v-xfmr2'], color: '#22c55e' },
+    { id: 'levels', x: 695, y: 470, w: 160, h: 80, title: 'Voltage levels', lines: ['v-lv1', 'v-lv2', 'v-lv3'], static: true }
+  ];
+
+  const FLOWS = [
+    { id: 'p-solar', d: 'M220,120 H262 V648', c: '#facc15', v: () => S.pv },
+    { id: 'p-grid', d: 'M120,500 V648', c: '#38bdf8', v: () => S.gridP },
+    { id: 'p-bess', d: 'M600,111 V648', c: '#22c55e', v: () => S.bessP },
+    { id: 'p-gs', d: 'M120,648 H262', c: '#38bdf8', v: () => S.gridP },
+    { id: 'p-sb', d: 'M262,648 H600', c: '#facc15', v: () => S.gridP + S.pv, cf: () => (S.pv >= Math.abs(S.gridP) ? '#facc15' : '#38bdf8') },
+    { id: 'p-bl', d: 'M600,648 H1065', c: '#a855f7', v: () => S.loadServed },
+    { id: 'p-load', d: 'M1065,648 V560', c: '#a855f7', v: () => S.loadServed }
+  ];
+
+  function icon(kind, g, x, y, color) {
+    const t = el('g', { transform: `translate(${x},${y})`, fill: 'none', stroke: color, 'stroke-width': 1.8, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', opacity: 0.9 }, g);
+    if (kind === 'sun') {
+      el('circle', { cx: 12, cy: 12, r: 5 }, t);
+      for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4; el('line', { x1: 12 + Math.cos(a) * 8, y1: 12 + Math.sin(a) * 8, x2: 12 + Math.cos(a) * 11, y2: 12 + Math.sin(a) * 11 }, t); }
+    } else if (kind === 'tower') {
+      el('path', { d: 'M12 2 L6 22 M12 2 L18 22 M9 9 H15 M7.5 15 H16.5 M3 5 H21 M8 20 L16 12 M16 20 L8 12' }, t);
+    } else {
+      el('path', { d: 'M2 22 V11 L8 15 V11 L14 15 V5 H19 V22 Z M6 22 V19 M11 22 V19 M16 22 V19' }, t);
+    }
+  }
+
+  function buildDiagram() {
+    const svg = $('diagram');
+    const defs = el('defs', {}, svg);
+    const pat = el('pattern', { id: 'gridpat', width: 20, height: 20, patternUnits: 'userSpaceOnUse' }, defs);
+    el('path', { d: 'M20 0H0V20', fill: 'none', stroke: 'rgba(148,163,184,0.06)', 'stroke-width': 0.6 }, pat);
+    const flt = el('filter', { id: 'glow', x: '-50%', y: '-50%', width: '200%', height: '200%' }, defs);
+    el('feGaussianBlur', { stdDeviation: 2, result: 'b' }, flt);
+    const mg = el('feMerge', {}, flt); el('feMergeNode', { in: 'b' }, mg); el('feMergeNode', { in: 'SourceGraphic' }, mg);
+
+    el('rect', { x: 0, y: 0, width: 1200, height: 690, fill: 'url(#gridpat)' }, svg);
+    el('rect', { x: 330, y: 28, width: 540, height: 580, rx: 14, class: 'container-box' }, svg);
+    el('text', { x: 332, y: 20, class: 'ctitle' }, svg, 'BESS container / skid  —  4 MW / 16 MWh LFP, one of four DC blocks shown');
+    [[38, 132, 'Tier 1  ·  cells & modules'], [180, 120, 'Tier 2  ·  rack BMS & DC protection'], [310, 120, 'Tier 3  ·  power electronics & cooling'], [440, 158, 'Tier 4  ·  transformer skid']]
+      .forEach(([y, h, l]) => { el('rect', { x: 338, y, width: 524, height: h, rx: 8, class: 'band' }, svg); el('text', { x: 348, y: y + 13, class: 'tierlabel' }, svg, l); });
+
+    el('line', { x1: 100, y1: 648, x2: 1100, y2: 648, class: 'bus' }, svg);
+    FLOWS.forEach((f) => { f.el = el('path', { id: f.id, d: f.d, class: 'flowline', stroke: f.c }, svg); });
+    [120, 262, 600, 1065].forEach((x) => el('circle', { cx: x, cy: 648, r: 5, class: 'junction' }, svg));
+    const bl = el('text', { x: 690, y: 676, class: 'buslabel', 'data-tip-key': 'bus' }, svg, '34.5 kV medium-voltage collector bus');
+    bl.setAttribute('text-anchor', 'middle');
+
+    el('g', { id: 'particles', filter: 'url(#glow)' }, svg);
+
+    NODES.forEach((n) => {
+      const g = el('g', { class: 'node' + (n.static ? ' static' : ''), id: 'node-' + n.id, 'data-tip-key': n.id }, svg);
+      if (!n.static) { g.setAttribute('data-open', n.id); g.setAttribute('tabindex', '0'); g.setAttribute('role', 'button'); g.setAttribute('aria-label', 'Inspect ' + n.title); }
+      el('rect', { x: n.x, y: n.y, width: n.w, height: n.h, rx: 8, class: 'nbox' }, g);
+      el('rect', { x: n.x + 8, y: n.y, width: n.w - 16, height: 2.5, rx: 1.2, fill: n.color || '#475569', opacity: 0.8 }, g);
+      el('circle', { cx: n.x + n.w - 10, cy: n.y + 11, r: 4, class: 'nled', id: 'led-' + n.id, fill: '#22c55e' }, g);
+      el('text', { x: n.x + 10, y: n.y + 17, class: 'nt' }, g, n.title);
+      let cy = n.y + 17;
+      if (n.sub) { cy += 13; el('text', { x: n.x + 10, y: cy, class: 'ns' }, g, n.sub); }
+      n.lines.forEach((lid, i) => {
+        const big = n.big && i === 0;
+        cy += big ? 25 : (i === 0 ? 18 : 16);
+        el('text', { x: n.x + 10, y: cy, class: 'nv' + (big ? ' big' : (i > 0 && n.big ? ' sm' : '')), id: lid }, g, '—');
+      });
+      if (n.icon) icon(n.icon, g, n.x + n.w - 44, n.y + 26, n.color);
+
+      if (n.id === 'solar') {
+        const pg = el('g', { id: 'pvpanels' }, g);
+        for (let r = 0; r < 3; r++) for (let c = 0; c < 8; c++)
+          el('rect', { x: n.x + 12 + c * 22.4, y: n.y + 94 + r * 19, width: 19, height: 15, rx: 1.5, fill: '#1d4ed8', stroke: '#60a5fa', 'stroke-width': 0.5 }, pg);
+        el('rect', { x: n.x + 12, y: n.y + 94, width: 176, height: 53, rx: 2, fill: '#facc15', opacity: 0, id: 'pvglow' }, g);
+      }
+      if (n.id === 'cells') {
+        for (let i = 0; i < 10; i++) {
+          el('rect', { x: n.x + 12 + i * 13, y: n.y + 72, width: 10, height: 22, rx: 2, fill: '#0f172a', stroke: '#334155', 'stroke-width': 0.8 }, g);
+          el('rect', { x: n.x + 13 + i * 13, y: n.y + 73, width: 8, height: 20, rx: 1, fill: '#22c55e', id: 'cb' + i }, g);
+        }
+      }
+      if (n.id === 'load') {
+        el('text', { x: n.x + 12, y: n.y + 122, class: 'ns' }, g, 'Critical feeders (65%)');
+        el('rect', { x: n.x + 12, y: n.y + 128, width: 206, height: 10, rx: 3, fill: '#0f172a', stroke: '#334155', 'stroke-width': 0.8 }, g);
+        el('rect', { x: n.x + 12, y: n.y + 128, width: 0, height: 10, rx: 3, fill: '#a855f7', id: 'lbCrit' }, g);
+        el('text', { x: n.x + 12, y: n.y + 158, class: 'ns' }, g, 'Non-critical feeders (35%)');
+        el('rect', { x: n.x + 12, y: n.y + 164, width: 206, height: 10, rx: 3, fill: '#0f172a', stroke: '#334155', 'stroke-width': 0.8, id: 'lbNonBg' }, g);
+        el('rect', { x: n.x + 12, y: n.y + 164, width: 0, height: 10, rx: 3, fill: '#c084fc', opacity: 0.75, id: 'lbNon' }, g);
+      }
+    });
+
+    el('text', { x: 270, y: 330, class: 'fl', fill: '#facc15', id: 'fl-solar' }, svg, '');
+    el('text', { x: 128, y: 628, class: 'fl', fill: '#38bdf8', id: 'fl-grid' }, svg, '');
+    el('text', { x: 608, y: 630, class: 'fl', fill: '#22c55e', id: 'fl-bess' }, svg, '');
+    el('text', { x: 1073, y: 612, class: 'fl', fill: '#a855f7', id: 'fl-load' }, svg, '');
+  }
+
+  // ---------- Particle engine ----------
+  function initParticles() {
+    const pg = $('particles');
+    FLOWS.forEach((f) => {
+      f.L = f.el.getTotalLength(); f.sp = 26; f.n = Math.max(2, Math.ceil(f.L / f.sp)); f.phase = 0;
+      f.g = el('g', { fill: f.c }, pg); f.dots = [];
+      for (let i = 0; i < f.n; i++) f.dots.push(el('circle', { r: 0, cx: -10, cy: -10 }, f.g));
+    });
+  }
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let last = performance.now();
+  function animate(now) {
+    const k = Math.min(3, (now - last) / 16.7); last = now;
+    FLOWS.forEach((f) => {
+      const v = f.v(), a = Math.abs(v);
+      if (a < 0.02) { f.g.style.display = 'none'; f.el.classList.remove('on'); return; }
+      f.g.style.display = ''; f.el.classList.add('on');
+      if (f.cf) f.g.setAttribute('fill', f.cf());
+      const speed = reduceMotion ? 0 : (0.6 + Math.min(3.2, a * 0.75)) * k;
+      f.phase = (f.phase + speed * Math.sign(v)) % f.sp;
+      const r = (2 + Math.min(2.2, a * 0.45)).toFixed(2);
+      const span = f.n * f.sp;
+      for (let i = 0; i < f.n; i++) {
+        let dd = ((i * f.sp + f.phase) % span + span) % span;
+        const dot = f.dots[i];
+        if (dd > f.L) { dot.setAttribute('r', 0); continue; }
+        const p = f.el.getPointAtLength(dd);
+        dot.setAttribute('cx', p.x.toFixed(1)); dot.setAttribute('cy', p.y.toFixed(1)); dot.setAttribute('r', r);
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  // ---------- Rendering ----------
+  const txt = (id, v) => { const e = $(id); if (e && e.textContent !== v) e.textContent = v; };
+  const LEDC = { ok: '#22c55e', warn: '#f59e0b', fault: '#ef4444', offline: '#64748b' };
+  const STLBL = { ok: 'Normal', warn: 'Warning', fault: 'Fault', offline: 'Offline' };
+
+  function render() {
+    const d = S.d, st = S.st;
+    // header
+    txt('clock', fmtT(S.t)); txt('bigClock', fmtT(S.t));
+    txt('modePill', !S.gridUp ? 'Islanded · grid loss' : MODES[S.mode].short);
+    const faults = (S.overTemp ? 1 : 0) + (!S.gridUp ? 1 : 0) + (S.groundFault ? 1 : 0) + (S.siteBlackout ? 1 : 0);
+    const sp = $('sitePill');
+    let siteTxt = 'Grid-connected', cls = '';
+    if (S.siteBlackout) { siteTxt = 'Site blackout'; cls = 'bad'; }
+    else if (faults) { siteTxt = faults + ' fault' + (faults > 1 ? 's' : '') + ' active'; cls = 'bad'; }
+    else if (S.islanded) { siteTxt = 'Islanded'; cls = 'warn'; }
+    txt('siteTxt', siteTxt); sp.className = 'pill ' + cls;
+
+    // diagram nodes
+    for (const id in st) {
+      const g = $('node-' + id); if (!g) continue;
+      const c = 'node' + (g.classList.contains('static') ? ' static' : '') + ' st-' + st[id];
+      if (g.getAttribute('class') !== c) g.setAttribute('class', c);
+      const led = $('led-' + id); if (led) led.setAttribute('fill', LEDC[st[id]]);
+    }
+    txt('v-solar', n2(S.pv) + ' MW');
+    txt('v-solar2', d.pvw + ' W/m²' + (S.siteBlackout ? ' · tripped' : S.curtail > 0.05 ? ' · curtailed' : ''));
+    $('pvpanels').setAttribute('opacity', (0.3 + 0.7 * S.irr * S.cloud).toFixed(2));
+    $('pvglow').setAttribute('opacity', (0.22 * S.irr * S.cloud).toFixed(2));
+
+    txt('v-grid', S.islanded ? 'Disconnected' : (S.gridP >= 0 ? 'Import ' : 'Export ') + n2(Math.abs(S.gridP)) + ' MW');
+    txt('v-grid2', S.gridUp ? S.freq.toFixed(3) + ' Hz · ' + (S.volt * 34.5).toFixed(2) + ' kV' : 'No voltage · 0.00 kV');
+    txt('v-pcc', S.islanded ? 'VCB open' : 'VCB closed');
+    txt('v-pcc2', S.islanded ? (S.gridUp ? 'Intentional' : 'Tripped 27') : 'P ' + s2(S.gridP) + ' MW');
+
+    txt('v-cells', 'SoC ' + S.soc.toFixed(1) + '%');
+    txt('v-cells2', d.rackV.toFixed(0) + ' V · ' + d.cellV.toFixed(3) + ' V');
+    const socCol = S.soc > 40 ? '#22c55e' : S.soc > 20 ? '#facc15' : '#ef4444';
+    for (let i = 0; i < 10; i++) {
+      const fill = clamp(S.soc / 10 - i, 0, 1); const r = $('cb' + i);
+      r.setAttribute('height', (20 * fill).toFixed(1)); r.setAttribute('y', (133 + 20 * (1 - fill)).toFixed(1)); r.setAttribute('fill', socCol);
+    }
+    txt('v-bmu', 'ΔV ' + d.spread.toFixed(0) + ' mV · ' + (d.spread > 10 ? 'balancing' : 'balanced'));
+    txt('v-ntc', S.cellTmin.toFixed(1) + ' – ' + S.cellTmax.toFixed(1) + ' °C');
+    txt('v-offgas', 'H₂ ' + d.h2.toFixed(1) + ' ppm · ' + (S.overTemp ? 'elevated' : 'clear'));
+    txt('v-pyro', 'Armed · intact');
+    txt('v-rackbms', S.groundFault ? 'Trip · iso fault' : S.precharge > 0 ? 'Pre-charging' : '12/12 racks online');
+    txt('v-rackbms2', 'SoH ' + S.soh.toFixed(1) + '% · ' + S.cycles.toFixed(0) + ' EFC');
+    txt('v-contactors', S.dcClosed ? 'Closed' : S.precharge > 0 ? 'Pre-charge' : 'Open · tripped');
+    txt('v-contactors2', 'I ' + d.Idc.toFixed(0) + ' A DC');
+    txt('v-precharge', S.precharge > 0 ? 'Active · ' + ((1 - S.precharge / 25) * 98).toFixed(0) + '% link' : 'Idle · bypassed');
+    txt('v-imd', 'R_iso ' + Math.round(S.imdR) + ' kΩ');
+    txt('v-hvac', 'Flow ' + d.flow.toFixed(0) + ' L/min');
+    txt('v-hvac2', S.hvacBoost ? 'Boost · comp 100%' : 'Supply ' + d.sup.toFixed(1) + ' °C');
+    txt('v-pcs', d.bessAvail ? 'P ' + s2(S.bessP) + ' MW' : 'Blocked');
+    txt('v-pcs2', 'Q ' + s2(S.bessQ) + ' · ' + (S.islanded ? 'GFM' : 'GFL'));
+    txt('v-fire', S.overTemp ? 'Heat pre-alarm' : 'Normal');
+    txt('v-fire2', 'Agent armed · 0 disch.');
+    txt('v-meter', s2(S.bessP) + ' MW');
+    txt('v-meter2', 'Out ' + S.E.dis.toFixed(0) + ' MWh');
+    txt('v-xfmr', 'Load ' + d.xl.toFixed(0) + '%');
+    txt('v-xfmr2', 'Oil ' + d.oil.toFixed(1) + ' °C');
+    txt('v-lv1', 'DC ' + (S.dcClosed ? d.rackV.toFixed(0) : '0') + ' V');
+    txt('v-lv2', 'LV 690 V AC');
+    txt('v-lv3', 'MV 34.5 kV AC');
+
+    txt('v-load', n2(S.loadServed) + ' MW');
+    txt('v-load2', 'Demand ' + n2(S.load) + ' MW');
+    txt('v-load3', S.siteBlackout ? 'All feeders de-energized' : S.shed > 0.05 ? 'Shed ' + n2(S.shed) + ' MW non-critical' : 'All feeders energized');
+    const critL = S.load * CRIT, non = S.load - critL;
+    $('lbCrit').setAttribute('width', (206 * clamp(Math.min(S.loadServed, critL) / critL, 0, 1)).toFixed(1));
+    $('lbNon').setAttribute('width', (206 * clamp((S.loadServed - critL) / non, 0, 1)).toFixed(1));
+    $('lbNonBg').setAttribute('stroke', S.shed > 0.05 ? '#ef4444' : '#334155');
+
+    txt('fl-solar', S.pv > 0.02 ? n2(S.pv) + ' MW ▼' : '');
+    const gf = $('fl-grid');
+    if (S.islanded) { gf.setAttribute('fill', '#ef4444'); txt('fl-grid', 'Open'); }
+    else { gf.setAttribute('fill', '#38bdf8'); txt('fl-grid', Math.abs(S.gridP) < 0.02 ? '' : (S.gridP > 0 ? '▼ ' : '▲ ') + n2(Math.abs(S.gridP)) + ' MW'); }
+    txt('fl-bess', !d.bessAvail ? 'DC open' : Math.abs(S.bessP) < 0.02 ? 'Standby' : (S.bessP > 0 ? '▼ ' : '▲ ') + n2(Math.abs(S.bessP)) + ' MW ' + (S.bessP > 0 ? 'discharge' : 'charge'));
+    $('fl-bess').setAttribute('fill', d.bessAvail ? '#22c55e' : '#ef4444');
+    txt('fl-load', S.loadServed > 0.02 ? '▲ ' + n2(S.loadServed) + ' MW' : '');
+
+    // EMS cards
+    txt('g-lat', d.lat.toFixed(0) + ' ms'); txt('g-cpu', d.cpu.toFixed(0) + ' %');
+    txt('p-mode', S.islanded ? 'V/f grid-forming' : 'P/Q grid-following');
+    txt('p-setp', s2(S.target) + ' MW');
+    txt('p-pcc', S.islanded ? 'Open' : s2(S.gridP) + ' MW');
+    txt('p-freq', S.siteBlackout ? '— (no source)' : S.freq.toFixed(3) + ' Hz');
+    txt('p-volt', (S.gridUp || !S.siteBlackout ? S.volt : 0).toFixed(3) + ' pu');
+    const pl = $('ppc-led'); pl.style.background = S.islanded ? '#f59e0b' : '#22c55e'; pl.style.boxShadow = '0 0 6px ' + pl.style.background;
+    document.querySelectorAll('.mode-btn').forEach((b) => b.classList.toggle('active', b.dataset.mode === S.mode));
+    txt('manState', S.mode === 'manual' ? 'active' : 'inactive');
+
+    // alarms
+    txt('alarmBadge', faults + ' active');
+    $('alarmBadge').className = 'badge' + (faults ? ' bad' : '');
+    if (S.alarmDirty) {
+      S.alarmDirty = false;
+      $('alarmList').innerHTML = S.alarms.map((a) => `<li class="${a.sev}"><span class="at">${a.t}</span><span class="as">${a.src}</span><span class="am">${a.msg}</span></li>`).join('');
+    }
+
+    // fault buttons
+    $('fOT').classList.toggle('active', S.overTemp);
+    $('fBO').classList.toggle('active', !S.gridUp);
+    $('fGF').classList.toggle('active', S.groundFault);
+    $('fUF').classList.toggle('active', S.freqEvent > 0);
+
+    // time slider
+    if (!S.dragging) $('timeSlider').value = Math.floor(S.t);
+
+    // telemetry: SoC
+    const sf = $('socFill'); sf.style.height = S.soc.toFixed(1) + '%';
+    sf.className = 'tank-fill' + (S.soc > 40 ? '' : S.soc > 20 ? ' mid' : ' low');
+    $('tank').classList.toggle('charging', S.bessP < -0.05);
+    txt('socVal', S.soc.toFixed(1) + '%');
+    txt('socMWh', (S.soc / 100 * EMAX).toFixed(2) + ' / 16.00 MWh');
+    let eta = 'Idle';
+    if (S.bessP > 0.05) eta = 'Reserve (' + S.reserve + '%) in ' + fmtDur(Math.max(0, S.soc - S.reserve) / 100 * EMAX * 0.955 / S.bessP);
+    else if (S.bessP < -0.05) eta = 'Full in ' + fmtDur(Math.max(0, 98 - S.soc) / 100 * EMAX / (0.955 * -S.bessP));
+    else if (!d.bessAvail) eta = 'Offline — DC contactors open';
+    txt('socEta', eta);
+
+    // SoH
+    txt('sohVal', S.soh.toFixed(2) + '%'); $('sohBar').style.width = clamp((S.soh - 70) / 30 * 100, 0, 100).toFixed(1) + '%';
+    txt('sohCyc', S.cycles.toFixed(1));
+
+    // Power
+    txt('pwP', s2(S.bessP) + ' MW'); txt('pwQ', s2(S.bessQ) + ' MVAr');
+    txt('pwS', d.s.toFixed(2) + ' MVA · ' + d.pf.toFixed(3));
+    const pb = $('pwBar'), frac = clamp(Math.abs(S.bessP) / PMAX, 0, 1) * 50;
+    if (S.bessP >= 0) { pb.style.left = '50%'; pb.style.width = frac + '%'; pb.style.background = '#22c55e'; }
+    else { pb.style.left = (50 - frac) + '%'; pb.style.width = frac + '%'; pb.style.background = '#38bdf8'; }
+    const pd = $('pwDir');
+    let dirTxt = 'Standby', dirCol = '#94a3b8';
+    if (!d.bessAvail) { dirTxt = 'Offline'; dirCol = '#ef4444'; }
+    else if (S.bessP > 0.05) { dirTxt = 'Discharging'; dirCol = '#22c55e'; }
+    else if (S.bessP < -0.05) { dirTxt = 'Charging'; dirCol = '#38bdf8'; }
+    txt('pwDir', dirTxt); pd.style.color = dirCol;
+
+    // Temperature gauge (0–70 °C)
+    const L = 219.9, tf = clamp(S.cellTmax / 70, 0, 1);
+    const arc = $('tgArc'); arc.setAttribute('stroke-dashoffset', (L * (1 - tf)).toFixed(1));
+    arc.setAttribute('stroke', S.cellTmax > 55 ? '#ef4444' : S.cellTmax > 45 ? '#f59e0b' : S.cellTmax > 35 ? '#facc15' : '#22c55e');
+    txt('tgVal', S.cellTmax.toFixed(1) + '°C');
+    txt('tgMinAvg', S.cellTmin.toFixed(1) + ' / ' + S.cellT.toFixed(1) + ' °C');
+
+    // Efficiency
+    txt('effRte', (S.E.dis / S.E.chg * 100).toFixed(1) + '%');
+    txt('effCo2', S.E.co2.toFixed(2) + ' t');
+    txt('effPv', S.E.pv.toFixed(2) + ' MWh');
+    txt('effGrid', S.E.imp.toFixed(2) + ' / ' + S.E.exp.toFixed(2) + ' MWh');
+
+    if (S.modalId) renderModalLive();
+  }
+
+  // 55 °C marker on the gauge
+  (function placeMark() {
+    const a = Math.PI * (1 - 55 / 70), cx = 90, cy = 92;
+    const m = $('tgMark');
+    m.setAttribute('x1', (cx + Math.cos(a) * 62).toFixed(1)); m.setAttribute('y1', (cy - Math.sin(a) * 62).toFixed(1));
+    m.setAttribute('x2', (cx + Math.cos(a) * 78).toFixed(1)); m.setAttribute('y2', (cy - Math.sin(a) * 78).toFixed(1));
+  })();
+
+  // ---------- Modal ----------
+  const kvHtml = (rows) => rows.map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join('');
+  function openModal(id) {
+    const c = COMP[id]; if (!c) return;
+    S.modalId = id;
+    const t = TIPS[id] || [id, ''];
+    $('mTier').textContent = c.tier; $('mTitle').textContent = t[0]; $('mDesc').textContent = t[1];
+    $('mSpecs').innerHTML = kvHtml(c.specs);
+    $('mProto').innerHTML = c.proto.map((p) => `<span class="chip">${p}</span>`).join('');
+    $('mSafety').innerHTML = c.safety.map((p) => `<span class="chip">${p}</span>`).join('');
+    renderModalLive();
+    const m = $('modal'); m.classList.add('open'); m.setAttribute('aria-hidden', 'false');
+    hideTip();
+    m.querySelector('.m-x').focus();
+  }
+  function renderModalLive() {
+    const c = COMP[S.modalId]; if (!c) return;
+    const st = S.st[S.modalId] || 'ok';
+    const ms = $('mStatus'); ms.className = 'stat ' + st; ms.textContent = STLBL[st];
+    $('mLive').innerHTML = kvHtml(c.live());
+  }
+  function closeModal() { S.modalId = null; const m = $('modal'); m.classList.remove('open'); m.setAttribute('aria-hidden', 'true'); }
+
+  // ---------- Tooltip ----------
+  const tip = $('tip');
+  function showTip(key, x, y) {
+    const t = TIPS[key]; if (!t) return;
+    tip.innerHTML = `<b>${t[0]}</b>${t[1]}`; tip.classList.add('show'); moveTip(x, y);
+  }
+  function moveTip(x, y) {
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let left = x + 14, top = y + 16;
+    if (left + w > window.innerWidth - 8) left = x - w - 14;
+    if (top + h > window.innerHeight - 8) top = y - h - 12;
+    tip.style.left = Math.max(8, left) + 'px'; tip.style.top = Math.max(8, top) + 'px';
+  }
+  function hideTip() { tip.classList.remove('show'); }
+  let tipEl = null;
+  document.addEventListener('pointerover', (e) => {
+    if (e.pointerType === 'touch') return;
+    const t = e.target.closest('[data-tip-key]');
+    if (t && t !== tipEl) {
+      // prefer the innermost element that has its own tip (e.g. a node inside the diagram)
+      tipEl = t; showTip(t.getAttribute('data-tip-key'), e.clientX, e.clientY);
+    } else if (!t) { tipEl = null; hideTip(); }
+  });
+  document.addEventListener('pointermove', (e) => { if (tipEl) moveTip(e.clientX, e.clientY); });
+  document.addEventListener('pointerleave', () => { tipEl = null; hideTip(); });
+
+  // ---------- Controls ----------
+  function setMode(m) {
+    if (m === S.mode) return;
+    S.mode = m;
+    alarm('info', 'EMS', 'Dispatch mode → ' + MODES[m].name + (!S.gridUp && m !== 'island' ? ' (applies after grid restoration)' : ''));
+    if (m !== 'manual') { $('manSlider').value = 0; S.manualP = 0; txt('manLabel', '0.00 MW'); }
+  }
+  document.addEventListener('click', (e) => {
+    const mb = e.target.closest('.mode-btn'); if (mb) { setMode(mb.dataset.mode); return; }
+    if (e.target.closest('[data-close]')) { closeModal(); return; }
+    const o = e.target.closest('[data-open]'); if (o) openModal(o.getAttribute('data-open'));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeModal(); return; }
+    if ((e.key === 'Enter' || e.key === ' ') && document.activeElement && document.activeElement.hasAttribute('data-open')) {
+      e.preventDefault(); openModal(document.activeElement.getAttribute('data-open'));
+    }
+  });
+
+  $('timeSlider').addEventListener('input', (e) => { S.dragging = true; S.t = +e.target.value; });
+  $('timeSlider').addEventListener('change', () => { S.dragging = false; });
+  $('speedSeg').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    const s = +b.dataset.s; S.playing = s > 0; if (s > 0) S.speed = s;
+    $('speedSeg').querySelectorAll('button').forEach((x) => x.classList.toggle('active', x === b));
+  });
+  $('peakSlider').addEventListener('input', (e) => { S.peakThr = +e.target.value; txt('peakLabel', S.peakThr.toFixed(1) + ' MW'); });
+
+  function setManual(chargeMW) {
+    $('manSlider').value = chargeMW; S.manualP = -chargeMW;
+    txt('manLabel', (chargeMW > 0 ? '+' : '') + chargeMW.toFixed(2) + ' MW ' + (chargeMW > 0 ? 'charge' : chargeMW < 0 ? 'discharge' : 'standby'));
+    setMode('manual');
+  }
+  $('manSlider').addEventListener('input', (e) => setManual(+e.target.value));
+  $('manChg').addEventListener('click', () => setManual(3));
+  $('manStby').addEventListener('click', () => setManual(0));
+  $('manDis').addEventListener('click', () => setManual(-3));
+
+  $('fOT').addEventListener('click', () => {
+    if (S.overTemp) return;
+    S.tempOffset = 34; S.cellT = Math.max(S.cellT, 55.5);
+    alarm('warn', 'Test', 'Fault injected: cell over-temperature');
+  });
+  $('fBO').addEventListener('click', () => {
+    if (!S.gridUp) return;
+    S.gridUp = false;
+    alarm('crit', 'Grid', 'Loss of utility voltage detected (27 undervoltage / 81U)');
+  });
+  $('fGF').addEventListener('click', () => {
+    if (S.groundFault) return;
+    S.groundFault = true; S.precharge = 0;
+    alarm('crit', 'IMD', 'Insulation resistance 38 kΩ below 100 kΩ trip threshold (DC− to earth)');
+  });
+  $('fUF').addEventListener('click', () => {
+    if (S.islanded) { alarm('info', 'Grid', 'Under-frequency event ignored — site is islanded'); return; }
+    S.freqEvent = 80;
+    alarm('warn', 'Grid', 'Under-frequency event: large generator tripped' + (S.mode === 'ffr' ? ' — FFR responding' : ' — switch to FFR mode to arrest the dip'));
+  });
+  $('fClr').addEventListener('click', () => {
+    let any = false;
+    if (S.groundFault) { S.groundFault = false; S.precharge = 25; any = true; alarm('info', 'Rack BMS', 'Insulation restored — starting pre-charge sequence'); }
+    if (S.tempOffset > 0.5 || S.overTemp) { S.tempOffset = 0; any = true; alarm('info', 'HVAC', 'Heat source cleared — cooling to normal band'); }
+    if (!S.gridUp) { S.gridUp = true; any = true; alarm('ok', 'Grid', 'Utility voltage restored — waiting for sync-check'); }
+    if (S.freqEvent > 0) { S.freqEvent = 0; any = true; }
+    if (!any) alarm('info', 'EMS', 'No active faults to clear');
+  });
+
+  // ---------- Boot ----------
+  buildDiagram();
+  initParticles();
+  alarm('ok', 'EMS', 'Edge gateway online — MQTT/TLS uplink established');
+  alarm('ok', 'Rack BMS', '12/12 racks online, insulation healthy, main contactors closed');
+  alarm('info', 'PPC', 'Dispatch mode → ' + MODES[S.mode].name);
+  tick();
+  setInterval(tick, 100);
+  requestAnimationFrame(animate);
+})();
+</script>
+</body>
+</html>

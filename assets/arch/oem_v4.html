@@ -1,0 +1,289 @@
+<title>OEM Smart Charger — v4 Architecture</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #070C16; color: #C7D2E4; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 1520px; margin: 0 auto; padding: 24px 18px 40px; }
+  .bar h1 { font-size: 18px; font-weight: 700; color: #F1F5F9; margin: 0 0 4px; }
+  .bar p { margin: 0 0 16px; font-size: 12.5px; color: #7C89A0; }
+  .frame { border: 1px solid #1B2740; border-radius: 16px; overflow: hidden; background: #0B1220; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+  .frame svg { display: block; width: 100%; height: auto; }
+  .note { margin-top: 14px; font-size: 12px; color: #61708C; }
+  @media print { @page { size: landscape; margin: 6mm; } html,body{background:#0B1220;-webkit-print-color-adjust:exact;print-color-adjust:exact;} .wrap{padding:0;max-width:none;} .frame{border:0;border-radius:0;box-shadow:none;} .bar,.note{display:none;} }
+</style>
+<div class="wrap">
+  <div class="bar"><h1>OEM Smart Charger — v4 System Architecture</h1><p>Stacked planes · fully backend-routed · every component, flow, and future plan</p></div>
+  <div class="frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1460 1270" width="100%" height="100%" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .title{font-size:26px;font-weight:700;fill:#F1F5F9}
+      .subtitle{font-size:13px;fill:#8496B4;letter-spacing:1.4px}
+      .eyebrow{font-size:12px;font-weight:700;letter-spacing:2px}
+      .ntitle{font-size:14px;font-weight:700;fill:#F1F5F9}
+      .nsub{font-size:11px;fill:#9AA8C2}
+      .mono{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:10.5px;fill:#7FA6C9}
+      .link{font-size:10px;font-weight:700;letter-spacing:.2px}
+      .note{font-size:11px;fill:#C7D2E4}
+      .pill{fill:#0B1220;fill-opacity:0.92;stroke:#28344F;stroke-width:1}
+      .flow{stroke-dasharray:10 6;animation:dash 5.5s linear infinite}
+      @keyframes dash{to{stroke-dashoffset:-320}}
+      @media (prefers-reduced-motion: reduce){.flow{animation:none}}
+    </style>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.45"/></filter>
+    <marker id="cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#22D3EE"/></marker>
+    <marker id="viol" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#A855F7"/></marker>
+    <marker id="grn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#34D399"/></marker>
+    <marker id="amb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#F5A524"/></marker>
+    <marker id="rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#FB7185"/></marker>
+    <marker id="red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#F43F5E"/></marker>
+    <marker id="slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#64748B"/></marker>
+    <marker id="blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#60A5FA"/></marker>
+  </defs>
+
+  <rect width="1460" height="1270" fill="#0B1220"/>
+  <line x1="1056" y1="24" x2="1056" y2="1246" stroke="#16203A"/>
+
+  <text x="34" y="44" class="title">OEM Smart Charger — v4 End-to-End Architecture</text>
+  <text x="36" y="66" class="subtitle">STACKED PLANES · EDGE → LOCAL → BROKER → CLOUD BACKEND → DATA/AUTH → APPS · fully backend-routed</text>
+
+  <!-- =========== PLANE 8 — APPLICATIONS (top) =========== -->
+  <rect x="24" y="88" width="1016" height="158" rx="14" fill="#A855F7" opacity="0.05"/>
+  <text x="40" y="110" class="eyebrow" fill="#A855F7">PLANE 8 — CONTROL APPLICATIONS</text>
+  <g transform="translate(48,124)">
+    <rect width="290" height="106" rx="12" fill="#0E1626" stroke="#64748B" stroke-width="1.4" stroke-dasharray="6 5"/>
+    <text x="14" y="20" class="ntitle" fill="#AEB9CC">Pilot (legacy path)</text>
+    <text x="14" y="44" class="nsub">v1 console talks to the broker</text>
+    <text x="14" y="62" class="nsub">DIRECTLY (no backend)</text>
+    <text x="14" y="80" class="nsub">serving the 2 pilot chargers</text>
+    <text x="14" y="98" class="mono" fill="#7C89A0">v3 = hybrid (broker + Supabase)</text>
+  </g>
+  <g transform="translate(360,124)" filter="url(#sh)">
+    <rect width="320" height="106" rx="12" fill="#131C30" stroke="#38BDF8" stroke-width="2.4"/>
+    <rect width="320" height="26" rx="12" fill="#38BDF8" opacity="0.18"/>
+    <text x="14" y="18" class="ntitle">v4 Admin Console  ★</text>
+    <text x="14" y="42" class="nsub">React · Vite · Tailwind SPA · login-gated</text>
+    <text x="14" y="60" class="mono">https://oem-console.example.com</text>
+    <text x="14" y="78" class="nsub">runs from anywhere · controls/OTA/stream</text>
+    <text x="14" y="97" class="nsub" fill="#7FE0A0">NO broker credentials in the bundle</text>
+  </g>
+  <g transform="translate(704,124)" filter="url(#sh)">
+    <rect width="312" height="106" rx="12" fill="#131C30" stroke="#60A5FA" stroke-width="2.2"/>
+    <rect width="312" height="26" rx="12" fill="#60A5FA" opacity="0.18"/>
+    <text x="14" y="18" class="ntitle">Mobile App v2  ★  (live)</text>
+    <text x="14" y="42" class="nsub">Flutter IoT mode on this backend</text>
+    <text x="14" y="60" class="nsub">reads = Realtime · commands = VM API</text>
+    <text x="14" y="78" class="nsub">IoT data logs from Supabase · Local mode kept</text>
+    <text x="14" y="97" class="nsub" fill="#7FE0A0">Supabase login · NO broker creds</text>
+  </g>
+
+  <!-- =========== PLANE 7 — CLOUD DATA & AUTH =========== -->
+  <rect x="24" y="300" width="1016" height="132" rx="14" fill="#34D399" opacity="0.045"/>
+  <text x="40" y="322" class="eyebrow" fill="#34D399">PLANE 7 — CLOUD DATA &amp; AUTH</text>
+  <g transform="translate(120,332)" filter="url(#sh)">
+    <rect width="820" height="92" rx="12" fill="#131C30" stroke="#34D399" stroke-width="2"/>
+    <rect width="820" height="26" rx="12" fill="#34D399" opacity="0.16"/>
+    <text x="16" y="18" class="ntitle">Supabase — managed Postgres · Auth · Realtime</text>
+    <text x="16" y="44" class="mono">tables: devices · telemetry · command_log · ota_status</text>
+    <text x="16" y="63" class="nsub">RLS policies · Realtime → console live reads · Auth (email login) · history + Excel export</text>
+    <text x="16" y="82" class="mono" fill="#7C89A0">region ca-central-1 · publishable key in browser (safe) · VM writes via Session pooler</text>
+  </g>
+
+  <!-- =========== PLANE 6 — CLOUD BACKEND (VM) =========== -->
+  <rect x="24" y="476" width="1016" height="170" rx="14" fill="#F5A524" opacity="0.05"/>
+  <text x="40" y="498" class="eyebrow" fill="#F5A524">PLANE 6 — CLOUD BACKEND (the hub · only holder of broker creds)</text>
+  <g transform="translate(120,508)" filter="url(#sh)">
+    <rect width="820" height="126" rx="12" fill="#131C30" stroke="#F5A524" stroke-width="2.6"/>
+    <rect width="820" height="26" rx="12" fill="#F5A524" opacity="0.18"/>
+    <text x="16" y="18" class="ntitle">Cloud VM Backend  ★  —  Node "oem-backend" (pm2)</text>
+    <text x="16" y="44" class="nsub">Google Cloud e2-micro · Always Free · zone us-east1-c · Ubuntu</text>
+    <text x="16" y="64" class="mono" fill="#7FE0A0">static IP x.x.x.x</text><text x="250" y="64" class="mono">oem-console.example.com (DuckDNS)</text>
+    <text x="16" y="84" class="nsub">Caddy: auto Let's Encrypt TLS · serves the v4 SPA at / · proxies /api /ws /health → :8080</text>
+    <text x="16" y="103" class="mono">ingest → DB · POST /api/command · /api/ota (verify Supabase JWT) · WS /ws/stream</text>
+    <text x="560" y="103" class="mono" fill="#FFC66B">GCP fw allow-web 80/443</text>
+  </g>
+
+  <!-- =========== PLANE 5 — CLOUD BROKER CORE =========== -->
+  <rect x="24" y="688" width="1016" height="128" rx="14" fill="#22D3EE" opacity="0.045"/>
+  <text x="40" y="710" class="eyebrow" fill="#22D3EE">PLANE 5 — CLOUD BROKER CORE</text>
+  <g transform="translate(120,720)" filter="url(#sh)">
+    <rect width="470" height="86" rx="12" fill="#131C30" stroke="#22D3EE" stroke-width="2"/>
+    <rect width="470" height="26" rx="12" fill="#22D3EE" opacity="0.16"/>
+    <text x="16" y="18" class="ntitle">HiveMQ Cloud — MQTT Broker</text>
+    <text x="16" y="44" class="mono">MQTTS 8883 (devices + VM) · WSS 8884 (legacy apps)</text>
+    <text x="16" y="63" class="nsub">root oemcharger/ · TLS · retained status/LWT · cmd/ack/stream/ota</text>
+  </g>
+  <g transform="translate(630,720)" filter="url(#sh)">
+    <rect width="310" height="86" rx="12" fill="#131C30" stroke="#FB7185" stroke-width="1.6"/>
+    <rect width="310" height="26" rx="12" fill="#FB7185" opacity="0.14"/>
+    <text x="16" y="18" class="ntitle">Firmware Host (S3)</text>
+    <text x="16" y="44" class="nsub">signed .bin over HTTPS</text>
+    <text x="16" y="63" class="nsub">charger pulls + flashes on OTA</text>
+  </g>
+
+  <!-- =========== PLANE 3·4 — LOCAL ACCESS =========== -->
+  <rect x="24" y="856" width="1016" height="136" rx="14" fill="#64748B" opacity="0.06"/>
+  <text x="40" y="878" class="eyebrow" fill="#93A2BC">PLANE 3 · 4 — LOCAL ACCESS &amp; PROVISIONING (on-site / pilot Local mode)</text>
+  <g transform="translate(120,886)" filter="url(#sh)">
+    <rect width="300" height="92" rx="12" fill="#131C30" stroke="#24314D" stroke-width="1.5"/>
+    <rect width="300" height="26" rx="12" fill="#64748B" opacity="0.18"/>
+    <text x="16" y="18" class="ntitle">Home / Office Router</text>
+    <text x="16" y="44" class="nsub">Wi-Fi WLAN + Internet uplink</text>
+    <text x="16" y="63" class="nsub">gateway ESP (STA) → the cloud broker</text>
+  </g>
+  <g transform="translate(460,886)" filter="url(#sh)">
+    <rect width="480" height="92" rx="12" fill="#131C30" stroke="#22D3EE" stroke-width="1.8"/>
+    <rect width="480" height="26" rx="12" fill="#22D3EE" opacity="0.16"/>
+    <text x="16" y="18" class="ntitle">ESP SoftAP · on-site</text>
+    <text x="16" y="44" class="mono">SSID "OEM-Charger &lt;last4&gt;" · WPA2 · http://192.168.4.1</text>
+    <text x="16" y="63" class="nsub">local web dashboard + REST + CSV logs + Wi-Fi provisioning (pilot Local mode)</text>
+  </g>
+
+  <!-- =========== PLANE 1·2 — EDGE HARDWARE (bottom) =========== -->
+  <rect x="24" y="1024" width="1016" height="214" rx="14" fill="#F5A524" opacity="0.05"/>
+  <text x="40" y="1046" class="eyebrow" fill="#F5A524">PLANE 1 · 2 — EDGE HARDWARE &amp; LOCAL DEVICE</text>
+  <g transform="translate(48,1070)" filter="url(#sh)">
+    <rect width="150" height="96" rx="12" fill="#131C30" stroke="#F43F5E" stroke-width="1.6"/>
+    <text x="14" y="34" class="ntitle">Battery</text>
+    <text x="14" y="58" class="nsub">Lead-acid /</text>
+    <text x="14" y="74" class="nsub">Lithium pack</text>
+  </g>
+  <g transform="translate(230,1058)" filter="url(#sh)">
+    <rect width="236" height="120" rx="12" fill="#131C30" stroke="#F5A524" stroke-width="2"/>
+    <rect width="236" height="26" rx="12" fill="#F5A524" opacity="0.16"/>
+    <text x="14" y="18" class="ntitle">AVR Charger Board</text>
+    <text x="14" y="44" class="nsub">ATtiny1616/3216 · 3.3V · LOCKED fw</text>
+    <text x="14" y="64" class="mono">UART 38400 8N1 · L:/I:/$$ · C:</text>
+    <text x="14" y="86" class="nsub">reverse-engineered over serial</text>
+  </g>
+  <g transform="translate(500,1054)" filter="url(#sh)">
+    <rect width="300" height="140" rx="12" fill="#131C30" stroke="#38BDF8" stroke-width="2.2"/>
+    <rect width="300" height="26" rx="12" fill="#38BDF8" opacity="0.18"/>
+    <text x="14" y="18" class="ntitle">ESP32-C6 Gateway Bridge</text>
+    <text x="14" y="44" class="mono">fw OEM-AVR_1.8.0 · Wi-Fi AP + STA</text>
+    <text x="14" y="64" class="nsub">SerialRx · MqttClient · ApiServer</text>
+    <text x="14" y="82" class="nsub">DataLog · GraphLog · Auth · LED</text>
+    <text x="14" y="104" class="mono" fill="#7C89A0">serial = factory MAC (eFuse)</text>
+  </g>
+  <g transform="translate(828,1058)" filter="url(#sh)">
+    <rect width="188" height="54" rx="10" fill="#131C30" stroke="#22D3EE" stroke-width="1.2"/>
+    <text x="12" y="22" class="ntitle" font-size="12.5">PCF8563 RTC</text>
+    <text x="12" y="42" class="nsub">I²C G14/15 · batt-backed</text>
+  </g>
+  <g transform="translate(828,1124)" filter="url(#sh)">
+    <rect width="188" height="66" rx="10" fill="#131C30" stroke="#34D399" stroke-width="1.3"/>
+    <text x="12" y="22" class="ntitle" font-size="12.5">TM1650 LED</text>
+    <text x="12" y="40" class="nsub">SOC bar 20/40/60/80%</text>
+    <text x="12" y="56" class="nsub">new PCB · auto-detect</text>
+  </g>
+
+  <!-- =========== CONNECTORS (bottom-up) =========== -->
+  <!-- edge internal -->
+  <path d="M230 1118 H198" stroke="#F43F5E" stroke-width="3.2"/>
+  <text x="120" y="1110" class="link" fill="#F43F5E">power</text>
+  <path d="M500 1086 H466" stroke="#F5A524" stroke-width="2" marker-end="url(#amb)"/>
+  <text x="470" y="1078" class="link" fill="#F5A524">UART TX · L:/$$</text>
+  <path d="M466 1114 H500" stroke="#F5A524" stroke-width="2" marker-end="url(#amb)"/>
+  <text x="470" y="1132" class="link" fill="#F5A524">UART RX · C:</text>
+  <path d="M800 1085 H828 M800 1157 H828" stroke="#22D3EE" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="802" y="1078" class="link" fill="#22D3EE">I²C</text>
+
+  <!-- edge -> local -->
+  <path d="M700 1054 V978" stroke="#22D3EE" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#cyan)"/>
+  <path d="M560 1054 L320 978" stroke="#34D399" stroke-width="2" class="flow" marker-end="url(#grn)"/>
+  <g><rect class="pill" x="620" y="1006" width="160" height="19" rx="6"/><text x="700" y="1019" class="link" fill="#22D3EE" text-anchor="middle">hosts SoftAP · local HTTP</text></g>
+  <g><rect class="pill" x="344" y="1000" width="116" height="19" rx="6"/><text x="402" y="1013" class="link" fill="#34D399" text-anchor="middle">Wi-Fi STA (home)</text></g>
+
+  <!-- local -> broker -->
+  <path d="M270 886 V806" stroke="#34D399" stroke-width="2" class="flow" marker-end="url(#grn)"/>
+  <g><rect class="pill" x="216" y="836" width="108" height="19" rx="6"/><text x="270" y="849" class="link" fill="#34D399" text-anchor="middle">Internet uplink</text></g>
+
+  <!-- broker <-> VM -->
+  <path d="M300 720 V634" stroke="#F5A524" stroke-width="2.4" class="flow" marker-start="url(#amb)" marker-end="url(#amb)"/>
+  <g><rect class="pill" x="228" y="667" width="144" height="19" rx="6"/><text x="300" y="680" class="link" fill="#F5A524" text-anchor="middle">MQTTS 8883 · pub/sub</text></g>
+
+  <!-- VM <-> Supabase -->
+  <path d="M300 508 V424" stroke="#34D399" stroke-width="2.2" marker-start="url(#grn)" marker-end="url(#grn)"/>
+  <g><rect class="pill" x="222" y="456" width="156" height="19" rx="6"/><text x="300" y="469" class="link" fill="#34D399" text-anchor="middle">writes · JWT verify</text></g>
+
+  <!-- Supabase <-> console -->
+  <path d="M460 332 V230" stroke="#22D3EE" stroke-width="2.2" class="flow" marker-start="url(#cyan)" marker-end="url(#cyan)"/>
+  <g><rect class="pill" x="388" y="276" width="146" height="19" rx="6"/><text x="461" y="289" class="link" fill="#22D3EE" text-anchor="middle">Realtime reads · auth</text></g>
+
+  <!-- console -> VM (commands) — right gutter, rotated label -->
+  <path d="M620 230 V286 H1012 V560 H940" fill="none" stroke="#A855F7" stroke-width="2" class="flow" marker-end="url(#viol)"/>
+  <g transform="rotate(90 1012 410)"><rect class="pill" x="922" y="401" width="180" height="19" rx="6"/><text x="1012" y="414" class="link" fill="#C084FC" text-anchor="middle">commands · OTA · stream · JWT</text></g>
+
+  <!-- pilot -> broker (direct) — left gutter -->
+  <path d="M120 230 V266 H40 V763 H120" fill="none" stroke="#64748B" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#slate)"/>
+  <g><rect class="pill" x="86" y="245" width="140" height="19" rx="6"/><text x="156" y="258" class="link" fill="#8493AB" text-anchor="middle">direct broker (pilot)</text></g>
+
+  <!-- mobile v2 -> cloud (live · same backend as v4) -->
+  <path d="M860 230 V300" stroke="#60A5FA" stroke-width="2" class="flow" marker-end="url(#blue)"/>
+  <g><rect class="pill" x="786" y="245" width="158" height="19" rx="6"/><text x="865" y="258" class="link" fill="#9EC3FF" text-anchor="middle">Realtime reads + VM API</text></g>
+
+  <!-- S3 -> ESP (OTA pull) — right gutter, rotated label -->
+  <path d="M900 806 H986 V1040 H760 V1054" fill="none" stroke="#FB7185" stroke-width="2" stroke-dasharray="7 5" class="flow" marker-end="url(#rose)"/>
+  <g transform="rotate(90 986 910)"><rect class="pill" x="922" y="901" width="128" height="19" rx="6"/><text x="986" y="914" class="link" fill="#FB7185" text-anchor="middle">OTA .bin (HTTPS)</text></g>
+
+  <!-- =========== RIGHT RAIL =========== -->
+  <text x="1074" y="110" class="eyebrow" fill="#8496B4">INFRASTRUCTURE — WHAT WE USED</text>
+  <g transform="translate(1074,122)">
+    <rect x="-8" y="0" width="386" height="300" rx="12" fill="#0E1626" stroke="#24314D"/>
+    <text x="6" y="24" class="note" fill="#FFC66B">Cloud VM (always-on hub)</text>
+    <text x="6" y="43" class="nsub">Google Cloud e2-micro · Always Free · us-east1-c</text>
+    <text x="6" y="60" class="nsub">Ubuntu · Node · pm2 app "oem-backend"</text>
+    <text x="6" y="77" class="mono" fill="#7FE0A0">reserved static IP x.x.x.x</text>
+    <text x="6" y="101" class="note" fill="#7FD3E8">Domain + TLS + hosting</text>
+    <text x="6" y="120" class="nsub">DuckDNS oem-console.example.com → static IP</text>
+    <text x="6" y="137" class="nsub">Caddy auto-HTTPS · serves SPA + /api /ws /health</text>
+    <text x="6" y="154" class="nsub">GCP firewall "allow-web" tcp 80,443</text>
+    <text x="6" y="171" class="nsub">v4 hosted on the VM (CloudFront blocked by IAM)</text>
+    <text x="6" y="195" class="note" fill="#7FE0A0">Supabase</text>
+    <text x="6" y="214" class="nsub">Postgres ca-central-1 · Auth · Realtime · RLS</text>
+    <text x="6" y="231" class="nsub">devices · telemetry · command_log · ota_status</text>
+    <text x="6" y="255" class="note" fill="#7FD3E8">Broker</text>
+    <text x="6" y="274" class="nsub">HiveMQ Cloud MQTTS 8883</text>
+    <text x="6" y="291" class="nsub" fill="#FFC66B">creds ONLY on the VM · none in the browser</text>
+  </g>
+
+  <text x="1074" y="452" class="eyebrow" fill="#8496B4">KEY DATA FLOWS</text>
+  <g transform="translate(1074,464)" fill="#9AA8C2" font-size="11">
+    <text y="16">1 · Telemetry  AVR→ESP→broker→VM→Supabase→(Realtime)→console</text>
+    <text y="40">2 · Command  console→VM /api/command (JWT)→broker→ESP→AVR;</text>
+    <text y="56" x="14">ack→VM→command_log→Realtime→console (+ "Sending…" UI)</text>
+    <text y="80">3 · OTA  console→VM /api/ota→broker→ESP→HTTPS .bin (S3);</text>
+    <text y="96" x="14">per-charger ota_status→Realtime→progress overlay</text>
+    <text y="120">4 · Stream  console WS /ws/stream→VM→broker→ESP→broker→VM</text>
+    <text y="136" x="14">→console (AVR raw / ESP log, auth-checked)</text>
+    <text y="160">5 · Auth  console→Supabase login; VM verifies JWT per request</text>
+    <text y="184">6 · History  console→Supabase queries (DB viewer + Excel)</text>
+    <text y="210" fill="#7C89A0">Security: no broker creds in browser · commands need a valid</text>
+    <text y="226" fill="#7C89A0">login · CORS locked to the console origin.</text>
+  </g>
+
+  <text x="1074" y="712" class="eyebrow" fill="#60A5FA">FUTURE PLANS</text>
+  <g transform="translate(1074,724)">
+    <rect x="-8" y="0" width="386" height="336" rx="12" fill="#0E1626" stroke="#2A3A57"/>
+    <text x="6" y="24" class="note" fill="#7FE0A0">Shipped</text>
+    <text x="6" y="43" class="nsub">Mobile App v2 IoT mode — live + tested on device:</text>
+    <text x="6" y="60" class="nsub">Realtime reads · VM API commands · Supabase login ·</text>
+    <text x="6" y="77" class="nsub">IoT data logs + CSV · Local mode kept · no broker creds.</text>
+    <text x="6" y="101" class="note" fill="#9EC3FF">Hardening &amp; scale</text>
+    <text x="6" y="120" class="nsub">• per-device broker creds + topic ACLs (needs reflash)</text>
+    <text x="6" y="137" class="nsub">• custom domain (console.soneil.com) + CDN</text>
+    <text x="6" y="154" class="nsub">  (CloudFront/Netlify) once AWS admin grants access</text>
+    <text x="6" y="171" class="nsub">• hand off to backend team → company AWS</text>
+    <text x="6" y="188" class="nsub">  (Node→EC2, Postgres→RDS — same code, clean lift)</text>
+    <text x="6" y="205" class="nsub">• push notifications (charge complete / fault)</text>
+    <text x="6" y="229" class="note" fill="#9EC3FF">Firmware</text>
+    <text x="6" y="248" class="nsub">• flash fw 1.8.0 (LED SOC bar + battery persistence)</text>
+    <text x="6" y="265" class="nsub">• AVR stays a locked black box (never modified)</text>
+    <text x="6" y="289" class="note" fill="#9EC3FF">Ops</text>
+    <text x="6" y="308" class="nsub">• GCP budget alert · push v2/v3/v4 + backend to GitHub</text>
+  </g>
+
+  <text x="34" y="1258" fill="#5A6B87" font-size="10.5">Read bottom-up: each plane builds on the one below. v4 = the full broker→backend port — the browser never touches the broker; the Cloud VM is the only trusted MQTT client + holder of broker credentials.</text>
+</svg>
+  </div>
+  <p class="note">Source vector: architecture_v4.svg · read bottom-up (Edge → … → Apps) · v4 = full broker→backend port.</p>
+</div>

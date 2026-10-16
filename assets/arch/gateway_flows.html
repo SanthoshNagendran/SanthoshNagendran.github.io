@@ -1,0 +1,1377 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head><link rel="stylesheet" href="../fonts/fonts.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spark Platform — Field & Control Flows (Animated)</title>
+<link rel="icon" type="image/x-icon" href="data:image/webp;base64,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" />
+<style>
+  :root{
+    --bg:#080b12; --bg2:#0b1018; --panel:#111826; --panel2:#0e1626; --panel3:#0b1220;
+    --border:#1e2a40; --border2:#26344e;
+    --text:#e7edf8; --muted:#8798b6; --dim:#5a6a86;
+    --cyan:#38bdf8; --red:#ff3b52; --green:#34d399; --amber:#f5a524; --violet:#a855f7;
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,monospace;
+    --sans:"Segoe UI Variable","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:
+      radial-gradient(1200px 700px at 80% -8%, rgba(255,59,82,.10), transparent 60%),
+      radial-gradient(1100px 800px at 8% 108%, rgba(56,189,248,.10), transparent 55%),
+      var(--bg);
+    color:var(--text); font-family:var(--sans); line-height:1.55;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{color:var(--cyan)}
+  h1,h2,h3{text-wrap:balance; margin:0}
+  .mono{font-family:var(--mono)}
+
+  .tbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    padding:11px 20px;background:rgba(9,13,20,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .tbar-l{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em}
+  .tbar-l img{width:30px;height:30px;border-radius:8px;box-shadow:0 0 0 1px var(--border)}
+  .tbar-l small{font:600 10.5px var(--mono);color:var(--dim);letter-spacing:.14em;text-transform:uppercase}
+  .arch-switch{display:inline-flex;gap:3px;align-items:center;background:var(--panel3);border:1px solid var(--border);border-radius:10px;padding:3px}
+  .arch-switch a{text-decoration:none;font:700 12px var(--sans);color:var(--muted);padding:6px 11px;border-radius:7px;white-space:nowrap}
+  .arch-switch a:hover{color:var(--text)}
+  .arch-switch a.on{background:rgba(56,189,248,.16);color:var(--cyan)}
+
+  .ahero{max-width:var(--maxw);margin:0 auto;padding:46px 22px 6px}
+  .ahero .eye{font:700 12px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+  .ahero h1{font-size:clamp(28px,4.4vw,50px);line-height:1.05;font-weight:850;letter-spacing:-.02em;margin:12px 0 0;text-wrap:balance}
+  .ahero h1 b{color:var(--red)}
+  .ahero p.lead{color:var(--muted);font-size:clamp(15px,1.6vw,18px);max-width:80ch;margin:16px 0 0}
+
+  .legend{display:flex; flex-wrap:wrap; gap:14px 24px; margin:26px 0 0; padding:15px 20px;
+    background:var(--panel2); border:1px solid var(--border); border-radius:14px}
+  .legend .li{display:flex; align-items:center; gap:9px; font-size:12.5px; color:var(--muted)}
+  .legend .sw{width:26px;height:4px;border-radius:2px;position:relative;overflow:hidden;background:var(--border)}
+  .legend .sw i{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 5px,currentColor 5px 10px);
+    background-size:20px 100%; animation:legFlow 1s linear infinite}
+  @keyframes legFlow{to{background-position:20px 0}}
+  .legend b{color:var(--text)}
+
+  .chapnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px;margin:26px 0 4px}
+  .chapnav a{display:block;text-decoration:none;color:inherit;background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--border);border-radius:14px;padding:15px 16px;transition:.18s}
+  .chapnav a:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+  .chapnav .cn-n{font:700 11px var(--mono);color:var(--dim)}
+  .chapnav .cn-t{font-weight:750;margin-top:7px}
+  .chapnav .cn-s{font-size:12.5px;color:var(--muted);margin-top:4px}
+
+  .allctl{display:flex;gap:9px;align-items:center;max-width:var(--maxw);margin:24px auto 2px;padding:0 22px}
+  .allctl .lbl{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-right:auto}
+  .mini{font:700 12px var(--sans);cursor:pointer;color:var(--muted);background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:7px 12px}
+  .mini:hover{color:var(--text);border-color:var(--cyan)}
+
+  .chapter{max-width:var(--maxw);margin:16px auto;background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--border);border-radius:18px;overflow:hidden;scroll-margin-top:74px}
+  .chapter.open{border-color:var(--border2)}
+  .ch-head{display:flex;align-items:center;gap:16px;padding:19px 22px;cursor:pointer;user-select:none}
+  .ch-head .num{flex:0 0 auto;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+    font:800 15px var(--mono);color:var(--cyan);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.3)}
+  .ch-head .ttl{font-size:clamp(17px,2vw,21px);font-weight:780;letter-spacing:-.01em}
+  .ch-head .sub{font-size:13px;color:var(--muted);margin-top:2px}
+  .ch-head .chev{margin-left:auto;color:var(--dim);transition:transform .35s;font-size:15px}
+  .chapter.open .ch-head .chev{transform:rotate(180deg);color:var(--cyan)}
+  .ch-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.3,.8,.3,1)}
+  .chapter.open .ch-body{grid-template-rows:1fr}
+  .ch-inner{overflow:hidden;min-height:0}
+  .ch-pad{padding:2px 24px 26px}
+  .ch-note{font-size:13px;color:var(--muted);margin:0 0 6px}
+  .ch-note b{color:var(--text)}
+  .star{display:inline-block;font:700 10px var(--mono);color:var(--amber);background:rgba(245,165,36,.12);border:1px solid rgba(245,165,36,.4);border-radius:6px;padding:3px 7px;margin-left:8px;letter-spacing:.1em;vertical-align:middle}
+
+  .pstage{background:radial-gradient(680px 380px at 22% 30%,rgba(56,189,248,.05),transparent),var(--panel2);
+    border:1px solid var(--border);border-radius:18px;padding:10px;margin-top:14px}
+  .pstage svg{width:100%;height:auto;display:block}
+  .plink{fill:none;stroke:var(--border);stroke-width:2.5;stroke-linecap:round;opacity:.32;transition:stroke .3s,opacity .3s}
+  .plink.on{opacity:1}
+  .plink.on.blek{stroke:var(--violet);stroke-dasharray:6 8;animation:dash .8s linear infinite}
+  .plink.on.datak{stroke:var(--cyan);stroke-dasharray:6 8;animation:dash .9s linear infinite}
+  .plink.on.lank{stroke:var(--green);stroke-dasharray:6 8;animation:dash 1s linear infinite}
+  .plink.on.upk{stroke:var(--red);stroke-dasharray:6 8;animation:dashRev .85s linear infinite}
+  .plink.on.loadk{stroke:var(--amber);stroke-dasharray:6 8;animation:dash .95s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-28}}
+  @keyframes dashRev{to{stroke-dashoffset:28}}
+  .pbox,.fxbox{fill:var(--panel);stroke:var(--border);stroke-width:1.5;transition:stroke .3s,fill .3s,filter .3s}
+  .pdev.hot .pbox,.pdev.hot .fxbox{stroke:var(--cyan);filter:drop-shadow(0 0 6px rgba(56,189,248,.45))}
+  .sel .fxbox{stroke:var(--cyan)}
+  .warn .pbox,.warn .fxbox{stroke:var(--amber)}
+  .done .pbox,.done .fxbox{stroke:var(--green)}
+  .act .fxbox{stroke:var(--green);fill:#0e1c18}
+  .p-scr{font:700 12px var(--mono);fill:var(--text)}
+  .p-scr2{font:600 10px var(--mono);fill:var(--muted)}
+  .plbl{font:700 12px var(--mono);fill:var(--text)}
+  .psub{font:600 10px var(--mono);fill:var(--muted)}
+  .ptag{font:700 10px var(--mono);fill:var(--cyan)}
+  .pcap{font:700 9.5px var(--mono);fill:var(--dim);letter-spacing:.14em}
+
+  .pair-controls{display:flex;gap:12px;align-items:center;margin:16px 0 0;flex-wrap:wrap}
+  .demo-btn{font:700 12.5px/1 var(--sans);cursor:pointer;border-radius:11px;padding:11px 15px;border:1px solid var(--border);
+    background:var(--panel2);color:var(--muted);display:inline-flex;align-items:center;gap:8px;transition:.15s}
+  .demo-btn:hover{border-color:var(--border2);color:var(--text)}
+  .demo-btn .d{width:9px;height:9px;border-radius:50%;background:var(--dim)}
+  .pair-count{font:700 12px var(--mono);color:var(--muted);margin-left:auto}
+  .pair-steps{margin-top:14px;background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:8px}
+  .ps{display:flex;gap:13px;align-items:flex-start;padding:11px 14px;border-radius:10px;transition:background .2s,opacity .25s;opacity:.42}
+  .ps .n{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--panel3);border:1px solid var(--border);display:grid;place-items:center;font:700 11px var(--mono);color:var(--muted);transition:all .25s}
+  .ps .tx{font-size:13.5px;color:var(--muted)} .ps .tx b{color:var(--text)}
+  .ps.active{opacity:1;background:rgba(56,189,248,.09)}
+  .ps.active .n{background:var(--cyan);border-color:var(--cyan);color:#04121c}
+  .ps.done{opacity:.9} .ps.done .n{background:rgba(52,211,153,.18);border-color:rgba(52,211,153,.5);color:var(--green)}
+
+  /* interactive controls */
+  .setup-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:14px 0 0;padding:14px 16px;background:var(--panel2);border:1px solid var(--border);border-radius:14px}
+  .setup-f{display:flex;flex-direction:column;gap:6px}
+  .setup-f label{font:700 11px var(--mono);letter-spacing:.06em;color:var(--dim);text-transform:uppercase}
+  .oc-in{font:600 13px var(--mono);color:var(--text);background:var(--panel3);border:1px solid var(--border);border-radius:9px;padding:10px 12px;outline:none;min-width:280px}
+  .oc-in:focus{border-color:var(--cyan)}
+  .seg{display:inline-flex;gap:4px;background:var(--panel3);border:1px solid var(--border);border-radius:10px;padding:4px}
+  .seg button{font:700 12px var(--sans);cursor:pointer;color:var(--muted);background:transparent;border:0;border-radius:7px;padding:8px 12px;transition:.15s}
+  .seg button:hover{color:var(--text)}
+  .seg button.on{background:rgba(56,189,248,.16);color:var(--cyan)}
+  .tgl{font:700 12px var(--mono);cursor:pointer;border-radius:999px;padding:8px 16px;border:1px solid var(--border);background:var(--panel3);color:var(--muted);transition:.15s}
+  .tgl.on{background:rgba(52,211,153,.16);color:var(--green);border-color:rgba(52,211,153,.45)}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:3px;background:var(--border);outline:none;margin:9px 0 2px}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;background:var(--cyan);cursor:pointer;box-shadow:0 0 0 3px rgba(56,189,248,.2)}
+  input[type=range]::-moz-range-thumb{width:17px;height:17px;border:0;border-radius:50%;background:var(--cyan);cursor:pointer}
+
+  /* DLM simulator */
+  .sim{display:grid;grid-template-columns:minmax(250px,1fr) minmax(300px,1.25fr);gap:18px;margin-top:14px}
+  .sim-panel{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:16px}
+  .sim-field{margin:0 0 15px}
+  .sim-field>.fl{display:flex;justify-content:space-between;font:700 12px var(--mono);color:var(--muted);letter-spacing:.02em;margin-bottom:2px}
+  .sim-field>.fl b{color:var(--cyan)}
+  .simc{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--border)}
+  .simc-n{font:600 12.5px var(--sans);color:var(--text);flex:1}
+  .tgl2{font:700 11px var(--mono);cursor:pointer;border-radius:7px;padding:6px 10px;border:1px solid var(--border);background:var(--panel3);color:var(--muted);white-space:nowrap}
+  .tgl2.on{background:rgba(52,211,153,.16);color:var(--green);border-color:rgba(52,211,153,.45)}
+  .prio{font:600 11px var(--sans);background:var(--panel3);color:var(--text);border:1px solid var(--border);border-radius:7px;padding:5px}
+  .simc-x{cursor:pointer;color:var(--dim);background:none;border:0;font-size:17px;line-height:1}
+  .simc-x:hover{color:var(--red)}
+  .bar-row{display:grid;grid-template-columns:96px 1fr 52px;align-items:center;gap:10px;margin:12px 0}
+  .bar-lbl{font:600 12px var(--mono);color:var(--muted)}
+  .bar-track{height:22px;border-radius:6px;background:var(--panel3);border:1px solid var(--border);overflow:hidden}
+  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,rgba(52,211,153,.5),var(--green));transition:width .5s cubic-bezier(.3,.8,.3,1)}
+  .bar-fill.idle{background:linear-gradient(90deg,rgba(56,189,248,.35),rgba(56,189,248,.65))}
+  .bar-fill.over{background:linear-gradient(90deg,rgba(245,165,36,.5),var(--amber))}
+  .bar-amp{font:700 13px var(--mono);color:var(--text);text-align:right}
+  .sim-read{font:600 12.5px var(--mono);color:var(--muted);background:var(--panel3);border:1px solid var(--border);border-radius:10px;padding:11px 13px}
+  .sim-read b{color:var(--text)} .sim-read .warn{color:var(--amber)} .sim-read .ok{color:var(--green)}
+  .sim-cap{font:600 12.5px var(--sans);color:var(--cyan);margin:12px 0 0;min-height:18px}
+
+  .foot{max-width:var(--maxw);margin:10px auto 60px;padding:0 22px;color:var(--dim);font-size:12.5px}
+  .foot .mono{color:var(--muted)}
+
+  @media (max-width:760px){ .sim{grid-template-columns:1fr} .oc-in{min-width:200px} }
+  @media (prefers-reduced-motion:reduce){ .plink{animation:none!important} .legend .sw i{animation:none} .bar-fill{transition:none} }
+
+  /* ===== Live Site Simulator (full-screen digital twin) ===== */
+  .sim2-launch{max-width:var(--maxw);margin:26px auto 0;padding:20px 24px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+    background:linear-gradient(120deg,rgba(255,59,82,.13),rgba(56,189,248,.13));border:1px solid var(--border2);border-radius:16px}
+  .sim2-launch-t{font-size:clamp(18px,2.2vw,24px);font-weight:850;letter-spacing:-.01em}
+  .sim2-launch-s{color:var(--muted);font-size:13.5px;max-width:74ch;margin-top:5px}
+  .sim2-open{font:800 14px var(--sans);cursor:pointer;color:#04121c;background:var(--cyan);border:0;border-radius:12px;padding:15px 22px;white-space:nowrap;box-shadow:0 10px 30px rgba(56,189,248,.3);transition:.15s}
+  .sim2-open:hover{filter:brightness(1.08);transform:translateY(-2px)}
+
+  .sim2{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column}
+  .sim2[hidden]{display:none}
+  .sim2-bar{display:flex;align-items:center;gap:14px;padding:11px 18px;border-bottom:1px solid var(--border);background:rgba(9,13,20,.92);flex-wrap:wrap}
+  .sim2-bar .t{font-weight:800;font-size:15px}
+  .sim2-bar .t span{font:600 10px var(--mono);color:var(--dim);letter-spacing:.12em;text-transform:uppercase;margin-left:8px}
+  .sim2-leg{display:flex;gap:13px;flex-wrap:wrap;margin-left:auto}
+  .sim2-leg .li{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}
+  .sim2-leg .sw{width:18px;height:3px;border-radius:2px;display:inline-block}
+  .sim2-close{font:700 13px var(--sans);cursor:pointer;color:var(--text);background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:9px 15px}
+  .sim2-close:hover{border-color:var(--cyan);color:var(--cyan)}
+  .sim2-wrap{flex:1;display:grid;grid-template-columns:366px 1fr;min-height:0}
+  .sim2-ctl{border-right:1px solid var(--border);background:var(--panel2);overflow-y:auto;padding:14px}
+  .sim2-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+  .sim2-tab{font:700 12px var(--sans);cursor:pointer;color:var(--muted);background:var(--panel3);border:1px solid var(--border);border-radius:9px;padding:9px 8px;text-align:center}
+  .sim2-tab.on{background:rgba(56,189,248,.16);color:var(--cyan);border-color:rgba(56,189,248,.45)}
+  .sim2-pane{display:none} .sim2-pane.on{display:block}
+  .sim2-sec{background:var(--panel3);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px}
+  .sim2-sec h4{font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 4px}
+  .sim2-sec .hint{font-size:11.5px;color:var(--dim);margin:0 0 8px}
+  .sim2-btn{display:block;width:100%;font:700 13px var(--sans);cursor:pointer;color:var(--text);background:var(--panel);border:1px solid var(--border2);border-radius:10px;padding:11px 12px;margin:6px 0;text-align:left;transition:.15s}
+  .sim2-btn:hover:not(:disabled){border-color:var(--cyan);color:var(--cyan)}
+  .sim2-btn:disabled{opacity:.38;cursor:not-allowed}
+  .sim2-btn.primary{background:var(--cyan);color:#04121c;border-color:var(--cyan)}
+  .sim2-btn.primary:hover:not(:disabled){color:#04121c}
+  .sim2-btn.go{background:rgba(52,211,153,.14);border-color:rgba(52,211,153,.4);color:var(--green)}
+  .sim2-btn.danger{color:#ff8592;border-color:rgba(255,59,82,.35)}
+  .sim2-row{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:12.5px;color:var(--muted)}
+  .sim2-row label{flex:1}
+  .sim2-row input[type=number],.sim2-row input[type=text]{width:70px;font:600 12px var(--mono);color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:7px;padding:6px;outline:none}
+  .sim2-row input:focus{border-color:var(--cyan)}
+  .sim2-row input.wide{flex:1;width:auto}
+  .sim2-seg{display:inline-flex;gap:4px;background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:3px}
+  .sim2-seg button{font:700 11.5px var(--sans);cursor:pointer;color:var(--muted);background:transparent;border:0;border-radius:6px;padding:7px 11px}
+  .sim2-seg button.on{background:rgba(56,189,248,.16);color:var(--cyan)}
+  .sim2-keychip{font:700 11px var(--mono);color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.35);border-radius:7px;padding:6px 9px;word-break:break-all;display:block;margin-top:6px}
+  .sim2-keychip.none{color:var(--dim);background:var(--panel);border-color:var(--border)}
+  .sim2-cl{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--border);font-size:12.5px}
+  .sim2-cl .nm{flex:1;color:var(--text)}
+  .sim2-cl .st{font:700 10px var(--mono);padding:3px 7px;border-radius:6px;border:1px solid var(--border);color:var(--muted)}
+  .sim2-cl .st.charging{color:var(--green);border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.1)}
+  .sim2-cl .st.faulted{color:#ff8592;border-color:rgba(255,59,82,.4);background:rgba(255,59,82,.1)}
+  .sim2-mini{font:700 11px var(--sans);cursor:pointer;border-radius:7px;padding:6px 11px;border:1px solid var(--border);background:var(--panel);color:var(--muted)}
+  .sim2-mini:hover{color:var(--text);border-color:var(--cyan)}
+  .sim2-mini.on{background:rgba(52,211,153,.16);color:var(--green);border-color:rgba(52,211,153,.45)}
+  .sim2-mini.stop{color:#ff8592;border-color:rgba(255,59,82,.35)}
+  .sim2-read{font:600 12px var(--mono);color:var(--muted);background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:9px 11px;margin-top:6px}
+  .sim2-read b{color:var(--text)} .sim2-read .a{color:var(--amber)} .sim2-read .g{color:var(--green)}
+  .sim2-stat{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .sim2-stat .s{flex:1;min-width:88px;background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:8px 10px}
+  .sim2-stat .s .k{font:600 9.5px var(--mono);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+  .sim2-stat .s .v{font:800 16px var(--mono);color:var(--text);margin-top:2px}
+  .sim2-stat .s .v.a{color:var(--amber)} .sim2-stat .s .v.g{color:var(--green)}
+  .sim2-stage{display:flex;flex-direction:column;min-width:0;min-height:0}
+  .sim2-svg{flex:1;min-height:0;background:radial-gradient(760px 420px at 32% 22%,rgba(56,189,248,.05),transparent),var(--panel3);padding:8px}
+  .sim2-svg svg{width:100%;height:100%;display:block}
+  .sim2-log{height:154px;border-top:1px solid var(--border);background:#06090f;overflow-y:auto;padding:9px 14px;font:600 11.5px var(--mono);color:var(--muted)}
+  .sim2-log .ln{padding:2px 0}
+  .sim2-log .ln .ts{color:var(--dim);margin-right:9px}
+  .sim2-log .ln b{color:var(--cyan)} .sim2-log .ln .g{color:var(--green)} .sim2-log .ln .a{color:var(--amber)} .sim2-log .ln .r{color:#ff8592} .sim2-log .ln .v{color:#c79bf5}
+  /* svg live states */
+  .cst{transition:fill .3s} .cst.idle{fill:#33405c} .cst.charging{fill:var(--green)} .cst.faulted{fill:var(--red)}
+  .cbar{fill:var(--green);transition:width .5s cubic-bezier(.3,.8,.3,1)}
+  .s2hide{display:none}
+  .ktile{fill:var(--panel3);stroke:var(--border);stroke-width:1;cursor:pointer;transition:fill .3s,stroke .3s}
+  .ktile:hover{stroke:var(--cyan)}
+  .ktile.on{fill:#0e1c18;stroke:var(--green)}
+  .ktileTxt{font:600 9.5px var(--mono);fill:var(--text);pointer-events:none}
+  .klock{fill:rgba(6,9,15,.76)} .klockTxt{font:700 11px var(--mono);fill:var(--amber);pointer-events:none}
+  .payslot{fill:#0b1220;stroke:var(--border)}
+  @media (max-width:860px){ .sim2-wrap{grid-template-columns:1fr;grid-template-rows:auto 1fr} .sim2-ctl{max-height:44vh} }
+</style>
+</head>
+<body>
+  <div class="tbar">
+    <div class="tbar-l"><img src="data:image/webp;base64,UklGRvAdAABXRUJQVlA4WAoAAAAQAAAA/wAA/wAAQUxQSOUEAAAB8IZtmyHptradcUVG9T1s27Zt2/YYv227x2gN2x7Ttm1j2DZ7dldkxHX+6O7yltd0RcQE4D8vQ8X1PU1ExAmqrjgRkZ4UAqY9Y+iaoeo6OLQzpg1FjxHxDlj1jqcef/opVtz41NOPP3nMIoAXcT3DewA4/zJOm2K15bTPXHgEAATXE1wBLP+pP/yZ1DyVFVdzzppJ/vaPpywKeNd9Aqx7JUnGyAqtUUm+dcoswHeXCwUW++y7TDlnVmzNOZN/PntBFL6LHIDzSEZWdK2TH24IuK4pUPv8N8mUWd1z4nvfvAQDvjs85voxmVnxleQgULjO8wM473eMiZVfU+aXdgRcpwkwSGbaMLE8ZH74jnKzYYfHmBOtWCr/OA9CBzlg25IlLVnnb+ZF0TGCuW74hHXaMvL358J3iMc8B5FKayZ+sD7EdYJg/t9yQmnPFDmGTnRhkYMZadKcPl5lTte+2XA9J2jVSW6E0C6PHd4o1Sw5/Wp2uPZ4bFmn0q6Jv16iJu3wxer/SImWneSRqLWjwBBLmlbL8a0grStwFksaN+fx9QrfKnFz/Skm67DkdZAWOZnzV8y0b8lLnG9N4T7PSAPrJI+S0BKPb6fSQox6AlriaxdMJNpY39/SSXNOFqSZE3+P0FyBR3OyEuvjByI0490Gb6RspsTvzu5dE2FgjJF2ztzKSWOCRZhpqfQn+MY8PqWmYvnxia5o4nHaqs7zUGts1h+NpfnpZZ1rIOA8jbR15pqQRsJlNFdezzcgWLyeaS3+AQ3dSXNp+uRQ5xt4w16MvBmhgcctplc34p6yGIcbwZMmu2qmAmfWS5pb07trOz9NwLWM9mLippjpGpvpxg0M2Yx9//X91/df3399//X91/df3399//1fAoNqsrxRA7fQZNxiBu92fy+puXL+5VIi00DwOLO5Ii9GwAz+aZONuAbwuMV0EI28ng3Gmxs6nuZS/XA152ZwMv/fNRsr630QzBxwikZrcVlpyA3TWKrPrOBcAyLrP5fVVFFPRUCjHk9rthWHmxA5jWopze9sKtKYm/NVVUNl/Sw8Gg9yskZLcQmRJlyx8LM5mSnyxoGAZj3OpJm0/uam8E05CZNUIyV+EQWa92GLF1I2UdYfzF2glQHfz9FEdR6JWku8XMJsoazjO4pvCTwG66WB0vjWELR4AN9nNE/kSaih1SLbR6pxUv1XS9ekZfDY4fWoptHEueHQxlm4kxOmqfN6V6Cdzi/wB5aGiRyCd22BYP7fMJkl8zp4tLuGU5+bzDbR/MnfV/TtQ8CaNKryLQg60IU5R1+ZzAZJn7ywj/hOmLoSmcxR8hV0rJM5t/oNS1vkCY5tWEinTJ3nj1Q1RCJH0NkB8/8ysTTDJH+zG5zvKDj4HceZbKDKP88Nj053DhsPcbKulS/XWT9qAdTQhR64hGSqdprI8R0Bh670giNP+JhlqnAl+cMTtkLNoVs9sPlPyZy1kmlO/PArswBBFxcBOPo7ZI6xammMJIc3gQse3S0Btc1/TzLnrJVJcyb5/hdXAAr0wALAMRdeSZIxxqgVJ8cYI8lXz7t4PcB79ETnPIDVN/gLp03VllPfeWDNpQB4h95ZhALAQUODw0OR1fZPQ6ODQysACEHQY0UEU9fYuMputPH8mCoi6Mk+hBBQdUMIQdDTxVdbh3+7BABWUDgg5BgAAPBmAJ0BKgABAAE+MRaKQyIhIRLKXbAgAwSzN34+TKamB4CE7+y/jx4FVUer/2L9f/3a/0XzP1R+WfeX9vP730ztYeXL5T+i/5n+5fsh/df///9PvD/mfUL+l/+D7gH8U/kv+S/vn+Z/0X9I////4+k39lfcT+4P+A9gH9S/rf/M/v/u+f5D/a/4z3Nf3v/Mf6T+5f5n5Av5t/bf+p633sMfst7A387/xH/S9bv/z/6/4N/2j/8X+s/f/6Ff5p/aP+T+eHyAegB6AHq39MP8B2m/7j+xfdV25vnP2o5Qrzf3y/k8Jvx81Avx3+pbqfaD0Be9v+38MfVH8HewB+X3HlejewX/Qv7B6tH99/7vPf9Qf9L3Bv5X/Tv9t/fvya+arqJv1kL3kCleTNVVPbWKzNCcdhjK3cKf/6iNZzX0miMCUVS5ii2CyaSQHgFSX3LZSM8rroy91PdMi/k+h6oLm2ZGfj8fj4TMc1nUhHnwJ8gCPx2p0CQdnm19qhIOsSoJcgz0p3hemX3X6mQy4A7DT3WLggzG72lar9tf42lKq6FsMeT4OC2Ypaw7IocL2EumYygz1xj78ej7S9E3c0rOxx61URYXgyBdm4nlhM204qYPhpCptZHWU0Zl52BcQv25c2T8OH6eMegnAkZGp5fdYYgaJrSYRysbd0a2RbdOOJqpwwyhd7CbF7WiA8ZaQgyqi+eoEAPnDU6ByQfFKyr2m02XJCpokaP0xu2FoixDl2tWR2rho6/YWTlZfM0ycywrd3RDsHWvYgqKjXz6dbjkIMHfMBNVAq69DJKzne+/Rn2zd3Zfc8wNGwy02YOAGQt7qp1xH3b+eyROfCoRwQ97C+UvzY4qxoT5zs/COOeJWCx27PuwrMmv5n+4dftw41WnFngkLiCdgYRSnFbaUu3LTi3t7JjJeko8p+JUeDpOp1Brjf6sFi0m9HbAmoFWZavh54dZX1WeMrY8ByXVjfXV4n1iJDjlSSRpT91hkTW77ZTmwSM6OIj0EF5qCfkHFeAU+O1v3BiTMb1MwzGyXWb5mpFz44kZur8FwRKv+EA180NzLTECm7PEG8TfcOw6T6lsSBNlnD5fZ/nJDSkw8b/zOkAA/v/aBfP/1CDR1t+kuy48f67vtzOsCweq7Oo/6va358iaY3c2qnfkJKvydvbk52eYZbr48I72AaY6u1L9qnwNPWoJ6AMRrArJsbHEaAHCKf9PQn97BiLoQf9QrRCtdCviRsLn6Ay2orpi6DWZ/pC6Fy5M79wU+8GUhgXLiT2eQp/eSO/fQ6eWTQXs/vmVcSgFZSL+0UpAZf3fEgkr6F87TzVcGAOh4D6D5xdYoNMP8gaIB8DXJM1dNve5zC3rAHfMSYhvIFeslqjLtrtWr1qKKfubmqrgY9fPdI3YhE5C6ZTOLqq8wbMqGdzpFGx2E+QModFkZIFxFVZvV/3cdOrVlamq3jGt+5YBFepsUD54CV6rlBkSB64b9oAd2EWHI/AvWAT73e7C/TOZ3Ebg+O+19kPHqTX9PjXlaeeTBYPmGIzOGYJ1/aH8PXJVWXvvqEW3gPT1yFvX9uOM8g0J/j2tYTt1w/4ZjyCSt6H4SxvKDMGWYrflSC6el4vVveKq6C8vaS+9dI+bH/0tVbtC+5LshmtOUdWsUMnDm2axcwu1qCkap9hoth2Bm5/ggUx7jpZ/pziBFB7PPxf/eFHWLTYaKtQs2rRoFT6S5QLKxzT/j+vtQ4M2cYxnewGnQ9HeoIp7zkD8n08RdjgHoAvzp29QcQNQXZf/X3CuD0gditr/lYjreBeMTe2+U89/8Vk8bI9DdK5FQ9yrWP41/hoEVn43SjnMX73VM7Zwsm5Y31m8s1+o/8J4quP8ozCbxAOT//WPsm0I//ebb4EdppmF69EwP/iQ9Y+M5Xu9E5BBKj0tE+0l3OXhUvvj2QQDGE09lVzhznX/DXprITTE6hoBmUMEn+VUV6TGWTOYLz21uRF27u13+U8790MKdDKxuhAURme32fVZBTtRBITMlQKXeGxGOW6o+e0Q+wFh3IT090gL2eHZQx9NUVx6RvYeSoKJyQgG7i7zZj4EOSgBKbppT6OB6e22etSjktscUC85TX6BzOOTIdJkAQjJqLFnEe4TY6y1D7d/NYIdx4eYs5dCdZCAAAC2fuf73eCfmBGqtjdiFmJxknyJEvXOtaylA7zAzA01n/FaQIZvIhHYTseJOH2rYDGFmOVxb4GXaKFWpQuTMO4rhalHrrMLnijeiVJgcrD/IWyLERNn44Xk16ZdxEnWp/TXj4wJKoQXGeYjLq8IxFeMANeE8UmXnfmd3VMioqyQM+eWChIQ8NSlEZYxyMBs1LVI9oJZg96OFWJKyHzTZHwD5yEVIxKMfxiuOhuhz1S9iWR70+A+1quJ4ToNRHkbyg++Opljw2ZMt/262c9Hpml9VQEWKhmLQUbqZ/noWQCQ2OQDG8+RtRft6frNtfj4xz3TYaqyC33Zc/KfZttd1y6v/hr5vOfXBHLo+DLSztbP9AyT2jnRhqEleu8+tKt12fe2jh57Jt7Z8hCVDXf3tOKcxaRxdjvl16OoXto/zbgyacaaTZkYQw6XaCiMYAL+ewCqRSH8TLpYHJxqZZ+I2vkoXyL2uMwZSrXD7Ez/4tVSVdZJ5ux0OkSvJyVkiNdWTAcSziKumCqa0FY71wMkwddlKAABZUdSK43k9KuESOGfA9rSpxXLTDUz6EgB8RRb6dXf7L6Vh6oJkORQdO8FgSRxIHL76ckrFNKv+W2qsmSorWRux5bMbhGU1P0ac6z8HuqfQhtN3MrLbz4fXcypFIui8YzbmrWjQTQcF0HXHScPU9pvaJC5T17q8/gMj546SKUoRhtV677cQcFWxEE/X7rT6jSy08K9BgsvDHGESrkWphHEzEZpdMPPTaF8DUvtOw5WlewJB9rOdw1bhghLj5zvSrOFNI33mxzPxB4V6kKfARTOymj+kyT8wxxLuqdwZXysNqrWXW+ws0/Becf+CbnSEP7uiEh6vKiy5jRvx8wYR+SgPLwDJsaUheRO4CRhvNsKcWEIJC/YhxRkXQ32SGgZLRxZCwwGAM06BVyMOwYTVXFvsjBC0Dr/0lTzjlZjeB+VdrnyP+MArE6e0TW2I7qJJ0tf9KvVKPeta/1M2zHymqB9K+T0WXXV0YM3bAqm5w631vYRJtPUJvojom5PrWjBfLH7YRx3/URbNZBZ1yyuthPcIwIW9liLSMHQ58Sc+v+9v7StC0o5C0iastHTZwWW58QWyx7edIAQjsp0vBOGF8JsAOD7/5K3/SpO5SWCp8mtz2HiUekeRrObQ7G04FZLU6ohFdClVy5kdkONnsaJjzZ5w5+TnSBNKVqUHHapTmcYPDxPG6BE5gsgF/AuYN0AFhkJcQnkeSgbWvhTa5VOTQOxM0Z7gfxn0h9YqiRrdVsv9fyMprm+Op6pWGxZu6G3wnODOA/zzHrBWi0gYa+R2O+3mgNOY0V1cbdRJRm4m2VLOqF/TMAEsI+avcLubRZ3+OEAKs27LyH0wpYZuZYygonBM+LkVMLjNFshJn/5RFz/lwBmqfpmGbXZczDJFd5C14A7yTVXDI142XHS5ZnAanYAOKGZ7DupI1VLDrhcucX1DnyyJkyso/xvjwnhIsVubDlRLoCqk+J9vnLG/Psku55SzEr0xTz6pYyd6JrhcLWum1OztnqX14I/SFVO3Sw8YwulnaYUKxcyfarSG8tc2MEBS0d5r5ggmjRZ0CwLgKnUearmG8IxJgp0PDAIoyulCzNKs2wFVZoeFZ6eVeOIuUhR6NppNwTWl7L+tiJYOOKMiUWQDA79GbnY86wQgiE/iR2QZ9bV0psBZJzRLW6SHQ2O4D8lE08W1S21jIPzSh9LARcIxZyQaZDUTYRYpn0YeyUqfQ4Wtb+iq1cPrV0cgacoRFNFdS6Oh71gwn7ctKLR8EotOVYty/U9dWQ35lWjilV4P0FSWOwlyv9b2CVnO9o016ptNVXU/kS3WCZ4foAbCxDSAHuPQKZWLJe079nudbJqj8TmEsQgU3IAsKV/NfYcwapEPdEwVQFBssm5wdidG/taFIKi8bPua5hMCw8+4+GvBxjRF4THeIoerhvm4mOsK1JmXT3tmNOzdhqOKvoWAdal1v1ULaLfXtI+VGgQEB09BwRMVqW4ygHp1WJsgj6SM0cnm/k4/Wp7W24DAi9vLmFILD+QUw44EpTyFHmq7/xDw1CtnpHHXm0dIAq3zt/hN86a+/MeN+LUhz1ONJZD6pagwEfywlOhmBIEjaf2OKV93Tc8BCOGB1FeiVX9WPN1SlS18wMYilj2D5JRq14Qxv1KZYRpybgSbKmTBo0YG1apRhjc/kwo9HzP8gOlVfK2BzsVs9xwZ4X/pVa907lQjAtkH/8EiCSDOM2NXftDhkwTXefqYmtZPxwGoMdnfCzzSch7Sahef8/6xw6HFOLOnyNYOOZQqPwLfczsILdMbo4d9GTRBdyDx6mstWLbwEzyQjdJWwGoUse7Ip38I11zDzYKn+SjpeLg+7fVjNGwopLnkeaWxQbbLUeWjMKfqeRdyJGHcfwybh3SjbiWz+L35JWJLWKEHD5gGC2/HBtQ4DyBkaj8MQNZp13YoZsOKFg4HkbTLhxdKl8YM5L893m8G6hs1VdZ7tP+IieRYWjbnBOZYgaEGGxqLCwfseAFW1zYECm919n9B7ulK8c1DZrfCYdBtnq0KScMI5Uw2xSdXN8mDx6BI9Zpby0X1kmX3W7lHg4Z6uS0ee57O40cwD29p1oitGbaIAH9n4azwTeJegV+bVooYVYpxfF6XGRe8JPE+arlXBFPVPRpZy+KAfm+SHPGHX+K26K6kJImSBtHAZxZgWHKRVER1mt5nAeUthrOw91QjhKh1YLzaiRfBOqqhsYHnBu4dxEsDl4rkV58cH7t9dABJOd3+4aQB9I7Egi+msPwPJa1yB52VvPt1gJ2bZcn5yXs3U5H66Kq3FeN2ktRQGYg6mcJbbFQtiA+sksKby9/Mr6QyOSVCnbac2Ne5r1NF8e0M+10a3hAkUUOx6T1oz97f5APL/xbyXjjHjXPNci5gds1QX5pUovzYFmruKs9a3RTJie01+0WMG/jMhe7vyd/fIsogLZo5nRGDwxUPcQiBqE2BzjcZA3XZlRuiaNwW5zGcau/sDmlkz4YqsHjwOPifjrGsMe4obNWxcnJ3pOVkkYUOKVJMmtB2+9X+ODqpact0tJs/9Oa4Rj8i2CkJTxaOXx9VdweYMqKc0RmOQQAgrlukssHATy2zEJcmSW221w0yrk6yEmnD4TIjG4tAaiEegToTmeBRIY+g41mtDZczPLSjRMrAGBlPnOnSgAABQcSs9mO0+GTwkUj/S1s2DXPaVJLClcVZtK1r8XVxWDBlg6LckPYtgY208Znobwafw2AjClAto80KIQ2rnI4/Bi0p96H/g145G1Mv9decilsz4vHtqhQdo3I5jtytb1LCAGNbrd0VlkUPRr2/3rLHJcdWIQJujrELjrKeq/F5uyKIemTcniG/3J9DPfph072BVRywQD+jdtuGE0ARsQU7peItShZZjqJkL80gEAE+fJSDFB4SDRmSuxA47zV/SJlYIdoSmva3kA4WIhl7PcOl0hQLLZazUrwxbWksDQRTTqjprM05A2BxD7SVAzVY7GZ5S9MeWljjxWf7cokXNgdJILCzc1WiRWkf0X1Aaju/Vq7v5SUicFhaxtKAk2SN345jmSO98ppDDPg7iNkAsCZehGoFXQQUuURjzL3wO2BdSFM2k7nyGj8WNESQXF6DrAiJGgpf5V+p1fPRtwEqMlWdmP5k/s6Ii0RAoPmelR3EAiwAAPQC56SVq3BUHq5VnHAAEH+0v/CwZrv3xUYZuZv0iCYQebaf1G90+qLJk/O8hTFfnjrCWJE5HCPHMbGlMqLSmdiYFfG6hjSr/dvIUCCtYxIQYKAkuI3mCNbG+E6GWqto4ROxhJhXJjLUJlLqVwjWhzhorEoRZkA21e5Mfa1SN1sOpqufQWfVK0VcPNnmctFA99y11chWg/LeKS4G6Q9hNeC0PFV0ChaDNbOv1pG17gpFd9KTnmdnGkRn9chaGQDNmdB0nHtHfZU3/Y/Q16w9Pd6PK6HZrOap+rxHiIzMklny4HHwfcaTuzB/cYPj0BZDxus/NyjXxx4PSaDBT/EdZqy4rubf/nf1yf5o2lGPqphyrfa0ufvXj1bwn8WdEOjRJC2pxGrCLBwH7/q5ZO5akBBzhT2ZIS5FbRPvzojYrQUQHaQqAXjItooS7+3ISEGuVcxN1gdNOGjxQgxvPvE52Khl3+wCitiICVA2CM2FBF13KuodZcCgiL46H7bEu8aivjDpHVC8whIry5NbdZUgwXWyLZHGF/ftvAYSjtiWnk6SqMaPzq6aYGqCUZGRogUAcDD6AV7Fl3sDSc0+Sgy8ar/MoJ8qN8VE8NjIQuOk7qXRsOoR6qnKkSeluZKhlTJlZxBuku9AdTMdfdz6vugNcVcSpZSpASTzTuHnuEivvCBLSPCuFz5jCdaYCxi2L5/K2GEC5sGr0asBdZPLZW0/FqJ3klXhk3Y2Uw6yoIXChe6vnRjntCxlk680VjIpEbUAjRRit0IPy1tlAt+8f4vioIdVX/YYhht+TwJJ2PbIgDxNQf9eO8rAx7NQAuR0sRFYo3yviVL/FDYBcs1AvdWcC/OtACgRjXYKBdK4pqL3HzNI0JSZBOvXzDrC/pEEbAlCypDvPkYdQ98HTkbK95vFNw+AjQ9MNSok+k2OQ8rC6qtG54X2g9NHbkkmGrmib+f//m2j3Y9KLqGu0id6np+usUP/Qn3LLT0K4sCfiHfnuvloAVNB1CfT9vizNyycZWP9S01w5XQBmTVniF2AonxPwPUXbRdskxtFiEAsA0eYNQEnj3u76z2t603WLFDrCZ3f7xljKYtY1PLnavk7T/25C9CkyMUSvc1xRP4hp1R+2IcxGSE37Qt/VpLMzIxBw/DTGrLjOzUL/BvvG9sziQPdcB0b2YbEi/L28+2dR2xawymFnP+Mnse6CR36TELWoShbtV49zadjjtOA6XbrQevtMR4/y55BpAC0VPISq/gugSbgvwywM+S1BwxZ6GILVXamr1emQAdQqurfGL0pA3gIXRaB0az2DeWsXi9dqM/2o0Ud3jlNFrQ3xqZ89YBXOpBPTyMNZhUukducbZ0LY4BuU1+pVZwAhZ2dCx6bgw61ft8DdBO8OBtD1M6GazONXHV9CDJSjPbTYbJ7sGwKJkdsWgYn42103HGUO9PH0NNb0I1jkIIILhtictkNu9QiwTgS7TiJi5X7nMMRkx8DhI6dVPMbPcecl3YC9OTTFXapTQcjxCXF6VG1XvoNdtUDokExHEMCUWsiww4qJQyWaKmml8S2b/z8q48Z3tjp14CliNKnxQ9RZ1u6TMXZJKRVp4HA8elPeNXMnZlekBPkcCSiUdeZyqc4tFUplWfDAXjYX+ceS+Var/lNw08oJMF4uLngMo7l0IkybQ1q8NtcH/M3t+V5Z+Dmf6RBEkPYeqlcTW8LgPjG8KZNP/5s1VOU4WtFIIhvpG86Imo1BssyD7CrjK3dhTZV/OHFvJUjYNsXWv+fvFbE/aSy4tGk3ZaZzBOsoCQqepTqn8mNGvmcJ5D/Q/Ad03G7WBXqbXk1Tmf1d7d88P211TNam4pd5a7z7TjyqxOCQzsTReJpwex9ki/oyDklGyfhg13f8rDn3DdH3GG/KUfM8NXWZBE1l4CD3H8LUAZ+TFY+af5iUW/1zfCbizTq2Fr5oT3uIZlX+eL4tRgpf1ITOmY9M11m9QQ/TbaQ/MVJkHTjhv1y2ZJhkG9q4aV8qll9LDvBq+8F0U98M93rHNSbW+kyZpvYoemtfTowTCrWNYmO7hfLbbtNjUjHFV9yDw4fL/dJ5K1e3b9Ev4vrctN6YlODwqqjtOiXNWLLSXvk6JbAWHHyDXkFxIoRkeLq3ATzkoWBhv4PStah39OYglYfcudnfJmMcpdKpVqnK/5ve1WeH9isURudKT2rxgGS9JKnXOOs/lAG9TN8fTXmhGBCF3IZhNGWEKAdqEsdYFtBdWwmLPVVODahe6k1PH4rn3eMtxpU69lt1qcVR/+aH/g1E8ebsh0KIcX3YEaNBn4ZeHJP70SjlgJsz0p16cWKDs/o+UirQGFK64SVg3PSRsJrUQ01swAAU8e2XYRzdcuT1td9Wk+NNgDumqIyEs1kqn6Q/cfimzO086ezkhOyL7QfzxI+13/pYa1om8yW/SD2qay8Qecrb673XF/0V2kDD91euV4ZLyLXXnAFX4yAW6jhucxX0/rQ4JFfQM60EmXp4Mk0tM8032zWFjhNanEZvLZXr8MjeZJM8fu4ZtUMaEakEv5iR51ejjtxPeVz/Ft++n/IMr/P305RluljzoL/0G4j+K0JGSevfcZUsu7P/9dz2x4Lr34ZDtv29oumTCyzf/eoPvIAAAAAA==" alt="Spark"/><span>Spark Platform<br><small>Field &amp; Control Flows</small></span></div>
+    <div class="arch-switch">
+      <a href="architecture.html">EV Gateway Platform</a>
+      <a class="on" href="architecture_field_flows.html">Field &amp; Control Flows</a>
+      <a href="spark_charger_architecture.html">Spark EV Charger</a>
+      <a href="./" style="border-left:1px solid var(--border);border-radius:0 7px 7px 0">&larr; Console</a>
+    </div>
+  </div>
+
+  <div class="ahero">
+    <div class="eye">Animated · interactive · updated 2026-07-30</div>
+    <h1>How the Spark platform is <b>operated in the field</b></h1>
+    <p class="lead">Seven step-by-step, <b>interactive</b> animations of the flows that make the product work — local Bluetooth charging, power-panel setup, dynamic load management (with a live simulator you can drive), gateway repair, security-key rotation, and the all-important <b>offline &rarr; OCPP CMS</b> ingest. Every step maps to the live firmware, mobile app, and backend code. Type a URL, drag the breaker, toggle the panel — the diagrams react.</p>
+
+    <div class="legend">
+      <div class="li"><span class="sw" style="color:var(--violet)"><i></i></span> <b>BLE</b> — phone ⇄ gateway (local)</div>
+      <div class="li"><span class="sw" style="color:var(--cyan)"><i></i></span> <b>Data</b> — MQTT · HTTPS · WS · OCPP-J</div>
+      <div class="li"><span class="sw" style="color:var(--green)"><i></i></span> <b>LAN</b> — gateway ⇄ charger / node ⇄ router</div>
+      <div class="li"><span class="sw" style="color:var(--red)"><i></i></span> <b>Response</b> — ack back to server</div>
+      <div class="li"><span class="sw" style="color:var(--amber)"><i></i></span> <b>Building load</b> — power-panel report</div>
+    </div>
+
+    <div class="chapnav">
+      <a href="#c1"><div class="cn-n">01</div><div class="cn-t">BLE-Op — local charging control</div><div class="cn-s">Operate a bay from the phone over Bluetooth, no internet.</div></a>
+      <a href="#c2"><div class="cn-n">02</div><div class="cn-t">Node Config — power-panel setup</div><div class="cn-s">Point a panel meter at the right gateway &amp; DLM panel.</div></a>
+      <a href="#c3"><div class="cn-n">03</div><div class="cn-t">DLM — configure power sharing</div><div class="cn-s">Map chargers, breaker/buffer, live load, balance amps.</div></a>
+      <a href="#c4"><div class="cn-n">04</div><div class="cn-t">DLM simulator — drive it yourself</div><div class="cn-s">Change inputs &amp; watch the split rebalance live.</div></a>
+      <a href="#c5"><div class="cn-n">05</div><div class="cn-t">Repair gateway (mobile)</div><div class="cn-s">Offline nodes → dormant → provision / factory reset.</div></a>
+      <a href="#c6"><div class="cn-n">06</div><div class="cn-t">Auth-key rotation &amp; sync</div><div class="cn-s">Rotate, interim-on-online, and manual key issue.</div></a>
+      <a href="#c7"><div class="cn-n">07</div><div class="cn-t">Offline → OCPP CMS ingest ★</div><div class="cn-s">Buffer offline, replay, rebuild transactions, bill.</div></a>
+    </div>
+  </div>
+
+  <div class="wrap"><div class="sim2-launch">
+    <div>
+      <div class="sim2-launch-t">▶ Live Site Simulator — the whole system, interactive</div>
+      <div class="sim2-launch-s">One full-screen digital twin of a real site: mobile phone, gateway, Wi-Fi router, 5 chargers, power panels &amp; nodes, MQTT broker, cloud server, database and OCPP CMS. Provision the fleet, balance power with DLM, go offline &amp; buffer, then ingest to a CMS — all by tapping. No hardware required.</div>
+    </div>
+    <button class="sim2-open" id="sim2Open">Launch full-screen demo →</button>
+  </div></div>
+
+  <div class="allctl">
+    <span class="lbl">Chapters</span>
+    <button class="mini" id="expandAll">Expand all</button>
+    <button class="mini" id="collapseAll">Collapse all</button>
+  </div>
+
+  <!-- ══════ CHAPTER 1 — BLE-Op ══════ -->
+  <section class="chapter open" id="c1">
+    <div class="ch-head"><div class="num">1</div>
+      <div><div class="ttl">BLE-Op — local charging control in the field</div>
+      <div class="sub">Phone ⇄ gateway over Bluetooth · works with no internet</div></div>
+      <div class="chev">▾</div></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <p class="ch-note">A technician opens <b>Local only mode</b>, connects to the gateway over the <b>BLE-Op service</b>, and starts/stops a charger — even with no signal. Control commands are gated by the current <b>auth key</b>; the gateway relays them to the charger over the wired LAN.</p>
+      <div class="pstage">
+        <svg viewBox="0 0 1000 340" role="img" aria-label="BLE-Op animation">
+          <path id="op_ble"  class="plink blek" d="M150,168 C280,150 330,150 430,164"/>
+          <path id="op_lan1" class="plink lank" d="M580,150 C700,126 710,82 820,82"/>
+          <path id="op_lan2" class="plink lank" d="M580,166 C700,166 710,166 820,166"/>
+          <path id="op_lan3" class="plink lank" d="M580,182 C700,214 710,250 820,250"/>
+          <g class="pdev" id="op_phone">
+            <rect class="pbox" x="30" y="66" width="120" height="204" rx="16"/>
+            <rect x="45" y="92" width="90" height="152" rx="6" fill="#0b1220" stroke="var(--border)"/>
+            <text class="pcap" x="90" y="82" text-anchor="middle">MOBILE APP · BLE</text>
+            <text class="p-scr"  id="op_l1" x="90" y="166" text-anchor="middle">Ready</text>
+            <text class="p-scr2" id="op_l2" x="90" y="186" text-anchor="middle">tap play</text>
+          </g>
+          <g class="pdev" id="op_gw">
+            <rect class="pbox" x="430" y="120" width="150" height="96" rx="12"/>
+            <text class="pcap" x="505" y="112" text-anchor="middle">GATEWAY</text>
+            <text class="plbl" x="505" y="150" text-anchor="middle">ESP32-S3 / RPi</text>
+            <text class="psub" x="505" y="170" text-anchor="middle">BLE-Op · aabb…cccc</text>
+            <text class="psub" id="op_gwsub" x="505" y="192" text-anchor="middle">idle</text>
+          </g>
+          <g class="pdev" id="op_c1"><rect class="fxbox" x="820" y="58" width="150" height="50" rx="9"/><text class="plbl" x="835" y="80" text-anchor="start">Bay 1</text><text class="psub" x="835" y="97">Spark_0001</text></g>
+          <g class="pdev" id="op_c2"><rect class="fxbox" x="820" y="142" width="150" height="50" rx="9"/><text class="plbl" x="835" y="164" text-anchor="start">Bay 2</text><text class="psub" x="835" y="181">Spark_0002</text></g>
+          <g class="pdev" id="op_c3"><rect class="fxbox" x="820" y="226" width="150" height="50" rx="9"/><text class="plbl" x="835" y="248" text-anchor="start">Bay 3</text><text class="psub" x="835" y="265">Spark_0003</text></g>
+        </svg>
+      </div>
+      <div class="pair-controls">
+        <button class="demo-btn" id="op_play"><span class="d" style="background:var(--violet)"></span>▶ Play</button>
+        <button class="demo-btn" id="op_reset">↺ Reset</button>
+        <span class="pair-count" id="op_count">Step 0 / 7</span>
+      </div>
+      <div class="pair-steps" id="op_steps"></div>
+    </div></div></div>
+  </section>
+
+  <!-- ══════ CHAPTER 2 — Node Config ══════ -->
+  <section class="chapter" id="c2">
+    <div class="ch-head"><div class="num">2</div>
+      <div><div class="ttl">Node Config — configuring a power-panel node</div>
+      <div class="sub">Point a panel meter at the right gateway, DLM panel &amp; backend</div></div>
+      <div class="chev">▾</div></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <p class="ch-note">The power-panel node measures the building&rsquo;s live load. In <b>Node config</b>, the installer joins the node&rsquo;s Wi-Fi, tells it which <b>gateway</b> and <b>DLM panel number</b> it belongs to, and connects it to the site router. After that the <b>node firmware</b> reports on its own — the phone drops out.</p>
+      <div class="pstage">
+        <svg viewBox="0 0 1000 340" role="img" aria-label="Node Config animation">
+          <path id="nc_ap"   class="plink datak" d="M150,120 C250,102 300,102 360,112"/>
+          <path id="nc_ble"  class="plink blek"  d="M150,220 C250,242 300,246 360,244"/>
+          <path id="nc_wifi" class="plink lank"  d="M540,112 C620,104 640,100 700,102"/>
+          <path id="nc_http" class="plink datak" d="M782,150 C792,176 800,186 810,208"/>
+          <g class="pdev" id="nc_phone">
+            <rect class="pbox" x="30" y="66" width="120" height="204" rx="16"/>
+            <rect x="45" y="92" width="90" height="152" rx="6" fill="#0b1220" stroke="var(--border)"/>
+            <text class="pcap" x="90" y="82" text-anchor="middle">MOBILE APP</text>
+            <text class="p-scr"  id="nc_l1" x="90" y="166" text-anchor="middle">Ready</text>
+            <text class="p-scr2" id="nc_l2" x="90" y="186" text-anchor="middle">tap play</text>
+          </g>
+          <g class="pdev" id="nc_node">
+            <rect class="fxbox" x="360" y="66" width="180" height="86" rx="12"/>
+            <text class="pcap" x="450" y="58" text-anchor="middle">POWER-PANEL NODE</text>
+            <text class="plbl" x="375" y="96" text-anchor="start">SparkPanel-PP-002</text>
+            <text class="psub" x="375" y="114">192.168.4.1 · softAP</text>
+            <text class="psub" id="nc_nodesub" x="375" y="132">AP: SparkPanel-…</text>
+          </g>
+          <g class="pdev" id="nc_gw">
+            <rect class="pbox" x="360" y="208" width="180" height="76" rx="12"/>
+            <text class="pcap" x="450" y="228" text-anchor="middle">GATEWAY (BLE MAC)</text>
+            <text class="plbl" x="375" y="252" text-anchor="start">Spark_gateway_…</text>
+            <text class="psub" x="375" y="270">aa:bb:cc:00:11:22</text>
+          </g>
+          <g class="pdev" id="nc_router">
+            <rect class="pbox" x="700" y="66" width="165" height="82" rx="12"/>
+            <text class="pcap" x="782" y="58" text-anchor="middle">SITE ROUTER</text>
+            <text class="plbl" x="715" y="100" text-anchor="start">Home / site Wi-Fi</text>
+            <text class="psub" x="715" y="120">DHCP · internet</text>
+          </g>
+          <g class="pdev" id="nc_backend">
+            <rect class="pbox" x="700" y="208" width="230" height="82" rx="12"/>
+            <text class="pcap" x="815" y="200" text-anchor="middle">CONSOLE BACKEND</text>
+            <text class="plbl" x="715" y="240" text-anchor="start">spark-console.example.com</text>
+            <text class="psub" x="715" y="260">POST /api/powerpanel/report</text>
+          </g>
+        </svg>
+      </div>
+      <div class="pair-controls">
+        <button class="demo-btn" id="nc_play"><span class="d" style="background:var(--violet)"></span>▶ Play</button>
+        <button class="demo-btn" id="nc_reset">↺ Reset</button>
+        <span class="pair-count" id="nc_count">Step 0 / 7</span>
+      </div>
+      <div class="pair-steps" id="nc_steps"></div>
+    </div></div></div>
+  </section>
+
+  <!-- ══════ CHAPTER 3 — DLM setup ══════ -->
+  <section class="chapter" id="c3">
+    <div class="ch-head"><div class="num">3</div>
+      <div><div class="ttl">DLM — configure dynamic power sharing (IoT mode)</div>
+      <div class="sub">Map chargers to panels · subtract live building load · balance amps</div></div>
+      <div class="chev">▾</div></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <p class="ch-note">From the phone (online), the user assigns chargers to panels and sets each panel&rsquo;s breaker/buffer. The backend <b>auto-matches</b> each DLM panel to its power-panel node (panel <i>i</i> ↔ node <i>i+1</i>), <b>subtracts the live building load</b>, and water-fills the remaining amps. Want to <b>drive it yourself</b>? See the simulator in Chapter 4.</p>
+      <div class="pstage">
+        <svg viewBox="0 0 1000 340" role="img" aria-label="DLM setup animation">
+          <path id="dl_ws"      class="plink datak" d="M300,120 C230,92 200,92 150,120"/>
+          <path id="dl_api"     class="plink datak" d="M150,158 C210,150 250,150 300,156"/>
+          <path id="dl_pp_http" class="plink loadk" d="M410,252 C410,238 410,232 410,222"/>
+          <path id="dl_cmd"     class="plink datak" d="M520,166 C560,166 585,166 620,166"/>
+          <path id="dl_lan1"    class="plink lank" d="M770,150 C810,120 815,74 850,74"/>
+          <path id="dl_lan2"    class="plink lank" d="M770,166 C810,166 815,154 850,154"/>
+          <path id="dl_lan3"    class="plink lank" d="M770,182 C810,214 815,234 850,234"/>
+          <g class="pdev" id="dl_phone">
+            <rect class="pbox" x="30" y="72" width="118" height="192" rx="16"/>
+            <rect x="45" y="98" width="88" height="140" rx="6" fill="#0b1220" stroke="var(--border)"/>
+            <text class="pcap" x="89" y="88" text-anchor="middle">MOBILE APP · DLM</text>
+            <text class="p-scr"  id="dl_l1" x="89" y="164" text-anchor="middle">Ready</text>
+            <text class="p-scr2" id="dl_l2" x="89" y="184" text-anchor="middle">tap play</text>
+          </g>
+          <g class="pdev" id="dl_backend">
+            <rect class="pbox" x="300" y="96" width="220" height="110" rx="12"/>
+            <text class="pcap" x="410" y="88" text-anchor="middle">CONSOLE BACKEND · DLM ENGINE</text>
+            <text class="plbl" x="315" y="132" text-anchor="start">breaker − buffer − load</text>
+            <text class="psub" x="315" y="152">water-fill allocation</text>
+            <text class="ptag" id="dl_bstat" x="315" y="176">DLM engine</text>
+            <text class="ptag" id="dl_budget" x="315" y="196" style="fill:var(--green)">Panel 2: 85 A</text>
+          </g>
+          <g class="pdev" id="dl_pp">
+            <rect class="fxbox" x="300" y="252" width="215" height="72" rx="12"/>
+            <text class="pcap" x="407" y="272" text-anchor="middle">POWER-PANEL NODE · #2</text>
+            <text class="plbl" x="315" y="296" text-anchor="start">live building load</text>
+            <text class="psub" id="dl_ppsub" x="315" y="314">panel #2</text>
+          </g>
+          <g class="pdev" id="dl_gw">
+            <rect class="pbox" x="620" y="128" width="150" height="76" rx="12"/>
+            <text class="pcap" x="695" y="120" text-anchor="middle">GATEWAY</text>
+            <text class="plbl" x="695" y="156" text-anchor="middle">MQTT /cmd</text>
+            <text class="psub" x="695" y="176" text-anchor="middle">set_current → LAN</text>
+          </g>
+          <g class="pdev" id="dl_c1"><rect class="fxbox" x="850" y="52" width="140" height="46" rx="9"/><text class="plbl" x="863" y="72" text-anchor="start">C1</text><text class="psub" x="863" y="89">Spark_0001</text><text class="ptag" id="dl_c1t" x="963" y="78" text-anchor="end"></text></g>
+          <g class="pdev" id="dl_c2"><rect class="fxbox" x="850" y="132" width="140" height="46" rx="9"/><text class="plbl" x="863" y="152" text-anchor="start">C2</text><text class="psub" x="863" y="169">Spark_0002</text><text class="ptag" id="dl_c2t" x="963" y="158" text-anchor="end"></text></g>
+          <g class="pdev" id="dl_c3"><rect class="fxbox" x="850" y="212" width="140" height="46" rx="9"/><text class="plbl" x="863" y="232" text-anchor="start">C3</text><text class="psub" x="863" y="249">Spark_0003</text><text class="ptag" id="dl_c3t" x="963" y="238" text-anchor="end"></text></g>
+        </svg>
+      </div>
+      <div class="pair-controls">
+        <button class="demo-btn" id="dl_play"><span class="d" style="background:var(--violet)"></span>▶ Play</button>
+        <button class="demo-btn" id="dl_reset">↺ Reset</button>
+        <span class="pair-count" id="dl_count">Step 0 / 8</span>
+      </div>
+      <div class="pair-steps" id="dl_steps"></div>
+    </div></div></div>
+  </section>
+
+  <!-- ══════ CHAPTER 4 — DLM simulator (interactive) ══════ -->
+  <section class="chapter" id="c4">
+    <div class="ch-head"><div class="num">4</div>
+      <div><div class="ttl">DLM power-sharing simulator <span class="star">INTERACTIVE</span></div>
+      <div class="sub">Drag breaker/buffer · toggle the live panel · watch amps rebalance</div></div>
+      <div class="chev">▾</div></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <p class="ch-note">This is the real allocation logic from <span class="mono">dlm.js</span>, running in your browser: every charger holds a <b>6 A minimum</b>, the rest is <b>water-filled</b>, a live building load subtracts <span class="mono">⌈kW·1000/240⌉</span> A, and if there isn&rsquo;t enough everyone is held at 6 A. <b>Key point:</b> the power-panel node is <i>optional</i> — turn it off and DLM still balances against your breaker/buffer alone. Change anything, or hit ▶ Play for a guided scenario.</p>
+      <div class="sim">
+        <div class="sim-panel">
+          <div class="sim-field"><div class="fl"><span>Breaker (A)</span><b id="sim_brkV">90</b></div><input type="range" id="sim_brk" min="20" max="200" value="90" step="5"></div>
+          <div class="sim-field"><div class="fl"><span>Buffer (A)</span><b id="sim_bufV">5</b></div><input type="range" id="sim_buf" min="0" max="40" value="5" step="1"></div>
+          <div class="sim-field"><div class="fl"><span>Sharing mode</span></div>
+            <div class="seg" id="sim_mode"><button data-m="equal" class="on">Equal</button><button data-m="dynamic">Dynamic</button><button data-m="priority">Priority</button></div>
+          </div>
+          <div class="sim-field"><div class="fl"><span>Live power-panel node</span></div>
+            <button class="tgl" id="sim_ppTgl">OFF · using breaker only</button>
+          </div>
+          <div class="sim-field" id="sim_ppWrap" style="display:none"><div class="fl"><span>Building load (kW)</span><b id="sim_ppV">6.0</b></div><input type="range" id="sim_pp" min="0" max="20" value="6" step="0.5"></div>
+          <div class="sim-field"><div class="fl"><span>Chargers</span></div>
+            <div id="sim_chgList"></div>
+            <button class="mini" id="sim_addc" style="margin-top:10px">+ add charger</button>
+          </div>
+        </div>
+        <div class="sim-panel">
+          <div class="sim-read" id="sim_read">…</div>
+          <div id="sim_bars" style="margin-top:6px"></div>
+          <div class="sim-cap" id="sim_cap">Tip: turn the live panel ON, raise the load, and watch every charger taper together.</div>
+        </div>
+      </div>
+      <div class="pair-controls">
+        <button class="demo-btn" id="sim_play"><span class="d" style="background:var(--violet)"></span>▶ Play scenario</button>
+        <button class="demo-btn" id="sim_reset">↺ Reset</button>
+        <span class="pair-count" id="sim_count">live · interactive</span>
+      </div>
+    </div></div></div>
+  </section>
+
+  <!-- ══════ CHAPTER 5 — Repair gateway ══════ -->
+  <section class="chapter" id="c5">
+    <div class="ch-head"><div class="num">5</div>
+      <div><div class="ttl">Repair gateway (from the mobile app)</div>
+      <div class="sub">Disable DLM → offline the nodes → dormant → provision / factory reset</div></div>
+      <div class="chev">▾</div></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <p class="ch-note">&ldquo;Repair gateway&rdquo; safely resets a unit for re-provisioning. It first offers to <b>turn DLM off</b> (so a stale config isn&rsquo;t enforced), takes every charger <b>offline</b>, waits for them to go <b>dormant</b>, then sends <b>Provision</b> or <b>Factory reset</b> and hands off to the provisioning screen. Progress shows as a live ✓/✗ log.</p>
+      <div class="pstage">
+        <svg viewBox="0 0 1000 340" role="img" aria-label="Repair animation">
+          <path id="rp_cmd"  class="plink datak" d="M150,168 C280,150 330,150 430,164"/>
+          <path id="rp_n1"   class="plink lank" d="M580,150 C700,126 710,82 820,82"/>
+          <path id="rp_n2"   class="plink lank" d="M580,166 C700,166 710,166 820,166"/>
+          <path id="rp_n3"   class="plink lank" d="M580,182 C700,214 710,250 820,250"/>
+          <g class="pdev" id="rp_phone">
+            <rect class="pbox" x="30" y="66" width="120" height="204" rx="16"/>
+            <rect x="45" y="92" width="90" height="152" rx="6" fill="#0b1220" stroke="var(--border)"/>
+            <text class="pcap" x="90" y="82" text-anchor="middle">MOBILE APP · REPAIR</text>
+            <text class="p-scr"  id="rp_l1" x="90" y="166" text-anchor="middle">Ready</text>
+            <text class="p-scr2" id="rp_l2" x="90" y="186" text-anchor="middle">tap play</text>
+          </g>
+          <g class="pdev" id="rp_gw">
+            <rect class="pbox" x="430" y="120" width="150" height="96" rx="12"/>
+            <text class="pcap" x="505" y="112" text-anchor="middle">GATEWAY</text>
+            <text class="plbl" x="505" y="150" text-anchor="middle">ESP32-S3 / RPi</text>
+            <text class="psub" x="505" y="170" text-anchor="middle">repair target</text>
+            <text class="psub" id="rp_gwsub" x="505" y="192" text-anchor="middle">online</text>
+          </g>
+          <g class="pdev" id="rp_c1"><rect class="fxbox" x="820" y="58" width="150" height="50" rx="9"/><text class="plbl" x="835" y="80" text-anchor="start">Charger 1</text><text class="psub" x="835" y="97">Spark_0001</text></g>
+          <g class="pdev" id="rp_c2"><rect class="fxbox" x="820" y="142" width="150" height="50" rx="9"/><text class="plbl" x="835" y="164" text-anchor="start">Charger 2</text><text class="psub" x="835" y="181">Spark_0002</text></g>
+          <g class="pdev" id="rp_c3"><rect class="fxbox" x="820" y="226" width="150" height="50" rx="9"/><text class="plbl" x="835" y="248" text-anchor="start">Charger 3</text><text class="psub" x="835" y="265">Spark_0003</text></g>
+        </svg>
+      </div>
+      <div class="pair-controls">
+        <button class="demo-btn" id="rp_play"><span class="d" style="background:var(--violet)"></span>▶ Play</button>
+        <button class="demo-btn" id="rp_reset">↺ Reset</button>
+        <span class="pair-count" id="rp_count">Step 0 / 8</span>
+      </div>
+      <div class="pair-steps" id="rp_steps"></div>
+    </div></div></div>
+  </section>
+
+  <!-- ══════ CHAPTER 6 — Auth-key ══════ -->
+  <section class="chapter" id="c6">
+    <div class="ch-head"><div class="num">6</div>
+      <div><div class="ttl">Auth-key rotation, interim issue &amp; sync</div>
+      <div class="sub">Backend → gateway → phone · scheduled, interim-on-online, manual</div></div>
+      <div class="chev">▾</div></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <p class="ch-note">BLE-Op is protected by a rotating key. The backend rotates the whole fleet on a schedule, issues an <b>interim key the moment a new / factory-reset gateway comes online</b> (30 s settle + retry), and offers a <b>manual &ldquo;Issue key&rdquo;</b> button for installers. The current key rides the live snapshot to the console and the mobile app, which presents it over BLE.</p>
+      <div class="pstage">
+        <svg viewBox="0 0 1000 340" role="img" aria-label="Auth-key animation">
+          <path id="ak_cmd_a" class="plink datak" d="M210,150 C260,150 285,150 320,150"/>
+          <path id="ak_cmd_b" class="plink datak" d="M480,150 C520,150 555,150 590,150"/>
+          <path id="ak_resp_a" class="plink upk"  d="M590,176 C555,176 520,176 480,176"/>
+          <path id="ak_resp_b" class="plink upk"  d="M320,176 C285,176 260,176 210,176"/>
+          <path id="ak_db_l"  class="plink datak" d="M120,210 C120,232 120,240 120,252"/>
+          <path id="ak_ws"    class="plink datak" d="M210,110 C450,54 650,54 830,96"/>
+          <path id="ak_ble"   class="plink blek"  d="M830,210 C800,214 785,214 760,208"/>
+          <g class="pdev" id="ak_backend">
+            <rect class="pbox" x="30" y="96" width="180" height="110" rx="12"/>
+            <text class="pcap" x="120" y="88" text-anchor="middle">CONSOLE BACKEND</text>
+            <text class="plbl" x="45" y="130" text-anchor="start">authKeys.js</text>
+            <text class="psub" x="45" y="150">rotate · interim · manual</text>
+            <text class="ptag" id="ak_bstat" x="45" y="176">authKeys.js</text>
+          </g>
+          <g class="pdev" id="ak_db">
+            <rect class="pbox" x="30" y="252" width="180" height="64" rx="12"/>
+            <text class="pcap" x="120" y="272" text-anchor="middle">SUPABASE</text>
+            <text class="psub" x="45" y="296" text-anchor="start">auth_key_events</text>
+          </g>
+          <g class="pdev" id="ak_broker">
+            <rect class="pbox" x="320" y="110" width="160" height="92" rx="12"/>
+            <text class="pcap" x="400" y="102" text-anchor="middle">HIVEMQ BROKER</text>
+            <text class="plbl" x="335" y="146" text-anchor="start">TLS 8883</text>
+            <text class="psub" x="335" y="166">/cmd · /response</text>
+          </g>
+          <g class="pdev" id="ak_gw">
+            <rect class="pbox" x="590" y="110" width="170" height="92" rx="12"/>
+            <text class="pcap" x="675" y="102" text-anchor="middle">GATEWAY</text>
+            <text class="plbl" x="605" y="146" text-anchor="start">NVS flash key</text>
+            <text class="psub" id="ak_gwsub" x="605" y="166">NVS key</text>
+          </g>
+          <g class="pdev" id="ak_phone">
+            <rect class="pbox" x="830" y="66" width="120" height="204" rx="16"/>
+            <rect x="845" y="92" width="90" height="152" rx="6" fill="#0b1220" stroke="var(--border)"/>
+            <text class="pcap" x="890" y="82" text-anchor="middle">APP / CONSOLE</text>
+            <text class="p-scr"  id="ak_l1" x="890" y="166" text-anchor="middle">Ready</text>
+            <text class="p-scr2" id="ak_l2" x="890" y="186" text-anchor="middle">tap play</text>
+          </g>
+        </svg>
+      </div>
+      <div class="pair-controls">
+        <button class="demo-btn" id="ak_play"><span class="d" style="background:var(--violet)"></span>▶ Play</button>
+        <button class="demo-btn" id="ak_reset">↺ Reset</button>
+        <span class="pair-count" id="ak_count">Step 0 / 8</span>
+      </div>
+      <div class="pair-steps" id="ak_steps"></div>
+    </div></div></div>
+  </section>
+
+  <!-- ══════ CHAPTER 7 — Offline OCPP ingest ══════ -->
+  <section class="chapter" id="c7">
+    <div class="ch-head"><div class="num">7</div>
+      <div><div class="ttl">Offline → OCPP CMS ingest <span class="star">★ INTERACTIVE</span></div>
+      <div class="sub">Buffer offline · replay on reconnect · rebuild transactions · bill</div></div>
+      <div class="chev">▾</div></div>
+    <div class="ch-body"><div class="ch-inner"><div class="ch-pad">
+      <p class="ch-note">The most important flow. When a gateway loses internet, chargers keep working and every session is <b>buffered to SD</b>. On reconnect the gateway <b>replays</b> the buffer, and the backend <b>rebuilds each session as real OCPP 1.6J transactions</b> — backdated to when they happened — plus status/fault events, and streams them to your CMS with <b>no double-billing</b>. Type your CMS URL and pick a mode, then hit ▶ Start.</p>
+      <div class="setup-bar">
+        <div class="setup-f"><label>OCPP CMS URL</label><input class="oc-in" id="oc_url" value="wss://ocpp.example.com/ocpp" spellcheck="false"></div>
+        <div class="setup-f"><label>Mode</label>
+          <div class="seg" id="oc_mode"><button data-m="shared" class="on">Shared URL</button><button data-m="perCharger">Per-charger</button><button data-m="existing">Existing config</button></div>
+        </div>
+        <div class="setup-f"><label>Sentinel idTag</label><input class="oc-in" id="oc_tag" value="SONEIL-OFFLINE" style="min-width:170px" spellcheck="false"></div>
+      </div>
+      <div class="pstage" style="margin-top:12px">
+        <svg viewBox="0 0 1000 340" role="img" aria-label="Offline OCPP ingest animation">
+          <path id="oc_tel1"  class="plink lank"  d="M180,84  C205,84 210,110 230,120"/>
+          <path id="oc_tel2"  class="plink lank"  d="M180,164 C205,164 210,168 230,168"/>
+          <path id="oc_rep"   class="plink datak" d="M400,150 C420,150 430,150 450,150"/>
+          <path id="oc_bk"    class="plink datak" d="M600,150 C620,150 630,152 650,152"/>
+          <path id="oc_dbl"   class="plink datak" d="M735,210 C735,228 735,236 735,250"/>
+          <path id="oc_ws"    class="plink datak" d="M820,150 C835,150 840,150 850,150"/>
+          <!-- chargers -->
+          <g class="pdev" id="oc_c1"><rect class="fxbox" x="30" y="60" width="150" height="48" rx="9"/><text class="plbl" x="44" y="80" text-anchor="start">Charger 1</text><text class="psub" x="44" y="97">Spark_0001</text></g>
+          <g class="pdev" id="oc_c2"><rect class="fxbox" x="30" y="140" width="150" height="48" rx="9"/><text class="plbl" x="44" y="160" text-anchor="start">Charger 2</text><text class="psub" x="44" y="177">Spark_0002</text></g>
+          <!-- gateway + SD -->
+          <g class="pdev" id="oc_gw">
+            <rect class="fxbox" x="230" y="88" width="170" height="120" rx="12"/>
+            <text class="pcap" x="315" y="80" text-anchor="middle">GATEWAY</text>
+            <text class="plbl" x="245" y="120" text-anchor="start">ESP32-S3 hub</text>
+            <text class="psub" x="245" y="140">SD buffer (offline)</text>
+            <text class="psub" id="oc_gwsub" x="245" y="176" style="fill:var(--green)">online</text>
+          </g>
+          <!-- broker -->
+          <g class="pdev" id="oc_broker">
+            <rect class="pbox" x="450" y="112" width="150" height="76" rx="12"/>
+            <text class="pcap" x="525" y="104" text-anchor="middle">HIVEMQ</text>
+            <text class="plbl" x="465" y="140" text-anchor="start">TLS 8883</text>
+            <text class="psub" x="465" y="160">/offline_data</text>
+          </g>
+          <!-- backend -->
+          <g class="pdev" id="oc_backend">
+            <rect class="pbox" x="650" y="90" width="170" height="120" rx="12"/>
+            <text class="pcap" x="735" y="82" text-anchor="middle">CONSOLE BACKEND</text>
+            <text class="plbl" x="665" y="120" text-anchor="start">ocppIngest.js</text>
+            <text class="psub" x="665" y="140">reconstruct + convert</text>
+            <text class="ptag" id="oc_bstat" x="665" y="178">idle</text>
+          </g>
+          <!-- supabase -->
+          <g class="pdev" id="oc_db">
+            <rect class="pbox" x="650" y="250" width="170" height="66" rx="12"/>
+            <text class="pcap" x="735" y="270" text-anchor="middle">SUPABASE</text>
+            <text class="psub" x="665" y="292" text-anchor="start">mqtt_events ·</text>
+            <text class="psub" x="665" y="308" text-anchor="start">ocpp_ingest_log</text>
+          </g>
+          <!-- CMS -->
+          <g class="pdev" id="oc_cms">
+            <rect class="fxbox" x="850" y="90" width="140" height="120" rx="12"/>
+            <text class="pcap" x="920" y="82" text-anchor="middle">OCPP CMS</text>
+            <text class="plbl" x="863" y="122" text-anchor="start">OCPP 1.6J</text>
+            <text class="psub" x="863" y="142">ws · ocpp1.6</text>
+            <text class="psub" id="oc_cmssub" x="863" y="182" style="fill:var(--cyan)">CMS URL</text>
+          </g>
+        </svg>
+      </div>
+      <div class="pair-controls">
+        <button class="demo-btn" id="oc_play"><span class="d" style="background:var(--green)"></span>▶ Start ingest</button>
+        <button class="demo-btn" id="oc_reset">↺ Reset</button>
+        <span class="pair-count" id="oc_count">Step 0 / 10</span>
+      </div>
+      <div class="pair-steps" id="oc_steps"></div>
+    </div></div></div>
+  </section>
+
+  <div class="foot">
+    Every step maps to live code — BLE-Op <span class="mono">ble_home.dart</span> + gateway <span class="mono">processGatewayCommand()</span>; node config <span class="mono">node_config_page.dart</span> + <span class="mono">power_panel_node.ino</span>; DLM <span class="mono">dlm.js</span> + <span class="mono">powerPanel.js</span>; repair <span class="mono">repair_flow.dart</span>; keys <span class="mono">authKeys.js</span>; ingest <span class="mono">ocppIngest.js</span> + <span class="mono">offlineSessions.js</span>. Standalone preview file — not yet wired into the console.
+  </div>
+
+  <script>
+  (function(){
+    // ── step-based scene engine ──
+    function scene(cfg){
+      var g=function(id){return document.getElementById(id);};
+      var steps=cfg.steps;
+      var stepsEl=g(cfg.stepsId), countEl=g(cfg.countId), btnPlay=g(cfg.playId), btnReset=g(cfg.resetId);
+      var dot=cfg.dot||'var(--cyan)';
+      var PLAY='<span class="d" style="background:'+dot+'"></span>'+(cfg.playLbl||'▶ Play');
+      var PAUSE='<span class="d" style="background:'+dot+'"></span>⏸ Pause';
+      stepsEl.innerHTML=steps.map(function(s,i){return '<div class="ps"><span class="n">'+(i+1)+'</span><span class="tx">'+s.t+'</span></div>';}).join('');
+      var rows=[].slice.call(stepsEl.querySelectorAll('.ps'));
+      var timer=null, idx=-1;
+      function clearAll(){
+        (cfg.links||[]).forEach(function(id){var e=g(id); if(e)e.classList.remove('on');});
+        (cfg.devs||[]).forEach(function(id){var e=g(id); if(e)e.classList.remove('hot');});
+        (cfg.fx||[]).forEach(function(f){var e=g(f.id); if(e)f.cls.forEach(function(c){e.classList.remove(c);});});
+        (cfg.texts||[]).forEach(function(t){var e=g(t.id); if(e)e.textContent=t.def;});
+      }
+      function show(i){
+        clearAll();
+        var s=steps[i];
+        rows.forEach(function(r,k){r.classList.toggle('active',k===i); r.classList.toggle('done',k<i);});
+        (s.on||[]).forEach(function(id){var e=g(id); if(e)e.classList.add('on');});
+        (s.hot||[]).forEach(function(id){var e=g(id); if(e)e.classList.add('hot');});
+        (s.add||[]).forEach(function(a){var e=g(a.id); if(e)e.classList.add(a.cls);});
+        (s.txt||[]).forEach(function(t){var e=g(t.id); if(e)e.textContent=t.v;});
+        if(cfg.screen&&s.scr){var a=g(cfg.screen.l1),b=g(cfg.screen.l2); if(a)a.textContent=s.scr[0]; if(b)b.textContent=s.scr[1];}
+        if(cfg.onShow)cfg.onShow(i,g);
+        countEl.textContent='Step '+(i+1)+' / '+steps.length;
+      }
+      function stop(){ if(timer){clearInterval(timer);timer=null;} btnPlay.innerHTML=PLAY; }
+      function reset(){ stop(); idx=-1; clearAll(); rows.forEach(function(r){r.classList.remove('active','done');});
+        if(cfg.screen){var a=g(cfg.screen.l1),b=g(cfg.screen.l2); var rd=cfg.ready||['Ready','tap play']; if(a)a.textContent=rd[0]; if(b)b.textContent=rd[1];}
+        if(cfg.onReset)cfg.onReset(g);
+        countEl.textContent='Step 0 / '+steps.length; }
+      btnPlay.onclick=function(){ if(timer){stop();return;} if(idx>=steps.length-1) reset();
+        btnPlay.innerHTML=PAUSE; timer=setInterval(function(){ idx++; if(idx>=steps.length){stop();idx=steps.length-1;return;} show(idx); }, cfg.ms||2300);
+        idx++; show(idx); };
+      btnReset.onclick=reset;
+      reset();
+    }
+
+    // ── 1 · BLE-Op ──
+    scene({ stepsId:'op_steps', countId:'op_count', playId:'op_play', resetId:'op_reset', dot:'var(--violet)',
+      screen:{l1:'op_l1',l2:'op_l2'},
+      links:['op_ble','op_lan1','op_lan2','op_lan3'], devs:['op_phone','op_gw','op_c1','op_c2','op_c3'],
+      fx:[{id:'op_c1',cls:['sel','act']},{id:'op_c2',cls:['sel','act']},{id:'op_c3',cls:['sel','act']},{id:'op_gw',cls:['done']}],
+      texts:[{id:'op_gwsub',def:'idle'}],
+      steps:[
+        {t:'Phone connects to the gateway over the <b>BLE-Op service</b> (<span class="mono">aabb…cccc</span>) — fully local, no internet required.', scr:['Connecting…','BLE-Op'], on:['op_ble'], hot:['op_phone','op_gw'], txt:[{id:'op_gwsub',v:'BLE linked'}]},
+        {t:'App reads <b>status + node list</b> (<span class="mono">…0001 / …0005</span>) — the gateway&rsquo;s <b>bays</b> appear. These read-only commands need <b>no auth key</b>.', scr:['3 bays found','read-only ✓'], on:['op_ble'], hot:['op_phone','op_gw'], add:[{id:'op_c1',cls:'sel'},{id:'op_c2',cls:'sel'},{id:'op_c3',cls:'sel'}], txt:[{id:'op_gwsub',v:'online · 3 bays'}]},
+        {t:'App loads the current <b>auth key</b> (cached from the backend) and <b>unlocks control</b>. A keyless / factory-reset gateway would refuse control until a key is set.', scr:['Auth key ✓','control unlocked'], hot:['op_phone'], txt:[{id:'op_gwsub',v:'key ✓'}]},
+        {t:'Installer <b>selects a bay</b> by tapping its card — here <b>Bay 2 · Spark_0002</b> (selection is by serial, not a numbered slot).', scr:['Bay 2 selected','Spark_0002'], hot:['op_phone','op_c2'], add:[{id:'op_c2',cls:'sel'}]},
+        {t:'App sends the control command over BLE as <span class="mono">AUTH:&lt;key&gt;:node_&lt;serial&gt;_start_charging</span>.', scr:['Start → GW','AUTH:••:start'], on:['op_ble'], hot:['op_phone','op_gw']},
+        {t:'Gateway relays it to the charger over the <b>wired LAN</b> as an HTTP call (<span class="mono">/Start_charging</span>) and echoes the charger&rsquo;s reply back.', scr:['Charging ✓','bay 2 live'], on:['op_lan2'], hot:['op_gw','op_c2'], add:[{id:'op_c2',cls:'act'}], txt:[{id:'op_gwsub',v:'relaying · LAN'}]},
+        {t:'Live <b>telemetry streams back</b> (bay 2 · 24 A) to the phone; tapping <b>Stop</b> sends <span class="mono">…_stop_charging</span> the same way.', scr:['Live 24 A','tap Stop to end'], on:['op_lan2','op_ble'], hot:['op_phone','op_gw','op_c2'], add:[{id:'op_c2',cls:'act'}], txt:[{id:'op_gwsub',v:'streaming'}]}
+      ]});
+
+    // ── 2 · Node Config ──
+    scene({ stepsId:'nc_steps', countId:'nc_count', playId:'nc_play', resetId:'nc_reset', dot:'var(--violet)',
+      screen:{l1:'nc_l1',l2:'nc_l2'},
+      links:['nc_ap','nc_ble','nc_wifi','nc_http'], devs:['nc_phone','nc_node','nc_gw','nc_router','nc_backend'],
+      fx:[{id:'nc_node',cls:['sel','done']}], texts:[{id:'nc_nodesub',def:'AP: SparkPanel-…'}],
+      steps:[
+        {t:'In the app&rsquo;s <b>Node config</b>, the phone Wi-Fi-scans for <b>SparkPanel-*</b> access points.', scr:['Scanning…','SparkPanel-*'], hot:['nc_phone']},
+        {t:'Phone <b>joins the node&rsquo;s AP</b> (<span class="mono">SparkPanel-PP-002</span> / <span class="mono">sparkpanel</span>) via Android <b>WifiNetworkSpecifier</b> and reads <span class="mono">GET /info</span> at 192.168.4.1.', scr:['Joined AP','192.168.4.1'], on:['nc_ap'], hot:['nc_phone','nc_node'], add:[{id:'nc_node',cls:'sel'}], txt:[{id:'nc_nodesub',v:'PP-002 · connected'}]},
+        {t:'To fill the <b>gateway MAC</b>, the app does a quick <b>BLE scan</b> of <span class="mono">Spark_gateway_*</span>, reads status, and extracts the full MAC.', scr:['BLE scan','de:b4:…:61'], on:['nc_ble'], hot:['nc_phone','nc_gw']},
+        {t:'Installer sets the <b>panel number</b> (#2) and picks the <b>backend</b> (Spark Admin) — this tells the console which DLM panel this node meters.', scr:['Panel #2','Spark Admin'], hot:['nc_phone','nc_node'], add:[{id:'nc_node',cls:'sel'}]},
+        {t:'App scans the node&rsquo;s visible <b>home Wi-Fi</b> (<span class="mono">GET /wifi/scan</span>); the user picks the SSID and enters the password.', scr:['Wi-Fi: site','password ••••'], on:['nc_ap'], hot:['nc_phone','nc_node']},
+        {t:'Phone sends <span class="mono">POST /config</span> + <span class="mono">POST /wifi</span>; the node <b>joins the site router</b> and confirms (<span class="mono">sta_connected</span>).', scr:['Config sent ✓','node joining Wi-Fi'], on:['nc_ap','nc_wifi'], hot:['nc_node','nc_router'], add:[{id:'nc_node',cls:'done'}], txt:[{id:'nc_nodesub',v:'PP-002 · online'}]},
+        {t:'From now the <b>node firmware itself</b> POSTs power every <b>2 s</b> → <span class="mono">/api/powerpanel/report</span> (<span class="mono">live_power, ev_budget, panel_number</span>). The phone&rsquo;s job is done.', scr:['Reporting ✓','2 s → panel #2'], on:['nc_wifi','nc_http'], hot:['nc_node','nc_router','nc_backend'], add:[{id:'nc_node',cls:'done'}], txt:[{id:'nc_nodesub',v:'reporting · 2 s'}]}
+      ]});
+
+    // ── 3 · DLM setup ──
+    scene({ stepsId:'dl_steps', countId:'dl_count', playId:'dl_play', resetId:'dl_reset', dot:'var(--violet)',
+      screen:{l1:'dl_l1',l2:'dl_l2'},
+      links:['dl_ws','dl_api','dl_pp_http','dl_cmd','dl_lan1','dl_lan2','dl_lan3'],
+      devs:['dl_phone','dl_backend','dl_pp','dl_gw','dl_c1','dl_c2','dl_c3'],
+      fx:[{id:'dl_c1',cls:['sel','act']},{id:'dl_c2',cls:['sel','act']},{id:'dl_c3',cls:['sel','act']}],
+      texts:[{id:'dl_bstat',def:'DLM engine'},{id:'dl_budget',def:'Panel 2: 85 A'},{id:'dl_ppsub',def:'panel #2'},{id:'dl_c1t',def:''},{id:'dl_c2t',def:''},{id:'dl_c3t',def:''}],
+      steps:[
+        {t:'In <b>IoT mode</b> the app opens DLM: <span class="mono">GET /api/dlm/settings?mac=</span> (Bearer token) from the console.', scr:['DLM settings','loaded'], on:['dl_api'], hot:['dl_phone','dl_backend'], txt:[{id:'dl_bstat',v:'settings loaded'}]},
+        {t:'User <b>maps chargers to panels</b>: C1 &amp; C2 → <b>Panel 2</b>; C3 falls into <b>Panel 1</b> (the catch-all).', scr:['C1,C2 → P2','C3 → P1'], hot:['dl_phone'], add:[{id:'dl_c1',cls:'sel'},{id:'dl_c2',cls:'sel'}], txt:[{id:'dl_c1t',v:'→ P2'},{id:'dl_c2t',v:'→ P2'},{id:'dl_c3t',v:'→ P1'}]},
+        {t:'Sets Panel 2&rsquo;s <b>breaker 90 A − buffer 5 A = 85 A</b> available, plus a split policy (Equal / Dynamic).', scr:['Breaker 90 A','− buffer 5 = 85'], hot:['dl_phone'], txt:[{id:'dl_budget',v:'Panel 2: 85 A'},{id:'dl_c1t',v:'→ P2'},{id:'dl_c2t',v:'→ P2'},{id:'dl_c3t',v:'→ P1'}]},
+        {t:'Save → <span class="mono">POST /api/dlm/settings</span> (<span class="mono">enabled, panels[], priorities</span>) → persisted to Supabase; DLM turns <b>ON</b>.', scr:['Saved ✓','DLM ON'], on:['dl_api'], hot:['dl_phone','dl_backend'], txt:[{id:'dl_bstat',v:'DLM ON'},{id:'dl_c1t',v:'→ P2'},{id:'dl_c2t',v:'→ P2'},{id:'dl_c3t',v:'→ P1'}]},
+        {t:'Meanwhile the <b>power-panel node</b> reports Panel #2&rsquo;s <b>live building load</b> — 5.7 kW — every 2 s to the backend.', scr:['Panel #2 load','5.7 kW live'], on:['dl_pp_http'], hot:['dl_pp','dl_backend'], txt:[{id:'dl_bstat',v:'load 5.7 kW in'},{id:'dl_ppsub',v:'5.7 kW live'},{id:'dl_c1t',v:'→ P2'},{id:'dl_c2t',v:'→ P2'},{id:'dl_c3t',v:'→ P1'}]},
+        {t:'Backend <b>auto-matches</b> DLM Panel 2 ↔ power-panel node #2 and subtracts the load: <b>85 A − ⌈5700/240⌉ 24 A = 61 A</b> real budget.', scr:['85 − 24 A','= 61 A budget'], hot:['dl_backend','dl_pp'], txt:[{id:'dl_bstat',v:'budget 61 A'},{id:'dl_budget',v:'Panel 2: 61 A'},{id:'dl_c1t',v:'→ P2'},{id:'dl_c2t',v:'→ P2'},{id:'dl_c3t',v:'→ P1'}]},
+        {t:'DLM <b>water-fills</b> the 61 A across C1/C2 and pushes <span class="mono">node_&lt;serial&gt;_set_current</span> via MQTT <span class="mono">/cmd</span> → gateway → charger over LAN.', scr:['set_current','C1,C2 balanced'], on:['dl_cmd','dl_lan1','dl_lan2'], hot:['dl_backend','dl_gw','dl_c1','dl_c2'], add:[{id:'dl_c1',cls:'act'},{id:'dl_c2',cls:'act'}], txt:[{id:'dl_bstat',v:'balancing'},{id:'dl_budget',v:'Panel 2: 61 A'},{id:'dl_c1t',v:'→ P2'},{id:'dl_c2t',v:'→ P2'},{id:'dl_c3t',v:'→ P1'}]},
+        {t:'Live allocation streams back to the phone over <b>WebSocket</b> (<span class="mono">gw.dlm</span>). If the panel node goes <b>stale &gt; 60 s</b>, the budget rolls back to the fixed <b>85 A</b>.', scr:['Live 61 A','stale → 85 A'], on:['dl_ws'], hot:['dl_backend','dl_phone'], txt:[{id:'dl_bstat',v:'live → app'},{id:'dl_budget',v:'Panel 2: 61 A'},{id:'dl_c1t',v:'→ P2'},{id:'dl_c2t',v:'→ P2'},{id:'dl_c3t',v:'→ P1'}]}
+      ]});
+
+    // ── 4 · DLM simulator (interactive, real dlm.js logic) ──
+    (function(){
+      var g=function(id){return document.getElementById(id);};
+      var MIN=6;
+      var chargers=[
+        {id:'A',name:'Charger 1',max:32,active:true,prio:2},
+        {id:'B',name:'Charger 2',max:32,active:true,prio:2},
+        {id:'C',name:'Charger 3',max:32,active:false,prio:2}
+      ];
+      var mode='equal', ppOn=false;
+      var timer=null, sIdx=-1;
+
+      function waterfill(res, ids, remaining){
+        var pool=ids.slice();
+        while(remaining>0.01 && pool.length){
+          var share=remaining/pool.length, used=0, next=[];
+          pool.forEach(function(id){
+            var c=chargers.find(function(x){return x.id===id;});
+            var head=c.max-res[id]; if(head<=0.01) return;
+            var give=Math.min(share,head); res[id]+=give; used+=give;
+            if(c.max-res[id]>0.01) next.push(id);
+          });
+          remaining-=used; if(used<0.01) break; pool=next;
+        }
+        return remaining;
+      }
+      function allocate(budget){
+        var res={}, present=chargers.length; chargers.forEach(function(c){res[c.id]=0;});
+        if(!present) return {res:res,over:false};
+        if(budget < present*MIN){ chargers.forEach(function(c){res[c.id]=MIN;}); return {res:res,over:true}; }
+        if(mode==='equal'){ chargers.forEach(function(c){res[c.id]=Math.max(MIN,Math.min(c.max,Math.floor(budget/present)));}); return {res:res,over:false}; }
+        chargers.forEach(function(c){res[c.id]=MIN;});
+        var remaining=budget-present*MIN;
+        if(mode==='priority'){ [1,2,3].forEach(function(t){ if(remaining>0.01) remaining=waterfill(res, chargers.filter(function(c){return (c.prio||2)===t;}).map(function(c){return c.id;}), remaining); }); }
+        else { remaining=waterfill(res, chargers.filter(function(c){return c.active;}).map(function(c){return c.id;}), remaining);
+               remaining=waterfill(res, chargers.filter(function(c){return !c.active;}).map(function(c){return c.id;}), remaining); }
+        return {res:res,over:false};
+      }
+      function recompute(){
+        var brk=+g('sim_brk').value, buf=+g('sim_buf').value, base=Math.max(0,brk-buf);
+        var kw=+g('sim_pp').value, load=ppOn?Math.round(kw*1000/240):0;
+        var budget=Math.max(0,base-load);
+        var a=allocate(budget);
+        var scale=Math.max(32, chargers.reduce(function(m,c){return Math.max(m,c.max);},0));
+        g('sim_bars').innerHTML=chargers.map(function(c){
+          var amps=Math.round(a.res[c.id]); var pct=Math.min(100, amps/scale*100);
+          var cls=a.over?'over':(c.active?'':'idle');
+          return '<div class="bar-row"><span class="bar-lbl">'+c.name+(c.active?' ⚡':'')+'</span>'
+               + '<div class="bar-track"><div class="bar-fill '+cls+'" style="width:'+pct+'%"></div></div>'
+               + '<span class="bar-amp">'+amps+' A</span></div>';
+        }).join('');
+        var line='<b>Budget</b> = breaker '+brk+' − buffer '+buf;
+        if(ppOn) line+=' − <span class="warn">load '+load+' A ('+kw.toFixed(1)+' kW)</span>';
+        line+=' = <b>'+budget+' A</b> across '+chargers.length+' chargers';
+        if(a.over) line+=' &nbsp;<span class="warn">⚠ over-subscribed — all held at 6 A</span>';
+        else line+=' &nbsp;<span class="ok">✓ balanced</span>';
+        g('sim_read').innerHTML=line;
+      }
+      function renderChargers(){
+        g('sim_chgList').innerHTML=chargers.map(function(c){
+          var prioSel = mode==='priority'
+            ? '<select class="prio" data-prio><option value="1"'+(c.prio===1?' selected':'')+'>High</option><option value="2"'+(c.prio===2?' selected':'')+'>Normal</option><option value="3"'+(c.prio===3?' selected':'')+'>Low</option></select>'
+            : '';
+          return '<div class="simc" data-id="'+c.id+'"><span class="simc-n">'+c.name+'</span>'+prioSel
+               + '<button class="tgl2'+(c.active?' on':'')+'" data-act>'+(c.active?'charging':'idle')+'</button>'
+               + (chargers.length>1?'<button class="simc-x" data-del title="remove">×</button>':'')+'</div>';
+        }).join('');
+        recompute();
+      }
+      // control listeners
+      ['sim_brk','sim_buf','sim_pp'].forEach(function(id){ g(id).addEventListener('input',function(){
+        g('sim_brkV').textContent=g('sim_brk').value; g('sim_bufV').textContent=g('sim_buf').value; g('sim_ppV').textContent=(+g('sim_pp').value).toFixed(1);
+        recompute();
+      });});
+      [].slice.call(g('sim_mode').querySelectorAll('button')).forEach(function(b){ b.addEventListener('click',function(){
+        [].slice.call(g('sim_mode').children).forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); mode=b.dataset.m; renderChargers();
+      });});
+      g('sim_ppTgl').addEventListener('click',function(){ ppOn=!ppOn; this.classList.toggle('on',ppOn); this.textContent=ppOn?'ON · live load subtracted':'OFF · using breaker only'; g('sim_ppWrap').style.display=ppOn?'block':'none'; recompute(); });
+      g('sim_chgList').addEventListener('click',function(e){
+        var row=e.target.closest('.simc'); if(!row) return; var c=chargers.find(function(x){return x.id===row.dataset.id;}); if(!c) return;
+        if(e.target.hasAttribute('data-act')){ c.active=!c.active; renderChargers(); }
+        else if(e.target.hasAttribute('data-del')){ chargers=chargers.filter(function(x){return x.id!==c.id;}); renderChargers(); }
+      });
+      g('sim_chgList').addEventListener('change',function(e){ if(e.target.hasAttribute('data-prio')){ var row=e.target.closest('.simc'); var c=chargers.find(function(x){return x.id===row.dataset.id;}); if(c){c.prio=+e.target.value; recompute();} } });
+      g('sim_addc').addEventListener('click',function(){ if(chargers.length>=6) return; var letters='ABCDEFGH'; var used=chargers.map(function(c){return c.id;}); var nid=letters.split('').find(function(l){return used.indexOf(l)<0;}); chargers.push({id:nid,name:'Charger '+(chargers.length+1),max:32,active:false,prio:2}); renderChargers(); });
+
+      // guided scenario
+      var scenario=[
+        {cap:'Baseline: 3 chargers, 2 charging — Equal split shares the 85 A available.', run:function(){ setDefaults(); }},
+        {cap:'A 3rd car plugs in → the same budget now re-splits across all three.', run:function(){ chargers.forEach(function(c){c.active=true;}); }},
+        {cap:'Switch to Dynamic → idle chargers keep the 6 A minimum, active ones get the surplus.', run:function(){ setMode('dynamic'); chargers[2].active=false; }},
+        {cap:'Turn the live power-panel node ON — the building is drawing power.', run:function(){ setPP(true, 6); }},
+        {cap:'Building load climbs to 12 kW → budget shrinks (⌈12000/240⌉ = 50 A off) and the chargers taper.', run:function(){ setPP(true, 12); }},
+        {cap:'Priority mode: make Charger 1 High — it is fed first before the others.', run:function(){ setMode('priority'); chargers.forEach(function(c){c.active=true;}); chargers[0].prio=1; chargers[1].prio=2; chargers[2].prio=3; }},
+        {cap:'Remove the panel node (toggle OFF) → DLM still works, budget returns to breaker − buffer.', run:function(){ setPP(false,0); }}
+      ];
+      function setDefaults(){ chargers=[{id:'A',name:'Charger 1',max:32,active:true,prio:2},{id:'B',name:'Charger 2',max:32,active:true,prio:2},{id:'C',name:'Charger 3',max:32,active:false,prio:2}]; setMode('equal'); setPP(false,6); g('sim_brk').value=90; g('sim_buf').value=5; g('sim_brkV').textContent='90'; g('sim_bufV').textContent='5'; }
+      function setMode(m){ mode=m; [].slice.call(g('sim_mode').children).forEach(function(x){x.classList.toggle('on',x.dataset.m===m);}); }
+      function setPP(on,kw){ ppOn=on; g('sim_ppTgl').classList.toggle('on',on); g('sim_ppTgl').textContent=on?'ON · live load subtracted':'OFF · using breaker only'; g('sim_ppWrap').style.display=on?'block':'none'; if(kw!=null){g('sim_pp').value=kw; g('sim_ppV').textContent=(+kw).toFixed(1);} }
+      function playStep(i){ scenario[i].run(); renderChargers(); g('sim_cap').textContent=scenario[i].cap; g('sim_count').textContent='Scenario '+(i+1)+' / '+scenario.length; }
+      function stop(){ if(timer){clearInterval(timer);timer=null;} g('sim_play').innerHTML='<span class="d" style="background:var(--violet)"></span>▶ Play scenario'; }
+      g('sim_play').onclick=function(){ if(timer){stop();return;} if(sIdx>=scenario.length-1) sIdx=-1;
+        g('sim_play').innerHTML='<span class="d" style="background:var(--violet)"></span>⏸ Pause'; sIdx++; playStep(sIdx);
+        timer=setInterval(function(){ sIdx++; if(sIdx>=scenario.length){stop(); sIdx=scenario.length-1; return;} playStep(sIdx); }, 2600); };
+      g('sim_reset').onclick=function(){ stop(); sIdx=-1; setDefaults(); renderChargers(); g('sim_cap').textContent='Tip: turn the live panel ON, raise the load, and watch every charger taper together.'; g('sim_count').textContent='live · interactive'; };
+      renderChargers();
+    })();
+
+    // ── 5 · Repair ──
+    scene({ stepsId:'rp_steps', countId:'rp_count', playId:'rp_play', resetId:'rp_reset', dot:'var(--violet)',
+      screen:{l1:'rp_l1',l2:'rp_l2'},
+      links:['rp_cmd','rp_n1','rp_n2','rp_n3'], devs:['rp_phone','rp_gw','rp_c1','rp_c2','rp_c3'],
+      fx:[{id:'rp_c1',cls:['warn','done']},{id:'rp_c2',cls:['warn','done']},{id:'rp_c3',cls:['warn','done']},{id:'rp_gw',cls:['warn','done']}],
+      texts:[{id:'rp_gwsub',def:'online'}],
+      steps:[
+        {t:'<b>DLM pre-check</b> (IoT mode): the app calls <span class="mono">dlmGet</span>; if DLM is ON it offers <b>&ldquo;Turn off &amp; continue&rdquo;</b> → <span class="mono">dlmSave enabled:false</span> (panels kept), so a stale config isn&rsquo;t enforced during repair.', scr:['DLM is ON','turn off? ✓'], on:['rp_cmd'], hot:['rp_phone','rp_gw'], txt:[{id:'rp_gwsub',v:'DLM off'}]},
+        {t:'Repair dialog opens and takes <b>Charger 1 offline</b> → <span class="mono">node_&lt;ref&gt;_offline_mode</span> (4 s ack, up to 3 retries).', scr:['Node 1 offline','ack ✓'], on:['rp_n1'], hot:['rp_gw','rp_c1'], add:[{id:'rp_c1',cls:'warn'}]},
+        {t:'Then <b>Chargers 2 &amp; 3</b> are taken offline the same way, each acked.', scr:['Nodes 2,3 offline','ack ✓'], on:['rp_n2','rp_n3'], hot:['rp_gw','rp_c2','rp_c3'], add:[{id:'rp_c1',cls:'warn'},{id:'rp_c2',cls:'warn'},{id:'rp_c3',cls:'warn'}]},
+        {t:'App <b>waits for dormancy</b> — polling <span class="mono">dormant / total</span> every second (35 s deadline) until all nodes report dormant.', scr:['Dormant 3/3','✓'], hot:['rp_gw','rp_c1','rp_c2','rp_c3'], add:[{id:'rp_c1',cls:'done'},{id:'rp_c2',cls:'done'},{id:'rp_c3',cls:'done'}], txt:[{id:'rp_gwsub',v:'nodes dormant'}]},
+        {t:'User <b>chooses the repair type</b>: <b>Provision</b> (re-onboard) or <b>Factory reset</b> (full wipe).', scr:['Choose:','Provision / Reset'], hot:['rp_phone'], add:[{id:'rp_c1',cls:'done'},{id:'rp_c2',cls:'done'},{id:'rp_c3',cls:'done'}]},
+        {t:'App sends the gateway command → <span class="mono">provision_mode</span> or <span class="mono">factory_reset</span> (6 s ack, treated as success on timeout since the unit may reboot).', scr:['Provision →','acknowledged ✓'], on:['rp_cmd'], hot:['rp_phone','rp_gw'], add:[{id:'rp_gw',cls:'warn'}], txt:[{id:'rp_gwsub',v:'provisioning'}]},
+        {t:'<b>RPi fallback:</b> if a Pi gateway rejects <span class="mono">factory_reset</span>, the app asks <b>Soft</b> (keep auth key) or <b>Hard</b> (full wipe) → resends <span class="mono">factory_reset=soft|hard</span>.', scr:['RPi: soft / hard','resent ✓'], hot:['rp_gw'], add:[{id:'rp_gw',cls:'warn'}], txt:[{id:'rp_gwsub',v:'reset mode'}]},
+        {t:'Dialog closes and the app <b>hands off to the Provisioning screen</b> — the gateway is ready to re-onboard (that handoff <i>is</i> success).', scr:['Provisioning','ready ✓'], on:['rp_cmd'], hot:['rp_phone','rp_gw'], add:[{id:'rp_gw',cls:'done'}], txt:[{id:'rp_gwsub',v:'provisioning ✓'}]}
+      ]});
+
+    // ── 6 · Auth-key ──
+    scene({ stepsId:'ak_steps', countId:'ak_count', playId:'ak_play', resetId:'ak_reset', dot:'var(--violet)',
+      screen:{l1:'ak_l1',l2:'ak_l2'},
+      links:['ak_cmd_a','ak_cmd_b','ak_resp_a','ak_resp_b','ak_db_l','ak_ws','ak_ble'],
+      devs:['ak_backend','ak_broker','ak_gw','ak_phone','ak_db'],
+      fx:[{id:'ak_gw',cls:['done','warn']}], texts:[{id:'ak_bstat',def:'authKeys.js'},{id:'ak_gwsub',def:'NVS key'}],
+      steps:[
+        {t:'Every <b>30 min</b>, <span class="mono">cycle()</span> generates a fresh <b>32-hex key</b> for each <b>online</b> gateway — the whole fleet rotates in sync.', scr:['—','waiting'], hot:['ak_backend'], txt:[{id:'ak_bstat',v:'cycle() · new key'}]},
+        {t:'Backend (the sole MQTT client) publishes <span class="mono">set_auth_key=&lt;hex&gt;</span> to <span class="mono">…/&lt;mac&gt;/cmd</span> (QoS 1) via HiveMQ.', scr:['—','key en route'], on:['ak_cmd_a','ak_cmd_b'], hot:['ak_backend','ak_broker','ak_gw'], txt:[{id:'ak_bstat',v:'publish /cmd'}]},
+        {t:'Gateway stores the key in <b>NVS flash</b> and acks on <span class="mono">…/&lt;mac&gt;/response</span> → <span class="mono">"OK: Auth key updated"</span>.', scr:['—','gateway acked'], on:['ak_resp_a','ak_resp_b'], hot:['ak_gw','ak_broker','ak_backend'], add:[{id:'ak_gw',cls:'done'}], txt:[{id:'ak_gwsub',v:'key stored ✓'},{id:'ak_bstat',v:'ack ✓'}]},
+        {t:'Backend logs it to <b>Supabase</b> (<span class="mono">auth_key_events</span>) and updates <span class="mono">gw.authKey</span> in the live snapshot.', scr:['—','recorded'], on:['ak_db_l'], hot:['ak_backend','ak_db'], add:[{id:'ak_gw',cls:'done'}], txt:[{id:'ak_bstat',v:'→ auth_key_events'},{id:'ak_gwsub',v:'key stored ✓'}]},
+        {t:'The key rides the <b>WebSocket state</b> to clients: the web console shows the chip, and the <b>mobile app</b> caches it — then presents it over BLE for BLE-Op.', scr:['key ✓','BLE-Op ready'], on:['ak_ws','ak_ble'], hot:['ak_backend','ak_phone','ak_gw'], add:[{id:'ak_gw',cls:'done'}], txt:[{id:'ak_bstat',v:'→ WS state'},{id:'ak_gwsub',v:'key stored ✓'}]},
+        {t:'<b>Interim-on-online:</b> a <b>factory-reset</b> gateway comes online with <b>no key</b> → the backend spots offline→online and schedules an off-cycle issue (30 s <b>settle</b> so it&rsquo;s subscribed first).', scr:['—','new GW online'], hot:['ak_backend','ak_gw'], add:[{id:'ak_gw',cls:'warn'}], txt:[{id:'ak_gwsub',v:'no key'},{id:'ak_bstat',v:'interim · settle 30s'}]},
+        {t:'<b>Settle + retry:</b> up to <b>3 attempts, 20 s apart</b> (12 s ack window each) until the gateway acks — then it&rsquo;s BLE-Op-ready.', scr:['—','issuing…'], on:['ak_cmd_a','ak_cmd_b','ak_resp_a','ak_resp_b'], hot:['ak_backend','ak_broker','ak_gw'], add:[{id:'ak_gw',cls:'done'}], txt:[{id:'ak_bstat',v:'attempt 1/3 → acked'},{id:'ak_gwsub',v:'key stored ✓'}]},
+        {t:'<b>Manual issue:</b> an installer taps <b>Issue key</b> (web console or mobile app) → <span class="mono">POST /api/authkey/issue</span> → issues immediately (0 s settle), same retry safety.', scr:['Issue key','sent ✓'], on:['ak_ws','ak_cmd_a','ak_cmd_b'], hot:['ak_phone','ak_backend','ak_gw'], add:[{id:'ak_gw',cls:'done'}], txt:[{id:'ak_bstat',v:'manual → issued'},{id:'ak_gwsub',v:'key stored ✓'}]}
+      ]});
+
+    // ── 7 · Offline OCPP ingest (interactive URL) ──
+    function ocUrl(){ var v=(document.getElementById('oc_url').value||'').trim(); return v||'wss://ocpp.example.com/ocpp'; }
+    function ocShort(){ var u=ocUrl(); return u.replace(/^wss?:\/\//,'').slice(0,20); }
+    scene({ stepsId:'oc_steps', countId:'oc_count', playId:'oc_play', resetId:'oc_reset', dot:'var(--green)', playLbl:'▶ Start ingest', ms:2500,
+      links:['oc_tel1','oc_tel2','oc_rep','oc_bk','oc_dbl','oc_ws'],
+      devs:['oc_c1','oc_c2','oc_gw','oc_broker','oc_backend','oc_db','oc_cms'],
+      fx:[{id:'oc_gw',cls:['warn','done']},{id:'oc_cms',cls:['done']},{id:'oc_c1',cls:['act']},{id:'oc_c2',cls:['act']}],
+      texts:[{id:'oc_gwsub',def:'online'},{id:'oc_bstat',def:'idle'},{id:'oc_cmssub',def:'CMS URL'}],
+      onShow:function(i,g){ var e=g('oc_cmssub'); if(e) e.textContent=ocShort(); },
+      onReset:function(g){ var e=g('oc_cmssub'); if(e) e.textContent=ocShort(); var b=g('oc_gwsub'); if(b){b.textContent='online'; b.style.fill='var(--green)';} },
+      steps:[
+        {t:'<b>Setup (you, in the console):</b> enter the <b>CMS URL</b> above, pick a <b>mode</b> (Shared / Per-charger / Existing config), keep the sentinel <span class="mono">idTag SONEIL-OFFLINE</span>, tick which chargers to include, and <b>Save</b> → <span class="mono">POST /api/ocpp/settings</span> (stored as <span class="mono">app_settings/ocpp_&lt;mac&gt;</span>).', hot:['oc_backend'], txt:[{id:'oc_bstat',v:'config saved'}]},
+        {t:'<b>Normal operation:</b> chargers stream telemetry to the gateway, which relays to the backend over MQTT. Everything is live and online.', on:['oc_tel1','oc_tel2','oc_rep','oc_bk'], hot:['oc_c1','oc_c2','oc_gw','oc_broker','oc_backend'], add:[{id:'oc_c1',cls:'act'},{id:'oc_c2',cls:'act'}]},
+        {t:'<b>Internet drops.</b> The gateway goes <b>OFFLINE</b> but chargers keep charging — every telemetry snapshot (energy, power, status, faults) is <b>buffered to the SD card</b>.', on:['oc_tel1','oc_tel2'], hot:['oc_c1','oc_c2','oc_gw'], add:[{id:'oc_gw',cls:'warn'},{id:'oc_c1',cls:'act'},{id:'oc_c2',cls:'act'}], txt:[{id:'oc_gwsub',v:'OFFLINE · buffering SD'}]},
+        {t:'<b>Reconnect → replay.</b> Back online, the gateway republishes every buffered record on <span class="mono">…/&lt;mac&gt;/offline_data</span> (QoS 1) — each an envelope <span class="mono">{ts, ts_type, topic, payload}</span> — ending with <span class="mono">{records_sent:N}</span>.', on:['oc_rep','oc_bk'], hot:['oc_gw','oc_broker','oc_backend'], add:[{id:'oc_gw',cls:'done'}], txt:[{id:'oc_gwsub',v:'replaying SD ✓'},{id:'oc_bstat',v:'receiving replay'}]},
+        {t:'Backend persists each line to <b>Supabase</b> (<span class="mono">mqtt_events · kind=offline_data</span>). The <span class="mono">{records_sent}</span> marker fires <span class="mono">offline_replay_done</span> → <b>auto-ingest</b> waits 6 s (for the log to flush) then starts.', on:['oc_dbl'], hot:['oc_backend','oc_db'], add:[{id:'oc_gw',cls:'done'}], txt:[{id:'oc_bstat',v:'offline_replay_done'}]},
+        {t:'<b>Reconstruct.</b> Per charger, the backend rebuilds sessions from the samples — <b>backdated</b> to when they happened (device epoch, or broker time), split into transactions by charging state, each with a deterministic <span class="mono">sessionId</span>. Status changes &amp; faults are reconstructed too.', hot:['oc_backend'], add:[{id:'oc_gw',cls:'done'}], txt:[{id:'oc_bstat',v:'reconstructing sessions'}]},
+        {t:'<b>Connect to your CMS.</b> Backend opens an <b>OCPP-J WebSocket</b> (subprotocol <span class="mono">ocpp1.6</span>) to your URL and sends <b>BootNotification</b>.', on:['oc_ws'], hot:['oc_backend','oc_cms'], add:[{id:'oc_gw',cls:'done'},{id:'oc_cms',cls:'done'}], txt:[{id:'oc_bstat',v:'BootNotification →'}]},
+        {t:'<b>Per session:</b> <span class="mono">Authorize</span> (idTag <span class="mono">SONEIL-OFFLINE</span>) → <span class="mono">StartTransaction</span> with the real <b>meterStart</b> and the <b>original timestamp</b> — the CMS records it exactly as it happened offline.', on:['oc_ws'], hot:['oc_backend','oc_cms'], add:[{id:'oc_gw',cls:'done'},{id:'oc_cms',cls:'done'}], txt:[{id:'oc_bstat',v:'StartTransaction →'}]},
+        {t:'<b>MeterValues, one per sample</b> (contexts <span class="mono">Transaction.Begin / Sample.Periodic / Transaction.End</span>; Wh · W · A · V) → <span class="mono">StopTransaction</span> carrying the exact final <b>meterStop</b> energy + reason. <b>Faults</b> ride along as <span class="mono">StatusNotification</span> in true time order.', on:['oc_ws'], hot:['oc_backend','oc_cms'], add:[{id:'oc_gw',cls:'done'},{id:'oc_cms',cls:'done'}], txt:[{id:'oc_bstat',v:'MeterValues → Stop'}]},
+        {t:'<b>Billed, once.</b> Each session is marked in <span class="mono">ocpp_ingest_log</span> so a re-run <b>never double-bills</b>; progress (sent / skipped / failed) streams live to the console. Your CMS now has the complete offline story.', on:['oc_ws','oc_dbl'], hot:['oc_backend','oc_cms','oc_db'], add:[{id:'oc_gw',cls:'done'},{id:'oc_cms',cls:'done'}], txt:[{id:'oc_bstat',v:'done · no double-bill'}]}
+      ]});
+    // reflect live URL typing into the CMS box + mode label
+    document.getElementById('oc_url').addEventListener('input',function(){ var e=document.getElementById('oc_cmssub'); if(e) e.textContent=ocShort(); });
+    [].slice.call(document.getElementById('oc_mode').querySelectorAll('button')).forEach(function(b){ b.addEventListener('click',function(){ [].slice.call(document.getElementById('oc_mode').children).forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); }); });
+
+    // ── accordion + nav ──
+    [].slice.call(document.querySelectorAll('.ch-head')).forEach(function(h){
+      h.addEventListener('click',function(){ h.closest('.chapter').classList.toggle('open'); });
+    });
+    document.getElementById('expandAll').onclick=function(){document.querySelectorAll('.chapter').forEach(function(c){c.classList.add('open');});};
+    document.getElementById('collapseAll').onclick=function(){document.querySelectorAll('.chapter').forEach(function(c){c.classList.remove('open');});};
+    [].slice.call(document.querySelectorAll('.chapnav a')).forEach(function(a){
+      a.addEventListener('click',function(e){ e.preventDefault();
+        var t=document.querySelector(this.getAttribute('href'));
+        if(t){ t.classList.add('open'); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+      });
+    });
+  })();
+  </script>
+
+  <!-- ════════════════ LIVE SITE SIMULATOR (full-screen digital twin) ════════════════ -->
+  <div class="sim2" id="sim2" hidden>
+    <div class="sim2-bar">
+      <div class="t">Spark — Live Site Simulator <span>digital twin · no hardware</span></div>
+      <div class="sim2-leg">
+        <div class="li"><span class="sw" style="background:var(--violet)"></span>BLE</div>
+        <div class="li"><span class="sw" style="background:var(--cyan)"></span>MQTT/HTTPS/OCPP</div>
+        <div class="li"><span class="sw" style="background:var(--green)"></span>LAN</div>
+        <div class="li"><span class="sw" style="background:var(--amber)"></span>offline buffer</div>
+      </div>
+      <button class="sim2-close" id="sim2Close">← Back to page</button>
+    </div>
+    <div class="sim2-wrap">
+      <!-- ── control surface (the phone) ── -->
+      <div class="sim2-ctl">
+        <div class="sim2-tabs" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="sim2-tab on" data-tab="ble">BLE mode</div>
+          <div class="sim2-tab" data-tab="iot">IoT mode</div>
+          <div class="sim2-tab" data-tab="node">Node config</div>
+        </div>
+
+        <div class="sim2-pane on" data-pane="ble">
+          <div class="sim2-seg" id="bleSub" style="width:100%;margin-bottom:12px"><button data-s="prov" class="on" style="flex:1">Provisioning</button><button data-s="op" style="flex:1">BLE-Op</button></div>
+          <div id="bleProv">
+            <div class="sim2-sec"><h4>Local BLE provisioning</h4>
+              <p class="hint">Phone bonds to the gateway over BLE, sends site Wi-Fi + the charger list; the gateway hops each charger AP → LAN mode. One tap onboards the whole fleet.</p>
+              <button class="sim2-btn" id="btnScanGw">Scan for gateways (BLE)</button>
+              <button class="sim2-btn primary" id="btnProv">▶ Provision the fleet</button>
+              <button class="sim2-btn danger" id="btnFactory">Factory-reset gateway</button>
+            </div>
+          </div>
+          <div id="bleOp" class="s2hide">
+            <div class="sim2-sec"><h4>Auth key (unlocks control)</h4>
+              <button class="sim2-btn" id="btnRot">Rotate key (scheduled)</button>
+              <button class="sim2-btn" id="btnInterim">Interim issue (came online)</button>
+              <button class="sim2-btn" id="btnManual">Manual issue</button>
+              <span class="sim2-keychip none" id="keyChip">no key on gateway</span>
+            </div>
+            <div class="sim2-sec"><h4>Chargers · local control</h4>
+              <p class="hint"><span class="mono">AUTH:&lt;key&gt;:node_&lt;serial&gt;_…</span> → gateway → LAN. Start/stop, set current, offline &amp; reboot per bay.</p>
+              <div id="cList_ble"></div>
+            </div>
+            <div class="sim2-sec"><h4>Gateway commands</h4>
+              <div id="gwcmd_ble" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px"></div>
+              <button class="sim2-btn danger" id="btnRepairBle">Repair gateway</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sim2-pane" data-pane="iot">
+          <div class="sim2-sec"><h4>Dynamic load management</h4>
+            <div class="sim2-row"><label>DLM engine</label><button class="sim2-mini" id="dlmToggle">OFF</button>
+              <div class="sim2-seg" id="dlmMode"><button data-m="equal">Equal</button><button data-m="dynamic" class="on">Dynamic</button><button data-m="priority">Priority</button></div></div>
+            <div id="pnlInputs"></div>
+            <div class="sim2-read" id="dlmBudget">—</div>
+            <button class="sim2-btn primary" id="btnApplyDlm">Apply DLM → set_current</button>
+          </div>
+          <div class="sim2-sec"><h4>Chargers · remote control</h4>
+            <p class="hint">Backend → MQTT <span class="mono">/cmd</span> → gateway → LAN. Full control per bay.</p>
+            <div id="cList_iot"></div>
+          </div>
+          <div class="sim2-sec"><h4>Gateway</h4>
+            <button class="sim2-btn" id="btnIotKey">Issue BLE auth key now</button>
+            <div id="gwcmd_iot" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0"></div>
+            <button class="sim2-btn" id="btnFault">⚠ Inject fault on Charger 1</button>
+            <button class="sim2-btn danger" id="btnRepair">Repair gateway</button>
+          </div>
+        </div>
+
+        <div class="sim2-pane" data-pane="node">
+          <div class="sim2-sec"><h4>Power panels (breaker / buffer)</h4>
+            <div id="pnlList"></div>
+            <button class="sim2-btn" id="btnAddPanel">+ add power panel</button>
+          </div>
+          <div class="sim2-sec"><h4>Map chargers → panels</h4>
+            <p class="hint">Assign each of the 5 chargers to a panel (Panel 1 is the catch-all). Drives which budget balances it.</p>
+            <div id="chgMap"></div>
+          </div>
+          <div class="sim2-sec"><h4>Power-panel nodes (live load)</h4>
+            <p class="hint">Add a node, map it to a panel, set its live kW — its load (⌈kW·1000/240⌉ A) is subtracted from that panel&rsquo;s DLM budget. Delete with ✕.</p>
+            <div id="nodList"></div>
+            <button class="sim2-btn" id="btnAddNode">+ add panel node</button>
+          </div>
+        </div>
+
+        <div class="sim2-sec"><h4>Network &amp; cloud</h4>
+          <div class="sim2-row"><label>Gateway hardware</label><div class="sim2-seg" id="gwType"><button data-t="esp32">ESP32-S3</button><button data-t="rpi" class="on">Raspberry Pi</button></div></div>
+          <div class="sim2-row"><label>Gateway internet</label><button class="sim2-mini on" id="btnOffline">ONLINE</button></div>
+          <div class="sim2-row"><label>OCPP CMS</label><input type="text" class="wide" id="ocUrl2" value="wss://ocpp.example.com/ocpp" spellcheck="false"></div>
+          <button class="sim2-btn go" id="btnIngest">Start OCPP ingest → CMS</button>
+          <div class="sim2-stat">
+            <div class="s"><div class="k">Offline buffer</div><div class="v a" id="statBuf">0</div></div>
+            <div class="s"><div class="k">Ingested</div><div class="v g" id="statIng">0</div></div>
+            <div class="s"><div class="k">Live chargers</div><div class="v" id="statLive">0</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── the live site ── -->
+      <div class="sim2-stage">
+        <div class="sim2-svg">
+          <svg viewBox="0 0 1120 560" role="img" aria-label="Live site simulator">
+            <g class="links">
+              <path id="lan1" class="plink lank" d="M192,32 C330,50 360,110 430,120"/>
+              <path id="lan2" class="plink lank" d="M192,96 C330,104 360,116 430,124"/>
+              <path id="lan3" class="plink lank" d="M192,160 C320,152 360,136 430,130"/>
+              <path id="lan4" class="plink lank" d="M192,224 C320,206 360,150 430,138"/>
+              <path id="lan5" class="plink lank" d="M192,288 C320,266 360,168 430,146"/>
+              <path id="ble"  class="plink blek" d="M104,350 C200,300 330,278 430,266"/>
+              <path id="ncfg" class="plink blek" d="M192,404 C280,340 210,180 252,120"/>
+              <path id="ppr1" class="plink datak" d="M384,100 C405,110 416,116 430,118"/>
+              <path id="ppr2" class="plink datak" d="M384,226 C405,200 418,150 430,138"/>
+              <path id="gwlan" class="plink lank" d="M510,164 C510,182 510,196 510,210"/>
+              <path id="gwmqtt" class="plink datak" d="M590,270 C614,244 620,214 636,196"/>
+              <path id="brvm"  class="plink datak" d="M786,190 C812,160 815,130 838,116"/>
+              <path id="vmdb"  class="plink datak" d="M926,158 C926,180 926,196 926,210"/>
+              <path id="vmcms" class="plink datak" d="M980,158 C1012,240 990,300 988,352"/>
+              <path id="vmws"  class="plink datak" d="M838,110 C560,26 250,48 104,350"/>
+              <path id="gwHmi" class="plink lank" d="M510,330 C510,340 510,348 510,356"/>
+              <path id="gwPay" class="plink lank" d="M584,322 C602,350 606,376 612,404"/>
+            </g>
+            <!-- chargers -->
+            <g class="pdev" id="cg1"><rect class="fxbox" x="16" y="16" width="176" height="50" rx="9"/><circle class="cst idle" id="cd1" cx="30" cy="32" r="5"/><text class="plbl" x="44" y="35" style="font-size:11px">Charger 1</text><text class="psub" x="44" y="52">Spark_0001</text><text class="ptag" id="ca1" x="184" y="35" text-anchor="end" style="font-size:11px">—</text><rect x="104" y="46" width="80" height="6" rx="3" fill="var(--panel3)"/><rect class="cbar" id="cb1" x="104" y="46" width="0" height="6" rx="3"/><text class="pcap" id="cp1" x="98" y="52" text-anchor="end">P1</text></g>
+            <g class="pdev" id="cg2"><rect class="fxbox" x="16" y="80" width="176" height="50" rx="9"/><circle class="cst idle" id="cd2" cx="30" cy="96" r="5"/><text class="plbl" x="44" y="99" style="font-size:11px">Charger 2</text><text class="psub" x="44" y="116">Spark_0002</text><text class="ptag" id="ca2" x="184" y="99" text-anchor="end" style="font-size:11px">—</text><rect x="104" y="110" width="80" height="6" rx="3" fill="var(--panel3)"/><rect class="cbar" id="cb2" x="104" y="110" width="0" height="6" rx="3"/><text class="pcap" id="cp2" x="98" y="116" text-anchor="end">P1</text></g>
+            <g class="pdev" id="cg3"><rect class="fxbox" x="16" y="144" width="176" height="50" rx="9"/><circle class="cst idle" id="cd3" cx="30" cy="160" r="5"/><text class="plbl" x="44" y="163" style="font-size:11px">Charger 3</text><text class="psub" x="44" y="180">Spark_0003</text><text class="ptag" id="ca3" x="184" y="163" text-anchor="end" style="font-size:11px">—</text><rect x="104" y="174" width="80" height="6" rx="3" fill="var(--panel3)"/><rect class="cbar" id="cb3" x="104" y="174" width="0" height="6" rx="3"/><text class="pcap" id="cp3" x="98" y="180" text-anchor="end">P1</text></g>
+            <g class="pdev" id="cg4"><rect class="fxbox" x="16" y="208" width="176" height="50" rx="9"/><circle class="cst idle" id="cd4" cx="30" cy="224" r="5"/><text class="plbl" x="44" y="227" style="font-size:11px">Charger 4</text><text class="psub" x="44" y="244">Spark_0004</text><text class="ptag" id="ca4" x="184" y="227" text-anchor="end" style="font-size:11px">—</text><rect x="104" y="238" width="80" height="6" rx="3" fill="var(--panel3)"/><rect class="cbar" id="cb4" x="104" y="238" width="0" height="6" rx="3"/><text class="pcap" id="cp4" x="98" y="244" text-anchor="end">P2</text></g>
+            <g class="pdev" id="cg5"><rect class="fxbox" x="16" y="272" width="176" height="50" rx="9"/><circle class="cst idle" id="cd5" cx="30" cy="288" r="5"/><text class="plbl" x="44" y="291" style="font-size:11px">Charger 5</text><text class="psub" x="44" y="308">Spark_0005</text><text class="ptag" id="ca5" x="184" y="291" text-anchor="end" style="font-size:11px">—</text><rect x="104" y="302" width="80" height="6" rx="3" fill="var(--panel3)"/><rect class="cbar" id="cb5" x="104" y="302" width="0" height="6" rx="3"/><text class="pcap" id="cp5" x="98" y="308" text-anchor="end">P2</text></g>
+            <!-- phone -->
+            <g class="pdev" id="phg"><rect class="pbox" x="16" y="350" width="176" height="124" rx="14"/><rect x="30" y="372" width="148" height="86" rx="6" fill="#0b1220" stroke="var(--border)"/><text class="pcap" x="104" y="366" text-anchor="middle">MOBILE APP</text><text class="p-scr" id="phT1" x="104" y="412" text-anchor="middle">idle</text><text class="p-scr2" id="phT2" x="104" y="432" text-anchor="middle">tap an action</text></g>
+            <!-- panels + nodes -->
+            <g class="pdev" id="pgrp1"><rect class="pbox" x="214" y="24" width="170" height="50" rx="10"/><text class="pcap" x="299" y="18" text-anchor="middle">POWER PANEL 1</text><text class="plbl" x="228" y="45" style="font-size:11px">Panel 1</text><text class="psub" id="pnlT1" x="370" y="45" text-anchor="end">90 − 5 A</text><text class="psub" x="228" y="62">breaker − buffer</text></g>
+            <g class="pdev" id="ngrp1"><rect class="fxbox" x="214" y="80" width="170" height="40" rx="9"/><circle class="cst idle" id="ndD1" cx="228" cy="100" r="4"/><text class="plbl" x="240" y="97" style="font-size:10.5px">Node 1</text><text class="psub" id="ndT1" x="370" y="104" text-anchor="end">→ P1 · off</text></g>
+            <g class="pdev" id="pgrp2"><rect class="pbox" x="214" y="150" width="170" height="50" rx="10"/><text class="pcap" x="299" y="144" text-anchor="middle">POWER PANEL 2</text><text class="plbl" x="228" y="171" style="font-size:11px">Panel 2</text><text class="psub" id="pnlT2" x="370" y="171" text-anchor="end">60 − 5 A</text><text class="psub" x="228" y="188">breaker − buffer</text></g>
+            <g class="pdev" id="ngrp2"><rect class="fxbox" x="214" y="206" width="170" height="40" rx="9"/><circle class="cst idle" id="ndD2" cx="228" cy="226" r="4"/><text class="plbl" x="240" y="223" style="font-size:10.5px">Node 2</text><text class="psub" id="ndT2" x="370" y="230" text-anchor="end">→ P2 · off</text></g>
+            <g class="pdev s2hide" id="pgrp3"><rect class="pbox" x="214" y="276" width="170" height="50" rx="10"/><text class="pcap" x="299" y="270" text-anchor="middle">POWER PANEL 3</text><text class="plbl" x="228" y="297" style="font-size:11px">Panel 3</text><text class="psub" id="pnlT3" x="370" y="297" text-anchor="end">60 − 5 A</text><text class="psub" x="228" y="314">breaker − buffer</text></g>
+            <g class="pdev s2hide" id="ngrp3"><rect class="fxbox" x="214" y="332" width="170" height="40" rx="9"/><circle class="cst idle" id="ndD3" cx="228" cy="352" r="4"/><text class="plbl" x="240" y="349" style="font-size:10.5px">Node 3</text><text class="psub" id="ndT3" x="370" y="356" text-anchor="end">→ P1 · off</text></g>
+            <!-- router -->
+            <g class="pdev" id="rtg"><rect class="pbox" x="430" y="90" width="160" height="74" rx="12"/><text class="pcap" x="510" y="84" text-anchor="middle">SITE ROUTER</text><text class="plbl" x="510" y="122" text-anchor="middle">Wi-Fi / LAN</text><text class="psub" x="510" y="142" text-anchor="middle">DHCP · internet</text></g>
+            <!-- gateway -->
+            <g class="pdev" id="gwg"><rect class="pbox" x="430" y="210" width="160" height="120" rx="12"/><text class="pcap" x="510" y="204" text-anchor="middle">GATEWAY</text><text class="plbl" id="gwHw" x="510" y="242" text-anchor="middle">Raspberry Pi hub</text><text class="psub" id="gwStat" x="510" y="264" text-anchor="middle" style="fill:var(--dim)">not provisioned</text><text class="ptag" id="gwKey" x="510" y="286" text-anchor="middle" style="fill:var(--dim)">no key</text><g id="gwSdG" class="s2hide"><rect x="452" y="298" width="116" height="22" rx="6" fill="rgba(245,165,36,.14)" stroke="rgba(245,165,36,.5)"/><text class="ptag" id="gwSd" x="510" y="313" text-anchor="middle" style="fill:var(--amber)">SD 0</text></g></g>
+            <!-- broker -->
+            <g class="pdev" id="brg"><rect class="pbox" x="636" y="150" width="150" height="88" rx="12"/><text class="pcap" x="711" y="144" text-anchor="middle">HIVEMQ BROKER</text><text class="plbl" x="711" y="184" text-anchor="middle">MQTT · TLS 8883</text><text class="psub" x="711" y="204" text-anchor="middle">sparkcharger/gateway</text></g>
+            <!-- VM -->
+            <g class="pdev" id="vmg"><rect class="pbox" x="838" y="70" width="176" height="88" rx="12"/><text class="pcap" x="926" y="64" text-anchor="middle">VM CLOUD SERVER</text><text class="plbl" x="926" y="102" text-anchor="middle">Node backend + console</text><text class="psub" id="vmStat" x="926" y="122" text-anchor="middle">idle</text><text class="psub" x="926" y="140" text-anchor="middle">DLM · authKeys · ingest</text></g>
+            <!-- supabase -->
+            <g class="pdev" id="dbg"><rect class="pbox" x="838" y="210" width="176" height="64" rx="12"/><text class="pcap" x="926" y="204" text-anchor="middle">SUPABASE</text><text class="plbl" x="926" y="238" text-anchor="middle">Postgres · auth</text><text class="psub" x="926" y="256" text-anchor="middle">events · ingest log</text></g>
+            <!-- CMS -->
+            <g class="pdev" id="cmsg"><rect class="fxbox" x="900" y="352" width="176" height="90" rx="12"/><text class="pcap" x="988" y="346" text-anchor="middle">OCPP CMS</text><text class="plbl" x="988" y="384" text-anchor="middle">OCPP 1.6J</text><text class="psub" id="cmsStat" x="988" y="404" text-anchor="middle">ingested 0</text><text class="psub" x="988" y="422" text-anchor="middle">ws · ocpp1.6</text></g>
+            <!-- on-site kiosk (RPi local HMI) + payment terminal -->
+            <g id="kioskg"><text class="pcap" x="510" y="349" text-anchor="middle">ON-SITE KIOSK · HMI</text>
+              <rect class="pbox" x="430" y="356" width="160" height="184" rx="10"/>
+              <rect id="kt1" class="ktile" data-k="0" x="440" y="366" width="140" height="24" rx="5"/><text class="ktileTxt" id="ktT1" x="448" y="382">Charger 1 · idle</text>
+              <rect id="kt2" class="ktile" data-k="1" x="440" y="394" width="140" height="24" rx="5"/><text class="ktileTxt" id="ktT2" x="448" y="410">Charger 2 · idle</text>
+              <rect id="kt3" class="ktile" data-k="2" x="440" y="422" width="140" height="24" rx="5"/><text class="ktileTxt" id="ktT3" x="448" y="438">Charger 3 · idle</text>
+              <rect id="kt4" class="ktile" data-k="3" x="440" y="450" width="140" height="24" rx="5"/><text class="ktileTxt" id="ktT4" x="448" y="466">Charger 4 · idle</text>
+              <rect id="kt5" class="ktile" data-k="4" x="440" y="478" width="140" height="24" rx="5"/><text class="ktileTxt" id="ktT5" x="448" y="494">Charger 5 · idle</text>
+              <text class="psub" x="510" y="524" text-anchor="middle">tap a bay → start / stop · pay &amp; go</text>
+              <g id="kLock"><rect class="klock" x="430" y="356" width="160" height="184" rx="10"/><text class="klockTxt" id="kLockT" x="510" y="452" text-anchor="middle">not provisioned</text></g>
+            </g>
+            <g id="payg"><text class="pcap" x="662" y="365" text-anchor="middle">PAYMENT</text>
+              <rect class="pbox" x="612" y="372" width="100" height="120" rx="10"/>
+              <rect class="payslot" x="628" y="392" width="68" height="10" rx="2"/>
+              <text class="psub" x="662" y="432" text-anchor="middle">tap · card · app</text>
+              <text class="ptag" id="payTxt" x="662" y="462" text-anchor="middle" style="fill:var(--green)">ready</text>
+            </g>
+          </svg>
+        </div>
+        <div class="sim2-log" id="simLog"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var el=function(id){return document.getElementById(id);};
+    var overlay=el('sim2');
+    // ── state ──
+    var S={
+      gw:{prov:false, online:false, key:null, type:'rpi'},
+      chg:[], dlm:{on:false, mode:'dynamic'},
+      pnl:[{breaker:90,buffer:5,shown:true},{breaker:60,buffer:5,shown:true},{breaker:60,buffer:5,shown:false}],
+      nod:[{panel:1,kw:0,on:false,shown:true},{panel:2,kw:0,on:false,shown:true},{panel:1,kw:0,on:false,shown:false}],
+      buf:{samples:0,sessions:0}, ingested:0
+    };
+    for(var i=1;i<=5;i++) S.chg.push({name:'Charger '+i, serial:'Spark_000'+i, prov:false, online:true, charging:false, faulted:false, setA:0, liveA:0, wh:0, max:40, panel:i<=3?1:2, offSess:false});
+    var tick=null, started=false;
+    var after=function(ms,fn){return setTimeout(fn,ms);};
+    var randHex=function(){var s='';for(var i=0;i<32;i++)s+='0123456789abcdef'[Math.floor(Math.random()*16)];return s;};
+
+    // ── log ──
+    function log(html,cls){ var L=el('simLog'); var d=document.createElement('div'); d.className='ln';
+      var t=new Date().toLocaleTimeString(); d.innerHTML='<span class="ts">'+t+'</span>'+(cls?'<span class="'+cls+'">':'')+html+(cls?'</span>':'');
+      L.appendChild(d); while(L.children.length>200)L.removeChild(L.firstChild); L.scrollTop=L.scrollHeight; }
+
+    // ── flow animation ──
+    function flow(ids,ms){ ids.forEach(function(id){var e=el(id); if(e)e.classList.add('on');}); after(ms||1500, rLinks); }
+    function rLinks(){
+      ['lan1','lan2','lan3','lan4','lan5','ble','ncfg','ppr1','ppr2','gwlan','gwmqtt','brvm','vmdb','vmcms','vmws','gwHmi','gwPay'].forEach(function(id){var e=el(id); if(e)e.classList.remove('on');});
+      S.chg.forEach(function(c,i){ if(c.charging){var e=el('lan'+(i+1)); if(e)e.classList.add('on');} });
+      if(S.gw.online){ ['gwmqtt','brvm','vmdb'].forEach(function(id){var e=el(id); if(e)e.classList.add('on');}); if(S.gw.prov){var g=el('gwlan'); if(g)g.classList.add('on');} }
+      [0,1].forEach(function(k){ if(S.nod[k].shown&&S.nod[k].on&&S.gw.online){var e=el('ppr'+(k+1)); if(e)e.classList.add('on');} });
+      if(S.gw.prov&&S.gw.type==='rpi'){ ['gwHmi','gwPay'].forEach(function(id){var e=el(id); if(e)e.classList.add('on');}); }  // local kiosk link — stays up even offline
+    }
+
+    // ── allocation (real dlm.js logic) ──
+    // Real DLM behaviour: split each panel's budget across the bays that are actually
+    // CHARGING (online, non-faulted), each capped at its OWN max current. A lone charger
+    // takes up to its max; start another and they re-split live. Idle bays draw 0.
+    function alloc(){
+      var out={}; S.chg.forEach(function(c){out[c.serial]=0;});
+      S.pnl.forEach(function(p,pi){ if(!p.shown) return; var pid=pi+1;
+        var charging=S.chg.filter(function(c){return c.prov && c.online && !c.faulted && c.charging && c.panel===pid;});
+        if(!charging.length) return;
+        var load=0; S.nod.forEach(function(n){ if(n.shown&&n.on&&n.panel===pid) load+=Math.round(n.kw*1000/240); });
+        var budget=Math.max(0,(p.breaker-p.buffer)-load); var res={}; charging.forEach(function(c){res[c.serial]=0;});
+        if(budget < charging.length*6){ charging.forEach(function(c){res[c.serial]=budget/charging.length;}); }  // oversubscribed → share equally
+        else { var total=function(){var t=0;charging.forEach(function(c){t+=res[c.serial];});return t;};
+          var pool=charging.slice();
+          while(total()<budget-0.5 && pool.length){ var sh=(budget-total())/pool.length, nx=[], moved=false;
+            pool.forEach(function(c){ var head=c.max-res[c.serial]; if(head<=0.5)return; var gv=Math.min(sh,head); res[c.serial]+=gv; moved=true; if(c.max-res[c.serial]>0.5)nx.push(c); });
+            if(!moved)break; pool=nx; } }
+        charging.forEach(function(c){out[c.serial]=Math.round(res[c.serial]);});
+      });
+      return out;
+    }
+    function setCurrents(){
+      if(S.dlm.on){ var a=alloc(); S.chg.forEach(function(c){ c.setA = (c.prov && c.charging) ? (a[c.serial]||0) : 0; }); }
+      else { S.chg.forEach(function(c){ c.setA = (c.charging && c.online) ? c.max : 0; }); }
+    }
+    function setMax(i,d){ var c=S.chg[i]; if(!c.prov)return; c.max=Math.max(6,Math.min(48,(c.max||40)+d));
+      log(c.name+' max current → <b>'+c.max+' A</b>'+(S.dlm.on?' — DLM re-splitting':(c.charging?' — drawing '+c.max+' A':'')),''); setCurrents(); if(S.dlm.on)logDlmSplit('max changed'); rLive(); }
+    function logDlmSplit(reason){ if(!S.dlm.on)return; var ch=S.chg.filter(function(c){return c.charging;}); if(!ch.length)return;
+      var parts=ch.map(function(c){return 'C'+(S.chg.indexOf(c)+1)+'='+c.setA+'A';});
+      log('<b>DLM '+S.dlm.mode+'</b> '+(reason||'rebalanced')+' → '+parts.join(' · ')+' <span style="color:var(--dim)">(each ≤ its max · budget split across '+ch.length+' charging)</span>','g');
+      var lanes=S.chg.map(function(c,i){return c.charging?'lan'+(i+1):null;}).filter(Boolean); flow(lanes.concat(S.gw.online?['brvm','gwmqtt']:[]),1300); }
+
+    // ── renders ──
+    function rLive(){
+      var live=0;
+      S.chg.forEach(function(c,i){ var n=i+1;
+        var dot=el('cd'+n); if(dot) dot.className='cst '+(c.faulted?'faulted':(c.charging?'charging':'idle'));
+        var amp=el('ca'+n); if(amp) amp.textContent = c.faulted?'FAULT':(c.charging?Math.round(c.liveA)+' A':(c.prov?'0 A':'—'));
+        var bar=el('cb'+n); if(bar) bar.setAttribute('width', Math.max(0,Math.min(80, c.setA/48*80)));
+        var pt=el('cp'+n); if(pt) pt.textContent='P'+c.panel+' · '+c.max+'A';
+        if(c.charging) live++;
+      });
+      var sd=el('gwSdG'); if(sd) sd.classList.toggle('s2hide', !(!S.gw.online && S.buf.samples>0));
+      var sdt=el('gwSd'); if(sdt) sdt.textContent='SD '+S.buf.samples;
+      el('statBuf').textContent=S.buf.samples; el('statIng').textContent=S.ingested; el('statLive').textContent=live;
+      renderCList('cList_ble','ble'); renderCList('cList_iot','iot'); renderKiosk();
+    }
+    function renderKiosk(){ var active=S.gw.prov && (S.gw.type==='rpi');
+      var lk=el('kLock'); if(lk)lk.classList.toggle('s2hide',active);
+      var lt=el('kLockT'); if(lt)lt.textContent = !S.gw.prov ? 'not provisioned' : (S.gw.type!=='rpi' ? 'ESP32 · headless' : 'locked');
+      for(var i=0;i<5;i++){ var c=S.chg[i]; var tile=el('kt'+(i+1)), tx=el('ktT'+(i+1));
+        if(tile) tile.classList.toggle('on', active && c.charging);
+        if(tx) tx.textContent = c.name+' · '+(!c.prov?'—':(!c.online?'offline':(c.charging?Math.round(c.liveA)+' A':'idle'))); }
+    }
+    function rStruct(){
+      // gateway
+      var gs=el('gwStat'); gs.textContent = S.gw.prov ? (S.gw.online?'online · LAN':'OFFLINE · buffering') : 'not provisioned';
+      gs.style.fill = S.gw.prov ? (S.gw.online?'var(--green)':'var(--amber)') : 'var(--dim)';
+      var gk=el('gwKey'); gk.textContent = S.gw.key ? ('key '+S.gw.key.slice(0,6)+'…') : 'no key';
+      gk.style.fill = S.gw.key ? 'var(--green)' : 'var(--dim)';
+      var kc=el('keyChip'); if(S.gw.key){ kc.className='sim2-keychip'; kc.textContent=S.gw.key; } else { kc.className='sim2-keychip none'; kc.textContent='no key on gateway'; }
+      // panels + nodes (svg)
+      S.pnl.forEach(function(p,pi){ var g=el('pgrp'+(pi+1)); if(g)g.classList.toggle('s2hide',!p.shown); var t=el('pnlT'+(pi+1)); if(t)t.textContent=p.breaker+' − '+p.buffer+' A'; });
+      S.nod.forEach(function(n,ni){ var g=el('ngrp'+(ni+1)); if(g)g.classList.toggle('s2hide',!n.shown); var t=el('ndT'+(ni+1)); if(t)t.textContent='→ P'+n.panel+' · '+(n.on?(n.kw.toFixed(1)+' kW'):'off'); var d=el('ndD'+(ni+1)); if(d)d.className='cst '+(n.on?'charging':'idle'); });
+      // cloud
+      el('cmsStat').textContent='ingested '+S.ingested;
+      el('vmStat').textContent = S.gw.online ? (S.dlm.on?'DLM balancing':'listening') : 'awaiting gateway';
+      // offline btn
+      var ob=el('btnOffline'); ob.textContent=S.gw.online?'ONLINE':'OFFLINE'; ob.classList.toggle('on',S.gw.online); ob.classList.toggle('stop',!S.gw.online);
+      // dlm toggle
+      var dt=el('dlmToggle'); dt.textContent=S.dlm.on?'ON':'OFF'; dt.classList.toggle('on',S.dlm.on);
+      var hw=el('gwHw'); if(hw)hw.textContent = S.gw.type==='rpi'?'Raspberry Pi hub':'ESP32-S3 hub';
+      var gt=el('gwType'); if(gt){ [].slice.call(gt.children).forEach(function(x){x.classList.toggle('on',x.dataset.t===S.gw.type);}); }
+      renderPnlInputs(); renderPnlList(); renderNodList(); renderChgMap(); renderGwCmds(); renderBudget(); rLinks(); updateBtns();
+    }
+    function renderCList(cid,src){ var c=el(cid); if(!c) return;
+      c.innerHTML=S.chg.map(function(ch,i){ var st=ch.faulted?'faulted':(ch.charging?'charging':''); var sl=ch.faulted?'FAULT':(!ch.online?'offline':(ch.charging?Math.round(ch.liveA)+'A':'idle'));
+        var row='<div class="sim2-cl"><span class="nm">'+ch.name+'</span><span class="st '+st+'">'+sl+'</span>'
+          + '<button class="sim2-mini '+(ch.charging?'stop':'on')+'" data-cc="'+i+'" data-src="'+src+'"'+((ch.prov&&ch.online)?'':' disabled')+'>'+(ch.charging?'Stop':'Start')+'</button></div>';
+        if(ch.prov){ row+='<div style="display:flex;gap:5px;align-items:center;padding:0 0 9px;font-size:10.5px">'
+          + '<button class="sim2-mini" data-mx="'+i+'" data-d="-2">−</button><span style="min-width:56px;text-align:center;color:var(--muted)">max '+ch.max+'A</span><button class="sim2-mini" data-mx="'+i+'" data-d="2">+</button>'
+          + '<button class="sim2-mini'+(ch.online?'':' on')+'" data-off="'+i+'" data-src="'+src+'">'+(ch.online?'Offline':'Online')+'</button>'
+          + '<button class="sim2-mini" data-rb="'+i+'" data-src="'+src+'">Reboot</button></div>'; }
+        return row;
+      }).join(''); }
+    function renderPnlInputs(){ el('pnlInputs').innerHTML=S.pnl.map(function(p,pi){ if(!p.shown)return''; return '<div class="sim2-row"><label>Panel '+(pi+1)+'</label>brk<input type="number" data-pb="'+pi+'" value="'+p.breaker+'">buf<input type="number" data-pf="'+pi+'" value="'+p.buffer+'"></div>'; }).join(''); }
+    function renderPnlList(){ var shown=S.pnl.filter(function(p){return p.shown;}).length;
+      el('pnlList').innerHTML=S.pnl.map(function(p,pi){ if(!p.shown)return''; return '<div class="sim2-row"><label>Panel '+(pi+1)+'</label>brk<input type="number" data-pb="'+pi+'" value="'+p.breaker+'">buf<input type="number" data-pf="'+pi+'" value="'+p.buffer+'">'+(shown>1?'<button class="sim2-mini stop" data-delp="'+pi+'">✕</button>':'')+'</div>'; }).join(''); }
+    function renderNodList(){ el('nodList').innerHTML=S.nod.map(function(n,ni){ if(!n.shown)return''; var opts=''; S.pnl.forEach(function(p,pi){ if(p.shown)opts+='<option value="'+(pi+1)+'"'+(n.panel===pi+1?' selected':'')+'>P'+(pi+1)+'</option>'; });
+      return '<div class="sim2-cl"><span class="nm">Node '+(ni+1)+'</span><select class="sim2-mini" data-np="'+ni+'">'+opts+'</select><input type="number" data-nk="'+ni+'" value="'+n.kw+'" step="0.5" style="width:50px">kW<button class="sim2-mini '+(n.on?'on':'')+'" data-no="'+ni+'">'+(n.on?'on':'off')+'</button><button class="sim2-mini stop" data-deln="'+ni+'">✕</button></div>'; }).join(''); }
+    function renderChgMap(){ var c=el('chgMap'); if(!c) return; c.innerHTML=S.chg.map(function(ch,i){ var opts=''; S.pnl.forEach(function(p,pi){ if(p.shown)opts+='<option value="'+(pi+1)+'"'+(ch.panel===pi+1?' selected':'')+'>Panel '+(pi+1)+'</option>'; });
+      return '<div class="sim2-cl"><span class="nm">'+ch.name+' <span style="color:var(--dim);font-weight:400">'+ch.serial+'</span></span><select class="sim2-mini" data-cmap="'+i+'"'+(ch.prov?'':' disabled')+'>'+opts+'</select></div>'; }).join(''); }
+    var GWCMDS=[['status','Refresh status'],['nodes','List nodes'],['fetch_node_info','Fetch info'],['rescan','Rescan LAN'],['start_hop','Start hop'],['stop_hop','Stop hop'],['reboot_gateway','Reboot GW'],['provision_mode','Provision'],['factory_reset','Factory reset']];
+    function renderGwCmds(){ ['gwcmd_ble','gwcmd_iot'].forEach(function(cid){ var c=el(cid); if(!c)return; c.innerHTML=GWCMDS.map(function(g){ return '<button class="sim2-mini" data-gw="'+g[0]+'" style="width:100%">'+g[1]+'</button>'; }).join(''); }); }
+    function renderBudget(){ var s=''; S.pnl.forEach(function(p,pi){ if(!p.shown)return; var pid=pi+1; var load=0; S.nod.forEach(function(n){ if(n.shown&&n.on&&n.panel===pid)load+=Math.round(n.kw*1000/240); }); var base=Math.max(0,p.breaker-p.buffer); var budget=Math.max(0,base-load);
+      s+='<div>Panel '+pid+': <b>'+p.breaker+'−'+p.buffer+'</b>'+(load?' − <span class="a">'+load+'A load</span>':'')+' = <b class="g">'+budget+' A</b></div>'; });
+      el('dlmBudget').innerHTML=s+'<div style="margin-top:4px;color:var(--dim)">DLM '+(S.dlm.on?'ON · '+S.dlm.mode:'OFF')+'</div>'; }
+    function updateBtns(){ el('btnProv').disabled=S.gw.prov; el('btnApplyDlm').disabled=!(S.gw.online&&S.gw.prov); el('btnIngest').disabled=!(S.gw.online&&S.buf.sessions>0);
+      ['btnRot','btnManual'].forEach(function(id){el(id).disabled=!S.gw.online;}); }
+    function phone(a,b){ el('phT1').textContent=a; el('phT2').textContent=b; }
+    function rAll(){ setCurrents(); rStruct(); rLive(); }
+
+    // ── actions ──
+    function provision(){ if(S.gw.prov) return; phone('Provisioning','BLE · GO');
+      log('<b>BLE</b> phone → gateway · provisioning service <b>12345678-…</b>','v'); flow(['ble'],1500);
+      after(700,function(){ log('Phone sends <b>GO</b> — SSID + password + 5-charger list over BLE','v'); flow(['ble'],1200); });
+      S.chg.forEach(function(c,i){ after(1400+i*420,function(){ c.prov=true; log('Gateway hops <b>'+c.serial+'</b> @192.168.4.1 → joins site Wi-Fi ✓','g'); flow(['lan'+(i+1)],900); rLive(); updateBtns(); }); });
+      after(1400+5*420+300,function(){ S.gw.prov=true; S.gw.online=true; phone('Fleet online','5 / 5 ✓'); log('<b>FINISH</b> → gateway enters LAN mode · publishes <b>sparkcharger/gateway/status</b>','g'); flow(['gwlan','gwmqtt','brvm','vmdb'],1700); rAll(); }); }
+    function factory(){ S.gw.prov=false; S.gw.online=false; S.gw.key=null; S.dlm.on=false; S.chg.forEach(function(c){c.prov=false;c.charging=false;c.faulted=false;c.offSess=false;c.wh=0;}); S.buf={samples:0,sessions:0}; phone('Factory reset','wiped'); log('<b>factory_reset</b> — NVS wiped (auth key + Wi-Fi + serials). Gateway back to BLE provisioning.','a'); rAll(); }
+    function issueKey(kind){ if(!S.gw.online){log('Gateway offline — cannot deliver a key','r');return;} S.gw.key=randHex(); phone('Auth key',kind);
+      if(kind==='interim') log('<b>Interim</b>: gateway came online with no key → 30s settle → set_auth_key=<b>'+S.gw.key.slice(0,8)+'…</b>','a');
+      else if(kind==='manual') log('<b>Manual</b>: POST /api/authkey/issue → set_auth_key=<b>'+S.gw.key.slice(0,8)+'…</b> (0s settle)','');
+      else log('<b>Rotate</b>: authKeys.cycle() → set_auth_key=<b>'+S.gw.key.slice(0,8)+'…</b> → …/cmd (QoS1)','');
+      flow(['brvm','gwmqtt'],1500);
+      after(900,function(){ log('Gateway stores key in <b>NVS</b> → /response <span class="g">OK: Auth key updated</span> → auth_key_events','g'); flow(['gwmqtt','brvm','vmdb'],1400); });
+      after(1600,function(){ log('Key rides <b>WS state</b> → console chip + mobile app (presents over BLE)','g'); flow(['vmws'],1300); rAll(); }); rAll(); }
+    function startStop(i,src){ var c=S.chg[i]; if(!c.prov){log(c.name+' not provisioned yet','a');return;}
+      if(src==='kiosk' && S.gw.type!=='rpi'){ log('Kiosk HMI lives on the RPi gateway — switch Gateway hardware to Raspberry Pi','a'); return; }
+      if(!c.charging){ if(!c.online){ log(c.name+' is offline (dormant) — bring it online first','a'); return; } if(src==='ble'&&!S.gw.key){ log('BLE-Op needs an auth key — issue one first','a'); return; } c.faulted=false; c.charging=true;
+        if(src==='ble'){ phone('BLE-Op',c.name+' start'); log('BLE-Op <b>AUTH:'+(S.gw.key?S.gw.key.slice(0,4):'—')+':node_'+c.serial+'_start_charging</b> → LAN <b>/Start_charging</b>','v'); flow(['ble','lan'+(i+1)],1400); }
+        else if(src==='kiosk'){ payFlash(); log('<b>Kiosk HMI</b>: operator taps '+c.name+' → pay ✓ → gateway → LAN <b>/Start_charging</b> (local — works even offline)','g'); flow(['gwHmi','lan'+(i+1)],1400); }
+        else { phone('IoT control',c.name+' start'); log('IoT: backend → /cmd <b>node_'+c.serial+'_start_charging</b> → gateway → LAN','' ); flow(['vmws','brvm','gwmqtt','lan'+(i+1)],1400); }
+      } else { c.charging=false; var w=src==='ble'?'BLE-Op':(src==='kiosk'?'Kiosk HMI':'IoT'); log(w+': <b>node_'+c.serial+'_stop_charging</b> → /Stop_charging','' ); flow(src==='ble'?['ble','lan'+(i+1)]:(src==='kiosk'?['gwHmi','lan'+(i+1)]:['vmws','gwmqtt','lan'+(i+1)]),1200); }
+      rAll(); if(S.dlm.on) after(500, function(){ logDlmSplit(); });  // show the automatic set_current re-split
+    }
+    function applyDlm(){ if(!(S.gw.online&&S.gw.prov)){log('Provision + online required for DLM','a');return;}
+      S.dlm.on=true; phone('DLM',S.dlm.mode); log('<b>POST /api/dlm/settings</b> ('+S.dlm.mode+') → Supabase → water-fill','');
+      S.pnl.forEach(function(p,pi){ if(!p.shown)return; var pid=pi+1; var load=0; S.nod.forEach(function(n){ if(n.shown&&n.on&&n.panel===pid)load+=Math.round(n.kw*1000/240); }); var budget=Math.max(0,(p.breaker-p.buffer)-load); log('Panel '+pid+': '+p.breaker+'−'+p.buffer+(load?' − <span class="a">'+load+'A load</span>':'')+' = <b class="g">'+budget+' A</b> budget','' ); });
+      flow(['vmws','brvm','gwmqtt'],1600); var chg=S.chg.map(function(c,i){return c.charging?'lan'+(i+1):null;}).filter(Boolean); if(chg.length) after(600,function(){flow(chg,1400);});
+      after(900,function(){ rAll(); logDlmSplit('applied'); }); rAll(); }
+    function repair(){ if(!S.gw.prov){log('Nothing to repair','a');return;} phone('Repair','running');
+      if(S.dlm.on){ S.dlm.on=false; log('Repair: DLM was ON → <b>dlmSave enabled:false</b> (panels kept)','a'); }
+      S.chg.forEach(function(c){c.charging=false;}); log('Repair: <b>node_&lt;ref&gt;_offline_mode</b> ×'+S.chg.filter(function(c){return c.prov;}).length+' → waiting dormancy…','' ); flow(['vmws','gwmqtt','lan1','lan2','lan3','lan4','lan5'],1600);
+      after(1500,function(){ log('All nodes dormant ✓ → <b>provision_mode</b> → provisioning handoff','g'); rAll(); }); rAll(); }
+    function toggleOffline(){ S.gw.online=!S.gw.online;
+      if(!S.gw.online){ phone('OFFLINE','buffering SD'); log('<b>Internet lost</b> — gateway OFFLINE. Chargers keep charging; telemetry buffering to <b>SD</b>.','a'); rAll(); }
+      else { phone('Reconnect','replaying'); var recs=S.buf.samples, sess=S.buf.sessions;
+        log('<b>Reconnect</b> — replaying <b>'+recs+'</b> records on …/offline_data (QoS1) → {records_sent:'+recs+'}','' ); flow(['gwmqtt','brvm','vmdb'],1800);
+        after(1200,function(){ log('Backend: <b>offline_replay_done</b> → stored to mqtt_events (kind=offline_data)','g'); });
+        if(sess>0){ after(2200,function(){ log('Auto-ingest armed — '+sess+' offline session(s). Streaming to CMS…','a'); ingest(true); }); }
+        rAll(); } }
+    function ingest(auto){ if(!S.gw.online){log('Gateway offline — cannot reach CMS','r');return;} var sess=S.buf.sessions; if(!sess){log('No buffered sessions to ingest','a');return;}
+      var url=el('ocUrl2').value.trim()||'wss://ocpp.example.com/ocpp'; phone('OCPP ingest',sess+' session(s)');
+      log((auto?'Auto-ingest':'Manual ingest')+': OCPP-J WebSocket (<b>ocpp1.6</b>) → <b>'+url.replace(/^wss?:\/\//,'')+'</b> · BootNotification','');
+      flow(['vmcms'],1500);
+      after(800,function(){ log('Authorize (idTag <b>SONEIL-OFFLINE</b>) → <b>StartTransaction</b> (backdated · meterStart)','' ); flow(['vmcms'],1300); });
+      after(1600,function(){ log('<b>MeterValues</b> (one per sample) → <b>StopTransaction</b> (meterStop = final Wh) + fault StatusNotifications','' ); flow(['vmcms'],1300); });
+      after(2500,function(){ S.ingested+=sess; S.buf.sessions=0; S.buf.samples=0; S.chg.forEach(function(c){c.offSess=false;}); log('<span class="g">Ingested '+sess+' session(s)</span> → markIngested (<b>ocpp_ingest_log</b>) — no double-billing','g'); flow(['vmcms','vmdb'],1300); rAll(); }); }
+    function faultC1(){ var c=S.chg[0]; if(!c.prov){log('Provision first','a');return;} c.faulted=true; c.charging=false; log('⚠ <b>'+c.serial+'</b> faulted (OverCurrentFailure) → StatusNotification Faulted'+(S.gw.online?'':' — buffered to SD'),'r'); rAll(); }
+    function payFlash(){ var p=el('payTxt'); if(!p)return; p.textContent='PAID ✓'; p.style.fill='var(--cyan)'; flow(['gwPay'],1200); after(1700,function(){ p.textContent='ready'; p.style.fill='var(--green)'; }); }
+
+    function offlineToggle(i,src){ var c=S.chg[i]; if(!c.prov)return; c.online=!c.online; if(!c.online)c.charging=false; log((src==='ble'?'BLE-Op':'IoT')+': <b>node_'+c.serial+'_offline_mode</b> → '+(c.online?'back online':'dormant / offline'),c.online?'g':'a'); flow([src==='ble'?'ble':'gwmqtt','lan'+(i+1)],1000); rAll(); }
+    function rebootCharger(i,src){ var c=S.chg[i]; if(!c.prov)return; var was=c.charging; c.charging=false; c.online=false; log((src==='ble'?'BLE-Op':'IoT')+': <b>node_'+c.serial+'_reboot_charger</b> → rebooting…','a'); flow(['gwmqtt','lan'+(i+1)],1200); after(1900,function(){ c.online=true; if(was)c.charging=true; log(c.serial+' back online ✓','g'); rAll(); }); rAll(); }
+    function gwCmd(cmd){ if(!S.gw.prov){log('Provision the gateway first','a');return;}
+      if(cmd==='factory_reset'){ factory(); return; }
+      if(cmd==='provision_mode'){ S.gw.prov=false; S.gw.online=false; S.chg.forEach(function(c){c.charging=false;}); log('<b>provision_mode</b> → gateway rebooting into BLE provisioning','a'); flow(['ble'],1000); rAll(); return; }
+      if(cmd==='reboot_gateway'){ S.gw.online=false; log('<b>reboot_gateway</b> → gateway rebooting…','a'); flow(['gwmqtt'],1000); after(2000,function(){ if(S.gw.prov)S.gw.online=true; log('Gateway back online ✓','g'); rAll(); }); rAll(); return; }
+      var msg={status:'status → publishGatewayStatus() (mac · nodes · online/offline_nodes)',nodes:'nodes → NODES:1:Spark_0001,2:Spark_0002,…',fetch_node_info:'fetch_node_info → re-poll /chargerInfo on all nodes',rescan:'rescan → LAN rescan queued',start_hop:'start_hop → LAN telemetry poll loop started',stop_hop:'stop_hop → LAN poll loop stopped (MQTT stays up)'}[cmd]||cmd;
+      log('<b>'+cmd+'</b> · '+msg,''); flow(S.gw.online?['gwmqtt','brvm']:['ble'],1100); }
+    function delPanel(pi){ var shown=S.pnl.filter(function(p){return p.shown;}); if(shown.length<=1){log('Keep at least one panel','a');return;} S.pnl[pi].shown=false; var fb=0; S.pnl.forEach(function(p,k){ if(p.shown&&!fb)fb=k+1; }); S.chg.forEach(function(c){ if(c.panel===pi+1)c.panel=fb; }); S.nod.forEach(function(n){ if(n.panel===pi+1)n.panel=fb; }); log('Removed Panel '+(pi+1)+' — its chargers moved to Panel '+fb,'a'); rAll(); }
+    function delNode(ni){ S.nod[ni].shown=false; S.nod[ni].on=false; log('Removed Node '+(ni+1)+' (stopped reporting)','a'); if(S.dlm.on)setCurrents(); rAll(); }
+
+    // ── tick (energy accrual + offline buffering) ──
+    function startTick(){ if(started) return; started=true; tick=setInterval(function(){
+      S.chg.forEach(function(c){ var target=c.charging?c.setA:0; c.liveA += (target-c.liveA)*0.5; if(Math.abs(c.liveA-target)<0.4)c.liveA=target;
+        if(c.charging){ c.wh += c.liveA*0.8; if(!S.gw.online){ S.buf.samples++; c.offSess=true; } } });
+      if(!S.gw.online){ S.buf.sessions=S.chg.filter(function(c){return c.offSess;}).length; }
+      rLive();
+    },1200); }
+
+    // ── wire controls ──
+    function switchTab(name){ [].slice.call(document.querySelectorAll('.sim2-tab')).forEach(function(t){t.classList.toggle('on',t.dataset.tab===name);});
+      [].slice.call(document.querySelectorAll('.sim2-pane')).forEach(function(p){p.classList.toggle('on',p.dataset.pane===name);}); }
+    [].slice.call(document.querySelectorAll('.sim2-tab')).forEach(function(t){ t.addEventListener('click',function(){switchTab(t.dataset.tab);}); });
+    el('btnProv').onclick=provision; el('btnFactory').onclick=factory;
+    el('btnRot').onclick=function(){issueKey('rotate');}; el('btnInterim').onclick=function(){issueKey('interim');}; el('btnManual').onclick=function(){issueKey('manual');};
+    el('btnIotKey').onclick=function(){issueKey('manual');}; el('btnRepairBle').onclick=repair;
+    el('btnScanGw').onclick=function(){ log('BLE scan → found <b>Spark_gateway_…</b> ('+(S.gw.prov?'provisioned':'provisioning mode')+')','v'); flow(['ble'],1200); };
+    // BLE sub-mode (Provisioning / BLE-Op)
+    [].slice.call(el('bleSub').querySelectorAll('button')).forEach(function(b){ b.addEventListener('click',function(){ [].slice.call(el('bleSub').children).forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); el('bleProv').classList.toggle('s2hide',b.dataset.s!=='prov'); el('bleOp').classList.toggle('s2hide',b.dataset.s!=='op'); }); });
+    // gateway command grids (both modes)
+    ['gwcmd_ble','gwcmd_iot'].forEach(function(cid){ el(cid).addEventListener('click',function(e){ var b=e.target.closest('[data-gw]'); if(b) gwCmd(b.dataset.gw); }); });
+    // charger → panel mapping
+    el('chgMap').addEventListener('change',function(e){ var t=e.target.closest('[data-cmap]'); if(t){ S.chg[+t.dataset.cmap].panel=+t.value; log(S.chg[+t.dataset.cmap].name+' assigned → Panel '+t.value,''); rAll(); } });
+    // panel delete
+    el('pnlList').addEventListener('click',function(e){ var d=e.target.closest('[data-delp]'); if(d) delPanel(+d.dataset.delp); });
+    el('dlmToggle').onclick=function(){ S.dlm.on=!S.dlm.on; if(S.dlm.on){ log('<b>DLM ON</b> ('+S.dlm.mode+') — splitting each panel budget across charging bays','g'); rAll(); logDlmSplit('enabled'); } else { log('DLM turned OFF — each bay draws its own max','a'); rAll(); } };
+    [].slice.call(el('dlmMode').querySelectorAll('button')).forEach(function(b){ b.addEventListener('click',function(){ [].slice.call(el('dlmMode').children).forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); S.dlm.mode=b.dataset.m; renderBudget(); if(S.dlm.on)applyDlm(); }); });
+    el('btnApplyDlm').onclick=applyDlm; el('btnRepair').onclick=repair; el('btnFault').onclick=faultC1;
+    el('btnAddPanel').onclick=function(){ var p=S.pnl.find(function(x){return !x.shown;}); if(!p){log('Max 3 panels','a');return;} p.shown=true; log('Added a power panel','g'); rAll(); };
+    el('btnAddNode').onclick=function(){ var n=S.nod.find(function(x){return !x.shown;}); if(!n){log('Max 3 nodes','a');return;} n.shown=true; log('Added a power-panel node','g'); rAll(); };
+    el('btnOffline').onclick=toggleOffline; el('btnIngest').onclick=function(){ingest(false);};
+    // gateway hardware type (ESP32-S3 / Raspberry Pi)
+    [].slice.call(el('gwType').querySelectorAll('button')).forEach(function(b){ b.addEventListener('click',function(){ S.gw.type=b.dataset.t; log('Gateway hardware → <b>'+(S.gw.type==='rpi'?'Raspberry Pi':'ESP32-S3')+'</b>'+(S.gw.type==='rpi'?' — local kiosk HMI + payment active':' — headless (no local HMI)'),''); rAll(); }); });
+    // on-site kiosk HMI taps (local, works offline; needs a provisioned RPi)
+    el('kioskg').addEventListener('click',function(e){ var t=e.target.closest('[data-k]'); if(!t)return; if(!(S.gw.prov&&S.gw.type==='rpi')){ log('Kiosk locked — needs a provisioned Raspberry Pi gateway','a'); return; } startStop(+t.dataset.k,'kiosk'); });
+    // charger start/stop (delegated, both panes)
+    ['cList_ble','cList_iot'].forEach(function(cid){ el(cid).addEventListener('click',function(e){
+      var b=e.target.closest('[data-cc]'); if(b){ startStop(+b.dataset.cc, b.dataset.src); return; }
+      var s=e.target.closest('[data-mx]'); if(s){ setMax(+s.dataset.mx, +s.dataset.d); return; }
+      var o=e.target.closest('[data-off]'); if(o){ offlineToggle(+o.dataset.off, o.dataset.src); return; }
+      var r=e.target.closest('[data-rb]'); if(r){ rebootCharger(+r.dataset.rb, r.dataset.src); return; }
+    }); });
+    // panel inputs (both iot + node panes) — update state without rebuilding (keep focus)
+    ['pnlInputs','pnlList'].forEach(function(cid){ el(cid).addEventListener('input',function(e){ var t=e.target;
+      if(t.hasAttribute('data-pb')){ S.pnl[+t.dataset.pb].breaker=+t.value||0; } else if(t.hasAttribute('data-pf')){ S.pnl[+t.dataset.pf].buffer=+t.value||0; } else return;
+      var pi=+ (t.dataset.pb||t.dataset.pf); var pt=el('pnlT'+(pi+1)); if(pt)pt.textContent=S.pnl[pi].breaker+' − '+S.pnl[pi].buffer+' A'; renderBudget(); if(S.dlm.on){setCurrents();rLive();} }); });
+    // node list (map/kw/on-off)
+    el('nodList').addEventListener('input',function(e){ var t=e.target; if(t.hasAttribute('data-nk')){ S.nod[+t.dataset.nk].kw=+t.value||0; var ni=+t.dataset.nk; var nt=el('ndT'+(ni+1)); if(nt)nt.textContent='→ P'+S.nod[ni].panel+' · '+(S.nod[ni].on?(S.nod[ni].kw.toFixed(1)+' kW'):'off'); renderBudget(); if(S.dlm.on){setCurrents();rLive();} } });
+    el('nodList').addEventListener('change',function(e){ var t=e.target; if(t.hasAttribute('data-np')){ S.nod[+t.dataset.np].panel=+t.value; rAll(); } });
+    el('nodList').addEventListener('click',function(e){ var dn=e.target.closest('[data-deln]'); if(dn){ delNode(+dn.dataset.deln); return; } var b=e.target.closest('[data-no]'); if(!b)return; var n=S.nod[+b.dataset.no]; n.on=!n.on;
+      log('Node config: node → panel '+n.panel+', backend Spark Admin. '+(n.on?'Reporting live load every 2s → /api/powerpanel/report':'Reporting stopped'), n.on?'g':'a'); if(n.on)flow(['ncfg','ppr'+((+b.dataset.no)+1)],1500); if(S.dlm.on){setCurrents();} rAll(); });
+
+    // ── open / close ──
+    el('sim2Open').onclick=function(){ overlay.hidden=false; document.body.style.overflow='hidden'; startTick(); rAll();
+      log('Live Site Simulator ready — start with <b>Provision the fleet</b>.','g'); };
+    el('sim2Close').onclick=function(){ overlay.hidden=true; document.body.style.overflow=''; };
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!overlay.hidden){ overlay.hidden=true; document.body.style.overflow=''; } });
+  })();
+  </script>
+</body>
+</html>
